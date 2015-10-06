@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App;
 
 class DashboardController extends Controller
 {
@@ -20,6 +19,8 @@ class DashboardController extends Controller
         
         //App::setLocale('kh');
         //return trans('administrators.dashboard');
+        //$user = Auth::user();
+        //return $user->toJson();
         return View('admin.dashboard');
     }
 

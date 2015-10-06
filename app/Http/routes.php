@@ -36,9 +36,6 @@ Route::get('/home', function(){
     return view('welcome');
 });
 
-Route::get('/admin', function () {
-    return view('home');
-});
 
 Route::get('/admin/login', function () {
     return view('login');
@@ -49,23 +46,19 @@ Route::get('/admin/login', function () {
     return view('admin.users.user')->with('users', $users);
 });*/
 
-Route::resource('admin/contents','ContentController');
+Route::get('admin/users/change_password',[
+    'middleware' => ['auth'],
+    'uses' => 'Admin\UserController@changePassword'
+]);
 
-Route::get('admin/dashboard',[
+Route::get('admin',[
     'middleware' => ['auth'],
     'uses' => 'Admin\DashboardController@Index'
 ]);
 
-//Route::resource('admin/category','Admin\CategoryController');
-
-
-Route::get('admin', function(){
-    return 'Hello Admin';
-});
-
-Route::get('admin/users/change_password',[
+Route::get('admin/dashboard',[
     'middleware' => ['auth'],
-    'uses' => 'Admin\UserController@changePassword'
+    'uses' => 'Admin\DashboardController@Index'
 ]);
 
 Route::group(['prefix' => 'admin'

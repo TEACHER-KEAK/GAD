@@ -29,6 +29,7 @@ class UserController extends Controller
     public function create()
     {
         //
+        return View('admin.users.create_user');
     }
 
     /**
@@ -88,6 +89,6 @@ class UserController extends Controller
     }
     
     public function changePassword(){
-        return "CHANGE PASSWORD";
+        return View('admin.users.change_password_user');
     }
 }

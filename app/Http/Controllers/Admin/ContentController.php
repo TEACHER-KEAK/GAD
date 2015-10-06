@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Content;
 class ContentController extends Controller
 {
     /**
@@ -16,7 +17,8 @@ class ContentController extends Controller
     public function index()
     {
         //
-        return View('admin.contents.content');
+        $contents = Content::all();
+        return View('admin.contents.content')->with('contents', $contents);
     }
 
     /**
@@ -26,8 +28,8 @@ class ContentController extends Controller
      */
     public function create()
     {
-        //
-        return "ADD NEW CONTENT PAGE";
+        $contents = Content::all();
+        return View('admin.contents.create_content');
     }
 
     /**

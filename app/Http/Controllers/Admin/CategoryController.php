@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Category;
 class CategoryController extends Controller
 {
     public function __construct(){
@@ -19,7 +20,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return View('admin.categories.category');
+        $categories = Category::all();
+        return View('admin.categories.category')->with('categories', $categories);
     }
 
     /**
@@ -29,7 +31,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return View('admin.categories.create_category');
     }
 
     /**

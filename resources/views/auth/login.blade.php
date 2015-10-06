@@ -34,6 +34,16 @@
     <p class="login-box-msg">Sign in to start your session</p>
 
     <form method="POST" action="/auth/login">
+            <!-- HANDLING MESSAGE ERRORS-->
+      @if (count($errors) > 0)
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+      @endif
             {!! csrf_field() !!}
       <div class="form-group has-feedback">
         <input type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}"/>
@@ -66,16 +76,7 @@
       <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
         Google+</a>
     </div>
-    <!-- HANDLING MESSAGE ERRORS-->
-    @if (count($errors) > 0)
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+
     <!-- /.social-auth-links -->
 
     <!-- <a href="#">I forgot my password</a><br>

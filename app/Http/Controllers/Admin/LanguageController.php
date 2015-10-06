@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Language;
 
 class LanguageController extends Controller
 {
@@ -15,7 +16,8 @@ class LanguageController extends Controller
      */
     public function index()
     {
-        return View('admin.languages.language');
+        $languages = Language::all();
+        return View('admin.languages.language')->with('languages', $languages);
     }
 
     /**

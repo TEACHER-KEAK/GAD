@@ -34,7 +34,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body class="skin-green">
+    <body class="skin-green sidebar-collapse">
         <div class="wrapper">
             @include('admin.includes.header')
             @include('admin.includes.sidebar')
@@ -59,9 +59,9 @@
             </div><!-- /.content-wrapper -->
             <footer class="main-footer">
                 <div class="pull-right hidden-xs">
-                    <b>Version</b> 2.0
+                    <!--<b>Version</b> 2.0-->
                 </div>
-                <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+                <center><strong>Copyright &copy; 2015 <a href="javascript:;">GREEN ARCHITECTURE DESIGN</a>.</strong> All rights reserved.</center>
             </footer>
         </div><!-- ./wrapper -->
 
