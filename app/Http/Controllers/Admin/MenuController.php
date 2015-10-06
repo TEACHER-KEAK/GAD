@@ -25,7 +25,7 @@ class MenuController extends Controller
      */
     public function create()
     {
-        //
+        return View('admin.menus.create_menu');
     }
 
     /**
