@@ -16,8 +16,8 @@
           <div class="box-header">
             <h3 class="box-title">LIST All LANGUAGES</h3>
             <div class="box-tools">
-              <div class="input-group" style="width: 350px;">
-                <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
+              <div class="input-group">
+                <input type="text" style="width: 50%;" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
                 <div class="input-group-btn">
                   <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
                 </div>
