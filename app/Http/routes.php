@@ -11,7 +11,28 @@
 |
 */
 
-Route::get('/', function () {
+// Authentication routes...
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+// Registration routes...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+// Password reset link request routes...
+Route::get('password/email', 'Auth\PasswordController@getEmail');
+Route::post('password/email', 'Auth\PasswordController@postEmail');
+
+// Password reset routes...
+Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+Route::post('password/reset', 'Auth\PasswordController@postReset');
+
+Route::get('/', function(){
+    return view('welcome');
+});
+
+Route::get('/home', function(){
     return view('welcome');
 });
 
@@ -21,4 +42,53 @@ Route::get('/admin', function () {
 
 Route::get('/admin/login', function () {
     return view('login');
+});
+
+/*Route::get('/admin/users', function () {
+    $users = App\User::all();
+    return view('admin.users.user')->with('users', $users);
+});*/
+
+Route::resource('admin/contents','ContentController');
+
+Route::get('admin/dashboard',[
+    'middleware' => ['auth'],
+    'uses' => 'Admin\DashboardController@Index'
+]);
+
+//Route::resource('admin/category','Admin\CategoryController');
+
+
+Route::get('admin', function(){
+    return 'Hello Admin';
+});
+
+Route::get('admin/users/change_password',[
+    'middleware' => ['auth'],
+    'uses' => 'Admin\UserController@changePassword'
+]);
+
+Route::group(['prefix' => 'admin'
+            , 'namespace' => 'Admin'
+            , 'middleware' =>'auth'],function(){
+                
+    Route::resource('categories','CategoryController');  
+    
+    Route::resource('users','UserController');
+    
+    Route::resource('contents', 'ContentController');
+    
+    Route::resource('menus', 'MenuController');
+    
+    Route::resource('settings', 'SettingController');
+    
+    Route::resource('languages', 'LanguageController');
+    
+    Route::resource('sliders', 'SliderController');
+
+});
+
+
+Route::group(array('middleware' => 'auth'), function(){
+    Route::controller('filemanager', 'FilemanagerLaravelController');
 });

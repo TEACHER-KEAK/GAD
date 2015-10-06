@@ -36,4 +36,17 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+    
+    protected $casts = [
+        'is_admin' => 'boolean',
+    ];
+    
+    public function contents(){
+        return $this->hasMany('App\Content');
+    }
+    
+    public function isAdministrator()
+    {
+        return $this->getAttribute('is_admin');
+    }
 }
