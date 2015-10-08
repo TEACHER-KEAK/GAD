@@ -54,9 +54,9 @@
                     @endif
                     </span>
                   </td>
-                  <th>{{ $content->created_by }}</th>
+                  <td>{{ $content->createdBy->email }}</td>
                   <td>{{ $content->created_at }}</td>
-                  <td>{{ $content->updated_by }}</td>
+                  <td>{{ $content->updatedBy->email }}</td>
                   <td>{{ $content->updated_at }}</td>
                   <td>{{ $content->visitor_count }}</td>
                 </tr>

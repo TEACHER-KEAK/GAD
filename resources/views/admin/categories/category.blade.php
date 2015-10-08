@@ -53,9 +53,9 @@
                     @endif
                     </span>
                   </td>
-                  <th>{{ $category->created_by }}</th>
+                  <td>{{ $category->createdBy->email }}</td>
                   <td>{{ $category->created_at }}</td>
-                  <td>{{ $category->updated_by }}</td>
+                  <td>{{ $category->updatedBy->email }}</td>
                   <td>{{ $category->updated_at }}</td>
                 </tr>
                 @endforeach
