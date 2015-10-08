@@ -103,5 +103,24 @@
         <script src="{{ asset('/dist/js/pages/dashboard.js') }}" type="text/javascript"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="{{ asset('/dist/js/demo.js') }}" type="text/javascript"></script>
+        
+        <script>
+            $(document).on('click','.pagination a', function(e){
+                //e.preventDefault();
+                var pageId = $(this).attr('href').split('page=')[1];
+                $.ajax({
+                    url: "{{URL::to('rest/admin/contents')}}",
+                    data: {
+                        page: pageId
+                    },
+                    dataType: "JSON",
+                    type: "GET",
+                    success: function(data){
+                        console.log(data);
+                        //$('.content').html(data);
+                    }
+                });
+            });
+        </script>
     </body>
 </html>

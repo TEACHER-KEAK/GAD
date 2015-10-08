@@ -95,11 +95,11 @@
             <i class="fa fa-edit"></i> <span>SETTINGS</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
-          <ul class="treeview-menu">
+          <!--<ul class="treeview-menu">
             <li class="active"><a href="general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
             <li><a href="advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
             <li><a href="editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
-          </ul>
+          </ul>-->
         </li>
       </ul>
     </section>

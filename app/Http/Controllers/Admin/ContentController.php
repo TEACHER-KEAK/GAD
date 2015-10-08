@@ -17,8 +17,13 @@ class ContentController extends Controller
     public function index()
     {
         //
-        $contents = Content::all();
+        //$contents = Content::all();
+        $contents = Content::paginate(15);
         return View('admin.contents.content')->with('contents', $contents);
+    }
+    
+    public function json(){
+        return Content::paginate(15);
     }
 
     /**

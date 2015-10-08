@@ -85,3 +85,12 @@ Route::group(['prefix' => 'admin'
 Route::group(array('middleware' => 'auth'), function(){
     Route::controller('filemanager', 'FilemanagerLaravelController');
 });
+
+Route::get('/rest/contents', function(){
+   return \App\Content::paginate(); 
+});
+
+Route::get('rest/admin/contents',[
+    'middleware' => ['auth'],
+    'uses' => 'Admin\ContentController@Json'
+]);

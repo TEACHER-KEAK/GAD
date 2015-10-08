@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'url' => 'https://green-architecture-design-darapenhchet.c9.io/',
+    'url' => 'http://green-architecture-design-darapenhchet.c9.io/',
 
     /*
     |--------------------------------------------------------------------------

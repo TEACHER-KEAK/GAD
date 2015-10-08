@@ -12,25 +12,18 @@ class ContentTableSeeder extends Seeder
      */
     public function run()
     {
-        Content::create([
-            'title' => 'TITLE1',
-            'content' => 'CONTENT1',
-            'images' => '[{}]',
-            'category_id' => '1',
-            'visitor_count' => '0',
-            'created_by' => '2',
-            'updated_by' => '2',
-            'status' => '1'
-        ]);
-        Content::create([
-            'title' => 'TITLE2',
-            'content' => 'CONTENT2',
-            'images' => '[{}]',
-            'category_id' => '1',
-            'visitor_count' => '0',
-            'created_by' => '2',
-            'updated_by' => '2',
-            'status' => '1'
-        ]);
+        $faker = Faker\Factory::create();
+        foreach(range(1, 300) as $index){
+            Content::create([
+                'title' => $faker->sentence,
+                'content' => $faker->paragraph(4),
+                'images' => '[{}]',
+                'category_id' => '1',
+                'visitor_count' => '0',
+                'created_by' => '2',
+                'updated_by' => '2',
+                'status' => '1'
+            ]);    
+        }
     }
 }

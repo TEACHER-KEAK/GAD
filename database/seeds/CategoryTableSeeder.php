@@ -12,21 +12,16 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        Category::create([
-            'title' => 'CATEGORY1',
-            'description' => 'DESCRIPTION1',
-            'parent_id' => NULL,
-            'created_by' => 1,
-            'updated_by' => 1,
-            'status' => true
-        ]);
-        Category::create([
-            'title' => 'CATEGORY2',
-            'description' => 'DESCRIPTION2',
-            'parent_id' => NULL,
-            'created_by' => 1,
-            'updated_by' => 1,
-            'status' => false
-        ]);
+        $faker = Faker\Factory::create();
+        foreach(range(1,100) as $index){
+            Category::create([
+                'title' => $faker->sentence,
+                'description' => $faker->paragraph(2),
+                'parent_id' => NULL,
+                'created_by' => 1,
+                'updated_by' => 1,
+                'status' => true
+            ]);
+        }
     }
 }
