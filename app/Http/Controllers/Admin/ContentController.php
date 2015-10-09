@@ -22,8 +22,19 @@ class ContentController extends Controller
         return View('admin.contents.content')->with('contents', $contents);
     }
     
-    public function json(){
-        return Content::paginate(15);
+    public function json(Request $requests){
+        $limit = $requests->input('limit') ? $requests->input('limit') : 15;
+        if($limit>100 || $limit<=0){
+            $limit = 15;
+        }
+        $contents = Content::where('title', 'like','%'.$requests->input('search').'%')->paginate($limit);
+        $data = View('admin.contents.content_template')->with('contents', $contents)->render();
+        return response()->json($data);
+
+        /*return response()->json([
+            'DATA' => $contents->toJson(),
+            'PAGINATION' => $contents->render()
+        ]);*/
     }
 
     /**

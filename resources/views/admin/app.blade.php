@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>ADMIN GREEN ARCHITECTURE DESIGN | Dashboard</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
@@ -9,7 +10,7 @@
         <!-- FontAwesome 4.3.0 -->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Ionicons 2.0.0 -->
-        <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link href="{{ asset('/dist/css/AdminLTE.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -33,8 +34,55 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
+        <style>
+            .pagination>.active>a, 
+            .pagination>.active>a:focus, 
+            .pagination>.active>a:hover, 
+            .pagination>.active>span, 
+            .pagination>.active>span:focus, 
+            .pagination>.active>span:hover {
+                background-color: #00A65A;
+                border-color: #00A65A;
+            }
+            .btn{
+                border-radius: 0;
+            }
+            
+            .element {
+                position: relative;
+                background:#fff;
+                width:100%;
+                height:100%;
+            }
+ 
+            /*replace the content value with the
+            corresponding value from the list below*/
+             
+            .element{
+                /*content: "\f000";*/
+                font-family: FontAwesome;
+                font-style: normal;
+                font-weight: normal;
+                text-decoration: inherit;
+            /*--adjust as necessary--*/
+                color: #000;
+                font-size: 18px;
+                padding-right: 0.5em;
+                position: absolute;
+                top: 0;
+                left: 50%;
+                z-index: 999;
+            }
+            .block {
+                 background-color: blue;
+                 width: 100%;
+                 height: 100%;
+                 margin: 10px;
+              }
+        </style>
     </head>
-    <body class="skin-green sidebar-collapse">
+    <body class="skin-green">
+    <!--<body class="skin-green sidebar-collapse">-->
         <div class="wrapper">
             @include('admin.includes.header')
             @include('admin.includes.sidebar')
@@ -68,7 +116,7 @@
         <!-- jQuery 2.1.3 -->
         <script src="{{ asset('/plugins/jQuery/jQuery-2.1.3.min.js') }}"></script>
         <!-- jQuery UI 1.11.2 -->
-        <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
             $.widget.bridge('uibutton', $.ui.button);
@@ -76,7 +124,7 @@
         <!-- Bootstrap 3.3.2 JS -->
         <script src="{{ asset('/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
         <!-- Morris.js charts -->
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
         <script src="{{ asset('/plugins/morris/morris.min.js') }}" type="text/javascript"></script>
         <!-- Sparkline -->
         <script src="{{ asset('/plugins/sparkline/jquery.sparkline.min.js') }}" type="text/javascript"></script>
@@ -103,24 +151,7 @@
         <script src="{{ asset('/dist/js/pages/dashboard.js') }}" type="text/javascript"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="{{ asset('/dist/js/demo.js') }}" type="text/javascript"></script>
-        
-        <script>
-            $(document).on('click','.pagination a', function(e){
-                //e.preventDefault();
-                var pageId = $(this).attr('href').split('page=')[1];
-                $.ajax({
-                    url: "{{URL::to('rest/admin/contents')}}",
-                    data: {
-                        page: pageId
-                    },
-                    dataType: "JSON",
-                    type: "GET",
-                    success: function(data){
-                        console.log(data);
-                        //$('.content').html(data);
-                    }
-                });
-            });
-        </script>
+        <script src="{{ asset('/bower_components/nanobar/nanobar.js') }}"></script>
+        @yield('script')
     </body>
 </html>

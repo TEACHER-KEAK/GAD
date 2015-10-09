@@ -90,7 +90,13 @@ Route::get('/rest/contents', function(){
    return \App\Content::paginate(); 
 });
 
-Route::get('rest/admin/contents',[
-    'middleware' => ['auth'],
-    'uses' => 'Admin\ContentController@Json'
-]);
+
+Route::group(['prefix' => 'rest/admin'
+            , 'namespace' => 'Admin'
+            , 'middleware' =>'auth'],function(){
+                
+    Route::post('/contents', ['uses' => 'ContentController@Json']);
+
+    Route::post('/categories', ['uses' => 'CategoriesController@Json']);
+    
+});

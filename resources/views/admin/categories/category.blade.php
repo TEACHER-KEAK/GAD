@@ -36,6 +36,7 @@
                   <th>Created Date</th>
                   <th>Updated By</th>
                   <th>Updated Date</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -57,6 +58,7 @@
                   <td>{{ $category->created_at }}</td>
                   <td>{{ $category->updatedBy->email }}</td>
                   <td>{{ $category->updated_at }}</td>
+                  <td></td>
                 </tr>
                 @endforeach
             </tbody>

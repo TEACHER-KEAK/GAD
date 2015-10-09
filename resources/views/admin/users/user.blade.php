@@ -64,7 +64,7 @@
           <div class="box-footer">
             <div class="row">
               <div class="col-sm-5">
-                <div class="dataTables_info">Showing {{ $users->from() }} to {{ $users->to() }} of {{ $users->total()}} entries</div>
+                <!--<div>Showing of {{ $users->total()}} entries</div>-->
               </div>
               <div class="col-sm-7">
                 {!! $users->render()!!}

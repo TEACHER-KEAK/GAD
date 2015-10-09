@@ -23,6 +23,16 @@ class CategoryController extends Controller
         $categories = Category::paginate(15);
         return View('admin.categories.category')->with('categories', $categories);
     }
+    
+    public function json(Request $requests){
+        $limit = $requests->input('limit') ? $requests->input('limit') : 15;
+        if($limit>100 || $limit<=0){
+            $limit = 15;
+        }
+        $categories = Category::where('title', 'like','%'.$requests->input('search').'%')->paginate($limit);
+        $data = View('admin.categories.category_template')->with('categories', $categories)->render();
+        return response()->json($data);
+    }
 
     /**
      * Show the form for creating a new resource.
