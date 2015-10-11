@@ -20,13 +20,14 @@
             <h3 class="box-title">LIST All USERS</h3>
             <div class="box-tools">
               <div class="input-group">
-                <input type="text" style="width: 50%;" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
+                <input type="text" style="width: 50%;" name="search" id="txtSearch" class="form-control input-sm pull-right" placeholder="Search" >
                 <div class="input-group-btn">
                   <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
                 </div>
               </div>
             </div>
           </div><!-- /.box-header -->
+          <div id="USER">
           <div class="box-body table-responsive">
             <table class="table table-hover table-bordered">
               <thead>
@@ -37,6 +38,7 @@
                   <th>Date</th>
                   <th>Status</th>
                   <th>Email</th>
+                  <th width="10%" style="text-align:center;">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -47,15 +49,24 @@
                   <td>{{ $user->firstname }}</td>
                   <td>{{ $user->created_at }}</td>
                   <td>
-                    <span class="label label-success">
                     @if ($user->status=='1') 
-                      Active 
+                      <span class="label label-success">Active</span>
                     @elseif($user->status=='0')
-                      Inactive
+                      <span class="label label-danger">Inactive</span>
                     @endif
-                    </span>
                   </td>
                   <td>{{ $user->email }}</td>
+                  <td style="text-align:center;">
+                    <a href="javascript:;" id="btnEdit">
+                      <i class="fa fa-edit"></i> &nbsp;| &nbsp;
+                    </a>
+                    <a href="javascript:;" id="btnRemove">
+                      <i class="fa fa-trash-o"></i> &nbsp;| &nbsp;
+                    </a>
+                    <a href="javascript:;" id="btnTranslate">
+                      <i class="fa fa-language"></i>
+                    </a>
+                  </td>
                 </tr>
                 @endforeach
             </tbody>
@@ -71,12 +82,93 @@
               </div>
             </div>
           </div><!-- box-footer -->
+          </div>
+          <select class="form-control" style="width:100px;" id="perPage">
+            <option value="15">15</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
         </div><!-- /.box -->
       </div>
     </div>
     <!-- /.row -->
   </section>
   <!-- /.content -->
+@endsection
+@section('script')
+<script>
+  $(document).on('click','.pagination a', function(e){
+      e.preventDefault();
+      var pageId = $(this).attr('href').split('page=')[1];
+      var data = {
+            page: pageId,
+            limit: $("#perPage").val(),
+            search : $('#txtSearch').val()
+    };
+    users.getAllUsers(data);
+  });
+  
+  $("#txtSearch, #btnSearch").keyup(function(){
+    var data = {
+            limit: $("#perPage").val(),
+            search : $('#txtSearch').val()
+    };
+    users.getAllUsers(data);
+  });
+  $("#perPage").change(function(){
+    var data = {
+            limit: $("#perPage").val(),
+            search : $('#txtSearch').val()
+    };
+    users.getAllUsers(data);
+  });
+  
+  $(document).on('click', '#btnEdit', function(){
+    alert("EDIT");
+  });
+  
+  $(document).on('click', '#btnRemove', function(){ 
+    alert("REMOVE");
+  });
+  
+  $(document).on('click', '#btnTranslate', function(){ 
+    alert("TRANSLATE");
+  });
+  
+  var users = {};
+  users.getAllUsers = function(data){
+    var options = {
+    	bg: '#e74c3c',
+    
+    	// leave target blank for global nanobar
+    	target: document.getElementById('myDivId'),
+    
+    	// id for new nanobar
+    	id: 'mynano'
+    };
+    
+    var nanobar = new Nanobar( options );
+    $.ajax({
+          url: "{{URL::to('rest/admin/users')}}",
+          data: data,
+          dataType: "JSON",
+          type: "POST",
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          beforeSend: function(){
+            // move bar
+            nanobar.go( 30 ); // size bar 30%
+          
+          },
+          success: function(data){
+            $('#USER').html(data);
+            // Finish progress bar
+            nanobar.go(100);
+          }
+      });
+  }
+</script>
 @endsection
 
   

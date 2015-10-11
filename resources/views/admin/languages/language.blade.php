@@ -30,7 +30,6 @@
                 <tr>
                   <th>ID</th>
                   <th>Full Word</th>
-                  <th>Short Word</th>
                   <th>Logo</th>
                   <th>Status</th>
                   <th>Author</th>
@@ -44,7 +43,6 @@
                 <tr>
                   <td>{{ $language->id }}</td>
                   <td>{{ $language->full_word }}</td>
-                  <td>{{ $language->short_word }}</td>
                   <td>{{ $language->logo }}</td>
                   <td>
                     <span class="label label-success">
@@ -55,9 +53,9 @@
                     @endif
                     </span>
                   </td>
-                  <th>{{ $language->created_by }}</th>
+                  <td>{{ $language->createdBy->email }}</td>
                   <td>{{ $language->created_at }}</td>
-                  <td>{{ $language->updated_by }}</td>
+                  <td>{{ $language->updatedBy->email }}</td>
                   <td>{{ $language->updated_at }}</td>
                   <td>{{ $language->visitor_count }}</td>
                 </tr>

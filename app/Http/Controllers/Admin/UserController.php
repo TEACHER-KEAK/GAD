@@ -17,8 +17,24 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users = User::paginate(1);
+        $users = User::paginate(15);
         return View('admin.users.user')->with('users', $users);
+    }
+    
+    public function json(Request $requests){
+        $limit = $requests->input('limit') ? $requests->input('limit') : 15;
+        if($limit>100 || $limit<=0){
+            $limit = 15;
+        }
+        $users = User::where('lastname', 'like','%'.$requests->input('search').'%')
+                        ->orWhere('firstname', 'like','%'.$requests->input('search').'%')
+                        ->orWhere('email', 'like','%'.$requests->input('search').'%')
+                        ->orWhere('status', 'like','%'.$requests->input('search').'%')
+                        ->orWhere('created_at', 'like','%'.$requests->input('search').'%')
+                        ->orWhere('id', 'like','%'.$requests->input('search').'%')
+                        ->paginate($limit);
+        $data = View('admin.users.user_template')->with('users', $users)->render();
+        return response()->json($data);
     }
 
     /**

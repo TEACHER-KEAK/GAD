@@ -21,7 +21,20 @@ class MenuController extends Controller
      */
     public function index()
     {
-        return View('admin.menus.menu');
+        //dd(Menu::all());
+        return View('admin.menus.menu')->with([
+            'menus' => Menu::paginate(15)
+        ]);
+    }
+    
+    public function json(Request $requests){
+        $limit = $requests->input('limit') ? $requests->input('limit') : 15;
+        if($limit>100 || $limit<=0){
+            $limit = 15;
+        }
+        $menus = Menu::where('title', 'like','%'.$requests->input('search').'%')->paginate($limit);
+        $data = View('admin.menus.menu_template')->with('menus', $menus)->render();
+        return response()->json($data);
     }
 
     /**
@@ -90,10 +103,7 @@ class MenuController extends Controller
      */
     public function show($id)
     {
-        $menu = Menu::find($id);
-        if($menu==null){
-            abort(404);
-        }
+        $menu = Menu::findOrFail($id);
         return View('admin.menus.translate_menu')->with([
             'languages' => \App\Language::where('status',1)->get(),
             'menu' => $menu
@@ -108,10 +118,7 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-        $menu = Menu::find($id);
-        if($menu==null){
-            abort(404);
-        }
+        $menu = Menu::findOrFail($id);
         return View('admin.menus.update_menu')->with([
             'menus' => Menu::where('status',1)->get(),
             'categories' => Category::where('status',1)->get(),
@@ -151,7 +158,7 @@ class MenuController extends Controller
         $menu = Menu::where([
             'id'=> $request->input('menu_id'),
             'status' => 1
-        ]);
+        ])->firstOrFail();
         
         //4. CHECK MENU
         if($menu!=null){

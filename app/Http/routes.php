@@ -100,7 +100,11 @@ Route::group(['prefix' => 'rest/admin'
             , 'middleware' =>'auth'],function(){
                 
     Route::post('/contents', ['uses' => 'ContentController@Json']);
+    
+    Route::post('/menus', ['uses' => 'MenuController@Json']);
 
     Route::post('/categories', ['uses' => 'CategoryController@Json']);
+    
+    Route::post('/users', ['uses' => 'UserController@Json']);
     
 });

@@ -54,7 +54,7 @@
                   <select name='parent_id' rows='5' id='module'  class='form-control '    >
                     <option value="">-- Select Parent Menu --</option>
                     @foreach($menus as $m)
-                      @if($menu->id==$m->id)
+                      @if($menu->parent_id==$m->id)
                         <option value="{{ $m->id }}" selected="selected">{{ $m->title}}</option>
                       @else
                         <option value="{{ $m->id }}">{{ $m->title}}</option>

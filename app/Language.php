@@ -8,4 +8,12 @@ class Language extends Model
 {
     //
     protected $table = 'languages';
+    
+    public function createdBy(){
+        return $this->belongsTo('App\User', 'created_by');
+    }
+    
+    public function updatedBy(){
+        return $this->belongsTo('App\User', 'created_by');
+    }
 }

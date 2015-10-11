@@ -45,6 +45,14 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany('App\Content');
     }
     
+    public function menus(){
+        return $this->hasMany('App\Menu');
+    }
+    
+    public function langauges(){
+        return $this->hasMany('App\Languages');
+    }
+    
     public function isAdministrator()
     {
         return $this->getAttribute('is_admin');
