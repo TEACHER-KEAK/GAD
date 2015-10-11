@@ -16,35 +16,35 @@
                     <span class="label label-success">4</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">You have 4 messages</li>
+                        <li class="header">There are 2 languages</li>
                         <li>
                             <!-- inner menu: contains the actual data -->
                             <ul class="menu">
                                 <li><!-- start message -->
                                 <a href="#">
                                 <div class="pull-left">
-                                    <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image"/>
+                                    <img src="{{ asset('dist/img/user2-160x160.jpg') }}" alt="User Image"/>
                                 </div>
                                 <h4>
-                                Support Team
-                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                KHMER
+                                <!--<small><i class="fa fa-clock-o"></i> 5 mins</small>-->
                                 </h4>
-                                <p>Why not buy a new awesome theme?</p>
+                                <!--<p>Why not buy a new awesome theme?</p>-->
                                 </a>
                                 </li><!-- end message -->
                                 <li>
                                     <a href="#">
                                     <div class="pull-left">
-                                        <img src="{{ asset('dist/img/user3-128x128.jpg') }}" class="img-circle" alt="user image"/>
+                                        <img src="{{ asset('dist/img/user3-128x128.jpg') }}" alt="user image"/>
                                     </div>
                                     <h4>
-                                    AdminLTE Design Team
-                                    <small><i class="fa fa-clock-o"></i> 2 hours</small>
+                                    ENGLISH
+                                    <!--<small><i class="fa fa-clock-o"></i> 2 hours</small>-->
                                     </h4>
-                                    <p>Why not buy a new awesome theme?</p>
+                                    <!--<p>Why not buy a new awesome theme?</p>-->
                                     </a>
                                 </li>
-                                <li>
+                                <!--<li>
                                     <a href="#">
                                     <div class="pull-left">
                                         <img src="{{ asset('dist/img/user4-128x128.jpg') }}" class="img-circle" alt="user image"/>
@@ -79,10 +79,10 @@
                                     </h4>
                                     <p>Why not buy a new awesome theme?</p>
                                     </a>
-                                </li>
+                                </li>-->
                             </ul>
                         </li>
-                        <li class="footer"><a href="#">See All Messages</a></li>
+                        <!--<li class="footer"><a href="#">See All Messages</a></li>-->
                     </ul>
                 </li>
                 <!-- Notifications: style can be found in dropdown.less -->

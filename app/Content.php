@@ -17,5 +17,12 @@ class Content extends Model
         return $this->belongsTo('App\User', 'created_by');
     }
     
+    public function translation($language=null){
+        if ($language == null) {
+           $language = App::getLocale();
+        }
+        return $this->hasMany('App\ContentTranslation')->where('language_id', '=', $language);
+    }
+    
    
 }

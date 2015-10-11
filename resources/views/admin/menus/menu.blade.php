@@ -8,5 +8,5 @@
 </ol>
 @endsection
 @section('content')
-    LIST ALL MENUS
+  LIST ALL MENUS
 @endsection

@@ -13,13 +13,13 @@ class CreateSliderTranslationsTable extends Migration
     public function up()
     {
         Schema::create('slider_translations', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('slider_id')->unsigned();
+            $table->string('language_id',5);
             $table->string('title',100)->nullable();
             $table->text('description')->nullable();
             $table->text('image');
-            $table->integer('slider_id')->unsigned();
-            $table->integer('language_id')->unsigned();
             
+            $table->primary('slider_id', 'language_id');
             $table->foreign('slider_id')->references('id')->on('sliders');
             $table->foreign('language_id')->references('id')->on('languages');
             

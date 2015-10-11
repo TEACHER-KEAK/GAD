@@ -71,6 +71,9 @@ Route::group(['prefix' => 'admin'
     
     Route::resource('contents', 'ContentController');
     
+    Route::post('menus/updatemenu/{id}','MenuController@UpdateMenu');
+    Route::post('menus/translation','MenuController@Translation');
+    //Route::get('menus/translate/{id}','MenuController@Translate');
     Route::resource('menus', 'MenuController');
     
     Route::resource('settings', 'SettingController');
@@ -78,6 +81,7 @@ Route::group(['prefix' => 'admin'
     Route::resource('languages', 'LanguageController');
     
     Route::resource('sliders', 'SliderController');
+    
 
 });
 
@@ -97,6 +101,6 @@ Route::group(['prefix' => 'rest/admin'
                 
     Route::post('/contents', ['uses' => 'ContentController@Json']);
 
-    Route::post('/categories', ['uses' => 'CategoriesController@Json']);
+    Route::post('/categories', ['uses' => 'CategoryController@Json']);
     
 });

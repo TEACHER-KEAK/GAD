@@ -48,13 +48,12 @@
                   <td>{{ str_limit($content->title, $limit = 50, $end = '...') }}</td>
                   <td>{!! str_limit($content->content, $limit = 70, $end = '...') !!}</td>
                   <td>
-                    <span class="label label-success">
                     @if ($content->status=='1') 
-                      Active 
+                      <span class="label label-success">Active</span>
                     @elseif($content->status=='0')
-                      Inactive
+                      <span class="label label-danger">Inactive</span>
                     @endif
-                    </span>
+                    
                   </td>
                   <td>{{ $content->createdBy->email }}</td>
                   <td>{{ $content->created_at }}</td>
