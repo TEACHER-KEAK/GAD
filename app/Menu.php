@@ -52,4 +52,9 @@ class Menu extends Model
         }
         return $this->hasMany('App\MenuTranslation')->where('language_id', '=', $language);
     }
+    
+    public function menu(){
+        return $this->belongsTo('App\Menu', 'parent_id');
+    }
+    
 }

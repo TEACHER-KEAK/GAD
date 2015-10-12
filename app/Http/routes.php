@@ -69,6 +69,8 @@ Route::group(['prefix' => 'admin'
     
     Route::resource('users','UserController');
     
+    Route::post('contents/updatecontent','ContentController@UpdateContent');
+    Route::post('contents/translation','ContentController@Translation');
     Route::resource('contents', 'ContentController');
     
     Route::post('menus/updatemenu/{id}','MenuController@UpdateMenu');
@@ -100,6 +102,7 @@ Route::group(['prefix' => 'rest/admin'
             , 'middleware' =>'auth'],function(){
                 
     Route::post('/contents', ['uses' => 'ContentController@Json']);
+    Route::post('/contents/translate', ['uses' => 'ContentController@Translate']);
     
     Route::post('/menus', ['uses' => 'MenuController@Json']);
 

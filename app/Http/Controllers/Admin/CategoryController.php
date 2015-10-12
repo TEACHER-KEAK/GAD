@@ -7,6 +7,11 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Category;
+use App\CategoryTranslation;
+use DB;
+use Auth;
+use Session;
+
 class CategoryController extends Controller
 {
     public function __construct(){
@@ -41,7 +46,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return View('admin.categories.create_category');
+        return View('admin.categories.create_category')->with([
+            'categories' => Category::where('status',1)->get()
+        ]);
     }
 
     /**
@@ -52,7 +59,37 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         DB::transaction(function () use ($request){
+            //1. Validation 
+            $this->validate($request, [
+                'title' => 'required|unique:category_translations',
+                'status' => 'required'
+            ]);
+            
+            //2. GET ALL REQUESTS AND CREATE MENU OBJECT
+            $input = $request->all();
+            if($request->input('parent_id')==''){
+                $input = $request->except('parent_id');
+            }
+            $category = new Category($input);
+    
+            //3. SET CREATED USER TO THE MENU
+            $category->createdby()->associate(Auth::user());
+            $category->updatedBy()->associate(Auth::user());
+    
+            //4. SAVE MENU
+            $category->save();
+            
+            $categoryTranslation = new CategoryTranslation($request->all());
+            
+            $category->categoryTranslation()->save($categoryTranslation);
+    
+            //5. FLASH MESSAGE BACK
+            Session::flash('flash_message', 'Category successfully added!');
+            
+            //6. REDIRECT BACK
+        });
+        return redirect()->back();
     }
 
     /**

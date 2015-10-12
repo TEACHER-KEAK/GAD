@@ -44,7 +44,7 @@
               <div class="form-group  " >
                 <label for="ipt" class=" control-label col-md-2 text-right">Title</label>
                 <div class="col-md-10">
-                  <input type="text" name="title" id="title" value="" class="form-control" placeholder="Enter your menu title"/> 
+                  <input type="text" name="title" id="title" value="{{ old('title') }}" class="form-control" placeholder="Enter your menu title"/> 
                 </div> 
               </div>   
               <div class="form-group">
@@ -72,7 +72,7 @@
               <div class="form-group  ext-link" id="EXT_LINK" style="display:none;">
                 <label for="ipt" class=" control-label col-md-2 text-right" > Url  </label>
                 <div class="col-md-10">
-                  <input type="text" name="external_url" id="url" value="" class="form-control" placeholder="http://www.google.com OR https://www.google.com."/>
+                  <input type="text" name="external_url" id="url" value="{{ old('external_url') }}" class="form-control" placeholder="http://www.google.com OR https://www.google.com."/>
                   <p> Example : <span class="label label-info">http://www.google.com </span>  , OR <span class="label label-info">https://www.google.com  </span> </p>
                 </div> 
               </div>  
@@ -104,7 +104,7 @@
               <div class="form-group">
                 <label for="ipt" class=" control-label col-md-2 text-right">Icon </label>
                 <div class="col-md-10">
-                  <input type="text" name="icon" id="icon" value="" class="form-control" placeholder="Enter fa fa-desktop"/>
+                  <input type="text" name="icon" id="icon" value="{{ old('icon') }}" class="form-control" placeholder="Enter fa fa-desktop"/>
                     <p> Example : <span class="label label-info"> fa fa-desktop </span>  , <span class="label label-info">fa fa-cloud-upload </span> </p>
                     <p>Usage : 
                     <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank"> Font Awesome </a> class name</p>
@@ -124,7 +124,7 @@
               <div class="form-group">
                 <label class="col-sm-2 text-right">Content</label>
                   <div class="col-sm-10">  
-                    <textarea id="content" name="content"></textarea>
+                    <textarea id="content" name="content">{{ old('content') }}</textarea>
                   </div>    
               </div>
               <div class="form-group">
@@ -151,6 +151,7 @@
 <script type="text/javascript" src="{{ url('') }}/tinymce/tinymce_editor.js"></script>
 <script type="text/javascript">
   editor_config.selector = "textarea";
+  editor_config.language = 'en_GB';
   editor_config.path_absolute = "http://green-architecture-design-darapenhchet.c9.io/";
   tinymce.init(editor_config);
 </script>

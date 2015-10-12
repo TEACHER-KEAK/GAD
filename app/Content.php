@@ -9,12 +9,30 @@ class Content extends Model
     // 1. SPECIFY THE TABLE NAME FOR STORING DATA Of Content Model
     protected $table = 'contents';
     
+    protected $fillable = [
+        'title',
+        'content',
+        'created_by',
+        'updated_by',
+        'images',
+        'status',
+        'category_id'
+    ];
+    
     public function createdBy(){
         return $this->belongsTo('App\User', 'created_by');
     }
     
     public function updatedBy(){
-        return $this->belongsTo('App\User', 'created_by');
+        return $this->belongsTo('App\User', 'updated_by');
+    }
+    
+    public function category(){
+        return $this->belongsTo('App\Category', 'category_id');
+    }
+    
+    public function contentTranslation(){
+        return $this->hasMany('App\ContentTranslation', 'content_id');
     }
     
     public function translation($language=null){
@@ -24,5 +42,8 @@ class Content extends Model
         return $this->hasMany('App\ContentTranslation')->where('language_id', '=', $language);
     }
     
-   
+    public function translationCount(){
+        return $this->hasMany('App\ContentTranslation');
+    }
+    
 }

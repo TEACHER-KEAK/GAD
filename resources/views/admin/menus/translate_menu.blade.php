@@ -40,7 +40,7 @@
                 <label for="ipt" class=" control-label col-md-2 text-right">Translation from</label>
                 <div class="col-md-10">
                   <input type="hidden" name="menu_id" id="menu_id" value="{{ $menu->id }}"/> 
-                  <input type="text" name="title" id="title" value="{{ $menu->title }}" disabled class="form-control" placeholder="Enter your menu title"/> 
+                  <input type="text" name="menu_title" id="menu_title" value="{{ $menu->title }}" disabled class="form-control" placeholder="Enter your menu title"/> 
                 </div> 
               </div>   
               <div class="form-group">

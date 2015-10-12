@@ -41,11 +41,11 @@
             @endif
             <form class="form-horizontal" action="{{ url('admin/menus/updatemenu/'.$menu->id) }}" method="POST" style="padding:10px;">
               <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-              <input type="hidden" name="menu_id" value="{{ $menu->id}}">
+              <input type="hidden" name="menu_id" value="{{ $menu->id}}{{old('menu_id')}}">
               <div class="form-group  " >
                 <label for="ipt" class=" control-label col-md-2 text-right">Title</label>
                 <div class="col-md-10">
-                  <input type="text" name="title" id="title" value="{{ $menu->title }}" class="form-control" placeholder="Enter your menu title"/> 
+                  <input type="text" name="title" id="title" value="{{ $menu->title }}{{old('title')}}" class="form-control" placeholder="Enter your menu title"/> 
                 </div> 
               </div>
               <div class="form-group">
@@ -77,7 +77,7 @@
               <div class="form-group  ext-link" id="EXT_LINK" @if($menu->type==1) style="display:none;"  @endif>
                 <label for="ipt" class=" control-label col-md-2 text-right" > Url  </label>
                 <div class="col-md-10">
-                  <input type="text" name="external_url" id="url" value="{{ $menu->external_url }}" class="form-control" placeholder="http://www.google.com OR https://www.google.com."/>
+                  <input type="text" name="external_url" id="url" value="{{ $menu->external_url }}{{ old('external_url') }}" class="form-control" placeholder="http://www.google.com OR https://www.google.com."/>
                   <p> Example : <span class="label label-info">http://google.com </span>  , OR <span class="label label-info">https://www.google.com  </span> </p>
                 </div> 
               </div>  
@@ -88,7 +88,7 @@
                     <option value=""> -- Select Module -- </option>
                     <optgroup label="Categories ">
                       @foreach($categories as $category)
-                        <option value="{{ $category->id }}" @if($menu->category_id==$category->id) selected @endif >{{ $category->title}}</option>
+                        <option value="{{ $category->id }}" @if($menu->internal_url==$category->id) selected @endif >{{ $category->title}}</option>
                       @endforeach
                     </optgroup>      
                   </select>     
