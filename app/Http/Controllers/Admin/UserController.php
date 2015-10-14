@@ -20,9 +20,9 @@ class UserController extends Controller
     public function index()
     {
         //
-        Mail::send('admin.users.change_password_user', ['user' => Auth::user()], function($message) {
+        /*Mail::send('admin.users.change_password_user', ['user' => Auth::user()], function($message) {
             $message->to('darapenhchet@gmail.com', 'Jon Doe')->subject('Welcome to the Laravel 4 Auth App!');
-        });
+        });*/
         $users = User::paginate(15);
         return View('admin.users.user')->with('users', $users);
     }
