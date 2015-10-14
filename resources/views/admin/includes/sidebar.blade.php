@@ -39,7 +39,8 @@
           <a href="#">
             <i class="fa fa-files-o"></i>
             <span>CONTENTS</span>
-            <span class="label label-primary pull-right">4</span>
+            <!--<span class="label label-primary pull-right">4</span>-->
+            <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ url('/admin/contents')}}"><i class="fa fa-circle-o"></i> List All Contents</a></li>
@@ -50,11 +51,12 @@
           <a href="#">
             <i class="fa fa-files-o"></i>
             <span>CATEGORIES</span>
-            <span class="label label-primary pull-right">4</span>
+            <!--<span class="label label-primary pull-right">4</span>-->
+            <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('/admin/categories')}}"><i class="fa fa-circle-o"></i> List All Contents</a></li>
-            <li><a href="{{ url('/admin/categories/create')}}"><i class="fa fa-circle-o"></i> Add New Content</a></li>
+            <li><a href="{{ url('/admin/categories')}}"><i class="fa fa-circle-o"></i> List All Categories</a></li>
+            <li><a href="{{ url('/admin/categories/create')}}"><i class="fa fa-circle-o"></i> Add New Category</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -76,7 +78,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ url('/admin/languages')}}"><i class="fa fa-circle-o"></i> List All Languages</a></li>
-            <li><a href="{{ url('/admin/languages/create')}}"><i class="fa fa-circle-o"></i> Add New Language</a></li>
+            <!--<li><a href="{{ url('/admin/languages/create')}}"><i class="fa fa-circle-o"></i> Add New Language</a></li>-->
           </ul>
         </li>
         <li class="treeview">

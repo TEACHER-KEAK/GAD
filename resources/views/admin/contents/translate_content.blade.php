@@ -205,7 +205,9 @@
             console.log(data);
             if(data.DATA!=null){
               $('#title').val(data.DATA.title);
-              $("#content").html('');
+              $("#content").empty();
+              //tinyMCE.activeEditor.setContent('');
+              tinymce.get('content').getBody().innerHTML ='';
               tinymce.activeEditor.selection.setContent(data.DATA.content);
               if(data.DATA.images!=""){
                 var images = $.parseJSON(data.DATA.images);

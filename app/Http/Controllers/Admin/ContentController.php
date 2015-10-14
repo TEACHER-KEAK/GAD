@@ -128,7 +128,7 @@ class ContentController extends Controller
     }
     
     public function updateContent(Request $request){
-         $this->validate($request, [
+        $this->validate($request, [
             'title' => 'required',
             'content' => 'required',
             'category_id' => 'required|numeric',

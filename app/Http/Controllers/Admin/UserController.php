@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
+use Session;
+use Mail;
+use Auth;
 
 class UserController extends Controller
 {
@@ -17,6 +20,9 @@ class UserController extends Controller
     public function index()
     {
         //
+        Mail::send('admin.users.change_password_user', ['user' => Auth::user()], function($message) {
+            $message->to('darapenhchet@gmail.com', 'Jon Doe')->subject('Welcome to the Laravel 4 Auth App!');
+        });
         $users = User::paginate(15);
         return View('admin.users.user')->with('users', $users);
     }
@@ -56,9 +62,29 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'firstname' => 'required|max:255',
+            'lastname' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|confirmed|min:6',
+            'status' => 'required',
+            'is_admin' => 'required'
+        ]);
+        
+        User::create([
+            'firstname' => $request->input('firstname'),
+            'lastname' => $request->input('lastname'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+            'status' => $request->input('status'),
+            'is_admin' => $request->input('is_admin')
+        ]);
+        
+        Session::flash('flash_message', 'User successfully registered!');
+        
+        return redirect()->back();
     }
-
+    
     /**
      * Display the specified resource.
      *
@@ -78,7 +104,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return View('admin.users.update_user')->with('user', $user);
     }
 
     /**

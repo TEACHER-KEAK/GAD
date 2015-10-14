@@ -9,7 +9,7 @@
         <th>Status</th>
         <th>Author</th>
         <th>Created Date</th>
-<!--        <th>Updated By</th>-->
+<!--                  <th>Updated By</th>-->
         <th>Updated Date</th>
         <!--<th>Views</th>-->
         <th width="15%" style="text-align:center;">Actions</th>
@@ -20,20 +20,19 @@
       <tr>
         <td>{{ $content->id }}</td>
         <td>{{ str_limit($content->title, $limit = 50, $end = '...') }}</td>
-        <td>{!! str_limit($content->content, $limit = 70, $end = '...') !!}</td>
+        <td>{{ str_limit($content->content, $limit = 70, $end = '...') }}</td>
         <td>{{ $content->category->title }}</td>
         <td>
-          <span class="label label-success">
           @if ($content->status=='1') 
-            Active 
+            <span class="label label-success">Active</span>
           @elseif($content->status=='0')
-            Inactive
+            <span class="label label-danger">Inactive</span>
           @endif
-          </span>
+          
         </td>
         <td>{{ $content->createdBy->email }}</td>
         <td>{{ $content->created_at }}</td>
-<!--        <td>{{ $content->updatedBy->email }}</td>-->
+<!--                  <td>{{ $content->updatedBy->email }}</td>-->
         <td>{{ $content->updated_at }}</td>
         <!--<td>{{ $content->visitor_count }}</td>-->
         <td style="text-align:center;">

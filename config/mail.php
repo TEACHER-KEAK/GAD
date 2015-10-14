@@ -42,6 +42,7 @@ return [
     */
 
     'port' => env('MAIL_PORT', 587),
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'darapenhchet@gmail.com', 'name' => 'GREEN ARCHITECTURE DESIGN'],
 
     /*
     |--------------------------------------------------------------------------

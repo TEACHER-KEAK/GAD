@@ -3,8 +3,8 @@
 @section('content_header')
 <h1>Dashboard<small>Control panel</small></h1>
 <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-    <li class="active">MENU TRANSLATION</li>
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">Dashboard</li>
 </ol>
 @endsection
 @section('content')
@@ -14,7 +14,7 @@
       <div class="col-sm-12">
         <div class="box box-solid box-success">
           <div class="box-header with-border">
-            <h3 class="box-title">MENU TRANSLATION FORM</h3>
+            <h3 class="box-title">CATEGORY UPDATING FORM</h3>
             <div class="box-tools pull-right">
               <!-- Buttons, labels, and many other things can be placed here! -->
               <!-- Here is a label for example -->
@@ -34,38 +34,43 @@
                     @endforeach
                 </div>
             @endif
-            <form class="form-horizontal" action="{{ url('admin/menus/translation') }}" method="post" style="padding:10px;">
+            <form class="form-horizontal" action="{{ url('admin/categories/updatecategory') }}" method="POST" style="padding:10px;">
               <input type="hidden" name="_token" value="{!! csrf_token() !!}">
               <div class="form-group  " >
-                <label for="ipt" class=" control-label col-md-2 text-right">Translation from</label>
+                <label for="ipt" class=" control-label col-md-2 text-right">Title</label>
                 <div class="col-md-10">
-                  <input type="hidden" name="menu_id" id="menu_id" value="{{ $menu->id }}"/> 
-                  <input type="text" name="menu_title" id="menu_title" value="{{ $menu->title }}" disabled class="form-control" placeholder="Enter your menu title"/> 
+                  <input type="hidden" name="id" id="id" value="{{ $category->id }}" /> 
+                  <input type="text" name="title" id="title" value="{{ $category->title}}" class="form-control" placeholder="Enter your category title"/> 
                 </div> 
               </div>   
               <div class="form-group">
-                <label for="ipt" class=" control-label col-md-2 text-right">Language</label>
+                <label for="ipt" class=" control-label col-md-2 text-right">Parent Category</label>
                 <div class="col-md-10">
-                  <select name='language_id' rows='5' id='language_id'  class='form-control '    >
-                    <option value="">-- Select Language --</option>
-                    @foreach($languages as $language)
-                      <option value="{{ $language->id }}">{{ $language->full_word}}</option>
+                  <select name='parent_id' rows='5' id='module'  class='form-control '    >
+                    <option value="">-- Select Parent Category --</option>
+                    @foreach($categories as $cat)
+                      <option value="{{ $category->id }}" @if($category->parent_id==$cat->id) selected @endif>{{ $cat->title}}</option>
                     @endforeach
                   </select>     
                 </div> 
               </div>
-              <div class="form-group  " >
-                <label for="ipt" class=" control-label col-md-2 text-right">Title</label>
-                <div class="col-md-10">
-                  <input type="text" name="title" id="title" value="" class="form-control" placeholder="Enter your menu title"/> 
-                </div> 
-              </div>   
               <div class="form-group">
-                <label class="col-sm-2 text-right">Content</label>
+                <label class="col-sm-2 text-right">Description</label>
                   <div class="col-sm-10">  
-                    <textarea id="content" name="content"></textarea>
+                    <textarea id="description" name="description">{{ $category->description }}</textarea>
                   </div>    
-              </div> 
+              </div>
+              <div class="form-group   " >
+                <label for="ipt" class=" control-label col-md-2 text-right"> Status</label> 
+                <div class="col-md-10 menutype">
+                  <label class="radio-inline  ">             
+                    <input type="radio" name="status" class="status"value="1" @if($category->status==1) checked="checked" @endif/>Active
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="status" class="status" value="0" @if($category->status==0) checked="checked" @endif/> Inactive
+                  </label>    
+                </div> 
+              </div>        
               <div class="form-group">
                 <label class="col-sm-2 text-right"> </label>
                   <div class="col-sm-10">  
@@ -84,6 +89,7 @@
   </section>
   <!-- /.content -->
 @endsection
+
 @section('script')
 <script type="text/javascript" src="{{ url('') }}/tinymce/tinymce.min.js"></script>
 <script type="text/javascript" src="{{ url('') }}/tinymce/tinymce_editor.js"></script>
@@ -97,7 +103,6 @@
    ],
    toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
    toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
-   toolbar3: "| fontselect | fontsizeselect ",
    image_advtab: true ,
    
    external_filemanager_path:"/filemanager/",
@@ -105,53 +110,15 @@
    external_plugins: { "filemanager" : "/filemanager/plugin.min.js"}
  });
 </script>
-<script>
-	$('#language_id').change(function(){
-	  if($(this).val()==''){
-	    return;
-	  }
-	  var options = {
-    	bg: '#e74c3c',
-    
-    	// leave target blank for global nanobar
-    	target: document.getElementById('myDivId'),
-    
-    	// id for new nanobar
-    	id: 'mynano'
-    };
-    
-    var nanobar = new Nanobar( options );
-    $.ajax({
-          url: "{{URL::to('rest/admin/menus/translate')}}",
-          data: {
-            'menu_id' : $('#menu_id').val(),
-            'language_id' : $(this).val()
-          },
-          dataType: "JSON",
-          type: "POST",
-          headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          },
-          beforeSend: function(){
-            // move bar
-            nanobar.go( 30 ); // size bar 30%
-          
-          },
-          success: function(data){
-            console.log(data);
-            if(data.DATA!=null){
-              $('#title').val(data.DATA.title);
-              tinymce.get('content').getBody().innerHTML ='';
-              tinymce.activeEditor.selection.setContent(data.DATA.content);
-            }
-            // Finish progress bar
-            nanobar.go(100);
-          },
-          error: function(data){
-            nanobar.go(90);
-          }
-      });
-	});
-
+<script type="text/javascript">
+  function changeMenuType(data){
+    if(data.value==1){
+      $('#INT_LINK').show();
+      $('#EXT_LINK').hide();
+    }else if(data.value==0){
+      $('#INT_LINK').hide();
+      $('#EXT_LINK').show();
+    }
+  }
 </script>
 @endsection

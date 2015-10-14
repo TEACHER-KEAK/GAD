@@ -113,7 +113,13 @@
                     <p>Usage : 
                     <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank"> Font Awesome </a> class name</p>
                 </div> 
-              </div>          
+              </div>      
+              <div class="form-group   " >
+                <label for="ipt" class=" control-label col-md-2 text-right"> Ordering</label> 
+                <div class="col-md-10">
+                  <input type="text" name="ordering" id="ordering" value="{{ $menu->ordering }}" class="form-control" placeholder="1, 2, 3..."/>    
+                </div> 
+              </div>   
               <div class="form-group   " >
                 <label for="ipt" class=" control-label col-md-2 text-right"> Active</label> 
                 <div class="col-md-10 active">

@@ -36,9 +36,9 @@
                   <th align="center">Ordering</th>
                   <th>Author</th>
                   <th>Created Date</th>
-                  <th>Updated By</th>
-                  <th>Updated Date</th>
-                  <th align="center">Status</th>
+                  <!--<th>Updated By</th>
+                  <th>Updated Date</th>-->
+                  <th style="text-align:center;">Status</th>
                   <!--<th>Views</th>-->
                   <th width="10%" style="text-align:center;">Actions</th>
                 </tr>
@@ -47,15 +47,20 @@
                 @foreach($menus as $menu)
                 <tr>
                   <td>{{ $menu->id }}</td>
-                  <td>{{ str_limit($menu->title, $limit = 50, $end = '...') }}</td>
-                  <!--<td>{!! str_limit($menu->content, $limit = 70, $end = '...') !!}</td>-->
-                  <td>{{ $menu->menu ? $menu->menu->title : ''  }}</td>
+                  <td>
+                    @for($i=0;$i<$menu->level;$i++)
+                      <i class='glyphicon glyphicon-chevron-right'></i>
+                    @endfor
+                    {{ str_limit($menu->title, $limit = 50, $end = '...') }}
+                  </td>
+                  <td>{{ $menu->parent_title }}</td>
                   <td align="center">{{ $menu->ordering }}</td>
-                  <td>{{ $menu->createdBy->email  }}</td>
+                  <!--<td>{!! str_limit($menu->content, $limit = 70, $end = '...') !!}</td>-->
+                  <td>{{ $menu->author  }}</td>
                   <td>{{ $menu->created_at }}</td>
-                  <td>{{ $menu->updatedBy->email }}</td>
-                  <td>{{ $menu->updated_at }}</td>
-                  <td align="center">
+                  <!--<td>{{ $menu->editor }}</td>
+                  <td>{{ $menu->updated_at }}</td>-->
+                  <td style="text-align:center;">
                     @if ($menu->status=='1') 
                       <span class="label label-success">Active</span>
                     @elseif($menu->status=='0')

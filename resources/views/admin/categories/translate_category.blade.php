@@ -4,7 +4,7 @@
 <h1>Dashboard<small>Control panel</small></h1>
 <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Dashboard</li>
+    <li class="active">CONTENT TRANSLATION</li>
 </ol>
 @endsection
 @section('content')
@@ -14,7 +14,7 @@
       <div class="col-sm-12">
         <div class="box box-solid box-success">
           <div class="box-header with-border">
-            <h3 class="box-title">CONTENT REGISTRATION FORM</h3>
+            <h3 class="box-title">CATEGORY TRANSLATION FORM</h3>
             <div class="box-tools pull-right">
               <!-- Buttons, labels, and many other things can be placed here! -->
               <!-- Here is a label for example -->
@@ -34,56 +34,38 @@
                     @endforeach
                 </div>
             @endif
-            <form class="form-horizontal" action="{{ route('admin.contents.store') }}" method="post" style="padding:10px;">
+            <form class="form-horizontal" action="{{ URL('admin/categories/translation') }}" method="post" style="padding:10px;">
               <input type="hidden" name="_token" value="{!! csrf_token() !!}">
               <div class="form-group  " >
-                <label for="ipt" class=" control-label col-md-2 text-right">Title</label>
+                <label for="ipt" class=" control-label col-md-2 text-right">Translation from</label>
                 <div class="col-md-10">
-                  <input type="text" name="title" id="title" value="" class="form-control" placeholder="Enter your category title" required/> 
+                  <input type="hidden" name="category_id" id="category_id" value="{{ $category->id }}"/> 
+                  <input type="text" name="category_title" id="category_title" value="{{ $category->title }}" disabled class="form-control" placeholder="Enter your menu title"/> 
                 </div> 
               </div>   
               <div class="form-group">
-                <label for="ipt" class=" control-label col-md-2 text-right">Category</label>
+                <label for="ipt" class=" control-label col-md-2 text-right">Language</label>
                 <div class="col-md-10">
-                  <select name='category_id' rows='5' id='module'  class='form-control ' required>
-                    <option value="">-- Select Category --</option>
-                    @foreach($categories as $category)
-                      <option value="{{ $category->id }}">{{ $category->title}}</option>
+                  <select name='language_id' rows='5' id='language_id'  class='form-control ' required>
+                    <option value="">-- Select Language --</option>
+                    @foreach($languages as $language)
+                      <option value="{{ $language->id }}">{{ $language->full_word}}</option>
                     @endforeach
                   </select>     
                 </div> 
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 text-right">Content</label>
-                  <div class="col-sm-10">  
-                    <textarea id="content" name="content" required></textarea>
-                  </div>    
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 text-right">Images</label>
-                  <div class="col-sm-10">  
-                    <!--<input type='file' id="images" name="images" />-->
-                    <input type="hidden" name="images" id="txtImages"/>
-                    <input type="hidden" readonly="readonly"   class="form-control" id="images" name="txtImages" onchange="addMoreImage()">
-                    <a type="button" class="btn btn-default btn-file" data-target="#myModal" href="javascript:;" data-toggle="modal">Add Images </a>
-                    <!--<a href="/filemanager/dialog.php?type=2&field_id=txtfile'&fldr=" class="btn iframe-btn" type="button">Open Filemanager</a>-->
-                    <table class="table">
-										<tbody>
-										</tbody>
-									</table>
-                  </div>    
-              </div>
-              <div class="form-group   " >
-                <label for="ipt" class=" control-label col-md-2 text-right"> Status</label> 
-                <div class="col-md-10 menutype">
-                  <label class="radio-inline  ">             
-                    <input type="radio" name="status" class="status"value="1" checked="checked"/>Active
-                  </label>
-                  <label class="radio-inline">
-                    <input type="radio" name="status" class="status" value="0"/> Inactive
-                  </label>    
+              </div>  
+              <div class="form-group  " >
+                <label for="ipt" class=" control-label col-md-2 text-right">Title</label>
+                <div class="col-md-10">
+                  <input type="text" name="title" id="title" value="{!! old('title') !!}" class="form-control" placeholder="Enter your menu title" required/> 
                 </div> 
-              </div>        
+              </div> 
+              <div class="form-group">
+                <label class="col-sm-2 text-right">Description</label>
+                  <div class="col-sm-10">  
+                    <textarea id="description" name="description">{{ old('description') }}</textarea>
+                  </div>    
+              </div>
               <div class="form-group">
                 <label class="col-sm-2 text-right"> </label>
                   <div class="col-sm-10">  
@@ -139,35 +121,54 @@
  });
 </script>
 <script>
-  function addMoreImage(){
-    //images.push($('#images').val());
-    $('tbody').append('<tr>'+
-											'<td>'+
-												'<div class="form-group">'+
-						    						'<img src="'+$("#images").val()+'" class="img-responsive" id="myimagedemo" style="width:30%;height:30%;"/>'+
-												'</div>'+
-											'</td>'+
-											'<td>'+
-												'<div class="form-group">'+
-						    						'<a type="button" class="btn btn-danger btn-file" href="javascript:;" id="btnRemove" class="1">Remove</a>'+	
-												'</div>'+
-											'</td>'+
-										'</tr>');
-		var images = [];
-		$("tbody tr").each(function(){
-				images.push($(this).find("img").attr("src"));
-		});
-		$("#txtImages").val(JSON.stringify(images));
-		alert($("#txtImages").val());
-  }
-  $(document).on('click','#btnRemove',function(){
-		$(this).parents("tr").remove();
-		var images = [];
-		$("tbody tr").each(function(){
-				images.push($(this).find("img").attr("src"));
-		});
-		$("#txtImages").val(JSON.stringify(images));
-		alert($("#txtImages").val());
+	$('#language_id').change(function(){
+	  if($(this).val()==''){
+	    return;
+	  }
+	  var options = {
+    	bg: '#e74c3c',
+    
+    	// leave target blank for global nanobar
+    	target: document.getElementById('myDivId'),
+    
+    	// id for new nanobar
+    	id: 'mynano'
+    };
+    
+    var nanobar = new Nanobar( options );
+    $.ajax({
+          url: "{{URL::to('rest/admin/categories/translate')}}",
+          data: {
+            'category_id' : $('#category_id').val(),
+            'language_id' : $(this).val()
+          },
+          dataType: "JSON",
+          type: "POST",
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          beforeSend: function(){
+            // move bar
+            nanobar.go( 30 ); // size bar 30%
+          
+          },
+          success: function(data){
+            console.log(data);
+            if(data.DATA!=null){
+              $('#title').val(data.DATA.title);
+              $("#description").empty();
+              //tinyMCE.activeEditor.setContent('');
+              tinymce.get('description').getBody().innerHTML ='';
+              tinymce.activeEditor.selection.setContent(data.DATA.description);
+            }
+            // Finish progress bar
+            nanobar.go(100);
+          },
+          error: function(data){
+            nanobar.go(90);
+          }
+      });
 	});
+
 </script>
 @endsection

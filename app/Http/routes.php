@@ -65,6 +65,8 @@ Route::group(['prefix' => 'admin'
             , 'namespace' => 'Admin'
             , 'middleware' =>'auth'],function(){
                 
+    Route::post('categories/updatecategory','CategoryController@UpdateCategory');
+    Route::post('categories/translation','CategoryController@Translation');
     Route::resource('categories','CategoryController');  
     
     Route::resource('users','UserController');
@@ -105,8 +107,10 @@ Route::group(['prefix' => 'rest/admin'
     Route::post('/contents/translate', ['uses' => 'ContentController@Translate']);
     
     Route::post('/menus', ['uses' => 'MenuController@Json']);
+    Route::post('/menus/translate', ['uses' => 'MenuController@Translate']);
 
     Route::post('/categories', ['uses' => 'CategoryController@Json']);
+    Route::post('/categories/translate', ['uses' => 'CategoryController@Translate']);
     
     Route::post('/users', ['uses' => 'UserController@Json']);
     

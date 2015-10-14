@@ -100,7 +100,13 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return View('admin.categories.translate_category')->with([
+            'languages' => \App\Language::where([
+                                            'status' => 1,
+                                            'is_default' => false])->get(),
+            'category' => $category
+        ]);
     }
 
     /**
@@ -111,7 +117,11 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return View('admin.categories.update_category')->with([
+            'categories' => \App\Category::where('status', 1)->get(),
+            'category' => $category
+        ]);
     }
 
     /**
@@ -135,5 +145,85 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    public function updateCategory(Request $request){
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+            'id' => 'required|numeric',
+            'status' => 'required',
+            'parent_id' => 'numeric'
+        ]);
+        $category = Category::findOrFail($request->input('id'));
+        $input = $request->all();
+        if($request->input('parent_id')==''){
+            $input = $request->except('parent_id');
+            $input['parent_id'] = NULL;
+        }
+        $category->updatedBy()->associate(Auth::user());
+        $category->update($input);
+        
+        Session::flash('flash_message', 'Category successfully updated!');
+        
+        return redirect()->back();
+    }
+    
+    public function translate(Request $request){
+        $validation = $this->validate($request, [
+            'category_id' => 'required|numeric',
+            'language_id' => 'required|max:2',
+        ]);
+        $categoryTranslation = CategoryTranslation::firstOrNew($request->all());
+        if($categoryTranslation->exists){
+            return response()->json([
+               'DATA' => $categoryTranslation
+            ]);
+        }else{
+            return response()->json([
+                'DATA' => null
+            ]);
+        }
+    }
+    
+    
+    public function translation(Request $request){
+        //1. Validation 
+        $this->validate($request, [
+            'title' => 'required',
+            'category_id' => 'required|numeric',
+            'parent_id' => 'numeric',
+            'description' => 'required',
+        ]);
+        //2. Find menu by id
+        $category = Category::firstOrNew([
+            'id'=> $request->input('category_id')
+        ]);
+        
+        try{
+            if($category->exists){
+                $categoryTranslation = CategoryTranslation::firstOrNew($request->only('category_id','language_id'));
+                if(!$categoryTranslation->exists){
+                    $categoryTranslation = new CategoryTranslation($request->all());
+                    $categoryTranslation->save();
+                    //5. FLASH MESSAGE BACK
+                    Session::flash('flash_message', 'Category successfully translated!');
+                }else{
+                    $categoryTranslation::where('category_id', $request->input('category_id'))
+                                        ->where('language_id', $request->input('language_id'))
+                                        ->update($request->only('description','title'));
+                    //5. FLASH MESSAGE BACK
+                    Session::flash('flash_message', 'Category successfully translate updated!');
+                }
+            }else{
+                //5. FLASH MESSAGE BACK
+                Session::flash('flash_message', 'Category not found!!!');
+            }
+        }catch(Exception $e){
+            
+        }
+
+        //6. REDIRECT BACK
+        return redirect()->back();
     }
 }

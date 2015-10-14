@@ -14,7 +14,7 @@
       <div class="col-sm-12">
         <div class="box box-solid box-success">
           <div class="box-header with-border">
-            <h3 class="box-title">CONTENT UPDATING FORM</h3>
+            <h3 class="box-title">CONTENT REGISTRATION FORM</h3>
             <div class="box-tools pull-right">
               <!-- Buttons, labels, and many other things can be placed here! -->
               <!-- Here is a label for example -->
@@ -34,13 +34,12 @@
                     @endforeach
                 </div>
             @endif
-            <form class="form-horizontal" action="{{ url('admin/contents/updatecontent') }}" method="POST" style="padding:10px;">
+            <form class="form-horizontal" action="{{ route('admin.contents.store') }}" method="post" style="padding:10px;">
               <input type="hidden" name="_token" value="{!! csrf_token() !!}">
               <div class="form-group  " >
                 <label for="ipt" class=" control-label col-md-2 text-right">Title</label>
                 <div class="col-md-10">
-                  <input type="hidden" name="id" id="id" value="{{ $content->id }}" /> 
-                  <input type="text" name="title" id="title" value="{{ $content->title}}" class="form-control" placeholder="Enter your category title" required/> 
+                  <input type="text" name="title" id="title" value="" class="form-control" placeholder="Enter your category title" required/> 
                 </div> 
               </div>   
               <div class="form-group">
@@ -49,7 +48,7 @@
                   <select name='category_id' rows='5' id='module'  class='form-control ' required>
                     <option value="">-- Select Category --</option>
                     @foreach($categories as $category)
-                      <option value="{{ $category->id }}" @if($content->category_id==$category->id) selected @endif>{{ $category->title}}</option>
+                      <option value="{{ $category->id }}">{{ $category->title}}</option>
                     @endforeach
                   </select>     
                 </div> 
@@ -57,35 +56,19 @@
               <div class="form-group">
                 <label class="col-sm-2 text-right">Content</label>
                   <div class="col-sm-10">  
-                    <textarea id="content" name="content">{{ $content->content}}</textarea>
+                    <textarea id="content" name="content"></textarea>
                   </div>    
               </div>
               <div class="form-group">
                 <label class="col-sm-2 text-right">Images</label>
                   <div class="col-sm-10">  
                     <!--<input type='file' id="images" name="images" />-->
-                    <input type="hidden" name="images" id="txtImages" value="{{$content->images}}{{old('images')}}"/>
+                    <input type="hidden" name="images" id="txtImages"/>
                     <input type="hidden" readonly="readonly"   class="form-control" id="images" name="txtImages" onchange="addMoreImage()">
                     <a type="button" class="btn btn-default btn-file" data-target="#myModal" href="javascript:;" data-toggle="modal">Add Images </a>
                     <!--<a href="/filemanager/dialog.php?type=2&field_id=txtfile'&fldr=" class="btn iframe-btn" type="button">Open Filemanager</a>-->
                     <table class="table">
 										<tbody>
-										@if(is_array(json_decode($content->images,true)))
-										  @foreach(json_decode($content->images,true) as $key=>$value)
-										  <tr>
-											<td>
-												<div class="form-group">
-						    						<img src="{{$value}}" class="img-responsive" id="myimagedemo" style="width:30%;height:30%;"/>
-												</div>
-											</td>
-											<td>
-												<div class="form-group">
-						    						<a type="button" class="btn btn-danger btn-file" href="javascript:;" id="btnRemove" class="1">Remove</a>
-												</div>
-											</td>
-										</tr>
-										  @endforeach
-										@endif
 										</tbody>
 									</table>
                   </div>    
@@ -94,10 +77,10 @@
                 <label for="ipt" class=" control-label col-md-2 text-right"> Status</label> 
                 <div class="col-md-10 menutype">
                   <label class="radio-inline  ">             
-                    <input type="radio" name="status" class="status"value="1" @if($content->status==1) checked="checked" @endif/>Active
+                    <input type="radio" name="status" class="status"value="1" checked="checked"/>Active
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="status" class="status" value="0" @if($content->status==0) checked="checked" @endif/> Inactive
+                    <input type="radio" name="status" class="status" value="0"/> Inactive
                   </label>    
                 </div> 
               </div>        

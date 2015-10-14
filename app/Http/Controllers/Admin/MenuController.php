@@ -22,8 +22,24 @@ class MenuController extends Controller
     public function index()
     {
         //dd(Menu::all());
+        $menus = DB::table('menus')->select('menus.*','parent.title As parent_title','users.email AS author','editor.email As editor',
+                            DB::raw('(CASE menus.level 
+                                      WHEN 0 THEN menus.id*1000 
+                                      WHEN 1 THEN ((menus.parent_id*1000)+(menus.id*100)+(menus.ordering+1)*10)
+                                      WHEN 2 THEN (SELECT ((m.parent_id*1000)+(menus.parent_id*100)+((m.ordering+1)*10)+(menus.ordering+1)) FROM menus as m WHERE m.id=menus.parent_id)
+                                      END) AS Pos'))
+                            ->leftJoin('menus As parent', 'parent.id', '=', 'menus.parent_id')
+                            ->leftJoin('users', 'users.id', '=', 'menus.created_by')
+                            ->leftJoin('users AS editor', 'editor.id', '=', 'menus.updated_by')
+                            ->orderBy('Pos')
+                            ->paginate(15);
+        //print_r($menus);
         return View('admin.menus.menu')->with([
-            'menus' => Menu::paginate(15)
+/*            'menus' => Menu::orderBy('parent_id','asc')
+                           ->orderBy('level','asc')
+                           ->orderBy('ordering', 'asc')
+                           ->paginate(15)*/
+              'menus' => $menus
         ]);
     }
     
@@ -32,7 +48,25 @@ class MenuController extends Controller
         if($limit>100 || $limit<=0){
             $limit = 15;
         }
-        $menus = Menu::where('title', 'like','%'.$requests->input('search').'%')->paginate($limit);
+        
+        $menus = DB::table('menus')->select('menus.*','parent.title As parent_title','users.email AS author','editor.email As editor',
+                            DB::raw('(CASE menus.level 
+                                      WHEN 0 THEN menus.id*1000 
+                                      WHEN 1 THEN ((menus.parent_id*1000)+(menus.id*100)+(menus.ordering+1)*10)
+                                      WHEN 2 THEN (SELECT ((m.parent_id*1000)+(menus.parent_id*100)+((m.ordering+1)*10)+(menus.ordering+1)) FROM menus as m WHERE m.id=menus.parent_id)
+                                      END) AS Pos'))
+                            ->leftJoin('menus As parent', 'parent.id', '=', 'menus.parent_id')
+                            ->leftJoin('users', 'users.id', '=', 'menus.created_by')
+                            ->leftJoin('users AS editor', 'editor.id', '=', 'menus.updated_by')
+                            ->where('menus.title', 'like','%'.$requests->input('search').'%')
+                            ->orderBy('Pos')
+                            ->paginate($limit);
+        
+        /*$menus = Menu::where('title', 'like','%'.$requests->input('search').'%')
+                     ->orderBy('parent_id','asc')
+                     ->orderBy('level','asc')
+                     ->orderBy('ordering', 'asc')
+                     ->paginate($limit);*/
         $data = View('admin.menus.menu_template')->with('menus', $menus)->render();
         return response()->json($data);
     }
@@ -67,7 +101,8 @@ class MenuController extends Controller
                 'position' => 'required',
                 'type' => 'required',
                 'status' => 'required',
-                'parent_id' => 'numeric'
+                'parent_id' => 'numeric',
+                'ordering' => 'required|numeric'
             ]);
             
             //2. GET ALL REQUESTS AND CREATE MENU OBJECT
@@ -209,15 +244,17 @@ class MenuController extends Controller
                 'type' => 'required',
                 'status' => 'required',
                 'menu_id' => 'required',
-                'parent_id' => 'numeric'
+                'parent_id' => 'numeric',
+                'ordering' => 'required|numeric'
             ]);
             
             //2. GET ALL REQUESTS AND CREATE MENU OBJECT
             $input = $request->except('_token','menu_id');
             if($request->input('parent_id')==''){
                 $input = $request->except('parent_id','_token','menu_id');
+                $input['parent_id'] = NULL;
             }else{
-                $menuParent = Menu::find($request->input('parent_id'))->first();
+                $menuParent = Menu::find($request->input('parent_id'));
                 $input['level'] = (++$menuParent->level);
             }
     
@@ -254,11 +291,21 @@ class MenuController extends Controller
     {
         //
     }
-    
-    public function translate($id){
-        return View('admin.menus.translate_menu')->with([
-            'languages' => \App\Language::where('status',1)->get()
+    public function translate(Request $request){
+        $validation = $this->validate($request, [
+            'menu_id' => 'required|numeric',
+            'language_id' => 'required|max:2',
         ]);
+        $menuTranslation = MenuTranslation::firstOrNew($request->all());
+        if($menuTranslation->exists){
+            return response()->json([
+               'DATA' => $menuTranslation
+            ]);
+        }else{
+            return response()->json([
+                'DATA' => null
+            ]);
+        }
     }
     
     public function translation(Request $request){
