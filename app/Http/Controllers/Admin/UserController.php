@@ -75,7 +75,7 @@ class UserController extends Controller
             'firstname' => $request->input('firstname'),
             'lastname' => $request->input('lastname'),
             'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')),
+            'password' => $request->input('password'),
             'status' => $request->input('status'),
             'is_admin' => $request->input('is_admin')
         ]);
