@@ -8,5 +8,11 @@
 </ol>
 @endsection
 @section('content')
-    ADMIN DASHBOARD
+    <div class="callout callout-success lead">
+        <h4>Welcome to GREEN ARCHITECTURE DESIGN ADMIN!</h4>
+        <p></p>
+    </div>
+@endsection
+@section('script')
+$(document).ajaxStart(function() { Pace.restart(); }); 
 @endsection

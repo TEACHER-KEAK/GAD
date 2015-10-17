@@ -138,6 +138,7 @@
 <script type="text/javascript" src="{{ url('') }}/tinymce/tinymce.min.js"></script>
 <script type="text/javascript" src="{{ url('') }}/tinymce/tinymce_editor.js"></script>
 <script type="text/javascript">
+  $(document).ajaxStart(function() { Pace.restart(); }); 
   tinymce.init({
     selector: "textarea",theme: "modern", width: "99.5%",height: 300,
     plugins: [

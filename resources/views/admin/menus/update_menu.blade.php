@@ -160,6 +160,7 @@
 <script type="text/javascript" src="{{ url('') }}/tinymce/tinymce.min.js"></script>
 <script type="text/javascript" src="{{ url('') }}/tinymce/tinymce_editor.js"></script>
 <script type="text/javascript">
+  $(document).ajaxStart(function() { Pace.restart(); }); 
   editor_config.selector = "textarea";
   editor_config.path_absolute = "http://green-architecture-design-darapenhchet.c9.io/";
   tinymce.init(editor_config);

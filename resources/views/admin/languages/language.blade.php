@@ -107,3 +107,8 @@
   </section>
   <!-- /.content -->
 @endsection
+@section('script')
+<script type="text/javascript">
+  $(document).ajaxStart(function() { Pace.restart(); }); 
+</script>
+@endsection

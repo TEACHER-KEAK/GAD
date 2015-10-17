@@ -12,7 +12,7 @@ class AddIsDefaultColumnToLanguageTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function(Blueprint $table) {
+        Schema::table('languages', function(Blueprint $table) {
             $table->boolean('is_default')->default(false)
                   ->after('logo');
         });

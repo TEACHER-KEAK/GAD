@@ -126,6 +126,7 @@
 @endsection
 @section('script')
 <script>
+  $(document).ajaxStart(function() { Pace.restart(); }); 
   $(document).on('click','.pagination a', function(e){
       e.preventDefault();
       var pageId = $(this).attr('href').split('page=')[1];

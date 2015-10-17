@@ -91,3 +91,6 @@
 	</div>
 </div>
 @endsection
+@section('script')
+	$(document).ajaxStart(function() { Pace.restart(); }); 
+@endsection

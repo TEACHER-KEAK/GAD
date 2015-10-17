@@ -26,6 +26,16 @@ class LanguageTableSeeder extends Seeder
             'logo' => 'english.png',
             'status' => 1,
             'created_by' => 1,
+            'updated_by' => 1,
+            'is_default' => 1
+        ]);
+        
+        Language::create([
+            'id' => 'ch',
+            'full_word' => 'Chinese',
+            'logo' => 'chinese.png',
+            'status' => 1,
+            'created_by' => 1,
             'updated_by' => 1
         ]);
     }
