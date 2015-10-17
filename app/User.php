@@ -1,7 +1,5 @@
 <?php
-
 namespace App;
-
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -9,27 +7,23 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword;
-
     /**
      * The database table used by the model.
      *
      * @var string
      */
     protected $table = 'users';
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['firstname','lastname', 'email', 'password'];
-
+    protected $fillable = ['firstname','lastname', 'email', 'password','is_admin','status'];
     /**
      * The attributes excluded from the model's JSON form.
      *
@@ -50,7 +44,6 @@ class User extends Model implements AuthenticatableContract,
     {
         $this->attributes['password'] = bcrypt($password);
     }
-
     /**
      * Confirm the user.
      *
@@ -62,7 +55,6 @@ class User extends Model implements AuthenticatableContract,
         $this->token = null;
         $this->save();
     }
-
     public function contents(){
         return $this->hasMany('App\Content');
     }
@@ -79,4 +71,5 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->getAttribute('is_admin');
     }
+    
 }

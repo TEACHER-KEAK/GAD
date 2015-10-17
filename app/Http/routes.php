@@ -33,7 +33,7 @@ Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 Route::get('/', function(){
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/home', function(){
@@ -73,6 +73,7 @@ Route::group(['prefix' => 'admin'
     Route::post('categories/translation','CategoryController@Translation');
     Route::resource('categories','CategoryController');  
     
+    Route::post('users/updateuser','UserController@UpdateUser');
     Route::resource('users','UserController');
     
     Route::post('contents/updatecontent','ContentController@UpdateContent');

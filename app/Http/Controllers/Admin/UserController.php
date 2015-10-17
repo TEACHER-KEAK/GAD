@@ -134,4 +134,26 @@ class UserController extends Controller
     public function changePassword(){
         return View('admin.users.change_password_user');
     }
+    
+    public function updateUser(Request $request){
+        $this->validate($request, [
+            'firstname' => 'required|max:255',
+            'lastname' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'status' => 'required',
+            'is_admin' => 'required'
+        ]);
+ 
+        $user = User::findOrFail($request->input('id'));
+        
+        // UPDATE TWO CHOICE
+        // 1. CHOICE USING UPDATE METHOD DIRECT
+        $user->update($request->all());
+        // 2. CHOICE USIG THE FILL AND UPDATE
+        //$user->fill($request->all())->update();//save($request->all());
+        
+        Session::flash('flash_message', 'User successfully updated!');
+        
+        return redirect()->back();
+    }
 }

@@ -29,26 +29,27 @@
                             {{ Session::get('flash_message') }}
                         </div>
                     @endif
-					<form class="form-horizontal" role="form" method="POST" action="{{route('admin.users.store')}}">
+					<form class="form-horizontal" role="form" method="POST" action="{{url('admin/users/updateuser')}}">
 						<!--<input type="hidden" name="_token" value="{{ csrf_token() }}">-->
 						{!! csrf_field() !!}
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">First Name</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="firstname" value="{{$user->firstname}}{{ old('firstname') }}">
+								<input type="hidden" name="id" value="{{$user->id}}"/>
+								<input type="text" class="form-control" name="firstname" value="{{$user->firstname}}">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-4 control-label">Last Name</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="lastname" value="{{$user->lastname}}{{ old('lastname') }}">
+								<input type="text" class="form-control" name="lastname" value="{{$user->lastname}}">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-4 control-label">E-Mail Address</label>
 							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{$user->email}}{{ old('email') }}">
+								<input type="email" class="form-control" name="email" value="{{$user->email}}">
 							</div>
 						</div>
         				<div class="form-group" >
