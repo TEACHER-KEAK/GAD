@@ -357,6 +357,16 @@ h6 {
     background-image: url(../../images/bg_menu.png);
 
 }
+.main-menu-w{
+  position: absolute;
+  top: 44px;
+  left: 0px;
+  right: 10px;
+  bottom: 0px;
+  width: 100%;
+}
+
+/*
 .main-menu ul {
   position: absolute;
   width: 100%;
@@ -375,7 +385,7 @@ h6 {
   outline: 0;
   border: 0;
   display: block;
-    padding: 13px 0;
+  padding: 13px 0;
 }
 .main-menu ul li a:hover {
   background-color: #6aa410;
@@ -386,7 +396,7 @@ h6 {
   background: url(../images/active-state.png) no-repeat;
   background-position: center 65px;
 }
-
+*/
 .toggle-menu {
   display: none;
   margin: 40px 35px 0 0;
