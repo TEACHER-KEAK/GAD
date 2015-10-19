@@ -36,6 +36,10 @@ Route::get('/', function(){
     return view('home');
 });
 
+Route::get('/projects', function(){
+   return view('project_list') ;
+});
+
 Route::get('/home', function(){
     return view('welcome');
 });

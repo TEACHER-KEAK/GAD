@@ -1,3 +1,5 @@
+@extends('app')
+@section('content')
 <div id="navigation">
 	<ol class="breadcrumb">
 	  <li><a href="#">Home</a></li>
@@ -10,3 +12,4 @@
 	
 Testing
 </div>
+@endsection
