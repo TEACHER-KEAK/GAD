@@ -74,28 +74,27 @@ type='text/css'>
         <div class="site-header">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 col-sm-6 col-xs-6 bg-adjust">
+                    <div class="col-md-3 col-sm-6 col-xs-6 bg-adjust">
                         <div id="greenad_logo">
                            <img src="images/green-logo.png" alt="logo">
                         </div> <!-- /.logo -->
                     </div> <!-- /.col-md-4 -->
-                    <div class="col-md-8 col-sm-6 col-xs-6 bg-adjust main-menu-bg">
+                    <div class="col-md-9 col-sm-6 col-xs-6 bg-adjust main-menu-bg">
                        
                         <a href="#" class="toggle-menu"><i class="fa fa-bars"></i></a>     
                         <div class="top_bar  main-menu">
                     		<div class="row">
-                    			<div class="col-md-5">
-                    			 	<h1> Green Architecture & Design Co,. Ltd.</h1>
-                    			</div>
-                    			 <div class="col-md-3">
-                    			 	<i class="glyphicon glyphicon-earphone"> </i> (+855)81 799 961
-                    			 </div>
-                    			 <div class="col-md-4">
-                    			 	Language: <img src="images/kh_lan.gif">
-                    			 	<img src="images/en_lan.gif">
-                    			 	<img src="images/ch_lan.gif">
-                    			 </div>
-                    		</div>
+                                <div class="col-md-7">
+                                    <h1> Green Global Architecture Design & Construction Co., Ltd.</h1>
+                                </div>
+                                 <div class="col-md-5">
+                                    <i class="glyphicon glyphicon-earphone"> </i> <b>(+855)81 799 961</b>
+                                 
+                                    &nbsp&nbsp&nbsp&nbspLanguage: <img src="images/kh_lan.gif">
+                                    <img src="images/en_lan.gif">
+                                    <img src="images/ch_lan.gif">
+                                 </div>
+                            </div>
                         	
                          </div>
                     </div> <!-- /.col-md-8 -->
@@ -182,6 +181,18 @@ type='text/css'>
                             </li>
                             <li><a href="#">ABOUT US</a></li>
                             <li><a href="#">CONTACT</a></li>
+                            <!--search box-->
+                            <div class="search_box"> 
+                                <div class="input-group stylish-input-group">
+                                    <input type="text" class="form-control"  placeholder="Search" >
+                                    <span class="input-group-addon">
+                                        <button type="submit">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </button>  
+                                    </span>
+                                </div>
+                             </div>
+                             <!--search box-->
                         </ul>
                     </div>
                 </nav>
