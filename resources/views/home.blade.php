@@ -123,6 +123,7 @@
 	<div class="container">
         <div class="page-section text-center">
             <div class="row">
+                 <h3 style="padding:0 0 20px 0">Recently Project</h3>
                 <div class="owl-carousel">
                     <div class="service-item">
                         <div class="img-project">
@@ -158,6 +159,7 @@
 <div class="client_reference">
     <div class="container">
         <div class="row">
+            <h3 style="padding:0 0 20px 0; margin:0px; text-align:center;">Our Client</h3>
             <div class="col-md-2">
                 <div class="img_client_box"><img src="{{ asset('/images/client_logo_1.jpg') }}"></div>
             </div>
