@@ -44,9 +44,9 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach($menus as $menu)
+                @foreach($menus as $key=>$menu)
                 <tr>
-                  <td>{{ $menu->id }}</td>
+                  <td>{{ ++$key }}</td>
                   <td>
                     @for($i=0;$i<$menu->level;$i++)
                       <i class='glyphicon glyphicon-chevron-right'></i>
@@ -90,7 +90,7 @@
                 <div class="dataTables_info">Showing 1 to {{ $menus->perPage() * $menus->currentPage()}} of {{ $menus->total()}} entries</div>
               </div>
               <div class="col-sm-7">
-                  <?php echo $menus->appends(['sorts'=>'title'])->render(); ?>
+                  <?php echo $menus->render(); ?>
               </div>
             </div>
           </div><!-- box-footer -->
