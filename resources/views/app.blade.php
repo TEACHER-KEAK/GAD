@@ -10,9 +10,9 @@
 
 
 	<!--Plugin and default Stylesheets -->
-	 <link href="dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-	 <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-	 <link href="dist/css/style.css" rel="stylesheet" type="text/css" />
+	 <link href="./dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+	 <link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+	 <link href="./dist/css/style.css" rel="stylesheet" type="text/css" />
 	 <!-- slider -->
      <link href="dist/css/owl-carousel.css" rel="stylesheet" type="text/css" />
 	 
@@ -267,7 +267,7 @@ Sangkat Tunle Basak Khan Chhomkamon, Phnom Penh.
     <script src="dist/js/plugins_carousel.js"></script>
     <script src="dist/js/main_carousel.js"></script>
 
-    <script src="plugins/dropdown-menu/js/cbpHorizontalSlideOutMenu.min.js"></script>
+    <script src="plugins/dropdown-menu/js/cbpHorizontalSlideOutMenu.js"></script>
         <script>
             var menu = new cbpHorizontalSlideOutMenu( document.getElementById( 'cbp-hsmenu-wrapper' ) );
         </script>

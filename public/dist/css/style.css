@@ -733,6 +733,76 @@ Footer Site
 }
 
 
+/*-------------------------------------------
+Project
+---------------------------------------------*/
+#navigation{
+  padding-top: 120px;
+
+}
+#navigation a{
+  color: #85c91c;
+}
+.title_cat{
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0px;
+  padding: 0px;
+}
+
+
+#data-projecct{
+  margin: 20px 0;
+}
+#data-projecct .thumbnail{
+  border: 1px solid #eaeaea;
+  border-radius: 0px;
+}
+
+#data-projecct .caption{
+  background-color: #eeeeee;
+}
+#data-projecct .caption h3{
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+#data-projecct .caption a{
+  color: #85c91c;
+}
+#data-projecct .caption a:hover{
+  color: #444444;
+}
+
+
+.category-sidepbar{
+  margin: 10px 0 0 10px;
+  padding: 0px;
+}
+.category-sidepbar > li{
+  padding-bottom: 20px;
+}
+.category-sidepbar > li a{
+  color: #85c91c;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+
+
+.sub-category-sidebar{
+  margin: 10px 0 0 10px;
+  padding: 0px;
+}
+.sub-category-sidebar > li{
+  padding: 3px 0;
+}
+.sub-category-sidebar > li a{
+  color: #424443;
+  font-size: 14px;
+  font-weight: normal;
+}
+
 /*------------------------------------------------------
   RESPONSIVE STYLES 
 --------------------------------------------------------*/
