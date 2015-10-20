@@ -30,7 +30,8 @@
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th width="20%">Title</th>
+                  <th width="20%">KHMER Title</th>
+                  <th width="20%">ENGLISH Title</th>
                   <th width="20%">Description</th>
                   <th>Parent</th>
                   <th>Status</th>
@@ -47,6 +48,8 @@
                   <td>{{ $category->id }}</td>
                   <td>
                     {{ $category->translation('kh')->first() ? $category->translation('kh')->first()->title: $category->title }}
+                    </td>
+                  <td>
                   {{ str_limit($category->title, $limit = 50, $end = '...') }}</td>
                   
                   <td>{{ str_limit($category->description, $limit = 70, $end = '...') }}</td>
