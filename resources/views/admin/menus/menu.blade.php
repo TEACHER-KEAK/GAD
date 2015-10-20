@@ -52,7 +52,7 @@
                       <i class='glyphicon glyphicon-chevron-right'></i>
                     @endfor
                     {{ str_limit($menu->title, $limit = 50, $end = '...') }}
-    
+                  
                   </td>
                   <td>{{ $menu->parent_title }}</td>
                   <td align="center">{{ $menu->ordering }}</td>

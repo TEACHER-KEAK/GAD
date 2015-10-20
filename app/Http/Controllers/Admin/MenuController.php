@@ -25,8 +25,8 @@ class MenuController extends Controller
         $menus = DB::table('menus')->select('menus.*','parent.title As parent_title','users.email AS author','editor.email As editor',
                             DB::raw('(CASE menus.level 
                                       WHEN 0 THEN menus.ordering*10000
-                                      WHEN 1 THEN (SELECT ((m.ordering*10000)+(1000*menus.ordering)) FROM menus as m WHERE m.id=menus.parent_id)
-                                      WHEN 2 THEN (SELECT ((m.ordering*10000)+(1000*menus.ordering))+1 FROM menus as m WHERE m.id=menus.parent_id)
+                                      WHEN 1 THEN (SELECT ((m.ordering*10000)+(100*menus.ordering)) FROM menus as m WHERE m.id=menus.parent_id)
+                                      WHEN 2 THEN (SELECT ((m.ordering*10000)+(100+menus.ordering))+1 FROM menus as m WHERE m.id=menus.parent_id)
                                       END) AS Pos'))
                             ->leftJoin('menus As parent', 'parent.id', '=', 'menus.parent_id')
                             ->leftJoin('users', 'users.id', '=', 'menus.created_by')
