@@ -62,6 +62,7 @@
                   <!--<td>{{ $menu->editor }}</td>
                   <td>{{ $menu->updated_at }}</td>-->
                   <td style="text-align:center;">
+                    {{ $menu->Pos }}
                     @if ($menu->status=='1') 
                       <span class="label label-success">Active</span>
                     @elseif($menu->status=='0')

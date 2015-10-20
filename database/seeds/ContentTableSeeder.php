@@ -17,7 +17,7 @@ class ContentTableSeeder extends Seeder
             Content::create([
                 'title' => $faker->sentence,
                 'content' => $faker->paragraph(4),
-                'images' => '[{}]',
+                'images' => '[]',
                 'category_id' => '1',
                 'visitor_count' => '0',
                 'created_by' => '2',

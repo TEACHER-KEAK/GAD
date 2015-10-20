@@ -64,7 +64,7 @@
                 <label class="col-sm-2 text-right">Images</label>
                   <div class="col-sm-10">  
                     <!--<input type='file' id="images" name="images" />-->
-                    <input type="hidden" name="images" id="txtImages" value="{{$content->images}}{{old('images')}}"/>
+                    <input type="hidden" name="images" id="txtImages" value="{{$content->images}}"/>
                     <input type="hidden" readonly="readonly"   class="form-control" id="images" name="txtImages" onchange="addMoreImage()">
                     <a type="button" class="btn btn-default btn-file" data-target="#myModal" href="javascript:;" data-toggle="modal">Add Images </a>
                     <!--<a href="/filemanager/dialog.php?type=2&field_id=txtfile'&fldr=" class="btn iframe-btn" type="button">Open Filemanager</a>-->
