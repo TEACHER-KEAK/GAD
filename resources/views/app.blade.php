@@ -110,7 +110,7 @@ type='text/css'>
                                 <li><a href="#contact">CONTACT</a></li>
                             </ul>
                         </div> <!-- /.main-menu -->
-<nav class="cbp-hsmenu-wrapper" id="cbp-hsmenu-wrapper">
+                <nav class="cbp-hsmenu-wrapper" id="cbp-hsmenu-wrapper">
                     <div class="cbp-hsinner">
                         <ul class="cbp-hsmenu">
                             <li>
@@ -127,21 +127,18 @@ type='text/css'>
 
                                     </li>
                                     <li><a href="#"><img src="images/2.png" alt="img02"/><span>Exterior Decoration </span></a>
-                                          <ul class="chil-sub-cat">
-                                                <li><a href="#"><span>Gardens</span></a></li>
-                                                 <li><a href="#"><span>Park</span></a></li>
-                                                <li><a href="#"><span>Apartment Flat</span></a></li>
-                                                <li><a href="#"><span>Education</span></a></li>
-                                                <li><a href="#"><span>FLat</span></a></li>
-                                                <li><a href="#"><span>Hospital</span></a></li>
-                                                <li><a href="#"><span>Hotel</span></a></li>
-                                                <li><a href="#"><span>House</span></a></li>
-                                                <li><a href="#"><span>Office</span></a></li>
-                                                <li><a href="#"><span>Restaurant</span></a></li>
-                                          </ul>
-
-
-
+                                        <ul class="chil-sub-cat">
+                                            <li><a href="#"><span>Gardens</span></a></li>
+                                            <li><a href="#"><span>Park</span></a></li>
+                                            <li><a href="#"><span>Apartment Flat</span></a></li>
+                                            <li><a href="#"><span>Education</span></a></li>
+                                            <li><a href="#"><span>FLat</span></a></li>
+                                            <li><a href="#"><span>Hospital</span></a></li>
+                                            <li><a href="#"><span>Hotel</span></a></li>
+                                            <li><a href="#"><span>House</span></a></li>
+                                            <li><a href="#"><span>Office</span></a></li>
+                                            <li><a href="#"><span>Restaurant</span></a></li>
+                                        </ul>
                                     </li>
                                     <li>
                                         <a href="#"><img src="images/3.png" alt="img03"/><span>Interior Decoration </span></a>

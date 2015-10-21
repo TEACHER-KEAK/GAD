@@ -803,6 +803,45 @@ Project
   font-weight: normal;
 }
 
+/*--------------------------
+Project Info
+----------------------------*/
+
+.project-item h1{
+  margin: 0 0 20px 0;
+  padding: 0px;
+  font-size: 26px;
+  color: #85c91c;
+}
+.project_description h2{
+  margin: 20px 0;
+  padding: 0px;
+  font-size: 18px;
+  color: #85c91c;
+  border-bottom: 1px solid #CCC;
+    padding-bottom: 10px;
+}
+.project_description p{
+  font-size: 14px;
+  line-height: 22px;
+  text-align: justify;
+}
+.company_contact_info{
+  background-color: #ececec;
+  margin:10px;
+  padding: 10px;
+  border-top: 5px solid #85c91c;
+}
+
+.d_img_thumbnail{
+  margin-top: 10px;
+}
+.d_img_thumbnail img{
+  margin-right: 15px;
+
+}
+
+
 /*------------------------------------------------------
   RESPONSIVE STYLES 
 --------------------------------------------------------*/

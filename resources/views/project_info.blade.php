@@ -61,68 +61,87 @@
 			<div class="col-md-10">
 				<div class="project-item">
 					<div class="row">
-						<h1> King Cole Ducks office by Studio Forma</h1>
+						<div class="col-md-12">
+							<h1> King Cole Ducks office by Studio Forma</h1>
+							<p> Posted: Landscape | Date: 10-November-2015 </p>
+						</div>
 					</div>
 					<div class="row">
-						 <ul class="bxslider">
-		            <li>
-		                <img src="{{ asset('/images/slider/slide1.jpg') }}" alt="slider image 1">
-		                <div class="container">
-		                    <div class="row">
-		                        <div class="col-md-12 text-right">
-		                            <div class="slider-caption">
-		                                <h2>Green Achitecture and Design</h2>
-		                            </div>
-		                        </div>
-		                    </div>
-		                </div>
-		            </li>
-		            <li>
-		                <img src="{{ asset('/images/slider/slide2.jpg') }}" alt="slider image 2">
-		                <div class="container caption-wrapper">
-		                    <div class="slider-caption">
-		                        <h2>Green Achitecture and Design</h2>
-		                    </div>
-		                </div>
-		            </li>
-		            <li>
-		                <img src="{{ asset('/images/slider/slide3.jpg') }}" alt="slider image 3">
-		                <div class="container">
-		                    <div class="row">
-		                        <div class="col-md-12 text-right">
-		                            <div class="slider-caption">
-		                                <h2>Green Achitecture and Design</h2>
-		                            </div>
-		                        </div>
-		                    </div>
-		                </div>
-		            </li>
-		            <li>
-		                <img src="{{ asset('/images/slider/slide4.jpg') }}" alt="slider image 4">
-		                <div class="container">
-		                    <div class="row">
-		                        <div class="col-md-12 text-right">
-		                            <div class="slider-caption">
-		                                <h2>Green Achitecture and Design</h2>
-		                            </div>
-		                        </div>
-		                    </div>
-		                </div>
-		            </li>
-		            <li>
-		                <img src="{{ asset('/images/slider/slide5.jpg') }}" alt="slider image 5">
-		                <div class="container">
-		                    <div class="row">
-		                        <div class="col-md-12 text-right">
-		                            <div class="slider-caption">
-		                                <h2>DGreen Achitecture and Design</h2>
-		                            </div>
-		                        </div>
-		                    </div>
-		                </div>
-		            </li>
-		        </ul> <!-- /.bxslider -->	   
+						<div class="col-md-12">
+							<div class="image_view">
+								<img src="{{ asset('/images/uploads/sample_img.jpg') }}" />
+							</div>
+							<div class="d_img_thumbnail">
+								<img src="{{ asset('/images/slider/thumb1.jpg') }}" />
+								<img src="{{ asset('/images/slider/thumb1.jpg') }}" />
+								<img src="{{ asset('/images/slider/thumb1.jpg') }}" />
+								<img src="{{ asset('/images/slider/thumb1.jpg') }}" />
+								<img src="{{ asset('/images/slider/thumb1.jpg') }}" />
+							</div>
+						</div>
 					</div><!--/row-->
+					<div class="row">
+							<div class="col-md-8">
+								<div class="project_description">
+									<h2>Description</h2>
+									<p>Ontario’s leading farm-to-fork duck producer – have transitioned to a new 10,000 sq ft office complex and farm fresh store located on the company’s main farm property in Newmarket, ON.
+	The new building combines a farm fresh store, gourmet presentation kitchen, corporate offices and boardroom. Located on the lower level is a new home for the farm production team including a lab, space for veterinary staff, a galley kitchen and event space for up to 180 people.</p>
+									<p><b>List</b></p>
+									<li>The new building combines</li>
+									<li>The new building combines</li>
+									<li>The new building combines</li>
+									<li>The new building combines</li>
+								</div>	
+							</div>
+							<div class="col-md-4">
+								<div class="company_contact_info">
+									<h4>Contact us</h4>
+									<p>For more details contact:</p>
+									<p>
+										<i class="glyphicon glyphicon-earphone"></i><b>  (+855) 81 799 961</b><br/>
+										<i class="glyphicon glyphicon-envelope"></i><b>  info@greenglobale.com</b>
+									</p>
+									<p>
+									Or give us your best contact 
+details and we will follow up 
+with you.
+									</p>
+									<div class="form-group">
+            							<input type="text" class="form-control" id="name" 
+            							name="name" placeholder="First & Last Name" value="">
+    								</div>
+    								<div class="form-group">
+            							<input type="text" class="form-control" id="name" 
+            							name="name" placeholder="your e-mail address" value="">
+    								</div>
+    								<div class="form-group">
+            							<input type="text" class="form-control" id="name" 
+            							name="name" placeholder="best telephone number" value="">
+    								</div>
+    								<div class="form-group">
+								        
+								            <textarea class="form-control" rows="4" name="message"></textarea>
+								        
+								    </div>
+								    <div class="form-group">
+								        <label for="human" class="control-label">2 + 3 = ?</label>
+								     
+								            <input type="text" class="form-control" id="human" name="human" placeholder="Your Answer">
+								       
+								    </div>
+								    <div class="form-group">
+								      
+								            <input id="submit" name="submit" type="submit" value="Send" class="btn btn-primary">
+								       
+								    </div>
+    								 <div class="form-group">
+								      
+								            Will be used to display an alert to the user
+								      
+								    </div>
+								</div>
+							</div>
+					</div>
 				</div>
 			</div><!--/ col-md-10-->
 		</div><!-- / row -->

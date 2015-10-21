@@ -48,6 +48,13 @@ Route::get('/projects', function(){
    return view('project_list') ;
 });
 
+Route::get('/projectsinfo', function(){
+   return view('project_info') ;
+});
+Route::get('/about', function(){
+   return view('about') ;
+});
+
 Route::get('/home', function(){
     return view('welcome');
 });
