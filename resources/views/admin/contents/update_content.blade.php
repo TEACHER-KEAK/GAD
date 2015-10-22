@@ -91,6 +91,17 @@
                   </div>    
               </div>
               <div class="form-group   " >
+                <label for="ipt" class=" control-label col-md-2 text-right"> Show Home Page</label> 
+                <div class="col-md-10">
+                  <label class="radio-inline  ">             
+                    <input type="radio" name="show_home_page" value="1"@if($content->show_home_page==1) checked="checked" @endif /> Yes
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="show_home_page" value="0" @if($content->show_home_page==0) checked="checked" @endif /> No
+                  </label>    
+                </div> 
+              </div> 
+              <div class="form-group   " >
                 <label for="ipt" class=" control-label col-md-2 text-right"> Status</label> 
                 <div class="col-md-10 menutype">
                   <label class="radio-inline  ">             

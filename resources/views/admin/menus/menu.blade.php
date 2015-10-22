@@ -32,7 +32,7 @@
                   <th>ID</th>
                   <th width="20%">Title</th>
                   <!--<th width="20%">Content</th>-->
-                  <th>Parent</th>
+                  <!--<th>Parent</th>-->
                   <th align="center">Ordering</th>
                   <th>Author</th>
                   <th>Created Date</th>
@@ -54,7 +54,7 @@
                     {{ str_limit($menu->title, $limit = 50, $end = '...') }}
                   
                   </td>
-                  <td>{{ $menu->parent_title }}</td>
+                  <!--<td>{{ $menu->parent_title }}</td>-->
                   <td align="center">{{ $menu->ordering }}</td>
                   <!--<td>{!! str_limit($menu->content, $limit = 70, $end = '...') !!}</td>-->
                   <td>{{ $menu->author  }}</td>
@@ -62,7 +62,7 @@
                   <!--<td>{{ $menu->editor }}</td>
                   <td>{{ $menu->updated_at }}</td>-->
                   <td style="text-align:center;">
-                    {{ $menu->Pos }}
+                    <!--{{ $menu->Pos }}-->
                     @if ($menu->status=='1') 
                       <span class="label label-success">Active</span>
                     @elseif($menu->status=='0')

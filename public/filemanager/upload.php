@@ -90,7 +90,7 @@ if ( ! empty($_FILES))
 		if ($is_img)
 		{
 			$memory_error = FALSE;
-			if ( ! create_img($targetFile, $targetFileThumb, 122, 91))
+			if ( ! create_img($targetFile, $targetFileThumb, 320, 216))
 			{
 				$memory_error = FALSE;
 			}

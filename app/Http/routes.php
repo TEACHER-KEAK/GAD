@@ -101,13 +101,13 @@ Route::group(['prefix' => 'admin'
     
     Route::post('menus/updatemenu/{id}','MenuController@UpdateMenu');
     Route::post('menus/translation','MenuController@Translation');
-    //Route::get('menus/translate/{id}','MenuController@Translate');
     Route::resource('menus', 'MenuController');
     
     Route::resource('settings', 'SettingController');
     
     Route::resource('languages', 'LanguageController');
     
+    Route::post('sliders/updateslider/','SliderController@UpdateSlider');
     Route::resource('sliders', 'SliderController');
     
 
@@ -137,5 +137,7 @@ Route::group(['prefix' => 'rest/admin'
     Route::post('/categories/translate', ['uses' => 'CategoryController@Translate']);
     
     Route::post('/users', ['uses' => 'UserController@Json']);
+    
+    Route::post('/sliders', ['uses' => 'SliderController@Json']);
     
 });

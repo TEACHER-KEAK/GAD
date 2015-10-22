@@ -14,6 +14,9 @@ class Category extends Model
             'parent_id',
             'created_by',
             'updated_by',
+            'ordering',
+            'image',
+            'thumb_image',
             'status'
         ];
     
@@ -38,5 +41,9 @@ class Category extends Model
            $language = 'en';//App::getLocale();
         }
         return $this->hasMany('App\CategoryTranslation')->where('language_id', '=', $language);
+    }
+    
+    public function parentCategory(){
+        return $this->belongsTo('App\Category', 'parent_id');
     }
 }

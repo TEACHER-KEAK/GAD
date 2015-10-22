@@ -53,10 +53,24 @@
                   </select>     
                 </div> 
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display:none;">
                 <label class="col-sm-2 text-right">Description</label>
                   <div class="col-sm-10">  
                     <textarea id="description" name="description"></textarea>
+                  </div>    
+              </div>
+              <div class="form-group   " >
+                <label for="ipt" class=" control-label col-md-2 text-right"> Ordering</label> 
+                <div class="col-md-10">
+                  <input type="text" name="ordering" id="ordering" value="{{ old('ordering')?: 1 }}" class="form-control" placeholder="1, 2, 3..."/>    
+                </div> 
+              </div> 
+              <div class="form-group">
+                <label class="col-sm-2 text-right">Image</label>
+                  <div class="col-sm-10">  
+                    <input type="hidden" readonly="readonly"   class="form-control" id="txtImage" name="image" onchange="changeImage()">
+                    <a type="button" class="btn btn-default btn-file" data-target="#myModal" href="javascript:;" data-toggle="modal">Choose Image </a>
+                    <img src="image.jpg" style="display:none; width:520px; height:240px;" class="thumbnail" id="sample_image"/>
                   </div>    
               </div>
               <div class="form-group   " >
@@ -87,6 +101,20 @@
     <!-- /.row -->
   </section>
   <!-- /.content -->
+<!-- code for popup file manager -->		
+<div class="modal fade" id="myModal">
+	<div class="modal-dialog modal-lg">
+	  <div class="modal-content">
+	    <div class="modal-header">
+	      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	      <h4 class="modal-title">File Manager</h4>
+	    </div>
+	    <div class="modal-body">
+	      <iframe width="100%" height="500" src="/filemanager/dialog.php?type=2&field_id=txtImage'&fldr=" frameborder="0" style="overflow: scroll; overflow-x: hidden; overflow-y: scroll; "></iframe>
+	    </div>
+	  </div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 @endsection
 
 @section('script')
@@ -103,6 +131,7 @@
    ],
    toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
    toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
+   toolbar3: "| fontselect | fontsizeselect ",
    image_advtab: true ,
    
    external_filemanager_path:"/filemanager/",
@@ -110,15 +139,10 @@
    external_plugins: { "filemanager" : "/filemanager/plugin.min.js"}
  });
 </script>
-<script type="text/javascript">
-  function changeMenuType(data){
-    if(data.value==1){
-      $('#INT_LINK').show();
-      $('#EXT_LINK').hide();
-    }else if(data.value==0){
-      $('#INT_LINK').hide();
-      $('#EXT_LINK').show();
-    }
+<script>
+  function changeImage(){
+    $("#sample_image").show();
+    $("#sample_image").attr('src',$("#txtImage").val());
   }
 </script>
 @endsection

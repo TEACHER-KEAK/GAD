@@ -17,6 +17,7 @@ class CreateContentsTable extends Migration
             $table->string('title',255);
             $table->text('content');
             $table->json('images');
+            $table->json('thumb_images');
             $table->integer('category_id')->unsigned();
             $table->bigInteger('visitor_count')->default(0);
             $table->integer('created_by')->unsigned();

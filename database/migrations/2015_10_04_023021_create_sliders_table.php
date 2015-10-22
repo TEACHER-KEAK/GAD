@@ -17,7 +17,9 @@ class CreateSlidersTable extends Migration
             $table->string('title',100)->nullable();
             $table->text('description')->nullable();
             $table->text('image');
+            $table->text('thumb_image');
             $table->string('type',50);
+            $table->integer('ordering');
             $table->integer('created_by')->unsigned();
             $table->integer('updated_by')->unsigned();
             $table->string('status',1)->default('1');

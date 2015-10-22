@@ -38,7 +38,7 @@
         <li class="treeview">
           <a href="#">
             <i class="fa fa-files-o"></i>
-            <span>CONTENTS</span>
+            <span>@lang('administrators.contents')</span>
             <!--<span class="label label-primary pull-right">4</span>-->
             <i class="fa fa-angle-left pull-right"></i>
           </a>
@@ -50,7 +50,7 @@
         <li>
           <a href="#">
             <i class="fa fa-files-o"></i>
-            <span>CATEGORIES</span>
+            <span>@lang('administrators.categories')</span>
             <!--<span class="label label-primary pull-right">4</span>-->
             <i class="fa fa-angle-left pull-right"></i>
           </a>
@@ -62,7 +62,7 @@
         <li class="treeview">
           <a href="#">
             <i class="fa fa-pie-chart"></i>
-            <span>MENUS</span>
+            <span>@lang('administrators.menus')</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
@@ -73,17 +73,17 @@
         <li class="treeview">
           <a href="{{ url('/admin/languages')}}">
             <i class="fa fa-laptop"></i>
-            <span>LANGUAGES</span>
+            <span>@lang('administrators.slideshow')</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('/admin/languages')}}"><i class="fa fa-circle-o"></i> List All Languages</a></li>
-            <!--<li><a href="{{ url('/admin/languages/create')}}"><i class="fa fa-circle-o"></i> Add New Language</a></li>-->
+            <li><a href="{{ url('/admin/sliders')}}"><i class="fa fa-circle-o"></i> List All Slides</a></li>
+            <li><a href="{{ url('/admin/sliders/create')}}"><i class="fa fa-circle-o"></i> Add New Slide</a></li>
           </ul>
         </li>
         <li class="treeview">
           <a href="{{ url('/admin/users')}}">
-            <i class="fa fa-edit"></i> <span>USERS</span>
+            <i class="fa fa-edit"></i> <span>@lang('administrators.users')</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
@@ -92,9 +92,10 @@
             <li><a href="{{ url('/admin/users/change_password')}}"><i class="fa fa-circle-o"></i> Change Password</a></li>
           </ul>
         </li>
-        <li class="treeview active">
-          <a href="#">
-            <i class="fa fa-edit"></i> <span>SETTINGS</span>
+        <!--<li class="treeview active">-->
+        <li class="treeview">
+          <a href="{{ url('/admin/settings')}}">
+            <i class="fa fa-edit"></i> <span>@lang('administrators.settings')</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <!--<ul class="treeview-menu">

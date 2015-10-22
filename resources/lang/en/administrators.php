@@ -13,6 +13,13 @@ return [
     |
     */
 
-    'dashboard' => 'Dashboard',
+    'dashboard' => 'DASHBOARD',
+    'contents' => 'CONTENTS',
+    'categories' => 'CATEGORIES',
+    'menus' => 'MENUS',
+    'slideshow' => 'SLIDESHOW',
+    'users' => 'USERS',
+    'settings' => 'SETTINGS',
+    
 
 ];

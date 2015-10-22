@@ -47,8 +47,9 @@ class CategoryController extends Controller
     public function create()
     {
         return View('admin.categories.create_category')->with([
-            'categories' => Category::where('status',1)->get()
-        ]);
+            'categories' => Category::where('status', 1)
+                                    ->get()
+            ]);
     }
 
     /**
@@ -76,13 +77,16 @@ class CategoryController extends Controller
             //3. SET CREATED USER TO THE MENU
             $category->createdby()->associate(Auth::user());
             $category->updatedBy()->associate(Auth::user());
+            
+            $category->thumb_image = $request->input('image');
+            $category->thumb_image = str_replace('source','thumbs',$category->thumb_image);
     
             //4. SAVE MENU
             $category->save();
             
-            $categoryTranslation = new CategoryTranslation($request->all());
+            //$categoryTranslation = new CategoryTranslation($request->all());
             
-            $category->categoryTranslation()->save($categoryTranslation);
+            //$category->categoryTranslation()->save($categoryTranslation);
     
             //5. FLASH MESSAGE BACK
             Session::flash('flash_message', 'Category successfully added!');
@@ -119,9 +123,12 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         return View('admin.categories.update_category')->with([
-            'categories' => \App\Category::where('status', 1)->get(),
+            'categories' => \App\Category::where('status', 1)
+                                         ->where('id','<>',$id)
+                                         ->get(),
             'category' => $category
         ]);
+        
     }
 
     /**
@@ -134,6 +141,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         //
+        dd($request);
     }
 
     /**
@@ -150,7 +158,7 @@ class CategoryController extends Controller
     public function updateCategory(Request $request){
         $this->validate($request, [
             'title' => 'required',
-            'description' => 'required',
+            //'description' => 'required',
             'id' => 'required|numeric',
             'status' => 'required',
             'parent_id' => 'numeric'
@@ -163,6 +171,9 @@ class CategoryController extends Controller
         }
         $category->updatedBy()->associate(Auth::user());
         $category->update($input);
+        
+        $category->thumb_image = $request->input('image');
+        $category->thumb_image = str_replace('source','thumbs',$category->thumb_image);
         
         Session::flash('flash_message', 'Category successfully updated!');
         
@@ -193,7 +204,7 @@ class CategoryController extends Controller
             'title' => 'required',
             'category_id' => 'required|numeric',
             'parent_id' => 'numeric',
-            'description' => 'required',
+            //'description' => 'required',
         ]);
         //2. Find menu by id
         $category = Category::firstOrNew([

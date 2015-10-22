@@ -22,7 +22,7 @@ class ContentController extends Controller
     {
         //
         //$contents = Content::all();
-        $contents = Content::paginate(15);
+        $contents = Content::orderBy('created_at','desc')->paginate(15);
         return View('admin.contents.content')->with('contents', $contents);
     }
     
@@ -31,7 +31,9 @@ class ContentController extends Controller
         if($limit>100 || $limit<=0){
             $limit = 15;
         }
-        $contents = Content::where('title', 'like','%'.$requests->input('search').'%')->paginate($limit);
+        $contents = Content::where('title', 'like','%'.$requests->input('search').'%')
+                           ->orderBy('created_at','desc')
+                           ->paginate($limit);
         $data = View('admin.contents.content_template')->with('contents', $contents)->render();
         return response()->json($data);
 
@@ -75,6 +77,8 @@ class ContentController extends Controller
         $content->createdBy()->associate(Auth::user());
         $content->updatedBy()->associate(Auth::user());
         $content->category()->associate($category);
+        $content->thumb_images = $request->input('images');
+        $content->thumb_images = str_replace('source','thumbs',$content->thumb_images);
         
         $content->save();
         
@@ -137,6 +141,8 @@ class ContentController extends Controller
         $content = Content::findOrFail($request->input('id'));
         
         $content->updatedBy()->associate(Auth::user());
+        $content->thumb_images = $request->input('images');
+        $content->thumb_images = str_replace('source','thumbs',$content->thumb_images);
         $content->update($request->all());
         
         Session::flash('flash_message', 'Content successfully updated!');

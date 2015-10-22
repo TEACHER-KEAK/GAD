@@ -48,7 +48,7 @@
                   <input type="text" name="title" id="title" value="{{ $menu->title }}{{old('title')}}" class="form-control" placeholder="Enter your menu title"/> 
                 </div> 
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display:none;">
                 <label for="ipt" class=" control-label col-md-2 text-right">Parent Menu</label>
                 <div class="col-md-10">
                   <select name='parent_id' rows='5' id='module'  class='form-control '    >
@@ -105,7 +105,7 @@
                   </label>    
                 </div> 
               </div>        
-              <div class="form-group">
+              <div class="form-group" style="display:none;">
                 <label for="ipt" class=" control-label col-md-2 text-right">Icon </label>
                 <div class="col-md-10">
                   <input type="text" name="icon" id="icon" value="{{ $menu->icon }}" class="form-control" placeholder="Enter fa fa-desktop"/>

@@ -16,7 +16,9 @@ class Content extends Model
         'updated_by',
         'images',
         'status',
-        'category_id'
+        'category_id',
+        'thumb_images',
+        'show_home_page'
     ];
     
     public function createdBy(){

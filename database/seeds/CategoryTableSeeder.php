@@ -13,13 +13,14 @@ class CategoryTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        foreach(range(1,100) as $index){
+        foreach(range(1,10) as $index){
             Category::create([
                 'title' => $faker->sentence,
-                'description' => $faker->paragraph(2),
+                'description' => $faker->paragraph(1),
                 'parent_id' => NULL,
                 'created_by' => 1,
                 'updated_by' => 1,
+                'ordering' => 1,
                 'status' => true
             ]);
         }

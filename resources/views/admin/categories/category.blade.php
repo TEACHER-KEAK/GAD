@@ -30,31 +30,37 @@
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th width="20%">KHMER Title</th>
-                  <th width="20%">ENGLISH Title</th>
-                  <th width="20%">Description</th>
+                  <th width="15%">KHMER Title</th>
+                  <th width="15%">ENGLISH Title</th>
+                  <th width="15%">CHINESE Title</th>
+                  <!--<th width="20%">Description</th>-->
                   <th>Parent</th>
+                  <th>Ordering</th>
                   <th>Status</th>
                   <th>Author</th>
                   <th>Created Date</th>
-                  <th>Updated By</th>
+                  <!--<th>Updated By</th>-->
                   <th>Updated Date</th>
-                  <th width="10%" style="text-align:center;">Actions</th>
+                  <th width="15%" style="text-align:center;">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach($categories as $category)
+                @foreach($categories as $key=>$category)
                 <tr>
-                  <td>{{ $category->id }}</td>
+                  <td>{{ ++$key }}</td>
                   <td>
-                    {{ $category->translation('kh')->first() ? $category->translation('kh')->first()->title: $category->title }}
-                    </td>
+                    {!! $category->translation('kh')->first() ? $category->translation('kh')->first()->title: '<span class="label label-info">NOT YET TRANSLATE</span>' !!}
+                  </td>
+                  <td>
+                    {!! $category->translation('ch')->first() ? $category->translation('kh')->first()->title: '<span class="label label-info">NOT YET TRANSLATE</span>' !!}
+                  </td>
                   <td>
                   {{ str_limit($category->title, $limit = 50, $end = '...') }}</td>
                   
-                  <td>{{ str_limit($category->description, $limit = 70, $end = '...') }}</td>
-                  <td>{{ $category->parent_id }}</td>
-                  <td>
+                  <!--<td>{{ str_limit($category->description, $limit = 70, $end = '...') }}</td>-->
+                  <td>{{ $category->parentCategory()->first() ? $category->parentCategory()->first()->title : '' }}</td>
+                  <td align="center">{{ $category->ordering }}</td>
+                  <td align="center">
                     @if ($category->status=='1') 
                       <span class="label label-success">Active</span>
                     @elseif($category->status=='0')
@@ -63,7 +69,7 @@
                   </td>
                   <td>{{ $category->createdBy->email }}</td>
                   <td>{{ $category->created_at }}</td>
-                  <td>{{ $category->updatedBy->email }}</td>
+                  <!--<td>{{ $category->updatedBy->email }}</td>-->
                   <td>{{ $category->updated_at }}</td>
                   <td style="text-align:center;">
                     <a href="{{ URL('admin/categories/'.$category->id.'/edit') }}" id="btnEdit">
