@@ -17,7 +17,8 @@ class Category extends Model
             'ordering',
             'image',
             'thumb_image',
-            'status'
+            'status',
+            'level'
         ];
     
     public function createdBy(){

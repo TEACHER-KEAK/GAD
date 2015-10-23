@@ -1,10 +1,11 @@
 @extends('admin.app')
 
 @section('content_header')
-<h1>Dashboard<small>Control panel</small></h1>
+<h1>USER MANAGEMENT<small>UPDATE USER</small></h1>
 <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Dashboard</li>
+	<li><a href="{{ url('admin')}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li><a href="{{ url('admin/users')}}"><i class="fa fa-dashboard"></i> List All Users</a></li>
+    <li class="active">Update User</li>
 </ol>
 @endsection
 @section('content')
@@ -12,7 +13,7 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="box box-primary">
-				<div class="panel-heading">Update A Exist User</div>
+				<div class="panel-heading">Update User</div>
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
@@ -78,7 +79,59 @@
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-success">
-									Register
+									Save
+								</button>
+								<button class="btn btn-default">
+									cancel
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="box box-primary">
+				<div class="panel-heading">Change Password</div>
+				<div class="panel-body">
+					@if (count($errors) > 0)
+						<div class="alert alert-danger">
+							<strong>Whoops!</strong> There were some problems with your input.<br><br>
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						</div>
+					@endif
+					@if(Session::has('flash_message'))
+                        <div class="alert alert-success">
+                            {{ Session::get('flash_message') }}
+                        </div>
+                    @endif
+					<form class="form-horizontal" role="form" method="POST" action="{{url('admin/users/changepassword')}}">
+						<!--<input type="hidden" name="_token" value="{{ csrf_token() }}">-->
+						{!! csrf_field() !!}
+
+						<div class="form-group">
+							<label class="col-md-4 control-label">Password</label>
+							<div class="col-md-6">
+								<input type="hidden" name="id" value="{{$user->id}}"/>
+								<input type="password" class="form-control" name="password">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-4 control-label">Confirm Password</label>
+							<div class="col-md-6">
+								<input type="password" class="form-control" name="password_confirmation">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-6 col-md-offset-4">
+								<button type="submit" class="btn btn-success">
+									Save
 								</button>
 								<button class="btn btn-default">
 									cancel
@@ -93,5 +146,7 @@
 </div>
 @endsection
 @section('script')
-	$(document).ajaxStart(function() { Pace.restart(); }); 
+	<script>
+		$(document).ajaxStart(function() { Pace.restart(); }); 
+	</script>
 @endsection

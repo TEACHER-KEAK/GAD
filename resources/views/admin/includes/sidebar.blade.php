@@ -89,7 +89,7 @@
           <ul class="treeview-menu">
             <li class="active"><a href="{{ url('/admin/users')}}"><i class="fa fa-circle-o"></i> List All Users</a></li>
             <li><a href="{{ url('/admin/users/create')}}"><i class="fa fa-circle-o"></i> Add New User</a></li>
-            <li><a href="{{ url('/admin/users/change_password')}}"><i class="fa fa-circle-o"></i> Change Password</a></li>
+            <!--<li><a href="{{ url('/admin/users/change_password')}}"><i class="fa fa-circle-o"></i> Change Password</a></li>-->
           </ul>
         </li>
         <!--<li class="treeview active">-->

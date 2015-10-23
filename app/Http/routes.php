@@ -93,6 +93,7 @@ Route::group(['prefix' => 'admin'
     Route::resource('categories','CategoryController');  
     
     Route::post('users/updateuser','UserController@UpdateUser');
+    Route::post('users/changepassword','UserController@ChangePassword');
     Route::resource('users','UserController');
     
     Route::post('contents/updatecontent','ContentController@UpdateContent');

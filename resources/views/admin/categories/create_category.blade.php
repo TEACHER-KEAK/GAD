@@ -45,10 +45,15 @@
               <div class="form-group">
                 <label for="ipt" class=" control-label col-md-2 text-right">Parent Category</label>
                 <div class="col-md-10">
-                  <select name='parent_id' rows='5' id='module'  class='form-control '    >
+                  <select name='parent_id' rows='5' id='module'  class='form-control fontawesome-select'    >
                     <option value="">-- Select Parent Category --</option>
                     @foreach($categories as $category)
-                      <option value="{{ $category->id }}">{{ $category->title}}</option>
+                      <option value="{{ $category->id }}">
+                        @for($i=0;$i<$category->level;$i++)
+                          &#xf054;&#xf054;
+                        @endfor
+                        {{ $category->title}}
+                      </option>
                     @endforeach
                   </select>     
                 </div> 

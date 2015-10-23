@@ -60,7 +60,7 @@ type='text/css'>
             <img src="images/pop_ads.jpg" />
         
          <div class="counter">
-            <div class="counter-align">
+            <div class="counter-align" style="width:330px">
                 <span>This popup display in</span>
                 <span class="timer"></span>
                 <span>second,If</span>

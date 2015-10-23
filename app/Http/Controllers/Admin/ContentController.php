@@ -10,6 +10,7 @@ use App\Content;
 use App\ContentTranslation;
 use Auth;
 use Session;
+use DB;
 
 class ContentController extends Controller
 {
@@ -51,8 +52,17 @@ class ContentController extends Controller
     public function create()
     {
         $contents = Content::all();
+        $categories = DB::table('categories')->select('categories.id','categories.title','categories.level',
+                            DB::raw("(CASE categories.level 
+                                      WHEN 0 THEN LPAD(categories.ordering,5,0)
+                                      WHEN 1 THEN (SELECT CONCAT(LPAD(m.ordering,5,0), '.' ,LPAD(categories.ordering,5,0)) FROM categories as m WHERE m.id=categories.parent_id)
+                                      WHEN 2 THEN (SELECT CONCAT((SELECT LPAD(super.ordering,5,0) FROM categories AS super WHERE super.id = m.parent_id), '.' , LPAD(m.ordering,5,0), '.' ,LPAD(categories.ordering,5,0)) FROM categories as m WHERE m.id=categories.parent_id)
+                                      END) AS Pos"))
+                      ->where('status',1)
+                      ->orderBy('Pos')
+                      ->get();
         return View('admin.contents.create_content')->with([
-            'categories' => \App\Category::where('status', 1)->get()
+            'categories' => $categories//\App\Category::where('status', 1)->get()
         ]);
     }
 
@@ -113,8 +123,17 @@ class ContentController extends Controller
     public function edit($id)
     {
         $content = Content::findOrFail($id);
+        $categories = DB::table('categories')->select('categories.id','categories.title','categories.level',
+                            DB::raw("(CASE categories.level 
+                                      WHEN 0 THEN LPAD(categories.ordering,5,0)
+                                      WHEN 1 THEN (SELECT CONCAT(LPAD(m.ordering,5,0), '.' ,LPAD(categories.ordering,5,0)) FROM categories as m WHERE m.id=categories.parent_id)
+                                      WHEN 2 THEN (SELECT CONCAT((SELECT LPAD(super.ordering,5,0) FROM categories AS super WHERE super.id = m.parent_id), '.' , LPAD(m.ordering,5,0), '.' ,LPAD(categories.ordering,5,0)) FROM categories as m WHERE m.id=categories.parent_id)
+                                      END) AS Pos"))
+                      ->where('status',1)
+                      ->orderBy('Pos')
+                      ->get();
         return View('admin.contents.update_content')->with([
-            'categories' => \App\Category::where('status', 1)->get(),
+            'categories' => $categories,
             'content' => $content
         ]);
     }
