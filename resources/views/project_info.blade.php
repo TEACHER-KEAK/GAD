@@ -4,9 +4,17 @@
 	<div class="container">
 		<div class="row">	
 			<ol class="breadcrumb">
-			  <li><a href="#">Home</a></li>
-			  <li><a href="#">Landscape</a></li>
-			  <li class="active">Garden</li>
+			  <li><a href="{{url()}}">@lang('application.home')</a></li>
+			  @if($category->parent_id)
+			  	@if($category->parentCategory->parent_id)
+			  	<li><a href="{{ url('categories/'.$category->parentCategory->parentCategory->id.'/projects') }}">{{ $category->parentCategory->parentCategory->title }}</a></li>
+			  	<li><a href="{{ url('categories/'.$category->parentCategory->id.'/projects')}}">{{ $category->parentCategory->title }}</a></li>
+			  	@else
+			  		<li><a href="{{ url('categories/'.$category->parentCategory->id.'/projects')}}">{{ $category->parentCategory->title }}</a></li>
+			  	@endif
+			  @endif
+			  <li><a href="{{ url('categories/'.$category->id.'/projects')}}">{{ $category->title }}</a></li>
+			  <li class="active">{{$content->title}}</li>
 			</ol>
 		</div>
 	</div>
@@ -15,68 +23,40 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-2">
-					<h1 class="title_cat">Categories</h1>
-					<ul class="category-sidepbar">
-						<li> <a href="#">Landscape</a>
-							<ul class="sub-category-sidebar">
-								<li> <a href="#">FASHION (1210)</a></li>
-								<li> <a href="#">SHOES (224)</a></li>
-								<li> <a href="#">LUXURY (164)</a></li>
-								<li> <a href="#">POP-UP (155)</a></li>
-								<li> <a href="#">COSMETICS (144)</a></li>
-							</ul>
-						</li>
-
-						<li> <a href="#">Landscape</a>
-							<ul class="sub-category-sidebar">
-								<li> <a href="#">FASHION (1210)</a></li>
-								<li> <a href="#">SHOES (224)</a></li>
-								<li> <a href="#">LUXURY (164)</a></li>
-								<li> <a href="#">POP-UP (155)</a></li>
-								<li> <a href="#">COSMETICS (144)</a></li>
-							</ul>
-						</li>
-
-						<li> <a href="#">Landscape</a>
-							<ul class="sub-category-sidebar">
-								<li> <a href="#">FASHION (1210)</a></li>
-								<li> <a href="#">SHOES (224)</a></li>
-								<li> <a href="#">LUXURY (164)</a></li>
-								<li> <a href="#">POP-UP (155)</a></li>
-								<li> <a href="#">COSMETICS (144)</a></li>
-							</ul>
-						</li>
-
-						<li> <a href="#">Landscape</a>
-							<ul class="sub-category-sidebar">
-								<li> <a href="#">FASHION (1210)</a></li>
-								<li> <a href="#">SHOES (224)</a></li>
-								<li> <a href="#">LUXURY (164)</a></li>
-								<li> <a href="#">POP-UP (155)</a></li>
-								<li> <a href="#">COSMETICS (144)</a></li>
-							</ul>
-						</li>
-					</ul>
+				@include('includes.categories')
 			</div>
 			<div class="col-md-10">
 				<div class="project-item">
 					<div class="row">
 						<div class="col-md-12">
-							<h1> King Cole Ducks office by Studio Forma</h1>
-							<p> Posted: Landscape | Date: 10-November-2015 </p>
+							<h1> {!! $content->translation(Lang::locale())->first() ? $content->translation(Lang::locale())->first()->title: $content->title !!}</h1>
+							<p> Posted: {{$content->createdBy->lastname}} {{ $content->createdBy->firstname}} | Date: {{$content->created_at->format('d-F-Y')}} </p>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12">
 							<div class="image_view">
-								<img src="{{ asset('/images/uploads/sample_img.jpg') }}" />
+								@if(is_array(json_decode($content->images,true)))
+							    	@if(count(json_decode($content->images,true))>0)
+										<img src="{{json_decode($content->images,true)[0]}}" width="930px" height="522px"></a>
+									@else
+										<img src="{{ asset('/images/uploads/sample_img.jpg') }}" />
+									@endif
+								@else
+								   <img src="{{ asset('/images/uploads/sample_img.jpg') }}" />
+								@endif
 							</div>
 							<div class="d_img_thumbnail">
+							@if(is_array(json_decode($content->thumb_images,true)))
+								@foreach(json_decode($content->thumb_images,true) as $image)
+									<img src="{{$image}}" width="170px" height="80px"/>
+								@endforeach
+							@endif
+								<!--<img src="{{ asset('/images/slider/thumb1.jpg') }}" />
 								<img src="{{ asset('/images/slider/thumb1.jpg') }}" />
 								<img src="{{ asset('/images/slider/thumb1.jpg') }}" />
 								<img src="{{ asset('/images/slider/thumb1.jpg') }}" />
-								<img src="{{ asset('/images/slider/thumb1.jpg') }}" />
-								<img src="{{ asset('/images/slider/thumb1.jpg') }}" />
+								<img src="{{ asset('/images/slider/thumb1.jpg') }}" />-->
 							</div>
 						</div>
 					</div><!--/row-->
@@ -84,13 +64,7 @@
 							<div class="col-md-8">
 								<div class="project_description">
 									<h2>Description</h2>
-									<p>Ontario’s leading farm-to-fork duck producer – have transitioned to a new 10,000 sq ft office complex and farm fresh store located on the company’s main farm property in Newmarket, ON.
-	The new building combines a farm fresh store, gourmet presentation kitchen, corporate offices and boardroom. Located on the lower level is a new home for the farm production team including a lab, space for veterinary staff, a galley kitchen and event space for up to 180 people.</p>
-									<p><b>List</b></p>
-									<li>The new building combines</li>
-									<li>The new building combines</li>
-									<li>The new building combines</li>
-									<li>The new building combines</li>
+									{!! $content->content !!}
 								</div>	
 							</div>
 							<div class="col-md-4">

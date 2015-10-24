@@ -61,8 +61,30 @@ Route::group(['middleware' =>'locale'],function(){
     Route::get('/home', function(){
         return view('welcome');
     });
-    Route::get('categories/{categories}/projects/{projects?}',function($categories, $projects=''){
-        return view('project_list');
+    Route::get('categories/{categoryId}/projects/{projectId?}',function($categoryId, $projectId=''){
+        $category = \App\Category::find($categoryId);
+        $categories = \App\Category::where('level','1')->orderBy('ordering')->get();
+        if($projectId==''){
+            $parentCategory = \App\Category::where('parent_id',$categoryId)
+                                           ->orWhereIn('parent_id',DB::table('categories')->where('parent_id',$categoryId)->lists('id'))
+                                           ->lists('id');
+            $parentCategorySup = \App\Category::where('parent_id','in',(implode(' ,',$parentCategory->toArray())))->lists('id');
+            $contents = \App\Content::where('category_id',$categoryId)
+                                    ->orWhereIn('category_id', $parentCategory->toArray())
+                                    ->orderBy('created_at')->get();
+            return view('project_list')->with([
+                'category' => $category,
+                'categories' => $categories,
+                'contents' => $contents
+            ]);
+        }else{
+            $content = \App\Content::find($projectId);
+            return view('project_info')->with([
+                'category' => $category,
+                'categories' => $categories,
+                'content' => $content
+            ]);;
+        }
     });
     Route::get('locale/{locale?}',[
         'as' => 'locale.setocale',

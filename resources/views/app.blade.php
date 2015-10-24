@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<title>Green GLOBAL Dedign and Architecture</title>
+	<title>GREEN GLOBAL DESIGN AND ARCHITECTURE</title>
     <meta name="keywords" content="Green GLOBAL Dedign and Architecture">
 	<meta name="description" content="Green GLOBAL Dedign and Architecture">
     <meta name="author" content="Green GLOBAL Dedign and Architecture">
@@ -57,7 +57,7 @@ type='text/css'>
     <div id="popup">
         <span class="button b-close"><span>X</span></span>
         
-            <a href="{{ url()}}"><img src="{{ asset('/images/pop_ads.jpg')}}" /></a>
+            <a href="#"><img src="{{ asset('/images/pop_ads.jpg')}}" /></a>
         
          <div class="counter">
             <div class="counter-align" style="width:330px">
@@ -76,7 +76,7 @@ type='text/css'>
                 <div class="row">
                     <div class="col-md-3 col-sm-6 col-xs-6 bg-adjust">
                         <div id="greenad_logo">
-                           <img src="{{asset('/images/green-logo.png')}}" alt="logo">
+                           <a href="{{ url()}}"><img src="{{asset('/images/green-logo.png')}}" alt="logo"></a>
                         </div> <!-- /.logo -->
                     </div> <!-- /.col-md-4 -->
                     <div class="col-md-9 col-sm-6 col-xs-6 bg-adjust main-menu-bg">
@@ -88,11 +88,11 @@ type='text/css'>
                                     <h1> Green Global Architecture Design & Construction Co., Ltd.</h1>
                                 </div>
                                  <div class="col-md-5" id="LANGUAGES">
-                                    <i class="glyphicon glyphicon-earphone"> </i> <b>(+855)81 799 961</b>
-                                    &nbsp&nbsp&nbsp&nbspLanguage: 
-                                    <a href="{{url('locale/kh')}}"><img src="{{asset('/images/kh_lan.gif')}}" /></a>
-                                    <a href="{{url('locale/en')}}"><img src="{{asset('/images/en_lan.gif')}}" /></a>
-                                    <a href="{{url('locale/ch')}}"><img src="{{asset('/images/ch_lan.gif')}}" /></a>
+                                    <i class="glyphicon glyphicon-earphone"> </i> <b>@lang('application.telephone')</b>
+                                    &nbsp&nbsp&nbsp&nbsp @lang('application.language'): 
+                                    <a href="{{url('locale/kh')}}" title="KHMER"><img src="{{asset('/images/kh_lan.gif')}}" /></a>
+                                    <a href="{{url('locale/en')}}" title="ENGLISH"><img src="{{asset('/images/en_lan.gif')}}" /></a>
+                                    <a href="{{url('locale/ch')}}" title="CHINESE"><img src="{{asset('/images/ch_lan.gif')}}" /></a>
                                  </div>
                             </div>
                         	
@@ -127,14 +127,13 @@ type='text/css'>
             <div class="container">
                 <div class="row">
                     <div class="col-md-5">
-                        <h1 class="footer_headline">CONTACT US</h1>
+                        <h1 class="footer_headline">@lang('application.contactus')</h1>
                         <p>
-                            <i class="glyphicon glyphicon-earphone"></i>  (+855) 81 799 961<br />
+                            <i class="glyphicon glyphicon-earphone"></i>  @lang('application.telephone')<br />
                             <i class="glyphicon glyphicon-envelope"></i>  info@greenglobale.com
                         </p>
                         <p>
-                            #70, First Floor, Preah Shihanuk Blv,<br />
-Sangkat Tunle Basak Khan Chhomkamon, Phnom Penh.
+                            @lang('application.contactaddress')
                         </p>
                     </div>
 
@@ -155,7 +154,7 @@ Sangkat Tunle Basak Khan Chhomkamon, Phnom Penh.
         </div>
 
         <div class="box_copy_right">
-            Copy Right 2014 Green Architecture & Design
+            @lang('application.copyright')
         </div>
         
     </div>

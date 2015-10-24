@@ -30,9 +30,9 @@
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th width="15%">KHMER Title</th>
-                  <th width="15%">ENGLISH Title</th>
-                  <th width="15%">CHINESE Title</th>
+                  <th width="15%">Title</th>
+<!--                  <th width="15%">ENGLISH Title</th>
+                  <th width="15%">CHINESE Title</th>-->
                   <!--<th width="20%">Description</th>-->
                   <th>Parent</th>
                   <th>Ordering</th>
@@ -48,12 +48,12 @@
                 @foreach($categories as $key=>$category)
                 <tr>
                   <td>{{ ++$key }}</td>
-                  <td>
+<!--                  <td>
                     {!! $category->translation('kh')->first() ? $category->translation('kh')->first()->title: '<span class="label label-info">NOT YET TRANSLATE</span>' !!}
                   </td>
                   <td>
                     {!! $category->translation('ch')->first() ? $category->translation('kh')->first()->title: '<span class="label label-info">NOT YET TRANSLATE</span>' !!}
-                  </td>
+                  </td>-->
                   <td>
                   {{ str_limit($category->title, $limit = 50, $end = '...') }}</td>
                   

@@ -14,7 +14,7 @@
             <ul class="cbp-hsmenu">
                 @foreach($menus as $key=> $menu)
                 <li data-open="" class="">
-                    <a href="{!!$menu->category()->first() ? url('categories/'.$menu->category()->first()->id.'/projects') : '#'!!}">{!! $menu->translation(Lang::locale())->first() ? $menu->translation(Lang::locale())->first()->title: $menu->title !!}</a>
+                    <a href="{!!$menu->category()->first() ? url('categories/'.$menu->category()->first()->id.'/projects') : $menu->external_url ?:'#'!!}">{!! $menu->translation(Lang::locale())->first() ? $menu->translation(Lang::locale())->first()->title: $menu->title !!}</a>
                     @if($menu->category()->first())
                     <ul class="cbp-hssubmenu">
                         @foreach($menu->category()->first()->categories()->orderBy('ordering')->get()  as $category)
@@ -38,7 +38,7 @@
             <!--search box-->
             <div class="search_box"> 
                 <div class="input-group stylish-input-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="form-control" placeholder="@lang('application.search')">
                     <span class="input-group-addon">
                         <button type="submit">
                             <span class="glyphicon glyphicon-search"></span>
