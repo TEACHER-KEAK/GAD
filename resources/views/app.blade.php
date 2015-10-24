@@ -220,8 +220,10 @@ type='text/css'>
  });
  
  $('a').click(function(){
-     location.href= $(this).attr('href');
- })
+     if($(this).attr('href')!=''){
+        location.href= $(this).attr('href');
+     }
+ });
 </script>
 
 
