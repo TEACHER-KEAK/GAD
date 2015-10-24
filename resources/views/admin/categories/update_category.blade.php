@@ -49,7 +49,7 @@
                   <select name='parent_id' rows='5' id='module'  class='form-control fontawesome-select'    >
                     <option value="">-- Select Parent Category --</option>
                     @foreach($categories as $cat)
-                        <option value="{{ $category->id }}" @if($category->parent_id==$cat->id) selected @endif>
+                        <option value="{{ $cat->id }}" @if($category->parent_id==$cat->id) selected @endif>
                           @for($i=0;$i<$cat->level;$i++)
                             &#xf054;&#xf054;
                           @endfor

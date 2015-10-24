@@ -57,4 +57,7 @@ class Menu extends Model
         return $this->belongsTo('App\Menu', 'parent_id');
     }
     
+    public function category(){
+        return $this->belongsTo('App\Category','internal_url');
+    }
 }

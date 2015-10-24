@@ -41,6 +41,12 @@ class Authenticate
                 return redirect()->guest('auth/login');
             }
         }
+        
+        #logout if user not active
+        if($this->auth->check() && $this->auth->user()->status != 1){
+            $this->auth->logout();
+            return redirect('auth/login')->withErrors('sorry, this user account is deactivated');
+        }
 
         return $next($request);
     }

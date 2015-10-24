@@ -174,12 +174,21 @@ class MenuController extends Controller
     public function edit($id)
     {
         $menu = Menu::findOrFail($id);
+        $categories = DB::table('categories')->select('categories.id','categories.title','categories.level',
+                            DB::raw("(CASE categories.level 
+                                      WHEN 0 THEN LPAD(categories.ordering,5,0)
+                                      WHEN 1 THEN (SELECT CONCAT(LPAD(m.ordering,5,0), '.' ,LPAD(categories.ordering,5,0)) FROM categories as m WHERE m.id=categories.parent_id)
+                                      WHEN 2 THEN (SELECT CONCAT((SELECT LPAD(super.ordering,5,0) FROM categories AS super WHERE super.id = m.parent_id), '.' , LPAD(m.ordering,5,0), '.' ,LPAD(categories.ordering,5,0)) FROM categories as m WHERE m.id=categories.parent_id)
+                                      END) AS Pos"))
+                      ->where('status',1)
+                      ->orderBy('Pos')
+                      ->get();
         return View('admin.menus.update_menu')->with([
             'menus' => Menu::where('level','<','2')
                            ->where('status', 1)
                            ->where('id','<>',$id)
                            ->get(),
-            'categories' => Category::where('status',1)->get(),
+            'categories' => $categories,
             'menu' => $menu
         ]);
     }

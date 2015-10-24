@@ -32,42 +32,48 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');*/
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
-Route::get('/', function(){
-    return view('home');
-});
-
-Route::get('/about_us', function(){
-   return view('about_us'); 
-});
-
-Route::get('/contact', function(){
-   return view('contact') ;
-});
-
-Route::get('/projects', function(){
-   return view('project_list') ;
-});
-
-Route::get('/projectsinfo', function(){
-   return view('project_info') ;
-});
-Route::get('/about', function(){
-   return view('about') ;
-});
-
-Route::get('/home', function(){
-    return view('welcome');
+Route::group(['middleware' =>'locale'],function(){
+    
+    
+    Route::get('/', function(){
+        return view('home');
+    });
+    
+    Route::get('/about_us', function(){
+       return view('about_us'); 
+    });
+    
+    Route::get('/contact', function(){
+       return view('contact') ;
+    });
+    
+    Route::get('/projects', function(){
+       return view('project_list') ;
+    });
+    
+    Route::get('/projectsinfo', function(){
+       return view('project_info') ;
+    });
+    Route::get('/about', function(){
+       return view('about') ;
+    });
+    
+    Route::get('/home', function(){
+        return view('welcome');
+    });
+    Route::get('categories/{categories}/projects/{projects?}',function($categories, $projects=''){
+        return view('project_list');
+    });
+    Route::get('locale/{locale?}',[
+        'as' => 'locale.setocale',
+        'uses' => 'LocaleController@setLocale'
+    ]);
 });
 
 
 Route::get('/admin/login', function () {
     return view('login');
 });
-
-/*Route::get('/admin/users', function () {
-    $users = App\User::all();
-    return view('admin.users.user')->with('users', $users);
-});*/
 
 Route::get('admin/users/change_password',[
     'middleware' => ['auth'],
@@ -142,3 +148,11 @@ Route::group(['prefix' => 'rest/admin'
     Route::post('/sliders', ['uses' => 'SliderController@Json']);
     
 });
+
+View::composer('includes.header', function($view){
+   $menus = \App\Menu::where('status',1)->get();
+   $view->with([
+       'menus'=> $menus
+   ]);
+});
+
