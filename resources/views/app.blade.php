@@ -330,6 +330,9 @@ Sangkat Tunle Basak Khan Chhomkamon, Phnom Penh.
  $('a').click(function(){
      location.href= $(this).attr('href');
  })
+<<<<<<< HEAD
+>>>>>>> parent of 8af9ca9... CHECK CONDITION
+=======
 >>>>>>> parent of 8af9ca9... CHECK CONDITION
 </script>
 
