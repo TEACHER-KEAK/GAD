@@ -3,18 +3,18 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<title>Green GLOBAL Dedign and Architecture</title>
+	<title>GREEN GLOBAL DESIGN AND ARCHITECTURE</title>
     <meta name="keywords" content="Green GLOBAL Dedign and Architecture">
 	<meta name="description" content="Green GLOBAL Dedign and Architecture">
     <meta name="author" content="Green GLOBAL Dedign and Architecture">
 
 
 	<!--Plugin and default Stylesheets -->
-	 <link href="./dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-	 <link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-	 <link href="./dist/css/style.css" rel="stylesheet" type="text/css" />
+	 <link href="{{ asset('/dist/css/AdminLTE.min.css')}}" rel="stylesheet" type="text/css" />
+	 <link href="{{ asset('/bootstrap/css/bootstrap.css')}}" rel="stylesheet" type="text/css" />
+	 <link href="{{ asset('/dist/css/style.css')}}" rel="stylesheet" type="text/css" />
 	 <!-- slider -->
-     <link href="dist/css/owl-carousel.css" rel="stylesheet" type="text/css" />
+     <link href="{{ asset('/dist/css/owl-carousel.css')}}" rel="stylesheet" type="text/css" />
 	 
 
 	 <!-- Google Fonts -->
@@ -27,21 +27,17 @@ type='text/css'>
     <!-- Ionicons -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
 
-    <script src="dist/js/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="{{ asset('/dist/js/vendor/modernizr-2.6.2.min.js')}}"></script>
 	<!-- favicon -->
-	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-
-    <!-- Slide Thumbnail Image Gallery-->
-    <link rel="stylesheet" href="dist/css/thumnail_slide_misc.css">
-    <link rel="stylesheet" href="dist/css/thumnail_slide_style.css">
+	<link rel="shortcut icon" href="{{ asset('/images/favicon.ico')}}" type="image/x-icon" />
 
     <!-- dropdown menu thumnail -->
-    <link rel="stylesheet" type="text/css" href="plugins/dropdown-menu/css/default.css" />
-    <link rel="stylesheet" type="text/css" href="plugins/dropdown-menu/css/component.css" />
-    <script src="plugins/dropdown-menu/js/modernizr.custom.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('/plugins/dropdown-menu/css/default.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('/plugins/dropdown-menu/css/component.css')}}" />
+    <script src="{{ asset('/plugins/dropdown-menu/js/modernizr.custom.js')}}"></script>
 
     <!-- popup master -->
-     <link rel="stylesheet" type="text/css" href="plugins/bpopup-master/style-popup.css" />
+     <link rel="stylesheet" type="text/css" href="{{ asset('/plugins/bpopup-master/style-popup.css')}}" />
 	
 
 </head>
@@ -61,10 +57,10 @@ type='text/css'>
     <div id="popup">
         <span class="button b-close"><span>X</span></span>
         
-            <img src="images/pop_ads.jpg" />
+            <a href="#"><img src="{{ asset('/images/pop_ads.jpg')}}" /></a>
         
          <div class="counter">
-            <div class="counter-align">
+            <div class="counter-align" style="width:330px">
                 <span>This popup display in</span>
                 <span class="timer"></span>
                 <span>second,If</span>
@@ -80,7 +76,7 @@ type='text/css'>
                 <div class="row">
                     <div class="col-md-3 col-sm-6 col-xs-6 bg-adjust">
                         <div id="greenad_logo">
-                           <img src="images/green-logo.png" alt="logo">
+                           <a href="{{ url()}}"><img src="{{asset('/images/green-logo.png')}}" alt="logo"></a>
                         </div> <!-- /.logo -->
                     </div> <!-- /.col-md-4 -->
                     <div class="col-md-9 col-sm-6 col-xs-6 bg-adjust main-menu-bg">
@@ -91,115 +87,20 @@ type='text/css'>
                                 <div class="col-md-7">
                                     <h1> Green Global Architecture Design & Construction Co., Ltd.</h1>
                                 </div>
-                                 <div class="col-md-5">
-                                    <i class="glyphicon glyphicon-earphone"> </i> <b>(+855)81 799 961</b>
-                                 
-                                    &nbsp&nbsp&nbsp&nbspLanguage: <img src="images/kh_lan.gif">
-                                    <img src="images/en_lan.gif">
-                                    <img src="images/ch_lan.gif">
+                                 <div class="col-md-5" id="LANGUAGES">
+                                    <i class="glyphicon glyphicon-earphone"> </i> <b>@lang('application.telephone')</b>
+                                    &nbsp&nbsp&nbsp&nbsp @lang('application.language'): 
+                                    <a href="{{url('locale/kh')}}" title="KHMER"><img src="{{asset('/images/kh_lan.gif')}}" /></a>
+                                    <a href="{{url('locale/en')}}" title="ENGLISH"><img src="{{asset('/images/en_lan.gif')}}" /></a>
+                                    <a href="{{url('locale/ch')}}" title="CHINESE"><img src="{{asset('/images/ch_lan.gif')}}" /></a>
                                  </div>
                             </div>
                         	
                          </div>
                     </div> <!-- /.col-md-8 -->
                 </div> <!-- /.row -->
-                 <div class="main-menu-w">
-                    <div class="container">
-                           <!-- <ul>
-                                <li><a href="#front">Home</a></li>
-                                <li><a href="#services">MAIN PROJECT</a></li>
-                                <li><a href="#products">FURNITURE</a></li>
-                                <li><a href="#products">CATALOG</a></li>
-                                <li><a href="#products">ABOUT US</a></li>
-                                <li><a href="#contact">CONTACT</a></li>
-                            </ul>
-                        </div> <!-- /.main-menu -->
-                <nav class="cbp-hsmenu-wrapper" id="cbp-hsmenu-wrapper">
-                    <div class="cbp-hsinner">
-                        <ul class="cbp-hsmenu">
-                            <li>
-                                <a href="#">MAIN PROJECTS</a>
-                                <ul class="cbp-hssubmenu">
-                                    <li>
-                                        <a href="#"><img src="images/1.png" alt="img01"/>
-                                            <span>Landscape</span>
-                                        </a>
-                                         <ul class="chil-sub-cat">
-                                                <li><a href="#"><span>Gardens</span></a></li>
-                                                 <li><a href="#"><span>Park</span></a></li>
-                                          </ul>
-
-                                    </li>
-                                    <li><a href="#"><img src="images/2.png" alt="img02"/><span>Exterior Decoration </span></a>
-                                        <ul class="chil-sub-cat">
-                                            <li><a href="#"><span>Gardens</span></a></li>
-                                            <li><a href="#"><span>Park</span></a></li>
-                                            <li><a href="#"><span>Apartment Flat</span></a></li>
-                                            <li><a href="#"><span>Education</span></a></li>
-                                            <li><a href="#"><span>FLat</span></a></li>
-                                            <li><a href="#"><span>Hospital</span></a></li>
-                                            <li><a href="#"><span>Hotel</span></a></li>
-                                            <li><a href="#"><span>House</span></a></li>
-                                            <li><a href="#"><span>Office</span></a></li>
-                                            <li><a href="#"><span>Restaurant</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#"><img src="images/3.png" alt="img03"/><span>Interior Decoration </span></a>
-                                         <ul class="chil-sub-cat">
-                                               
-                                            <li><a href="#"><span>Bathroom</span></a></li>
-                                            <li><a href="#"><span>Dinningroom</span></a></li>
-                                            <li><a href="#"><span>Karaok</span></a></li>
-                                            <li><a href="#"><span>Livingroom</span></a></li>
-                                            <li><a href="#"><span>Kitchen</span></a></li>
-                                            <li><a href="#"><span>Restaurant</span></a></li>
-                                        
-                                          </ul>
-                                    </li>
-                                    <li><a href="#"><img src="images/4.png" alt="img04"/><span>Furniture Design</span></a></li>
-                                    <li><a href="#"><img src="images/5.png" alt="img05"/><span>M&E Water Supply </span></a></li>
-                                    <li style="border:none;"><a href="#"><img src="images/6.png" alt="img06"/><span>Construction 
-                                    Constructor</span></a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">FURNITURE</a>
-                                <ul class="cbp-hssubmenu cbp-hssub-rows">
-                                    <li><a href="#"><img src="images/7.png" alt="img07"/><span>Counter</span></a></li>
-                                    <li><a href="#"><img src="images/8.png" alt="img08"/><span>Table</span></a></li>
-                                    <li><a href="#"><img src="images/9.png" alt="img09"/><span>Display Cabinet</span></a></li>
-                                    <li><a href="#"><img src="images/10.png" alt="img10"/><span>Shoes Cabinet</span></a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">CATALOG</a>
-                                <ul class="cbp-hssubmenu">
-                                    <li><a href="#"><img src="images/10.png" alt="img10"/><span>Fresh Juice</span></a></li>
-                                    <li><a href="#"><img src="images/6.png" alt="img06"/><span>Sweet Rum</span></a></li>
-                                    <li><a href="#"><img src="images/9.png" alt="img09"/><span>Eggy Liquor</span></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">ABOUT US</a></li>
-                            <li><a href="#">CONTACT</a></li>
-                            <!--search box-->
-                            <div class="search_box"> 
-                                <div class="input-group stylish-input-group">
-                                    <input type="text" class="form-control"  placeholder="Search" >
-                                    <span class="input-group-addon">
-                                        <button type="submit">
-                                            <span class="glyphicon glyphicon-search"></span>
-                                        </button>  
-                                    </span>
-                                </div>
-                             </div>
-                             <!--search box-->
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-            </div>
-                
+                 
+                @include('includes.header')
 
                 <div class="row">
                     <div class="col-md-12">
@@ -226,14 +127,13 @@ type='text/css'>
             <div class="container">
                 <div class="row">
                     <div class="col-md-5">
-                        <h1 class="footer_headline">CONTACT US</h1>
+                        <h1 class="footer_headline">@lang('application.contactus')</h1>
                         <p>
-                            <i class="glyphicon glyphicon-earphone"></i>  (+855) 81 799 961<br />
+                            <i class="glyphicon glyphicon-earphone"></i>  @lang('application.telephone')<br />
                             <i class="glyphicon glyphicon-envelope"></i>  info@greenglobale.com
                         </p>
                         <p>
-                            #70, First Floor, Preah Shihanuk Blv,<br />
-Sangkat Tunle Basak Khan Chhomkamon, Phnom Penh.
+                            @lang('application.contactaddress')
                         </p>
                     </div>
 
@@ -254,33 +154,27 @@ Sangkat Tunle Basak Khan Chhomkamon, Phnom Penh.
         </div>
 
         <div class="box_copy_right">
-            Copy Right 2014 Green Architecture & Design
+            @lang('application.copyright')
         </div>
         
     </div>
     <!-- script -->
-    <script src="dist/js/vendor/jquery-1.10.1.min.js"></script>
+    <script src="{{ asset('/dist/js/vendor/jquery-1.10.1.min.js')}}"></script>
     <script>window.jQuery || document.write('<script src="dist/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
-    <script src="dist/js/jquery.easing-1.3.js"></script>
-    <script src="bootstrap/js/bootstrap.js"></script>
-    <script src="dist/js/plugins.js"></script>
-    <script src="dist/js/main.js"></script>
-    <script src="dist/js/plugins_carousel.js"></script>
-    <script src="dist/js/main_carousel.js"></script>
+    <script src="{{ asset('/dist/js/jquery.easing-1.3.js')}}"></script>
+    <script src="{{ asset('/bootstrap/js/bootstrap.js')}}"></script>
+    <script src="{{ asset('/dist/js/plugins.js')}}"></script>
+    <script src="{{ asset('/dist/js/main.js')}}"></script>
+    <script src="{{ asset('/dist/js/plugins_carousel.js')}}"></script>
+    <script src="{{ asset('/dist/js/main_carousel.js')}}"></script>
 
-    <!--thumbnail Slide-->
-
-        <script src="dist/js/jquery.lazyload.min.js"></script>
-        <script src="dist/js/main_slide_thumnail.js"></script>
-        <script src="dist/js/plugins_slide_thumnail.js"></script> 
-
-    <script src="plugins/dropdown-menu/js/cbpHorizontalSlideOutMenu.js"></script>
+    <script src="{{ asset('/plugins/dropdown-menu/js/cbpHorizontalSlideOutMenu.js')}}"></script>
         <script>
             var menu = new cbpHorizontalSlideOutMenu( document.getElementById( 'cbp-hsmenu-wrapper' ) );
         </script>
 
     <!-- pop up -->
-    <script type="text/javascript" src="plugins/bpopup-master/jquery.bpopup.js"></script>
+    <script type="text/javascript" src="{{ asset('/plugins/bpopup-master/jquery.bpopup.js')}}"></script>
     <script type="text/javascript">
  ;(function($){
      $(function() {
@@ -321,19 +215,15 @@ Sangkat Tunle Basak Khan Chhomkamon, Phnom Penh.
      });
     });
  })(jQuery);
-<<<<<<< HEAD
-=======
  $("#LANGUAGES img").click(function(){
     location.href= $(this).parent('a').attr('href');
  });
  
  $('a').click(function(){
-     location.href= $(this).attr('href');
- })
-<<<<<<< HEAD
->>>>>>> parent of 8af9ca9... CHECK CONDITION
-=======
->>>>>>> parent of 8af9ca9... CHECK CONDITION
+     if($(this).attr('href')!=''){
+        location.href= $(this).attr('href');
+     }
+ });
 </script>
 
 
