@@ -321,6 +321,16 @@ Sangkat Tunle Basak Khan Chhomkamon, Phnom Penh.
      });
     });
  })(jQuery);
+<<<<<<< HEAD
+=======
+ $("#LANGUAGES img").click(function(){
+    location.href= $(this).parent('a').attr('href');
+ });
+ 
+ $('a').click(function(){
+     location.href= $(this).attr('href');
+ })
+>>>>>>> parent of 8af9ca9... CHECK CONDITION
 </script>
 
 

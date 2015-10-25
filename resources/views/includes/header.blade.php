@@ -14,18 +14,18 @@
             <ul class="cbp-hsmenu">
                 @foreach($menus as $key=> $menu)
                 <li data-open="" class="">
-                    <a href="{!!$menu->category()->first() ? URL::to('categories/'.$menu->category()->first()->id.'/projects') : $menu->external_url ?:'#'!!}">{!! $menu->translation(Lang::locale())->first() ? $menu->translation(Lang::locale())->first()->title: $menu->title !!}</a>
+                    <a href="{!!$menu->category()->first() ? url('categories/'.$menu->category()->first()->id.'/projects') : $menu->external_url ?:'#'!!}">{!! $menu->translation(Lang::locale())->first() ? $menu->translation(Lang::locale())->first()->title: $menu->title !!}</a>
                     @if($menu->category()->first())
                     <ul class="cbp-hssubmenu">
                         @foreach($menu->category()->first()->categories()->orderBy('ordering')->get()  as $category)
                         <li>
-                            <a href="{{URL::to('categories/'.$category->id.'/projects')}}"><img src="{{$category->image}}" alt="img02">
+                            <a href="{{url('categories/'.$category->id.'/projects')}}"><img src="{{$category->image}}" alt="img02">
                                 <span>{!! $category->translation(Lang::locale())->first() ? $category->translation(Lang::locale())->first()->title: $category->title !!}</span>
                             </a>
                             @if($category->categories()->count()>0)
                              <ul class="chil-sub-cat">
                                 @foreach($category->categories()->orderBy('ordering')->get() as $subCategory)
-                                <li><a href="{{URL::to('categories/'.$subCategory->id.'/projects')}}"><span>{{$subCategory->translation(Lang::locale())->first() ? $subCategory->translation(Lang::locale())->first()->title: $subCategory->title }}</span></a></li>
+                                <li><a href="{{url('categories/'.$subCategory->id.'/projects')}}"><span>{{$subCategory->translation(Lang::locale())->first() ? $subCategory->translation(Lang::locale())->first()->title: $subCategory->title }}</span></a></li>
                                 @endforeach
                              </ul>
                              @endif

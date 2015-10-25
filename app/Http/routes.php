@@ -178,3 +178,11 @@ View::composer('includes.header', function($view){
    ]);
 });
 
+
+Route::resource('emails', 'MailController');
+
+/*Route::post('/sendemail',function(){
+    Mail::send('admin.users.change_password_user', ['user' => Auth::user()], function($message) {
+        $message->to('darapenhchet@gmail.com', 'DARA PENHCHET')->subject('GREEN ARCHITECURE AND DESIGN.');
+    }); 
+});*/
