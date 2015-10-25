@@ -131,9 +131,9 @@ class UserController extends Controller
         //
     }
     
-    public function changePassword(){
+    /*public function changePassword(){
         return View('admin.users.change_password_user');
-    }
+    }*/
     
     public function updateUser(Request $request){
         $this->validate($request, [
@@ -153,6 +153,20 @@ class UserController extends Controller
         //$user->fill($request->all())->update();//save($request->all());
         
         Session::flash('flash_message', 'User successfully updated!');
+        
+        return redirect()->back();
+    }
+    
+    public function changePassword(Request $request){
+        $this->validate($request, [
+            'password' => 'required|confirmed|min:6',
+        ]);
+        
+        $user = User::findOrFail($request->input('id'));
+        
+        $user->update($request->all());
+        
+        Session::flash('flash_message', 'User successfully changed the password!');
         
         return redirect()->back();
     }

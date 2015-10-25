@@ -21,7 +21,12 @@ class DashboardController extends Controller
         //return trans('administrators.dashboard');
         //$user = Auth::user();
         //return $user->toJson();
-        return View('admin.dashboard');
+        return View('admin.dashboard')->with([
+                'user_total' => \App\User::count(),
+                'content_total' => \App\Content::count(),
+                'category_total' => \App\Category::count(),
+                'slider_total' => \App\Slider::count()
+            ]);
     }
 
     /**

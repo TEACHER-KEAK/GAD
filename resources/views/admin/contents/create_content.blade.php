@@ -45,11 +45,16 @@
               <div class="form-group">
                 <label for="ipt" class=" control-label col-md-2 text-right">Category</label>
                 <div class="col-md-10">
-                  <select name='category_id' rows='5' id='module'  class='form-control ' required>
+                  <select name='category_id' rows='5' id='module'  class='form-control fontawesome-select' required>
                     <option value="">-- Select Category --</option>
-                    @foreach($categories as $category)
-                      <option value="{{ $category->id }}">{{ $category->title}}</option>
-                    @endforeach
+                     @foreach($categories as $category)
+                        <option value="{{ $category->id }}">
+                          @for($i=0;$i<$category->level;$i++)
+                            &#xf054;&#xf054;
+                          @endfor
+                          {{ $category->title}}
+                        </option>
+                      @endforeach
                   </select>     
                 </div> 
               </div>
@@ -73,6 +78,17 @@
 									</table>
                   </div>    
               </div>
+              <div class="form-group   " >
+                <label for="ipt" class=" control-label col-md-2 text-right"> Show Home Page</label> 
+                <div class="col-md-10">
+                  <label class="radio-inline  ">             
+                    <input type="radio" name="show_home_page" value="1"/> Yes
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="show_home_page" value="0" checked="checked"/> No
+                  </label>    
+                </div> 
+              </div>  
               <div class="form-group   " >
                 <label for="ipt" class=" control-label col-md-2 text-right"> Status</label> 
                 <div class="col-md-10 menutype">

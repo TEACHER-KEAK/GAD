@@ -14,5 +14,11 @@ return [
     */
 
     'dashboard' => 'ផ្ទាំងព័ត៌មាន',
+    'contents' => 'អត្ថបទ',
+    'categories' => 'ប្រភេទ'
+    'menus' => 'MENUS',
+    'slideshow' => 'SLIDESHOW',
+    'users' => 'USERS',
+    'settings' => 'SETTINGS',
 
 ];

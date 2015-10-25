@@ -16,8 +16,15 @@ class Content extends Model
         'updated_by',
         'images',
         'status',
-        'category_id'
+        'category_id',
+        'thumb_images',
+        'show_home_page'
     ];
+    
+    /*public function getCreatedAtAttribute()
+    {
+        return $this->attributes['created_at']->format('m/d/Y');
+    }*/
     
     public function createdBy(){
         return $this->belongsTo('App\User', 'created_by');

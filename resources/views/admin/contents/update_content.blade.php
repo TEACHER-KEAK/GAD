@@ -46,10 +46,15 @@
               <div class="form-group">
                 <label for="ipt" class=" control-label col-md-2 text-right">Category</label>
                 <div class="col-md-10">
-                  <select name='category_id' rows='5' id='module'  class='form-control ' required>
+                  <select name='category_id' rows='5' id='module'  class='form-control fontawesome-select' required>
                     <option value="">-- Select Category --</option>
                     @foreach($categories as $category)
-                      <option value="{{ $category->id }}" @if($content->category_id==$category->id) selected @endif>{{ $category->title}}</option>
+                      <option value="{{ $category->id }}" @if($content->category_id==$category->id) selected @endif>
+                        @for($i=0;$i<$category->level;$i++)
+                          &#xf054;&#xf054;
+                        @endfor
+                        {{ $category->title}}
+                      </option>
                     @endforeach
                   </select>     
                 </div> 
@@ -90,6 +95,17 @@
 									</table>
                   </div>    
               </div>
+              <div class="form-group   " >
+                <label for="ipt" class=" control-label col-md-2 text-right"> Show Home Page</label> 
+                <div class="col-md-10">
+                  <label class="radio-inline  ">             
+                    <input type="radio" name="show_home_page" value="1"@if($content->show_home_page==1) checked="checked" @endif /> Yes
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="show_home_page" value="0" @if($content->show_home_page==0) checked="checked" @endif /> No
+                  </label>    
+                </div> 
+              </div> 
               <div class="form-group   " >
                 <label for="ipt" class=" control-label col-md-2 text-right"> Status</label> 
                 <div class="col-md-10 menutype">

@@ -60,7 +60,7 @@
                   <input type="text" name="title" id="title" value="{!! old('title') !!}" class="form-control" placeholder="Enter your menu title" required/> 
                 </div> 
               </div> 
-              <div class="form-group">
+              <div class="form-group" style="display:none;">
                 <label class="col-sm-2 text-right">Description</label>
                   <div class="col-sm-10">  
                     <textarea id="description" name="description">{{ old('description') }}</textarea>

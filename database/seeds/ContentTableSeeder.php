@@ -18,6 +18,7 @@ class ContentTableSeeder extends Seeder
                 'title' => $faker->sentence,
                 'content' => $faker->paragraph(4),
                 'images' => '[]',
+                'thumb_images' => '[]',
                 'category_id' => '1',
                 'visitor_count' => '0',
                 'created_by' => '2',

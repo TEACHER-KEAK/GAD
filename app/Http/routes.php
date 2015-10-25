@@ -32,42 +32,70 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');*/
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
-Route::get('/', function(){
-    return view('home');
-});
-
-Route::get('/about_us', function(){
-   return view('about_us'); 
-});
-
-Route::get('/contact', function(){
-   return view('contact') ;
-});
-
-Route::get('/projects', function(){
-   return view('project_list') ;
-});
-
-Route::get('/projectsinfo', function(){
-   return view('project_info') ;
-});
-Route::get('/about', function(){
-   return view('about') ;
-});
-
-Route::get('/home', function(){
-    return view('welcome');
+Route::group(['middleware' =>'locale'],function(){
+    
+    
+    Route::get('/', function(){
+        return view('home');
+    });
+    
+    Route::get('/about_us', function(){
+       return view('about_us'); 
+    });
+    
+    Route::get('/contact', function(){
+       return view('contact') ;
+    });
+    
+    Route::get('/projects', function(){
+       return view('project_list') ;
+    });
+    
+    Route::get('/projectsinfo', function(){
+       return view('project_info') ;
+    });
+    Route::get('/about', function(){
+       return view('about') ;
+    });
+    
+    Route::get('/home', function(){
+        return view('welcome');
+    });
+    Route::get('categories/{categoryId}/projects/{projectId?}',function($categoryId, $projectId=''){
+        $category = \App\Category::find($categoryId);
+        $categories = \App\Category::where('level','1')->orderBy('ordering')->get();
+        if($projectId==''){
+            $parentCategory = \App\Category::where('parent_id',$categoryId)
+                                           ->orWhereIn('parent_id',DB::table('categories')->where('parent_id',$categoryId)->lists('id'))
+                                           ->lists('id');
+            $parentCategorySup = \App\Category::where('parent_id','in',(implode(' ,',$parentCategory->toArray())))->lists('id');
+            $contents = \App\Content::where('category_id',$categoryId)
+                                    ->orWhereIn('category_id', $parentCategory->toArray())
+                                    ->orderBy('created_at')->get();
+            return view('project_list')->with([
+                'category' => $category,
+                'categories' => $categories,
+                'contents' => $contents
+            ]);
+        }else{
+            $content = \App\Content::find($projectId);
+            return view('project_info')->with([
+                'category' => $category,
+                'categories' => $categories,
+                'content' => $content
+            ]);;
+        }
+    });
+    Route::get('locale/{locale?}',[
+        'as' => 'locale.setocale',
+        'uses' => 'LocaleController@setLocale'
+    ]);
 });
 
 
 Route::get('/admin/login', function () {
     return view('login');
 });
-
-/*Route::get('/admin/users', function () {
-    $users = App\User::all();
-    return view('admin.users.user')->with('users', $users);
-});*/
 
 Route::get('admin/users/change_password',[
     'middleware' => ['auth'],
@@ -93,6 +121,7 @@ Route::group(['prefix' => 'admin'
     Route::resource('categories','CategoryController');  
     
     Route::post('users/updateuser','UserController@UpdateUser');
+    Route::post('users/changepassword','UserController@ChangePassword');
     Route::resource('users','UserController');
     
     Route::post('contents/updatecontent','ContentController@UpdateContent');
@@ -101,13 +130,13 @@ Route::group(['prefix' => 'admin'
     
     Route::post('menus/updatemenu/{id}','MenuController@UpdateMenu');
     Route::post('menus/translation','MenuController@Translation');
-    //Route::get('menus/translate/{id}','MenuController@Translate');
     Route::resource('menus', 'MenuController');
     
     Route::resource('settings', 'SettingController');
     
     Route::resource('languages', 'LanguageController');
     
+    Route::post('sliders/updateslider/','SliderController@UpdateSlider');
     Route::resource('sliders', 'SliderController');
     
 
@@ -138,4 +167,14 @@ Route::group(['prefix' => 'rest/admin'
     
     Route::post('/users', ['uses' => 'UserController@Json']);
     
+    Route::post('/sliders', ['uses' => 'SliderController@Json']);
+    
 });
+
+View::composer('includes.header', function($view){
+   $menus = \App\Menu::where('status',1)->get();
+   $view->with([
+       'menus'=> $menus
+   ]);
+});
+

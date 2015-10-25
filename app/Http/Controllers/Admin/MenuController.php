@@ -23,11 +23,11 @@ class MenuController extends Controller
     {
         //dd(Menu::all());
         $menus = DB::table('menus')->select('menus.*','parent.title As parent_title','users.email AS author','editor.email As editor',
-                            DB::raw('(CASE menus.level 
-                                      WHEN 0 THEN menus.ordering*10000
-                                      WHEN 1 THEN (SELECT ((m.ordering*10000)+(1000*menus.ordering)) FROM menus as m WHERE m.id=menus.parent_id)
-                                      WHEN 2 THEN (SELECT ((m.ordering*10000)+(1000+menus.ordering))+1 FROM menus as m WHERE m.id=menus.parent_id)
-                                      END) AS Pos'))
+                            DB::raw("(CASE menus.level 
+                                      WHEN 0 THEN menus.ordering
+                                      WHEN 1 THEN (SELECT CONCAT(m.ordering, '.' ,menus.ordering) FROM menus as m WHERE m.id=menus.parent_id)
+                                      WHEN 2 THEN (SELECT CONCAT((SELECT super.ordering FROM menus AS super WHERE super.id = m.parent_id), '.' , m.ordering, '.' ,menus.ordering) FROM menus as m WHERE m.id=menus.parent_id)
+                                      END) AS Pos"))
                             ->leftJoin('menus As parent', 'parent.id', '=', 'menus.parent_id')
                             ->leftJoin('users', 'users.id', '=', 'menus.created_by')
                             ->leftJoin('users AS editor', 'editor.id', '=', 'menus.updated_by')
@@ -50,11 +50,11 @@ class MenuController extends Controller
         }
         
         $menus = DB::table('menus')->select('menus.*','parent.title As parent_title','users.email AS author','editor.email As editor',
-                            DB::raw('(CASE menus.level 
-                                      WHEN 0 THEN menus.ordering*10000
-                                      WHEN 1 THEN (SELECT ((m.ordering*10000)+(1000*menus.ordering)) FROM menus as m WHERE m.id=menus.parent_id)
-                                      WHEN 2 THEN (SELECT ((m.ordering*10000)+(1000*menus.ordering))+1 FROM menus as m WHERE m.id=menus.parent_id)
-                                      END) AS Pos'))
+                            DB::raw("(CASE menus.level 
+                                      WHEN 0 THEN menus.ordering
+                                      WHEN 1 THEN (SELECT CONCAT(m.ordering, '.' ,menus.ordering) FROM menus as m WHERE m.id=menus.parent_id)
+                                      WHEN 2 THEN (SELECT CONCAT((SELECT super.ordering FROM menus AS super WHERE super.id = m.parent_id), '.' , m.ordering, '.' ,menus.ordering) FROM menus as m WHERE m.id=menus.parent_id)
+                                      END) AS Pos"))
                             ->leftJoin('menus As parent', 'parent.id', '=', 'menus.parent_id')
                             ->leftJoin('users', 'users.id', '=', 'menus.created_by')
                             ->leftJoin('users AS editor', 'editor.id', '=', 'menus.updated_by')
@@ -78,11 +78,20 @@ class MenuController extends Controller
      */
     public function create()
     {
+        $categories = DB::table('categories')->select('categories.id','categories.title','categories.level',
+                            DB::raw("(CASE categories.level 
+                                      WHEN 0 THEN LPAD(categories.ordering,5,0)
+                                      WHEN 1 THEN (SELECT CONCAT(LPAD(m.ordering,5,0), '.' ,LPAD(categories.ordering,5,0)) FROM categories as m WHERE m.id=categories.parent_id)
+                                      WHEN 2 THEN (SELECT CONCAT((SELECT LPAD(super.ordering,5,0) FROM categories AS super WHERE super.id = m.parent_id), '.' , LPAD(m.ordering,5,0), '.' ,LPAD(categories.ordering,5,0)) FROM categories as m WHERE m.id=categories.parent_id)
+                                      END) AS Pos"))
+                      ->where('status',1)
+                      ->orderBy('Pos')
+                      ->get();
         return View('admin.menus.create_menu')->with([
             'menus' => Menu::where('level','<','2')
                                     ->where('status', 1)
                                     ->get(),
-            'categories' => Category::where('status',1)->get()
+            'categories' => $categories//Category::where('status',1)->get()
         ]);
     }
 
@@ -165,12 +174,21 @@ class MenuController extends Controller
     public function edit($id)
     {
         $menu = Menu::findOrFail($id);
+        $categories = DB::table('categories')->select('categories.id','categories.title','categories.level',
+                            DB::raw("(CASE categories.level 
+                                      WHEN 0 THEN LPAD(categories.ordering,5,0)
+                                      WHEN 1 THEN (SELECT CONCAT(LPAD(m.ordering,5,0), '.' ,LPAD(categories.ordering,5,0)) FROM categories as m WHERE m.id=categories.parent_id)
+                                      WHEN 2 THEN (SELECT CONCAT((SELECT LPAD(super.ordering,5,0) FROM categories AS super WHERE super.id = m.parent_id), '.' , LPAD(m.ordering,5,0), '.' ,LPAD(categories.ordering,5,0)) FROM categories as m WHERE m.id=categories.parent_id)
+                                      END) AS Pos"))
+                      ->where('status',1)
+                      ->orderBy('Pos')
+                      ->get();
         return View('admin.menus.update_menu')->with([
             'menus' => Menu::where('level','<','2')
                            ->where('status', 1)
                            ->where('id','<>',$id)
                            ->get(),
-            'categories' => Category::where('status',1)->get(),
+            'categories' => $categories,
             'menu' => $menu
         ]);
     }

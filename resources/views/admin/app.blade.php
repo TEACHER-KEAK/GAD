@@ -38,6 +38,9 @@
         <link rel="stylesheet" href="{{ asset('/bower_components/alertify/themes/alertify.core.css') }}" />
         <link rel="stylesheet" href="{{ asset('/bower_components/alertify/themes/alertify.bootstrap.css') }}" />
         <style>
+            .fontawesome-select {
+                font-family: 'FontAwesome', 'Helvetica';
+            }
             .pagination>.active>a, 
             .pagination>.active>a:focus, 
             .pagination>.active>a:hover, 
@@ -157,6 +160,7 @@
         <script src="{{ asset('/bower_components/nanobar/nanobar.js') }}"></script>
         <script src="{{ asset('/bower_components/alertify/lib/alertify.min.js') }}"></script>
         <script src="{{ asset('/plugins/pace/pace.min.js') }}"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         
         @yield('script')
     </body>

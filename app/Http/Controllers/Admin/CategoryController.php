@@ -46,9 +46,18 @@ class CategoryController extends Controller
      */
     public function create()
     {
+         $categories = DB::table('categories')->select('categories.id','categories.title','categories.level',
+                            DB::raw("(CASE categories.level 
+                                      WHEN 0 THEN LPAD(categories.ordering,5,0)
+                                      WHEN 1 THEN (SELECT CONCAT(LPAD(m.ordering,5,0), '.' ,LPAD(categories.ordering,5,0)) FROM categories as m WHERE m.id=categories.parent_id)
+                                      WHEN 2 THEN (SELECT CONCAT((SELECT LPAD(super.ordering,5,0) FROM categories AS super WHERE super.id = m.parent_id), '.' , LPAD(m.ordering,5,0), '.' ,LPAD(categories.ordering,5,0)) FROM categories as m WHERE m.id=categories.parent_id)
+                                      END) AS Pos"))
+                      ->where('status',1)
+                      ->orderBy('Pos')
+                      ->get();
         return View('admin.categories.create_category')->with([
-            'categories' => Category::where('status',1)->get()
-        ]);
+            'categories' => $categories//Category::where('status', 1)->get()
+            ]);
     }
 
     /**
@@ -70,19 +79,26 @@ class CategoryController extends Controller
             $input = $request->all();
             if($request->input('parent_id')==''){
                 $input = $request->except('parent_id');
+            }else{
+                $input["level"] = Category::findOrFail($request->input('parent_id'))->level + 1;
+                
             }
+            
             $category = new Category($input);
     
             //3. SET CREATED USER TO THE MENU
             $category->createdby()->associate(Auth::user());
             $category->updatedBy()->associate(Auth::user());
+            
+            $category->thumb_image = $request->input('image');
+            $category->thumb_image = str_replace('source','thumbs',$category->thumb_image);
     
             //4. SAVE MENU
             $category->save();
             
-            $categoryTranslation = new CategoryTranslation($request->all());
+            //$categoryTranslation = new CategoryTranslation($request->all());
             
-            $category->categoryTranslation()->save($categoryTranslation);
+            //$category->categoryTranslation()->save($categoryTranslation);
     
             //5. FLASH MESSAGE BACK
             Session::flash('flash_message', 'Category successfully added!');
@@ -118,10 +134,21 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::findOrFail($id);
+        $categories = DB::table('categories')->select('categories.id','categories.title','categories.level',
+                            DB::raw("(CASE categories.level 
+                                      WHEN 0 THEN LPAD(categories.ordering,5,0)
+                                      WHEN 1 THEN (SELECT CONCAT(LPAD(m.ordering,5,0), '.' ,LPAD(categories.ordering,5,0)) FROM categories as m WHERE m.id=categories.parent_id)
+                                      WHEN 2 THEN (SELECT CONCAT((SELECT LPAD(super.ordering,5,0) FROM categories AS super WHERE super.id = m.parent_id), '.' , LPAD(m.ordering,5,0), '.' ,LPAD(categories.ordering,5,0)) FROM categories as m WHERE m.id=categories.parent_id)
+                                      END) AS Pos"))
+                      ->where('status',1)
+                      ->where('id','<>',$id)
+                      ->orderBy('Pos')
+                      ->get();
         return View('admin.categories.update_category')->with([
-            'categories' => \App\Category::where('status', 1)->get(),
+            'categories' => $categories,
             'category' => $category
         ]);
+        
     }
 
     /**
@@ -134,6 +161,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         //
+        dd($request);
     }
 
     /**
@@ -150,7 +178,7 @@ class CategoryController extends Controller
     public function updateCategory(Request $request){
         $this->validate($request, [
             'title' => 'required',
-            'description' => 'required',
+            //'description' => 'required',
             'id' => 'required|numeric',
             'status' => 'required',
             'parent_id' => 'numeric'
@@ -160,9 +188,15 @@ class CategoryController extends Controller
         if($request->input('parent_id')==''){
             $input = $request->except('parent_id');
             $input['parent_id'] = NULL;
+        }else{
+            $input["level"] = Category::findOrFail($request->input('parent_id'))->level + 1;
+            
         }
         $category->updatedBy()->associate(Auth::user());
         $category->update($input);
+        
+        $category->thumb_image = $request->input('image');
+        $category->thumb_image = str_replace('source','thumbs',$category->thumb_image);
         
         Session::flash('flash_message', 'Category successfully updated!');
         
@@ -193,7 +227,7 @@ class CategoryController extends Controller
             'title' => 'required',
             'category_id' => 'required|numeric',
             'parent_id' => 'numeric',
-            'description' => 'required',
+            //'description' => 'required',
         ]);
         //2. Find menu by id
         $category = Category::firstOrNew([

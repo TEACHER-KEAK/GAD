@@ -48,7 +48,7 @@
                   <input type="text" name="title" id="title" value="{{ $menu->title }}{{old('title')}}" class="form-control" placeholder="Enter your menu title"/> 
                 </div> 
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display:none;">
                 <label for="ipt" class=" control-label col-md-2 text-right">Parent Menu</label>
                 <div class="col-md-10">
                   <select name='parent_id' rows='5' id='module'  class='form-control '    >
@@ -84,11 +84,17 @@
               <div class="form-group  int-link" id="INT_LINK" @if($menu->type==0) style="display:none;"  @endif>
                 <label for="ipt" class=" control-label col-md-2 text-right"></label>
                 <div class="col-md-10">
-                  <select name='internal_url' rows='5' id='module'  class='form-control '    >
+                  <select name='internal_url' rows='5' id='module'  class='form-control fontawesome-select'    >
                     <option value=""> -- Select Module -- </option>
                     <optgroup label="Categories ">
                       @foreach($categories as $category)
-                        <option value="{{ $category->id }}" @if($menu->internal_url==$category->id) selected @endif >{{ $category->title}}</option>
+                        <option value="{{ $category->id }}" @if($menu->internal_url==$category->id) selected=selected @endif >
+                        
+                          @for($i=0;$i<$category->level;$i++)
+                            &#xf054;&#xf054;
+                          @endfor
+                          {{ $category->title}}
+                        </option>
                       @endforeach
                     </optgroup>      
                   </select>     
@@ -105,7 +111,7 @@
                   </label>    
                 </div> 
               </div>        
-              <div class="form-group">
+              <div class="form-group" style="display:none;">
                 <label for="ipt" class=" control-label col-md-2 text-right">Icon </label>
                 <div class="col-md-10">
                   <input type="text" name="icon" id="icon" value="{{ $menu->icon }}" class="form-control" placeholder="Enter fa fa-desktop"/>

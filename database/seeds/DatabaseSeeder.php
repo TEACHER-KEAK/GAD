@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(LanguageTableSeeder::class);
         $this->call(CategoryTableSeeder::class);
         $this->call(ContentTableSeeder::class);
+        $this->call(SettingTableSeeder::class);
 
         Model::reguard();
     }

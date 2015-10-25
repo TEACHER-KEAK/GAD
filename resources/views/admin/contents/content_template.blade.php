@@ -6,6 +6,7 @@
         <th width="20%">Title</th>
         <th width="20%">Content</th>
         <th>category</th>
+        <th>Homepage</th>
         <th>Status</th>
         <th>Author</th>
         <th>Created Date</th>
@@ -22,19 +23,23 @@
         <td>{{ str_limit($content->title, $limit = 50, $end = '...') }}</td>
         <td>{{ str_limit($content->content, $limit = 70, $end = '...') }}</td>
         <td>{{ $content->category->title }}</td>
+        <td style="text-align:center;">
+          @if ($content->show_home_page=='1') 
+            <span class="label label-success">YES</span>
+          @elseif($content->show_home_page=='0')
+            <span class="label label-danger">NO</span>
+          @endif
+        </td>
         <td>
           @if ($content->status=='1') 
             <span class="label label-success">Active</span>
           @elseif($content->status=='0')
             <span class="label label-danger">Inactive</span>
           @endif
-          
         </td>
         <td>{{ $content->createdBy->email }}</td>
         <td>{{ $content->created_at }}</td>
-<!--                  <td>{{ $content->updatedBy->email }}</td>-->
         <td>{{ $content->updated_at }}</td>
-        <!--<td>{{ $content->visitor_count }}</td>-->
         <td style="text-align:center;">
           <a href="{{ URL('admin/contents/'.$content->id.'/edit') }}" id="btnEdit">
             <i class="fa fa-edit"></i> &nbsp;| &nbsp;

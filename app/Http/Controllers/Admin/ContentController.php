@@ -10,6 +10,7 @@ use App\Content;
 use App\ContentTranslation;
 use Auth;
 use Session;
+use DB;
 
 class ContentController extends Controller
 {
@@ -22,7 +23,7 @@ class ContentController extends Controller
     {
         //
         //$contents = Content::all();
-        $contents = Content::paginate(15);
+        $contents = Content::orderBy('created_at','desc')->paginate(15);
         return View('admin.contents.content')->with('contents', $contents);
     }
     
@@ -31,7 +32,9 @@ class ContentController extends Controller
         if($limit>100 || $limit<=0){
             $limit = 15;
         }
-        $contents = Content::where('title', 'like','%'.$requests->input('search').'%')->paginate($limit);
+        $contents = Content::where('title', 'like','%'.$requests->input('search').'%')
+                           ->orderBy('created_at','desc')
+                           ->paginate($limit);
         $data = View('admin.contents.content_template')->with('contents', $contents)->render();
         return response()->json($data);
 
@@ -49,8 +52,17 @@ class ContentController extends Controller
     public function create()
     {
         $contents = Content::all();
+        $categories = DB::table('categories')->select('categories.id','categories.title','categories.level',
+                            DB::raw("(CASE categories.level 
+                                      WHEN 0 THEN LPAD(categories.ordering,5,0)
+                                      WHEN 1 THEN (SELECT CONCAT(LPAD(m.ordering,5,0), '.' ,LPAD(categories.ordering,5,0)) FROM categories as m WHERE m.id=categories.parent_id)
+                                      WHEN 2 THEN (SELECT CONCAT((SELECT LPAD(super.ordering,5,0) FROM categories AS super WHERE super.id = m.parent_id), '.' , LPAD(m.ordering,5,0), '.' ,LPAD(categories.ordering,5,0)) FROM categories as m WHERE m.id=categories.parent_id)
+                                      END) AS Pos"))
+                      ->where('status',1)
+                      ->orderBy('Pos')
+                      ->get();
         return View('admin.contents.create_content')->with([
-            'categories' => \App\Category::where('status', 1)->get()
+            'categories' => $categories//\App\Category::where('status', 1)->get()
         ]);
     }
 
@@ -75,6 +87,8 @@ class ContentController extends Controller
         $content->createdBy()->associate(Auth::user());
         $content->updatedBy()->associate(Auth::user());
         $content->category()->associate($category);
+        $content->thumb_images = $request->input('images');
+        $content->thumb_images = str_replace('source','thumbs',$content->thumb_images);
         
         $content->save();
         
@@ -109,8 +123,17 @@ class ContentController extends Controller
     public function edit($id)
     {
         $content = Content::findOrFail($id);
+        $categories = DB::table('categories')->select('categories.id','categories.title','categories.level',
+                            DB::raw("(CASE categories.level 
+                                      WHEN 0 THEN LPAD(categories.ordering,5,0)
+                                      WHEN 1 THEN (SELECT CONCAT(LPAD(m.ordering,5,0), '.' ,LPAD(categories.ordering,5,0)) FROM categories as m WHERE m.id=categories.parent_id)
+                                      WHEN 2 THEN (SELECT CONCAT((SELECT LPAD(super.ordering,5,0) FROM categories AS super WHERE super.id = m.parent_id), '.' , LPAD(m.ordering,5,0), '.' ,LPAD(categories.ordering,5,0)) FROM categories as m WHERE m.id=categories.parent_id)
+                                      END) AS Pos"))
+                      ->where('status',1)
+                      ->orderBy('Pos')
+                      ->get();
         return View('admin.contents.update_content')->with([
-            'categories' => \App\Category::where('status', 1)->get(),
+            'categories' => $categories,
             'content' => $content
         ]);
     }
@@ -137,6 +160,8 @@ class ContentController extends Controller
         $content = Content::findOrFail($request->input('id'));
         
         $content->updatedBy()->associate(Auth::user());
+        $content->thumb_images = $request->input('images');
+        $content->thumb_images = str_replace('source','thumbs',$content->thumb_images);
         $content->update($request->all());
         
         Session::flash('flash_message', 'Content successfully updated!');

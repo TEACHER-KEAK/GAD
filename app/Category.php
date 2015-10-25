@@ -14,7 +14,11 @@ class Category extends Model
             'parent_id',
             'created_by',
             'updated_by',
-            'status'
+            'ordering',
+            'image',
+            'thumb_image',
+            'status',
+            'level'
         ];
     
     public function createdBy(){
@@ -35,8 +39,16 @@ class Category extends Model
     
     public function translation($language=null){
         if ($language == null) {
-           $language = 'en';//App::getLocale();
+           $language = App::getLocale();
         }
         return $this->hasMany('App\CategoryTranslation')->where('language_id', '=', $language);
+    }
+    
+    public function parentCategory(){
+        return $this->belongsTo('App\Category', 'parent_id')->where('status',1);
+    }
+    
+    public function categories(){
+        return $this->hasMany('App\Category','parent_id')->where('status',1);
     }
 }
