@@ -68,17 +68,46 @@
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<div class="image_view">
-								<img src="{{ asset('/images/uploads/sample_img.jpg') }}" />
-							</div>
-							<div class="d_img_thumbnail">
-								<img src="{{ asset('/images/slider/thumb1.jpg') }}" />
-								<img src="{{ asset('/images/slider/thumb1.jpg') }}" />
-								<img src="{{ asset('/images/slider/thumb1.jpg') }}" />
-								<img src="{{ asset('/images/slider/thumb1.jpg') }}" />
-								<img src="{{ asset('/images/slider/thumb1.jpg') }}" />
-							</div>
-						</div>
+							
+							<!--images-->
+							<div style="width:750px;">
+<div class="car-detail flexslider">
+  <ul class="slides">
+   
+	      <li>
+	        <img class='lazy' style="width:700px;" data-original="{{ asset('/images/uploads/slide1.jpg') }}" />
+	      </li>
+            <li>
+	        <img class='lazy' data-original="{{ asset('/images/uploads/slide2.jpg') }}" />
+	      </li>
+	       <li>
+	        <img class='lazy' data-original="{{ asset('/images/uploads/slide3.jpg') }}" />
+	      </li>
+	       <li>
+	        <img class='lazy' data-original="{{ asset('/images/uploads/slide4.jpg') }}" />
+	      </li>
+
+  </ul>
+</div> 
+
+<div class="detail-image-list clearfix">
+    <a class="boxer boxer_image" data-index="0" >
+        <img class='lazy' data-original="{{ asset('/images/uploads/thumb1.jpg') }}" />
+    </a> 
+    <a class="boxer boxer_image" data-index="1" >
+        <img class='lazy' data-original="{{ asset('/images/uploads/thumb2.jpg') }}" />
+    </a> 
+    <a class="boxer boxer_image" data-index="2" >
+        <img class='lazy' data-original="{{ asset('/images/uploads/thumb3.jpg') }}" />
+    </a> 
+    <a class="boxer boxer_image" data-index="3" >
+        <img class='lazy' data-original="{{ asset('/images/uploads/thumb4.jpg') }}" />
+    </a> 
+    
+</div>
+</div>
+<!--/images-->
+						</div><!--/col-12 -->
 					</div><!--/row-->
 					<div class="row">
 							<div class="col-md-8">
@@ -147,4 +176,42 @@ with you.
 		</div><!-- / row -->
 	</div><!--/ container -->
 </div><!--/ data project-->
+<!--images-->
+							<div style="width:750px;">
+<div class="car-detail flexslider">
+  <ul class="slides">
+   
+	      <li>
+	        <img class='lazy' style="width:700px;" data-original="{{ asset('/images/uploads/slide1.jpg') }}" />
+	      </li>
+            <li>
+	        <img class='lazy' data-original="{{ asset('/images/uploads/slide2.jpg') }}" />
+	      </li>
+	       <li>
+	        <img class='lazy' data-original="{{ asset('/images/uploads/slide3.jpg') }}" />
+	      </li>
+	       <li>
+	        <img class='lazy' data-original="{{ asset('/images/uploads/slide4.jpg') }}" />
+	      </li>
+
+  </ul>
+</div> 
+
+<div class="detail-image-list clearfix">
+    <a class="boxer boxer_image" data-index="0" >
+        <img class='lazy' data-original="{{ asset('/images/uploads/thumb1.jpg') }}" />
+    </a> 
+    <a class="boxer boxer_image" data-index="1" >
+        <img class='lazy' data-original="{{ asset('/images/uploads/thumb2.jpg') }}" />
+    </a> 
+    <a class="boxer boxer_image" data-index="2" >
+        <img class='lazy' data-original="{{ asset('/images/uploads/thumb3.jpg') }}" />
+    </a> 
+    <a class="boxer boxer_image" data-index="3" >
+        <img class='lazy' data-original="{{ asset('/images/uploads/thumb4.jpg') }}" />
+    </a> 
+    
+</div>
+</div>
+<!--/images-->
 @endsection

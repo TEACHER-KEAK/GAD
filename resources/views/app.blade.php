@@ -31,6 +31,10 @@ type='text/css'>
 	<!-- favicon -->
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 
+    <!-- Slide Thumbnail Image Gallery-->
+    <link rel="stylesheet" href="dist/css/thumnail_slide_misc.css">
+    <link rel="stylesheet" href="dist/css/thumnail_slide_style.css">
+
     <!-- dropdown menu thumnail -->
     <link rel="stylesheet" type="text/css" href="plugins/dropdown-menu/css/default.css" />
     <link rel="stylesheet" type="text/css" href="plugins/dropdown-menu/css/component.css" />
@@ -263,6 +267,12 @@ Sangkat Tunle Basak Khan Chhomkamon, Phnom Penh.
     <script src="dist/js/main.js"></script>
     <script src="dist/js/plugins_carousel.js"></script>
     <script src="dist/js/main_carousel.js"></script>
+
+    <!--thumbnail Slide-->
+
+        <script src="dist/js/jquery.lazyload.min.js"></script>
+        <script src="dist/js/main_slide_thumnail.js"></script>
+        <script src="dist/js/plugins_slide_thumnail.js"></script> 
 
     <script src="plugins/dropdown-menu/js/cbpHorizontalSlideOutMenu.js"></script>
         <script>
