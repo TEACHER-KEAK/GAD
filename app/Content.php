@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Content extends Model
 {
+    use SoftDeletes;
     // 1. SPECIFY THE TABLE NAME FOR STORING DATA Of Content Model
     protected $table = 'contents';
     
@@ -52,5 +54,7 @@ class Content extends Model
     public function translationCount(){
         return $this->hasMany('App\ContentTranslation');
     }
+    
+    protected $dates = ['deleted_at'];
     
 }

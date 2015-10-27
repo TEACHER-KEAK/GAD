@@ -43,7 +43,7 @@
               <tbody>
                 @foreach($sliders as $slider)
                   <tr>
-                    <td>{{$slider->id}}</td>
+                    <td id="SLIDER_ID">{{$slider->id}}</td>
                     <td>{{$slider->title}}</td>
                     <td><img src="{{$slider->thumb_image}}" title="{{$slider->title}}" style="width:240px; height:140px;" class="thumbnail"/></td>
                     <td style="text-align:center;">{{$slider->ordering}}</td>
@@ -148,7 +148,47 @@
   });
   
   $(document).on('click', '#btnRemove', function(){ 
+    var options = {
+    	bg: '#e74c3c',
     
+    	// leave target blank for global nanobar
+    	target: document.getElementById('myDivId'),
+    
+    	// id for new nanobar
+    	id: 'mynano'
+    };
+    
+    var nanobar = new Nanobar( options );
+    var id = $(this).parents('tr').find("#SLIDER_ID").html();
+    var url = "{{URL::to('admin/sliders/')}}";
+    $.ajax({
+          url: url+"/"+id,
+          dataType: "JSON",
+          type: "DELETE",
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          beforeSend: function(){
+            // move bar
+            nanobar.go( 30 ); // size bar 30%
+          
+          },
+          success: function(data){
+            if(data.STATUS){
+                var pageId = $(".pagination .active span").html();
+                var json = {
+                      page: pageId,
+                      limit: $("#perPage").val(),
+                      search : $('#txtSearch').val()
+                };
+                sliders.getAllSliders(json);
+            }else{
+              
+            }
+            // Finish progress bar
+            nanobar.go(100);
+          }
+      });  
   });
   
   var sliders = {};

@@ -31,6 +31,7 @@ class MenuController extends Controller
                             ->leftJoin('menus As parent', 'parent.id', '=', 'menus.parent_id')
                             ->leftJoin('users', 'users.id', '=', 'menus.created_by')
                             ->leftJoin('users AS editor', 'editor.id', '=', 'menus.updated_by')
+                            ->whereNull('menus.deleted_at')
                             ->orderBy('Pos')
                             ->paginate(15);
         //print_r($menus);
@@ -59,6 +60,7 @@ class MenuController extends Controller
                             ->leftJoin('users', 'users.id', '=', 'menus.created_by')
                             ->leftJoin('users AS editor', 'editor.id', '=', 'menus.updated_by')
                             ->where('menus.title', 'like','%'.$requests->input('search').'%')
+                            ->whereNull('menus.deleted_at')
                             ->orderBy('Pos')
                             ->paginate($limit);
         
@@ -307,7 +309,11 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $menu = Menu::find($id);
+        $menu->delete();
+        return response()->json([
+            'STATUS' => true
+        ]);
     }
     public function translate(Request $request){
         $validation = $this->validate($request, [

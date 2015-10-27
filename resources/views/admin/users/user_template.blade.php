@@ -2,7 +2,7 @@
   <table class="table table-hover table-bordered">
     <thead>
       <tr>
-        <th>ID</th>
+        <th id="USER_ID">ID</th>
         <th>Last Name</th>
         <th>First Name</th>
         <th>Email</th>

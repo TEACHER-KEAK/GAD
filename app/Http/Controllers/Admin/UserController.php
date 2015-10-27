@@ -32,12 +32,8 @@ class UserController extends Controller
         if($limit>100 || $limit<=0){
             $limit = 15;
         }
-        $users = User::where('lastname', 'like','%'.$requests->input('search').'%')
-                        ->orWhere('firstname', 'like','%'.$requests->input('search').'%')
-                        ->orWhere('email', 'like','%'.$requests->input('search').'%')
-                        ->orWhere('status', 'like','%'.$requests->input('search').'%')
-                        ->orWhere('created_at', 'like','%'.$requests->input('search').'%')
-                        ->orWhere('id', 'like','%'.$requests->input('search').'%')
+        $users = User::Where('email', 'like','%'.$requests->input('search').'%')
+                        ->whereNull('deleted_at')
                         ->paginate($limit);
         $data = View('admin.users.user_template')->with('users', $users)->render();
         return response()->json($data);
@@ -128,7 +124,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return response()->json([
+            'STATUS' => true
+        ]);
     }
     
     /*public function changePassword(){

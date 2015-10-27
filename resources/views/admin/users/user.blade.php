@@ -45,7 +45,7 @@
               <tbody>
                 @foreach($users as $user)
                 <tr>
-                  <td>{{ $user->id }}</td>
+                  <td id="USER_ID">{{ $user->id }}</td>
                   <td>{{ $user->lastname }}</td>
                   <td>{{ $user->firstname }}</td>
                   <td>{{ $user->email }}</td>
@@ -133,7 +133,47 @@
   });
   
   $(document).on('click', '#btnRemove', function(){ 
+    var options = {
+    	bg: '#e74c3c',
     
+    	// leave target blank for global nanobar
+    	target: document.getElementById('myDivId'),
+    
+    	// id for new nanobar
+    	id: 'mynano'
+    };
+    
+    var nanobar = new Nanobar( options );
+    var id = $(this).parents('tr').find("#USER_ID").html();
+    var url = "{{URL::to('admin/users/')}}";
+    $.ajax({
+          url: url+"/"+id,
+          dataType: "JSON",
+          type: "DELETE",
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          beforeSend: function(){
+            // move bar
+            nanobar.go( 30 ); // size bar 30%
+          
+          },
+          success: function(data){
+            if(data.STATUS){
+                var pageId = $(".pagination .active span").html();
+                var json = {
+                      page: pageId,
+                      limit: $("#perPage").val(),
+                      search : $('#txtSearch').val()
+                };
+                users.getAllUsers(json);
+            }else{
+              
+            }
+            // Finish progress bar
+            nanobar.go(100);
+          }
+      });  
   });
 
   var users = {};

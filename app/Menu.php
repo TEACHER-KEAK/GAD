@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Menu extends Model
 {
-    //
+    use SoftDeletes;
+    
     protected $table = 'menus';
     
     protected $fillable=[
@@ -61,4 +63,6 @@ class Menu extends Model
     public function category(){
         return $this->belongsTo('App\Category','internal_url');
     }
+    
+    protected $dates = ['deleted_at'];
 }

@@ -20,6 +20,7 @@
     <tbody>
       @foreach($categories as $key=>$category)
       <tr>
+        <td id="CATEGORY_ID" style="display:none">{{$category->id}}</td>
         <td>{{ ++$key }}</td>
 <!--        <td>
           {!! $category->translation('kh')->first() ? $category->translation('kh')->first()->title: '<span class="label label-info">NOT YET TRANSLATE</span>' !!}

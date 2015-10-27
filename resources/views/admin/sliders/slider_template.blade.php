@@ -16,7 +16,7 @@
     <tbody>
       @foreach($sliders as $slider)
         <tr>
-          <td>{{$slider->id}}</td>
+          <td id="SLIDER_ID">{{$slider->id}}</td>
           <td>{{$slider->title}}</td>
           <td><img src="{{$slider->thumb_image}}" title="{{$slider->title}}" style="width:240px; height:140px;" class="thumbnail"/></td>
           <td style="text-align:center;">{{$slider->ordering}}</td>

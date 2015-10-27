@@ -177,7 +177,11 @@ class ContentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $content = Content::find($id);
+        $content->delete();
+        return response()->json([
+            'STATUS' => true
+        ]);
     }
     
     public function translate(Request $request){

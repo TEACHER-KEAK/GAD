@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
+    use SoftDeletes;
     protected $table = 'categories';
     
     protected $fillable = [
@@ -51,4 +53,6 @@ class Category extends Model
     public function categories(){
         return $this->hasMany('App\Category','parent_id')->where('status',1);
     }
+    
+    protected $dates = ['deleted_at'];
 }

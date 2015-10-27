@@ -19,6 +19,7 @@
   <tbody>
     @foreach($menus as $key=>$menu)
     <tr>
+      <td id="MENU_ID" style="display:none;">{{$menu->id}}</td>
       <td>{{ ++$key }}</td>
       <td>
         @for($i=0;$i<$menu->level;$i++)

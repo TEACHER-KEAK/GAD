@@ -46,6 +46,7 @@
               <tbody>
                 @foreach($menus as $key=>$menu)
                 <tr>
+                  <td id="MENU_ID" style="display:none;">{{$menu->id}}</td>
                   <td>{{ ++$key }}</td>
                   <td>
                     @for($i=0;$i<$menu->level;$i++)
@@ -164,7 +165,47 @@
   });
   
   $(document).on('click', '#btnRemove', function(){ 
-    /*alert("REMOVE");*/
+    var options = {
+    	bg: '#e74c3c',
+    
+    	// leave target blank for global nanobar
+    	target: document.getElementById('myDivId'),
+    
+    	// id for new nanobar
+    	id: 'mynano'
+    };
+    
+    var nanobar = new Nanobar( options );
+    var id = $(this).parents('tr').find("#MENU_ID").html();
+    var url = "{{URL::to('admin/menus/')}}";
+    $.ajax({
+          url: url+"/"+id,
+          dataType: "JSON",
+          type: "DELETE",
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          beforeSend: function(){
+            // move bar
+            nanobar.go( 30 ); // size bar 30%
+          
+          },
+          success: function(data){
+            if(data.STATUS){
+                var pageId = $(".pagination .active span").html();
+                var data = {
+                      page: pageId,
+                      limit: $("#perPage").val(),
+                      search : $('#txtSearch').val()
+                };
+                menus.getAllMenus(data);
+            }else{
+              
+            }
+            // Finish progress bar
+            nanobar.go(100);
+          }
+      });  
   });
   
   $(document).on('click', '#btnTranslate', function(){ 

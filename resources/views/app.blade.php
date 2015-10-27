@@ -56,7 +56,6 @@ type='text/css'>
     <!--ads popup-->        
     <div id="popup">
         <span class="button b-close"><span>X</span></span>
-        
             <a href="#"><img src="{{ asset('/images/pop_ads.jpg')}}" /></a>
         
          <div class="counter">

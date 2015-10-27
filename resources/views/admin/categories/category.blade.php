@@ -47,6 +47,7 @@
               <tbody>
                 @foreach($categories as $key=>$category)
                 <tr>
+                  <td id="CATEGORY_ID" style="display:none">{{$category->id}}</td>
                   <td>{{ ++$key }}</td>
 <!--                  <td>
                     {!! $category->translation('kh')->first() ? $category->translation('kh')->first()->title: '<span class="label label-info">NOT YET TRANSLATE</span>' !!}
@@ -145,7 +146,47 @@
   });
   
   $(document).on('click', '#btnRemove', function(){ 
+    var options = {
+    	bg: '#e74c3c',
     
+    	// leave target blank for global nanobar
+    	target: document.getElementById('myDivId'),
+    
+    	// id for new nanobar
+    	id: 'mynano'
+    };
+    
+    var nanobar = new Nanobar( options );
+    var id = $(this).parents('tr').find("#CATEGORY_ID").html();
+    var url = "{{URL::to('admin/categories/')}}";
+    $.ajax({
+          url: url+"/"+id,
+          dataType: "JSON",
+          type: "DELETE",
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          beforeSend: function(){
+            // move bar
+            nanobar.go( 30 ); // size bar 30%
+          
+          },
+          success: function(data){
+            if(data.STATUS){
+                var pageId = $(".pagination .active span").html();
+                var data = {
+                      page: pageId,
+                      limit: $("#perPage").val(),
+                      search : $('#txtSearch').val()
+                };
+                categories.getAllCategories(data);
+            }else{
+              
+            }
+            // Finish progress bar
+            nanobar.go(100);
+          }
+      });  
   });
   
   $(document).on('click', '#btnTranslate', function(){ 

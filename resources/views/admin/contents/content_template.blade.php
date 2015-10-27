@@ -19,7 +19,7 @@
     <tbody>
       @foreach($contents as $content)
       <tr>
-        <td>{{ $content->id }}</td>
+        <td id="CONTENT_ID">{{ $content->id }}</td>
         <td>{{ str_limit($content->title, $limit = 50, $end = '...') }}</td>
         <td>{{ str_limit($content->content, $limit = 70, $end = '...') }}</td>
         <td>{{ $content->category->title }}</td>

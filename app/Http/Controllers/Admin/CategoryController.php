@@ -172,7 +172,11 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
+        return response()->json([
+            'STATUS' => true
+        ]);
     }
     
     public function updateCategory(Request $request){

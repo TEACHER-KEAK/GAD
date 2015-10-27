@@ -177,7 +177,9 @@ Route::group(['prefix' => 'rest/admin'
 });
 
 View::composer('includes.header', function($view){
-   $menus = \App\Menu::where('status',1)->get();
+   $menus = \App\Menu::where('status',1)
+                     ->whereNull('deleted_at')
+                     ->get();
    $view->with([
        'menus'=> $menus
    ]);
