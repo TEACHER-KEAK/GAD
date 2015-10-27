@@ -21,7 +21,8 @@ class Menu extends Model
         'ordering',
         'level',
         'created_by',
-        'updated_by'
+        'updated_by',
+        'content'
     ];
     
     protected $nullable = [

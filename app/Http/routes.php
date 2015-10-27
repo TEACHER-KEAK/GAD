@@ -35,16 +35,21 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');
 Route::group(['middleware' =>'locale'],function(){
     
     
+    
     Route::get('/', function(){
         return view('home');
     });
     
     Route::get('/about_us', function(){
-       return view('about_us'); 
+       return view('about_us')->with([
+            'menu' => \App\Menu::whereRaw("UPPER(title)='ABOUT US'")->first()     
+       ]); 
     });
     
     Route::get('/contact', function(){
-       return view('contact') ;
+       return view('contact')->with([
+            'menu' => \App\Menu::whereRaw("UPPER(title)='CONTACT'")->first()     
+       ]);
     });
     
     Route::get('/projects', function(){

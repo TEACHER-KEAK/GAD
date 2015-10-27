@@ -167,9 +167,22 @@
 <script type="text/javascript" src="{{ url('') }}/tinymce/tinymce_editor.js"></script>
 <script type="text/javascript">
   $(document).ajaxStart(function() { Pace.restart(); }); 
-  editor_config.selector = "textarea";
-  editor_config.path_absolute = "http://green-architecture-design-darapenhchet.c9.io/";
-  tinymce.init(editor_config);
+  tinymce.init({
+    selector: "textarea",theme: "modern", width: "99.5%",height: 300,
+    plugins: [
+         "advlist autolink link image lists charmap print preview hr anchor pagebreak",
+         "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
+         "table contextmenu directionality emoticons paste textcolor responsivefilemanager"
+   ],
+   toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
+   toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
+   toolbar3: "| fontselect | fontsizeselect ",
+   image_advtab: true ,
+   
+   external_filemanager_path:"/filemanager/",
+   filemanager_title:"Responsive Filemanager" ,
+   external_plugins: { "filemanager" : "/filemanager/plugin.min.js"}
+ });
 </script>
 <script type="text/javascript">
   function changeMenuType(data){
