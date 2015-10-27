@@ -49,19 +49,20 @@
 
 /* Main menu link style */
 .cbp-hsmenu > li > a {
-	color: #fff;
+	color: #4a9d00;
 	font-size: 1.2em;
 	line-height: 3em;
 	display: inline-block;
 	position: relative;
 	z-index: 10000;
 	outline: none;
+	font-weight: bold;
 }
 
 .no-touch .cbp-hsmenu > li > a:hover,
 .no-touch .cbp-hsmenu > li > a:focus,
 .cbp-hsmenu > li.cbp-hsitem-open > a {
-	color: #02639d;
+	color: #65a600;
 }
 
 /* Add an arrow to the main menu link if it has a submenu (not the only child) */
@@ -155,16 +156,18 @@
 .cbp-hssubmenu > li a {
 	display: block;
 	text-align:left;
-	padding: 0px 30px;
+	padding: 0px 20px;
 	color: #FFF;
 	outline: none;
+	font-weight: bold;
 }
 
 .chil-sub-cat > li a{
-	color: #CCC;
+	color: #FFF;
 	padding: 0px 30px;
 	margin: 0px;
 	text-align: left;
+	font-weight: normal;
 }
 
 .no-touch .cbp-hssubmenu > li a:hover,

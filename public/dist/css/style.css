@@ -448,8 +448,8 @@ Search
     Slider Styling
    ========================================================================== */
 .site-slider {
-  padding-top: 90px;
-  background-color: #e5e5e5;
+  padding-top: 100px;
+  background-color: #FFF;
 }
 .site-slider ul li {
   float: left;
@@ -464,11 +464,11 @@ Search
 }
 
 .bx-wrapper {
-  background-color: #161616;
+  background-color: #6b6b6b;
 }
 
 .bx-thumbnail-wrapper {
-  background-color: #61bb10;
+  background-color: #FFF;
   text-align: center;
   margin-top: -1px;
   position: relative;
@@ -495,7 +495,7 @@ Search
   color: #FFF;
 }
 #bx-pager{
-  background-color: #dcdcdc;
+  background-color: #909090;
 }
 #bx-pager a {
   margin: 10px 10px 0 10px;
@@ -543,18 +543,20 @@ Search
 .intro_content{
   margin-top: 20px;
   text-align: left;
-  color: #FFF;
+  color: #444444;
   font-size: 16px;
   padding-bottom: 20px;
+  text-align: justify;
 
 }
 .intro_content span{
     font-size: 18px;
     font-weight: bold;
+    color: #61bb10;
 }
 
 .box_intro_services{
-  background-color: #e5e5e5;
+  background-color: #FFF;
   text-align: center;
   padding: 10px 0;
 }
@@ -565,7 +567,12 @@ Search
   margin: 0px;
 
 }
+.intro_box_color{
+  background-color: #dcdcdc;
+  padding-top: 10px;
+  border-left: 5px solid #61bb10;
 
+}
 
 
 
@@ -599,7 +606,7 @@ Search
   position: absolute;
   top: 170px;
   bottom: 0px;
-  background-color: #CCC;
+  background-color: #dcdcdc;
   width: 91.5%;
   padding: 10px;
   opacity: 0.9;
@@ -608,6 +615,11 @@ Search
   text-align: left;
   font-size: 16px;
 }
+
+.project-title a{
+ color: #4c9906;
+}
+
 
 .owl-carousel {
   padding-left: 60px;
@@ -673,7 +685,7 @@ ClIENT STYLE
 --------------------------------------------------*/
 
 .client_reference{
-  background-color: #e3e3e3;
+  background-color: #FFF;
   padding: 20px 0 0 0;
   width: 100%;
 }
@@ -683,7 +695,8 @@ ClIENT STYLE
   margin-bottom: 20px;
 }
 .img_client_box img{
-  width: 100%
+  width: 100%;
+  border:1px solid #dcdcdc;
 }
 
 /*--------------------------------------------
@@ -776,11 +789,11 @@ Project
 
 
 .category-sidepbar{
-  margin: 10px 0 0 10px;
+  margin: 5px 0 0 10px;
   padding: 0px;
 }
 .category-sidepbar > li{
-  padding-bottom: 20px;
+  padding-bottom: 5px;
 }
 .category-sidepbar > li a{
   color: #85c91c;
@@ -791,16 +804,23 @@ Project
 
 
 .sub-category-sidebar{
-  margin: 10px 0 0 10px;
+  margin: 5px 0 0 10px;
   padding: 0px;
 }
 .sub-category-sidebar > li{
-  padding: 3px 0;
+  padding: 0;
+  margin: 0;
 }
 .sub-category-sidebar > li a{
   color: #424443;
   font-size: 14px;
   font-weight: normal;
+  padding: 0px;
+  margin: 0px;
+}
+.sub-category-sidebar > li a:hover{
+  color: #61bb10;
+
 }
 
 /*--------------------------

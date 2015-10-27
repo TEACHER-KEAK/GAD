@@ -80,7 +80,7 @@
         <div class="row">
         	<div class="col-md-12">
             	<div class="intro_content">
-            		<p><span>Green Achitecture and Design</span>  is a Cambodia base Company in Phnom  Penh. Green branding have been in Phnom Penh since 2007. </p>
+            		<p><span>Green Global Architecture Design & Construction Co., Ltd.</span>  is a Cambodia base Company in Phnom  Penh. Green branding have been in Phnom Penh since 2007. </p>
             		<p>We provide Architectural and Interior Design with Consultancy, Construction with Renovation services for turnkey project for villa, condominium, apartment, hotel, lifestyle retail shop, cafe, ...</p>
             	</div>
         	</div>
@@ -89,7 +89,7 @@
 </div><!-- / thumbnail-wrapper -->
 
 <div class="box_intro_services">
-	<div class="container">
+	<div class="container intro_box_color">
     	 <div class="row">
         	<div class="col-md-2">
     			<img src="{{ asset('/images/architecture_services_icon.png') }}">
@@ -127,29 +127,28 @@
                 <div class="owl-carousel">
                     <div class="service-item">
                         <div class="img-project">
-                              <img src="{{ asset('/images/sample_img.jpg') }}" />
+                             <a href="#"> <img src="{{ asset('/images/sample_img.jpg') }}" /></a>
                          </div>
-                         <div class="project-title">Read Documents</div>
+                         <div class="project-title"><a href="#"> Read Documents</a></div>
+                    </div>
+                     <div class="service-item">
+                        <div class="img-project">
+                             <a href="#"> <img src="{{ asset('/images/sample_img.jpg') }}" /></a>
+                         </div>
+                         <div class="project-title"><a href="#"> Read Documents</a></div>
                     </div>
                     <div class="service-item">
                         <div class="img-project">
-                              <img src="{{ asset('/images/sample_img.jpg') }}" />
+                             <a href="#"> <img src="{{ asset('/images/sample_img.jpg') }}" /></a>
                          </div>
-                         <div class="project-title">Read Documents</div>
+                         <div class="project-title"><a href="#"> Read Documents</a></div>
                     </div>
-                    <div class="service-item">
-                         <div class="img-project">
-                              <img src="{{ asset('/images/sample_img.jpg') }}" />
-                         </div>
-                         <div class="project-title">Read Documents</div>
-                    </div>
-                    <div class="service-item">
+                     <div class="service-item">
                         <div class="img-project">
-                              <img src="{{ asset('/images/sample_img.jpg') }}" />
+                             <a href="#"> <img src="{{ asset('/images/sample_img.jpg') }}" /></a>
                          </div>
-                         <div class="project-title">Read Documents</div>
-                        
-                    </div>                    
+                         <div class="project-title"><a href="#"> Read Documents</a></div>
+                    </div>                  
                 </div>
             </div>
         </div><!-- ./ page section -->
