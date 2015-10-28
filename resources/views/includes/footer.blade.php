@@ -25,9 +25,7 @@
             </div>
         </div>
     </div>
-
     <div class="box_copy_right">
         @lang('application.copyright')
     </div>
-    
 </div>
