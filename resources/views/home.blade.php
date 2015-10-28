@@ -4,7 +4,22 @@
 		<div class="container">
 			<div class="row">
 		        <ul class="bxslider">
-		            <li>
+		        @foreach($sliders as $slider)
+		        	@if($slider->image)
+						<li>
+			                <img src="{{$slider->image}}" alt="{{$slider->title}}">
+			                <div class="container">
+			                    <div class="row">
+			                        <div class="col-md-12 text-right">
+			                            <div class="slider-caption">
+			                                <h2>{{ $slider->title}}</h2>
+			                            </div>
+			                        </div>
+			                    </div>
+			                </div>
+			            </li>
+					@else
+				       <li>
 		                <img src="{{ asset('/images/slider/slide1.jpg') }}" alt="slider image 1">
 		                <div class="container">
 		                    <div class="row">
@@ -16,7 +31,9 @@
 		                    </div>
 		                </div>
 		            </li>
-		            <li>
+					@endif
+		         @endforeach
+		            <!--<li>
 		                <img src="{{ asset('/images/slider/slide2.jpg') }}" alt="slider image 2">
 		                <div class="container caption-wrapper">
 		                    <div class="slider-caption">
@@ -59,7 +76,7 @@
 		                        </div>
 		                    </div>
 		                </div>
-		            </li>
+		            </li>-->
 		        </ul> <!-- /.bxslider -->
 			</div><!--row-->
 		</div><!-- container -->
@@ -70,11 +87,15 @@
     <div class="container">
         <div class="row">
          	<div id="bx-pager">
-                <a data-slide-index="0" href=""><img src="{{ asset('/images/slider/thumb1.jpg') }}" alt="image 1" /></a>
-                <a data-slide-index="1" href=""><img src="{{ asset('/images/slider/thumb2.jpg') }}" alt="image 2" /></a>
+         	@foreach($sliders as $key => $slider)
+		        @if($slider->thumb_image)	
+                	<a data-slide-index="{{$key}}" href=""><img src="{{ $slider->thumb_image }}" alt="{{$slider->title}}" style="width:170px; height:80px;"/></a>
+                @endif
+           	@endforeach
+<!--                <a data-slide-index="1" href=""><img src="{{ asset('/images/slider/thumb2.jpg') }}" alt="image 2" /></a>
                 <a data-slide-index="2" href=""><img src="{{ asset('/images/slider/thumb3.jpg') }}" alt="image 3" /></a>
                 <a data-slide-index="3" href=""><img src="{{ asset('/images/slider/thumb4.jpg') }}" alt="image 4" /></a>
-                <a data-slide-index="4" href=""><img src="{{ asset('/images/slider/thumb5.jpg') }}" alt="image 5" /></a>
+                <a data-slide-index="4" href=""><img src="{{ asset('/images/slider/thumb5.jpg') }}" alt="image 5" /></a>-->
             </div>
         </div>
         <div class="row">

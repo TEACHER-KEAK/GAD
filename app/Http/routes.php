@@ -37,7 +37,10 @@ Route::group(['middleware' =>'locale'],function(){
     
     
     Route::get('/', function(){
-        return view('home');
+        $sliders = \App\Slider::all();
+        return view('home')->with([
+            'sliders' => $sliders
+        ]);
     });
     
     Route::get('/about_us', function(){
