@@ -134,42 +134,8 @@ type='text/css'>
 	
 	@yield('content')
 	
-    <div class="footer_site">
-        <div class="footer_content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-5">
-                        <h1 class="footer_headline">@lang('application.contactus')</h1>
-                        <p>
-                            <i class="glyphicon glyphicon-earphone"></i>  @lang('application.telephone')<br />
-                            <i class="glyphicon glyphicon-envelope"></i>  info@greenglobale.com
-                        </p>
-                        <p>
-                            @lang('application.contactaddress')
-                        </p>
-                    </div>
+	@include('includes.footer')
 
-                     <div class="col-md-3"><h1 class="footer_headline">MENU</h1>
-                        <ul>
-                            <li><a href="#">HOME</a></li>
-                            <li><a href="#">MAIN PROJECT</a></li>
-                            <li><a href="#">FURNITURE</a></li>
-                            <li><a href="#">CATALOG</a></li>
-                            <li><a href="#">ABOUT US</a></li>
-                            <li><a href="#">CONTACT</a></li> 
-                        </ul>
-                     </div>
-                     
-                    <div class="col-md-4"><div class="fb-page" data-href="https://www.facebook.com/thephnompenhtime" data-small-header="true" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/thephnompenhtime"><a href="https://www.facebook.com/thephnompenhtime">The Phnom Penh Times</a></blockquote></div></div></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="box_copy_right">
-            @lang('application.copyright')
-        </div>
-        
-    </div>
     <!-- script -->
     <script>window.jQuery || document.write('<script src="dist/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
     <script src="{{ asset('/dist/js/jquery.easing-1.3.js')}}"></script>
