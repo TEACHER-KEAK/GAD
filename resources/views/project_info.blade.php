@@ -49,14 +49,11 @@
 							<div class="d_img_thumbnail">
 							@if(is_array(json_decode($content->thumb_images,true)))
 								@foreach(json_decode($content->thumb_images,true) as $image)
-									<img src="{{$image}}" width="170px" height="80px"/>
+									<a class="fancybox" href="{{ asset('/images/slider/thumb1.jpg') }}" data-fancybox-group="gallery">
+									<img src="{{$image}}" width="170px" height="80px" alt="" />
+									</a>
 								@endforeach
 							@endif
-								<!--<img src="{{ asset('/images/slider/thumb1.jpg') }}" />
-								<img src="{{ asset('/images/slider/thumb1.jpg') }}" />
-								<img src="{{ asset('/images/slider/thumb1.jpg') }}" />
-								<img src="{{ asset('/images/slider/thumb1.jpg') }}" />
-								<img src="{{ asset('/images/slider/thumb1.jpg') }}" />-->
 							</div>
 						</div>
 					</div><!--/row-->

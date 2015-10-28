@@ -7,7 +7,8 @@
     <meta name="keywords" content="Green GLOBAL Dedign and Architecture">
 	<meta name="description" content="Green GLOBAL Dedign and Architecture">
     <meta name="author" content="Green GLOBAL Dedign and Architecture">
-
+<!-- JQuery -->
+    <script type="text/javascript" src="{{asset('/plugins/fancybox/lib/jquery-1.10.1.min.js')}}"></script>
 
 	<!--Plugin and default Stylesheets -->
 	 <link href="{{ asset('/dist/css/AdminLTE.min.css')}}" rel="stylesheet" type="text/css" />
@@ -15,7 +16,6 @@
 	 <link href="{{ asset('/dist/css/style.css')}}" rel="stylesheet" type="text/css" />
 	 <!-- slider -->
      <link href="{{ asset('/dist/css/owl-carousel.css')}}" rel="stylesheet" type="text/css" />
-	 
 
 	 <!-- Google Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' 
@@ -38,6 +38,19 @@ type='text/css'>
 
     <!-- popup master -->
      <link rel="stylesheet" type="text/css" href="{{ asset('/plugins/bpopup-master/style-popup.css')}}" />
+
+     
+
+    <!--fancybox -->
+     
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/fancybox/source/jquery.fancybox.css?v=2.1.5')}}" media="screen" />
+    <!-- Add Button helper (this is optional) -->
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5')}}" />
+    <!-- Add Thumbnail helper (this is optional) -->
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7')}}" />
+    
+
+    
 	
 
 </head>
@@ -108,7 +121,7 @@ type='text/css'>
                                 <ul>
                                     <li><a href="#front">Home</a></li>
                                     <li><a href="#services">Services</a></li>
-                                    <li><a href="#products">Pro ucts</a></li>
+                                    <li><a href="#products">Proucts</a></li>
                                     <li><a href="#contact">Contact</a></li>
                                 </ul>
                             </div>
@@ -158,7 +171,6 @@ type='text/css'>
         
     </div>
     <!-- script -->
-    <script src="{{ asset('/dist/js/vendor/jquery-1.10.1.min.js')}}"></script>
     <script>window.jQuery || document.write('<script src="dist/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
     <script src="{{ asset('/dist/js/jquery.easing-1.3.js')}}"></script>
     <script src="{{ asset('/bootstrap/js/bootstrap.js')}}"></script>
@@ -172,8 +184,7 @@ type='text/css'>
             var menu = new cbpHorizontalSlideOutMenu( document.getElementById( 'cbp-hsmenu-wrapper' ) );
         </script>
 
-    <!-- pop up -->
-    <script type="text/javascript" src="{{ asset('/plugins/bpopup-master/jquery.bpopup.js')}}"></script>
+    
     <script type="text/javascript">
  ;(function($){
      $(function() {
@@ -217,14 +228,202 @@ type='text/css'>
  $("#LANGUAGES img").click(function(){
     location.href= $(this).parent('a').attr('href');
  });
- 
- $('a').click(function(){
-     if($(this).attr('href')!=''){
-        location.href= $(this).attr('href');
-     }
- });
+
 </script>
 
+<!--fancybox-->   
+
+    <!-- Add mousewheel plugin (this is optional) -->
+    <script type="text/javascript" src="{{asset('/plugins/fancybox/lib/jquery.mousewheel-3.0.6.pack.js')}}"></script>
+
+    <!-- Add fancyBox main JS and CSS files -->
+    <script type="text/javascript" src="{{asset('/plugins/fancybox/source/jquery.fancybox.js?v=2.1.5')}}"></script>
+    
+
+    <!-- Add Button helper (this is optional) -->
+    <script type="text/javascript" src="{{asset('/plugins/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5')}}"></script>
+
+    <!-- Add Thumbnail helper (this is optional) -->
+    <script type="text/javascript" src="{{asset('/plugins/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7')}}"></script>
+
+    <!-- Add Media helper (this is optional) -->
+    <script type="text/javascript" src="{{asset('plugins/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6')}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            /*
+             *  Simple image gallery. Uses default settings
+             */
+
+            $('.fancybox').fancybox();
+
+            /*
+             *  Different effects
+             */
+
+            // Change title type, overlay closing speed
+            $(".fancybox-effects-a").fancybox({
+                helpers: {
+                    title : {
+                        type : 'outside'
+                    },
+                    overlay : {
+                        speedOut : 0
+                    }
+                }
+            });
+
+            // Disable opening and closing animations, change title type
+            $(".fancybox-effects-b").fancybox({
+                openEffect  : 'none',
+                closeEffect : 'none',
+
+                helpers : {
+                    title : {
+                        type : 'over'
+                    }
+                }
+            });
+
+            // Set custom style, close if clicked, change title type and overlay color
+            $(".fancybox-effects-c").fancybox({
+                wrapCSS    : 'fancybox-custom',
+                closeClick : true,
+
+                openEffect : 'none',
+
+                helpers : {
+                    title : {
+                        type : 'inside'
+                    },
+                    overlay : {
+                        css : {
+                            'background' : 'rgba(238,238,238,0.85)'
+                        }
+                    }
+                }
+            });
+
+            // Remove padding, set opening and closing animations, close if clicked and disable overlay
+            $(".fancybox-effects-d").fancybox({
+                padding: 0,
+
+                openEffect : 'elastic',
+                openSpeed  : 150,
+
+                closeEffect : 'elastic',
+                closeSpeed  : 150,
+
+                closeClick : true,
+
+                helpers : {
+                    overlay : null
+                }
+            });
+
+            /*
+             *  Button helper. Disable animations, hide close button, change title type and content
+             */
+
+            $('.fancybox-buttons').fancybox({
+                openEffect  : 'none',
+                closeEffect : 'none',
+
+                prevEffect : 'none',
+                nextEffect : 'none',
+
+                closeBtn  : false,
+
+                helpers : {
+                    title : {
+                        type : 'inside'
+                    },
+                    buttons : {}
+                },
+
+                afterLoad : function() {
+                    this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+                }
+            });
+
+
+            /*
+             *  Thumbnail helper. Disable animations, hide close button, arrows and slide to next gallery item if clicked
+             */
+
+            $('.fancybox-thumbs').fancybox({
+                prevEffect : 'none',
+                nextEffect : 'none',
+
+                closeBtn  : false,
+                arrows    : false,
+                nextClick : true,
+
+                helpers : {
+                    thumbs : {
+                        width  : 50,
+                        height : 50
+                    }
+                }
+            });
+
+            /*
+             *  Media helper. Group items, disable animations, hide arrows, enable media and button helpers.
+            */
+            $('.fancybox-media')
+                .attr('rel', 'media-gallery')
+                .fancybox({
+                    openEffect : 'none',
+                    closeEffect : 'none',
+                    prevEffect : 'none',
+                    nextEffect : 'none',
+
+                    arrows : false,
+                    helpers : {
+                        media : {},
+                        buttons : {}
+                    }
+                });
+
+            /*
+             *  Open manually
+             */
+
+            $("#fancybox-manual-a").click(function() {
+                $.fancybox.open('1_b.jpg');
+            });
+
+            $("#fancybox-manual-b").click(function() {
+                $.fancybox.open({
+                    href : 'iframe.html',
+                    type : 'iframe',
+                    padding : 5
+                });
+            });
+
+            $("#fancybox-manual-c").click(function() {
+                $.fancybox.open([
+                    {
+                        href : '1_b.jpg',
+                        title : 'My title'
+                    }, {
+                        href : '2_b.jpg',
+                        title : '2nd title'
+                    }, {
+                        href : '3_b.jpg'
+                    }
+                ], {
+                    helpers : {
+                        thumbs : {
+                            width: 75,
+                            height: 50
+                        }
+                    }
+                });
+            });
+
+
+        });
+    </script>
 
 </body>
 </html>

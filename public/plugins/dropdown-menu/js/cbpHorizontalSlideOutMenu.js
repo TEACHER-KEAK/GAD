@@ -137,10 +137,10 @@
 				else {
 					trigger.addEventListener( 'click', function( ev ) { self._openMenu( this, ev ); } );
 					trigger.addEventListener( 'mouseover', function( ev ) { self._openMenu( this, ev ); } );
-					$('body').on('click',function(e){
-						e.preventDefault();
-						self._openMenu( trigger, e );
-					})
+					//$('body').on('click',function(e){
+					//	e.preventDefault();
+					//	self._openMenu( trigger, e );
+					//})
 				}
 			} );
 			
