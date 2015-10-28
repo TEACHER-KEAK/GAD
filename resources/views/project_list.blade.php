@@ -27,7 +27,7 @@
 			<div class="col-md-10">
 				<div class="project-item">
 					<div class="row">
-						<div class="col-md-12"> </div>
+						<div class="col-md-12"></div>
 					</div>
 					<div class="row">
 						@foreach($contents as $content)
@@ -46,11 +46,26 @@
 						        <h3><a href="{{url('categories/'.$content->category_id.'/projects/'.$content->id)}}">{{str_limit($content->translation(Lang::locale())->first() ? $content->translation(Lang::locale())->first()->title: $content->title, $limit = 27, $end = '...')}}</a></h3> 
 						      </div>
 						    </div><!--/ thumbnail-->
-						  </div><!--/ col--
-					</div><!--/row-->
+						  </div><!--/ col -->
 						@endforeach
-					
-				</div>
+					</div><!--/row-->
+					<div class="row">
+						<div class="col-md-12">
+							<div id="main_pagging"> 
+								<ul class = "pagination">
+								   <li><a href = "#">&laquo;</a></li>
+								   <li class = "active"><a href = "#">1</a></li>
+								   <li class = "disabled"><a href = "#">2</a></li>
+								   <li><a href = "#">3</a></li>
+								   <li><a href = "#">4</a></li>
+								   <li><a href = "#">5</a></li>
+								   <li><a href = "#">&raquo;</a></li>
+								</ul>
+							</div>	
+
+						</div>
+					</div>
+				 </div><!-- project-item -->
 			</div><!--/ col-md-10-->
 		</div><!-- / row -->
 	</div><!--/ container -->
