@@ -38,8 +38,10 @@ Route::group(['middleware' =>'locale'],function(){
     
     Route::get('/', function(){
         $sliders = \App\Slider::all();
+        $contents = \App\Content::where('show_home_page',1)->get();
         return view('home')->with([
-            'sliders' => $sliders
+            'sliders' => $sliders,
+            'projects' => $contents
         ]);
     });
     

@@ -146,30 +146,45 @@
             <div class="row">
                  <h3 style="padding:0 0 20px 0">Recently Project</h3>
                 <div class="owl-carousel">
+                	@foreach($projects as $project)
+                		@if(is_array(json_decode($project->thumb_images,true)))
+							@if(count(json_decode($project->thumb_images,true))>0)
+                			<div class="service-item">
+		                        <div class="img-project">
+		                             <a href="{{url('categories/'.$project->category_id.'/projects/'.$project->id)}}"> <img src="{{json_decode($project->thumb_images,true)[0]}}" /></a>
+		                         </div>
+		                         <div class="project-title"><a href="{{url('categories/'.$project->category_id.'/projects/'.$project->id)}}"> Read Documents</a></div>
+		                    </div>
+		                    @endif
+		                @else
+		                	<div class="service-item">
+		                        <div class="img-project">
+		                             <a href="{{url('categories/'.$project->category_id.'/projects/'.$project->id)}}"> <img src="{{ asset('/images/sample_img.jpg') }}" /></a>
+		                         </div>
+		                         <div class="project-title"><a href="{{url('categories/'.$project->category_id.'/projects/'.$project->id)}}"> Read Documents</a></div>
+		                    </div>
+                		@endif
+                	@endforeach
+                	
+                    
+                    <!--<div class="service-item">
+                        <div class="img-project">
+                             <a href="#"> <img src="{{ asset('/images/sample_img.jpg') }}" /></a>
+                         </div>
+                         <div class="project-title"><a href="#"> Read Documents</a></div>
+                    </div>
                     <div class="service-item">
                         <div class="img-project">
                              <a href="#"> <img src="{{ asset('/images/sample_img.jpg') }}" /></a>
                          </div>
                          <div class="project-title"><a href="#"> Read Documents</a></div>
                     </div>
-                     <div class="service-item">
-                        <div class="img-project">
-                             <a href="#"> <img src="{{ asset('/images/sample_img.jpg') }}" /></a>
-                         </div>
-                         <div class="project-title"><a href="#"> Read Documents</a></div>
-                    </div>
                     <div class="service-item">
                         <div class="img-project">
                              <a href="#"> <img src="{{ asset('/images/sample_img.jpg') }}" /></a>
                          </div>
                          <div class="project-title"><a href="#"> Read Documents</a></div>
-                    </div>
-                     <div class="service-item">
-                        <div class="img-project">
-                             <a href="#"> <img src="{{ asset('/images/sample_img.jpg') }}" /></a>
-                         </div>
-                         <div class="project-title"><a href="#"> Read Documents</a></div>
-                    </div>                  
+                    </div>                  -->
                 </div>
             </div>
         </div><!-- ./ page section -->
