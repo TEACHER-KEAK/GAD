@@ -21,7 +21,9 @@
                     @endforeach
                     </ul>
                  </div>
-                <div class="col-md-4"><div class="fb-page" data-href="https://www.facebook.com/thephnompenhtime" data-small-header="true" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/thephnompenhtime"><a href="https://www.facebook.com/thephnompenhtime">The Phnom Penh Times</a></blockquote></div></div></div>
+                <div class="col-md-4">
+                    <div class="fb-page" data-href="https://www.facebook.com/greenglobal855" data-small-header="true" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/greenglobal855"><a href="https://www.facebook.com/greenglobal855">Green Global Architecture Design &amp; Construction Co., Ltd</a></blockquote></div></div>
+                </div>
             </div>
         </div>
     </div>
