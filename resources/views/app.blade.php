@@ -166,7 +166,7 @@ type='text/css'>
 
     
     <script type="text/javascript">
- /*;(function($){
+ ;(function($){
      $(function() {
         $(document).ready(function(){
     
@@ -204,7 +204,7 @@ type='text/css'>
         })
      });
     });
- })(jQuery);*/
+ })(jQuery);
  $("#LANGUAGES img").click(function(){
     location.href= $(this).parent('a').attr('href');
  });
