@@ -104,7 +104,7 @@ with you.
 								      
 								            <input id="submit" name="submit" type="submit" value="Send" class="btn btn-primary">
 								       
-								    </div>
+									    </div>
     								 <div class="form-group">
 								      
 								            Will be used to display an alert to the user
