@@ -425,6 +425,11 @@ type='text/css'>
 	        nanobar.go( 30 ); // size bar 30%
 	        nanobar.go(100);
 		});
+		
+		$("#SEARCH").submit(function(e){
+		   e.preventDefault();
+		   location.href= $(this).attr("action")+"/"+$("#txtSearch").val();
+		});
 	</script>
     @yield('script')
 </body>

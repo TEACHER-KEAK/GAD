@@ -37,14 +37,16 @@
             @endforeach
             <!--search box-->
             <div class="search_box"> 
-                <div class="input-group stylish-input-group">
-                    <input type="text" class="form-control" placeholder="@lang('application.search')">
-                    <span class="input-group-addon">
-                        <button type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>  
-                    </span>
-                </div>
+                <form action="{{URL::to('categories/projects/search/')}}" id="SEARCH" method="GET">
+                    <div class="input-group stylish-input-group">
+                        <input type="text" class="form-control" placeholder="@lang('application.search')" id="txtSearch" name="search">
+                        <span class="input-group-addon">
+                            <button type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>  
+                        </span>
+                    </div>
+                </form>
              </div>
              <!--search box-->
             </ul>

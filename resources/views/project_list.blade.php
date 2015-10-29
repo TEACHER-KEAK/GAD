@@ -2,19 +2,25 @@
 @section('content')
 <div id="navigation">
 	<div class="container">
+		@if($category)
 		<input type="hidden" value="{{URL::to('categories/'.$category->id.'/projects')}}" id="URL"/>
+		@endif
 		<div class="row">	
 			<ol class="breadcrumb" style="text-transform: uppercase;">
 			  <li><a href="{{url()}}">@lang('application.home')</a></li>
-			  @if($category->parent_id)
-			  	@if($category->parentCategory->parent_id)
-			  	<li><a href="{{ url('categories/'.$category->parentCategory->parentCategory->id.'/projects') }}">{{ $category->parentCategory->parentCategory->title }}</a></li>
-			  	<li><a href="{{ url('categories/'.$category->parentCategory->id.'/projects')}}">{{ $category->parentCategory->title }}</a></li>
-			  	@else
-			  		<li><a href="{{ url('categories/'.$category->parentCategory->id.'/projects')}}">{{ $category->parentCategory->title }}</a></li>
-			  	@endif
+			  @if($category)
+				  @if($category->parent_id)
+				  	@if($category->parentCategory->parent_id)
+				  	<li><a href="{{ url('categories/'.$category->parentCategory->parentCategory->id.'/projects') }}">{{ $category->parentCategory->parentCategory->title }}</a></li>
+				  	<li><a href="{{ url('categories/'.$category->parentCategory->id.'/projects')}}">{{ $category->parentCategory->title }}</a></li>
+				  	@else
+				  		<li><a href="{{ url('categories/'.$category->parentCategory->id.'/projects')}}">{{ $category->parentCategory->title }}</a></li>
+				  	@endif
+				  @endif
+				  <li class="active"><strong>{{$category->title}}</strong></li>
+				@else
+					<li class="active"><strong>SEARCH</strong></li>
 			  @endif
-			  <li class="active"><strong>{{$category->title}}</strong></li>
 			</ol>
 		</div>
 	</div>
@@ -35,8 +41,8 @@
 						@foreach($contents as $content)
 						  <div class="col-sm-6 col-md-4">
 						    <div class="thumbnail">
-						    @if(is_array(json_decode($content->thumb_images,true)))
-						    	@if(count(json_decode($content->thumb_images,true))>0)
+						  @if(is_array(json_decode($content->thumb_images,true)))
+						    @if(count(json_decode($content->thumb_images,true))>0)
 									<img src="{{json_decode($content->thumb_images,true)[0]}}"></a>
 								@else
 									<img src="{{ asset('/images/sample_img.jpg')}}" />	
@@ -50,6 +56,9 @@
 						    </div><!--/ thumbnail-->
 						  </div><!--/ col -->
 						@endforeach
+						@if(count($contents)==0)
+							<center><h4>PROJECTS NOT FOUND...</h4></center>
+						@endif 
 					</div><!--/row-->
 					<div class="row">
 						<div class="col-md-12">
