@@ -81,7 +81,8 @@ Route::group(['middleware' =>'locale'],function(){
             $parentCategorySup = \App\Category::where('parent_id','in',(implode(' ,',$parentCategory->toArray())))->lists('id');
             $contents = \App\Content::where('category_id',$categoryId)
                                     ->orWhereIn('category_id', $parentCategory->toArray())
-                                    ->orderBy('created_at')->get();
+                                    ->orderBy('created_at')
+                                    ->paginate(21);
             return view('project_list')->with([
                 'category' => $category,
                 'categories' => $categories,
@@ -93,9 +94,21 @@ Route::group(['middleware' =>'locale'],function(){
                 'category' => $category,
                 'categories' => $categories,
                 'content' => $content
-            ]);;
+            ]);
         }
     });
+    
+    Route::post('categories/{categoryId}/projects',function(){
+        $contents = \App\Content::where('category_id',$categoryId)
+                                ->orWhereIn('category_id', $parentCategory->toArray())
+                                ->orderBy('created_at')
+                                ->paginate(21);
+        $data = View('project_list_template')->with([
+                    'contents' => $contents
+                ])->render();
+        return response()->json($data);
+    });
+    
     Route::get('locale/{locale?}',[
         'as' => 'locale.setocale',
         'uses' => 'LocaleController@setLocale'

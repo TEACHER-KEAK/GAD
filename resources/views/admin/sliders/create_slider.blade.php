@@ -117,7 +117,7 @@
   tinymce.init({
     selector: "textarea",theme: "modern", width: "99.5%",height: 300,
     plugins: [
-         "advlist autolink link image lists charmap print preview hr anchor pagebreak",
+         "advlist autolink link image lists charmap print preview hr anchor pagebreak code",
          "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
          "table contextmenu directionality emoticons paste textcolor responsivefilemanager"
    ],

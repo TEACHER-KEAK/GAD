@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Mail;
+use URL;
 
 class MailController extends Controller
 {
@@ -36,9 +38,13 @@ class MailController extends Controller
      */
     public function store(Request $request)
     {
-        Mail::send('emails.contact', ['message' => $request->all()], function($message) {
+        Mail::send('emails.contact', [
+                'name' => $request->input('name')
+            ], function($message) {
             $message->to('darapenhchet@gmail.com', 'DARA PENHCHET')->subject('GREEN ARCHITECURE AND DESIGN.');
         });
+        
+        return redirect(url(URL::previous()));
     }
 
     /**

@@ -2,6 +2,7 @@
 @section('content')
 <div id="navigation">
 	<div class="container">
+		<input type="hidden" value="{{URL::to('categories/'.$category->id.'/projects')}}" id="URL"/>
 		<div class="row">	
 			<ol class="breadcrumb" style="text-transform: uppercase;">
 			  <li><a href="{{url()}}">@lang('application.home')</a></li>
@@ -52,7 +53,8 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div id="main_pagging"> 
-								<ul class = "pagination">
+								{!! $contents->render() !!}
+								<!--<ul class = "pagination">
 								   <li><a href = "#">&laquo;</a></li>
 								   <li class = "active"><a href = "#">1</a></li>
 								   <li class = "disabled"><a href = "#">2</a></li>
@@ -60,9 +62,8 @@
 								   <li><a href = "#">4</a></li>
 								   <li><a href = "#">5</a></li>
 								   <li><a href = "#">&raquo;</a></li>
-								</ul>
+								</ul>-->
 							</div>	
-
 						</div>
 					</div>
 				 </div><!-- project-item -->
@@ -70,4 +71,45 @@
 		</div><!-- / row -->
 	</div><!--/ container -->
 </div><!--/ data project-->
+@endsection
+@section('script')
+	<script>
+        $(document).on('click','.pagination a', function(e){
+          e.preventDefault();
+          var pageId = $(this).attr('href').split('page=')[1];
+          var data = {
+                page: pageId
+          };
+          /*var options = {
+        	bg: '#e74c3c',
+        
+        	// leave target blank for global nanobar
+        	target: document.getElementById('myDivId'),
+        
+        	// id for new nanobar
+        	id: 'mynano'
+          };*/
+        
+        //var nanobar = new Nanobar( options );
+        $.ajax({
+              url: "{{URL::to('/categories/projects')}}",
+              data: data,
+              dataType: "JSON",
+              type: "POST",
+              headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              },
+              beforeSend: function(){
+                // move bar
+                //nanobar.go( 30 ); // size bar 30%
+              
+              },
+              success: function(data){
+                $('#CONTENT').html(data);
+                // Finish progress bar
+                //nanobar.go(100);
+              }
+          });
+        });
+    </script>
 @endsection

@@ -30,7 +30,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<h1> {!! $content->translation(Lang::locale())->first() ? $content->translation(Lang::locale())->first()->title: $content->title !!}</h1>
-							<p> Posted: {{$content->createdBy->lastname}} {{ $content->createdBy->firstname}} | Date: {{$content->created_at->format('d-F-Y')}} </p>
+							<p> Posted: {{$content->createdBy ? $content->createdBy->lastname : ''}} {{ $content->createdBy ? $content->createdBy->firstname : ''}} | Date: {{$content->created_at->format('d-F-Y')}} </p>
 						</div>
 					</div>
 					<div class="row">
