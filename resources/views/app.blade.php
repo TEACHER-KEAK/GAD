@@ -405,7 +405,25 @@ type='text/css'>
 
 
         });
+        
     </script>
+    <script>
+		$(function(){
+    		var options = {
+        		bg: '#e74c3c',
+        
+        		// leave target blank for global nanobar
+        		target: document.getElementById('myDivId'),
+        
+        		// id for new nanobar
+        		id: 'mynano'
+          	};
+        
+	        var nanobar = new Nanobar( options );
+	        nanobar.go( 30 ); // size bar 30%
+	        nanobar.go(100);
+		});
+	</script>
     @yield('script')
 </body>
 </html>
