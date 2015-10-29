@@ -8,7 +8,7 @@
     <meta name="keywords" content="Green GLOBAL Dedign and Architecture">
 	<meta name="description" content="Green GLOBAL Dedign and Architecture">
     <meta name="author" content="Green GLOBAL Dedign and Architecture">
-<!-- JQuery -->
+    <!-- JQuery -->
     <script type="text/javascript" src="{{asset('/plugins/fancybox/lib/jquery-1.10.1.min.js')}}"></script>
 
 	<!--Plugin and default Stylesheets -->
@@ -38,9 +38,8 @@ type='text/css'>
     <script src="{{ asset('/plugins/dropdown-menu/js/modernizr.custom.js')}}"></script>
 
     <!-- popup master -->
-     <link rel="stylesheet" type="text/css" href="{{ asset('/plugins/bpopup-master/style-popup.css')}}" />
-
-     
+    <link rel="stylesheet" type="text/css" href="{{ asset('/plugins/bpopup-master/style-popup.css')}}" />
+    
 
     <!--fancybox -->
      
@@ -83,6 +82,7 @@ type='text/css'>
             
         </div>
     </div>
+
     <div id="front">
         <div class="site-header">
             <div class="container">
@@ -145,6 +145,7 @@ type='text/css'>
     <script src="{{ asset('/dist/js/main.js')}}"></script>
     <script src="{{ asset('/dist/js/plugins_carousel.js')}}"></script>
     <script src="{{ asset('/dist/js/main_carousel.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('/plugins/bpopup-master/jquery.bpopup.js') }}"></script>
 
     <script src="{{ asset('/plugins/dropdown-menu/js/cbpHorizontalSlideOutMenu.js')}}"></script>
         <script>
@@ -152,7 +153,7 @@ type='text/css'>
         </script>
 
     
-    <script type="text/javascript">
+<script type="text/javascript">
  ;(function($){
      $(function() {
         $(document).ready(function(){
@@ -192,6 +193,7 @@ type='text/css'>
      });
     });
  })(jQuery);
+ 
  $("#LANGUAGES img").click(function(){
     location.href= $(this).parent('a').attr('href');
  });
