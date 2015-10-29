@@ -30,6 +30,7 @@
 					<div class="row">
 						<div class="col-md-12"></div>
 					</div>
+					<div id="CONTENTS">
 					<div class="row">
 						@foreach($contents as $content)
 						  <div class="col-sm-6 col-md-4">
@@ -66,6 +67,7 @@
 							</div>	
 						</div>
 					</div>
+					</div>
 				 </div><!-- project-item -->
 			</div><!--/ col-md-10-->
 		</div><!-- / row -->
@@ -74,13 +76,8 @@
 @endsection
 @section('script')
 	<script>
-        $(document).on('click','.pagination a', function(e){
-          e.preventDefault();
-          var pageId = $(this).attr('href').split('page=')[1];
-          var data = {
-                page: pageId
-          };
-          /*var options = {
+			$(function(){
+          var options = {
         	bg: '#e74c3c',
         
         	// leave target blank for global nanobar
@@ -88,11 +85,30 @@
         
         	// id for new nanobar
         	id: 'mynano'
-          };*/
+          };
         
-        //var nanobar = new Nanobar( options );
+        var nanobar = new Nanobar( options );
+        nanobar.go( 30 ); // size bar 30%
+        nanobar.go(100);
+				$(document).on('click','.pagination a', function(e){
+          e.preventDefault();
+          var pageId = $(this).attr('href').split('page=')[1];
+          var data = {
+                page: pageId
+          };
+          var options = {
+        	bg: '#e74c3c',
+        
+        	// leave target blank for global nanobar
+        	target: document.getElementById('myDivId'),
+        
+        	// id for new nanobar
+        	id: 'mynano'
+          };
+        
+        var nanobar = new Nanobar( options );
         $.ajax({
-              url: "{{URL::to('/categories/projects')}}",
+              url: $("#URL").val(),
               data: data,
               dataType: "JSON",
               type: "POST",
@@ -101,15 +117,18 @@
               },
               beforeSend: function(){
                 // move bar
-                //nanobar.go( 30 ); // size bar 30%
+                nanobar.go( 30 ); // size bar 30%
               
               },
               success: function(data){
-                $('#CONTENT').html(data);
+              	console.log(data);
+                $('#CONTENTS').html(data);
                 // Finish progress bar
-                //nanobar.go(100);
+                nanobar.go(100);
               }
           });
         });
+			})
+        
     </script>
 @endsection

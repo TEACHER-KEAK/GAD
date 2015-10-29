@@ -98,7 +98,10 @@ Route::group(['middleware' =>'locale'],function(){
         }
     });
     
-    Route::post('categories/{categoryId}/projects',function(){
+    Route::post('categories/{categoryId}/projects',function($categoryId){
+        $parentCategory = \App\Category::where('parent_id',$categoryId)
+                                           ->orWhereIn('parent_id',DB::table('categories')->where('parent_id',$categoryId)->lists('id'))
+                                           ->lists('id');
         $contents = \App\Content::where('category_id',$categoryId)
                                 ->orWhereIn('category_id', $parentCategory->toArray())
                                 ->orderBy('created_at')

@@ -49,7 +49,20 @@ type='text/css'>
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5')}}" />
     <!-- Add Thumbnail helper (this is optional) -->
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7')}}" />
-    
+    <style>
+        .pagination>.active>a, 
+        .pagination>.active>a:focus, 
+        .pagination>.active>a:hover, 
+        .pagination>.active>span, 
+        .pagination>.active>span:focus, 
+        .pagination>.active>span:hover {
+            background-color: #00A65A;
+            border-color: #00A65A;
+        }
+        .btn{
+            border-radius: 0;
+        }
+    </style>
 
     
 	
@@ -153,7 +166,7 @@ type='text/css'>
 
     
     <script type="text/javascript">
- ;(function($){
+ /*;(function($){
      $(function() {
         $(document).ready(function(){
     
@@ -191,7 +204,7 @@ type='text/css'>
         })
      });
     });
- })(jQuery);
+ })(jQuery);*/
  $("#LANGUAGES img").click(function(){
     location.href= $(this).parent('a').attr('href');
  });
@@ -215,6 +228,8 @@ type='text/css'>
 
     <!-- Add Media helper (this is optional) -->
     <script type="text/javascript" src="{{asset('plugins/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6')}}"></script>
+    
+    <script src="{{ asset('/bower_components/nanobar/nanobar.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             /*
@@ -391,6 +406,6 @@ type='text/css'>
 
         });
     </script>
-    @section('script')
+    @yield('script')
 </body>
 </html>
