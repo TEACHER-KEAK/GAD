@@ -93,7 +93,7 @@
                 page: pageId
           };
           var options = {
-        	bg: '#e74c3c',
+        	bg: '#85c91c',
         
         	// leave target blank for global nanobar
         	target: document.getElementById('myDivId'),
