@@ -16,6 +16,7 @@
                 <li data-open="" class="">
                     <a href="{!!$menu->category()->first() ? url('categories/'.$menu->category()->first()->id.'/projects') : $menu->external_url ?:'#'!!}">{!! $menu->translation(Lang::locale())->first() ? $menu->translation(Lang::locale())->first()->title: $menu->title !!}</a>
                     @if($menu->category()->first())
+                    <div id ="cbp-container">
                     <ul class="cbp-hssubmenu">
                         @foreach($menu->category()->first()->categories()->orderBy('ordering')->get()  as $category)
                         <li>
@@ -32,6 +33,7 @@
                         </li>
                         @endforeach
                     </ul>
+                    </div>
                     @endif
                 </li>
             @endforeach

@@ -1,4 +1,4 @@
-/**
+/*
  * cbpHorizontalSlideOutMenu.js v1.0.0
  * http://www.codrops.com
  *
@@ -135,12 +135,12 @@
 					trigger.addEventListener( 'touchstart', function( ev ) { self._openMenu( this, ev ); } );
 				}
 				else {
-					trigger.addEventListener( 'click', function( ev ) { self._openMenu( this, ev ); } );
+					//trigger.addEventListener( 'click', function( ev ) { self._openMenu( this, ev ); } );
 					trigger.addEventListener( 'mouseover', function( ev ) { self._openMenu( this, ev ); } );
-					//$('body').on('click',function(e){
-					//	e.preventDefault();
-					//	self._openMenu( trigger, e );
-					//})
+					
+					$('#cbp-container').on('mouseleave',function(e){
+						  self._openMenu( this, e );
+					})
 				}
 			} );
 			
