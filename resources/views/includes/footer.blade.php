@@ -13,7 +13,7 @@
                     </p>
                 </div>
 
-                 <div class="col-md-3"><h1 class="footer_headline">MENU</h1>
+                 <div class="col-md-3"><h1 class="footer_headline">@lang('application.menu')</h1>
                     <ul>
                         <li><a href="{{url()}}">HOME</a></li>
                     @foreach($menus as $key=> $menu)

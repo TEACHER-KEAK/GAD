@@ -101,8 +101,9 @@
         <div class="row">
         	<div class="col-md-12">
             	<div class="intro_content">
-            		<p><span>Green Global Architecture Design & Construction Co., Ltd.</span>  is a Cambodia base Company in Phnom  Penh. Green branding have been in Phnom Penh since 2007. </p>
-            		<p>We provide Architectural and Interior Design with Consultancy, Construction with Renovation services for turnkey project for villa, condominium, apartment, hotel, lifestyle retail shop, cafe, ...</p>
+            		<!--<p><span>Green Global Architecture Design & Construction Co., Ltd.</span>  is a Cambodia base Company in Phnom  Penh. Green branding have been in Phnom Penh since 2007. </p>
+            		<p>We provide Architectural and Interior Design with Consultancy, Construction with Renovation services for turnkey project for villa, condominium, apartment, hotel, lifestyle retail shop, cafe, ...</p>-->
+            		@lang('application.description')
             	</div>
         	</div>
         </div>
@@ -144,7 +145,7 @@
 	<div class="container">
         <div class="page-section text-center">
             <div class="row">
-                 <h3 style="padding:0 0 20px 0">Recently Project</h3>
+                 <h3 style="padding:0 0 20px 0">@lang('application.recently_project')</h3>
                 <div class="owl-carousel">
                 	@foreach($projects as $project)
                 		@if(is_array(json_decode($project->thumb_images,true)))
@@ -153,7 +154,7 @@
 		                        <div class="img-project">
 		                             <a href="{{url('categories/'.$project->category_id.'/projects/'.$project->id)}}"> <img src="{{json_decode($project->thumb_images,true)[0]}}" /></a>
 		                         </div>
-		                         <div class="project-title"><a href="{{url('categories/'.$project->category_id.'/projects/'.$project->id)}}"> Read Documents</a></div>
+		                         <div class="project-title"><a href="{{url('categories/'.$project->category_id.'/projects/'.$project->id)}}"> {{str_limit($project->translation(Lang::locale())->first() ? $project->translation(Lang::locale())->first()->title: $project->title, $limit = 32, $end = '...')}}</a></div>
 		                    </div>
 		                    @endif
 		                @else
@@ -161,7 +162,7 @@
 		                        <div class="img-project">
 		                             <a href="{{url('categories/'.$project->category_id.'/projects/'.$project->id)}}"> <img src="{{ asset('/images/sample_img.jpg') }}" /></a>
 		                         </div>
-		                         <div class="project-title"><a href="{{url('categories/'.$project->category_id.'/projects/'.$project->id)}}"> Read Documents</a></div>
+		                         <div class="project-title"><a href="{{url('categories/'.$project->category_id.'/projects/'.$project->id)}}"> str_limit($project->translation(Lang::locale())->first() ? $project->translation(Lang::locale())->first()->title: $project->title, $limit = 27, $end = '...')}}</a></div>
 		                    </div>
                 		@endif
                 	@endforeach
@@ -194,7 +195,7 @@
 <div class="client_reference">
     <div class="container">
         <div class="row">
-            <h3 style="padding:0 0 20px 0; margin:0px; text-align:center;">Our Client</h3>
+            <h3 style="padding:0 0 20px 0; margin:0px; text-align:center;">@lang('application.our_customers')</h3>
             <div class="col-md-2">
                 <div class="img_client_box"><img src="{{ asset('/images/client_logo_1.jpg') }}"></div>
             </div>
