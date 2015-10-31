@@ -65,7 +65,21 @@
 								</div>	
 							</div>
 							<div class="col-md-4">
-								<div class="company_contact_info">
+								@if(Session::has('flash_message'))
+					                <div class="alert alert-success">
+					                    {{ Session::get('flash_message') }}
+					                </div>
+					            @endif
+					            @if($errors->any())
+					                <div class="alert alert-danger">
+					                    @foreach($errors->all() as $error)
+					                        <p>{{ $error }}</p>
+					                    @endforeach
+					                </div>
+					            @endif
+								<form action="{{URL::to('emails')}}" method="POST">
+									<input type="hidden" name="_token" value="{!! csrf_token() !!}">
+									<div class="company_contact_info">
 									<h4>Contact us</h4>
 									<p>For more details contact:</p>
 									<p>
@@ -82,35 +96,30 @@ with you.
             							name="name" placeholder="First & Last Name" value="">
     								</div>
     								<div class="form-group">
-            							<input type="text" class="form-control" id="name" 
-            							name="name" placeholder="your e-mail address" value="">
+            							<input type="text" class="form-control" id="email" 
+            							name="email" placeholder="your e-mail address" value="">
     								</div>
     								<div class="form-group">
-            							<input type="text" class="form-control" id="name" 
-            							name="name" placeholder="best telephone number" value="">
+            							<input type="text" class="form-control" id="telephone" 
+            							name="telephone" placeholder="best telephone number" value="">
     								</div>
     								<div class="form-group">
 								        
-								            <textarea class="form-control" rows="4" name="message"></textarea>
+								            <textarea class="form-control" rows="4" name="description"></textarea>
 								        
 								    </div>
 								    <div class="form-group">
 								        <label for="human" class="control-label">2 + 3 = ?</label>
-								     
-								            <input type="text" class="form-control" id="human" name="human" placeholder="Your Answer">
-								       
+								            <input type="text" class="form-control" id="human" name="human" placeholder="Your Answer" required>
 								    </div>
 								    <div class="form-group">
-								      
 								            <input id="submit" name="submit" type="submit" value="Send" class="btn btn-primary">
-								       
 									    </div>
     								 <div class="form-group">
-								      
 								            Will be used to display an alert to the user
-								      
 								    </div>
 								</div>
+								</form>
 							</div>
 					</div>
 				</div>

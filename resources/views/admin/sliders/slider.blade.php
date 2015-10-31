@@ -36,7 +36,7 @@
                   <th>Author</th>
                   <th>Status</th>
                   <th>Created Date</th>
-                  <th>Updated Date</th>
+                  <th>Type</th>
                   <th width="15%" style="text-align:center;">Actions</th>
                 </tr>
               </thead>
@@ -56,13 +56,17 @@
                     @endif
                     </td>
                     <td>{{$slider->created_at}}</td>
-                    <td>{{$slider->updated_at}}</td>
+                    <td>{{$slider->type}}</td>
                     <td style="text-align:center;">
                     <a href="{{ URL('admin/sliders/'.$slider->id.'/edit') }}" id="btnEdit">
                       <i class="fa fa-edit"></i> &nbsp;| &nbsp;
                     </a>
                     <a href="javascript:;" id="btnRemove">
-                      <i class="fa fa-trash-o"></i>
+                      <i class="fa fa-trash-o"></i> &nbsp;| &nbsp;
+                    </a>
+                    <a href="{{ URL('admin/sliders/'.$slider->id)}}" id="btnTranslate">
+                      <!--<i class="fa fa-spinner fa-pulse"></i>-->
+                      <i class="fa fa-language"></i>
                     </a>
                   </td>
                   </tr>

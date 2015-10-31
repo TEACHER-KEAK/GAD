@@ -9,7 +9,7 @@
         <th>Author</th>
         <th>Status</th>
         <th>Created Date</th>
-        <th>Updated Date</th>
+        <th>Type</th>
         <th width="15%" style="text-align:center;">Actions</th>
       </tr>
     </thead>
@@ -29,7 +29,7 @@
           @endif
           </td>
           <td>{{$slider->created_at}}</td>
-          <td>{{$slider->updated_at}}</td>
+          <td>{{$slider->type}}</td>
           <td style="text-align:center;">
           <a href="{{ URL('admin/sliders/'.$slider->id.'/edit') }}" id="btnEdit">
             <i class="fa fa-edit"></i> &nbsp;| &nbsp;

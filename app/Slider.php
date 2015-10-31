@@ -40,5 +40,16 @@ class Slider extends Model
         return $this->belongsTo('App\User', 'updated_by');
     }
     
+    public function sliderTranslation(){
+        return $this->hasMany('App\SliderTranslation', 'slider_id');
+    }
+    
+    public function translation($language=null){
+        if ($language == null) {
+           $language = App::getLocale();
+        }
+        return $this->hasMany('App\SliderTranslation')->where('language_id', '=', $language);
+    }
+    
     protected $dates = ['deleted_at'];
 }

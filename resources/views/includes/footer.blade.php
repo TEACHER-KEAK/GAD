@@ -28,6 +28,7 @@
         </div>
     </div>
     <div class="box_copy_right">
-        @lang('application.copyright')
+        <!--@lang('application.copyright')-->
+        {!! $settings->translationCopyright(Lang::locale())!!}
     </div>
 </div>

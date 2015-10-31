@@ -178,6 +178,7 @@ Route::group(['prefix' => 'admin'
     
     Route::resource('languages', 'LanguageController');
     
+    Route::post('sliders/translation','SliderController@Translation');
     Route::post('sliders/updateslider/','SliderController@UpdateSlider');
     Route::resource('sliders', 'SliderController');
     
@@ -209,16 +210,19 @@ Route::group(['prefix' => 'rest/admin'
     
     Route::post('/users', ['uses' => 'UserController@Json']);
     
+    Route::post('/sliders/translate', ['uses' => 'SliderController@Translate']);
     Route::post('/sliders', ['uses' => 'SliderController@Json']);
     
 });
 
-View::composer(['includes.header','includes.footer'], function($view){
+View::composer(['includes.header','includes.footer','app','home'], function($view){
    $menus = \App\Menu::where('status',1)
                      ->whereNull('deleted_at')
                      ->get();
+   //dd(\App\Setting::first());
    $view->with([
-       'menus'=> $menus
+       'menus'=> $menus,
+       'settings' => \App\Setting::first()
    ]);
 });
 

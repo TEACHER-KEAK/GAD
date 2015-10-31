@@ -76,8 +76,15 @@ class SettingController extends Controller
     {
         $this->validate($request, [
             'company_name' => 'required',
+            'company_name_kh' => 'required',
+            'company_name_ch' => 'required',
             'company_logo' => 'required',
             'copyright' => 'required',
+            'copyright_kh' => 'required',
+            'copyright_ch' => 'required',
+            'company_information' => 'required',
+            'company_information_ch' => 'required',
+            'company_information_kh' => 'required',
             'meta_title' => 'required',
             'meta_content' => 'required',
             'meta_description' => 'required',

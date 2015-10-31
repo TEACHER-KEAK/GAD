@@ -41,19 +41,19 @@
               <div class="form-group  " >
                 <label for="ipt" class=" control-label col-md-2 text-right">Company Name(Khmer)</label>
                 <div class="col-md-10">
-                  <input type="text" name="company_name" id="company_name" value="{{$setting->company_name}}" class="form-control" value="{{$setting->copyright}}" placeholder="Enter your company name" required/> 
+                  <input type="text" name="company_name_kh" id="company_name_kh" value="{{$setting->company_name_kh}}" class="form-control" placeholder="Enter your company name" required/> 
                 </div> 
               </div>   
               <div class="form-group  " >
                 <label for="ipt" class=" control-label col-md-2 text-right">Company Name(English)</label>
                 <div class="col-md-10">
-                  <input type="text" name="company_name" id="company_name" value="{{$setting->company_name}}" class="form-control" value="{{$setting->copyright}}" placeholder="Enter your company name" required/> 
+                  <input type="text" name="company_name" id="company_name" value="{{$setting->company_name}}" class="form-control" placeholder="Enter your company name" required/> 
                 </div> 
               </div> 
               <div class="form-group  " >
                 <label for="ipt" class=" control-label col-md-2 text-right">Company Name(Chinese)</label>
                 <div class="col-md-10">
-                  <input type="text" name="company_name" id="company_name" value="{{$setting->company_name}}" class="form-control" value="{{$setting->copyright}}" placeholder="Enter your company name" required/> 
+                  <input type="text" name="company_name_ch" id="company_name_ch" value="{{$setting->company_name_ch}}" class="form-control" placeholder="Enter your company name" required/> 
                 </div> 
               </div> 
               <div class="form-group">
@@ -64,10 +64,28 @@
                     <img src="{{$setting->company_logo}}" style="width:116px; height:80px;" class="thumbnail" id="sample_image"/>
                   </div>    
               </div>
+              <div class="form-group">
+                <label class="col-sm-2 text-right">Company Information(Khmer)</label>
+                  <div class="col-sm-10">  
+                    <textarea id="company_information_kh" name="company_information_kh">{!! $setting->company_information_kh!!}</textarea>
+                  </div>    
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 text-right">Company Information(English)</label>
+                  <div class="col-sm-10">  
+                    <textarea id="company_information" name="company_information">{!! $setting->company_information!!}</textarea>
+                  </div>    
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 text-right">Company Information(Chinese)</label>
+                  <div class="col-sm-10">  
+                    <textarea id="company_information_ch" name="company_information_ch">{!! $setting->company_information_ch!!}</textarea>
+                  </div>    
+              </div>
               <div class="form-group   " >
                 <label for="ipt" class=" control-label col-md-2 text-right"> Copyright(Khmer)</label> 
                 <div class="col-md-10">
-                  <input type="text" name="copyright" id="copyright" value="{{$setting->copyright}}" class="form-control" placeholder="Enter your copyright..." required/>    
+                  <input type="text" name="copyright_kh" id="copyright_kh" value="{{$setting->copyright_kh}}" class="form-control" placeholder="Enter your copyright..." required/>    
                 </div> 
               </div>
               <div class="form-group   " >
@@ -79,7 +97,7 @@
               <div class="form-group   " >
                 <label for="ipt" class=" control-label col-md-2 text-right"> Copyright(Chinese)</label> 
                 <div class="col-md-10">
-                  <input type="text" name="copyright" id="copyright" value="{{$setting->copyright}}" class="form-control" placeholder="Enter your copyright..." required/>    
+                  <input type="text" name="copyright_ch" id="copyright_ch" value="{{$setting->copyright_ch}}" class="form-control" placeholder="Enter your copyright..." required/>    
                 </div> 
               </div>
               <div class="form-group   " >
@@ -156,7 +174,7 @@
 <script type="text/javascript">
   $(document).ajaxStart(function() { Pace.restart(); }); 
   tinymce.init({
-    selector: "textarea",theme: "modern", width: "99.5%",height: 300,
+    selector: "textarea",theme: "modern", width: "99.5%",height: 200,
     plugins: [
          "advlist autolink link image lists charmap print preview hr anchor pagebreak code",
          "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",

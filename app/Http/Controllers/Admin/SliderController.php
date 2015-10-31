@@ -28,6 +28,7 @@ class SliderController extends Controller
             $limit = 15;
         }
         $sliders = Slider::where('title', 'like','%'.$requests->input('search').'%')
+                           ->orWhere('type', 'like','%'.$requests->input('search').'%')
                            ->orderBy('created_at','desc')
                            ->paginate($limit);
         $data = View('admin.sliders.slider_template')->with('sliders', $sliders)->render();
@@ -56,6 +57,7 @@ class SliderController extends Controller
             'title' => 'required',
             'image' => 'required',
             'status' => 'required',
+            'type' => 'required',
             'ordering' => 'required|numeric'
         ]);
         
@@ -81,7 +83,13 @@ class SliderController extends Controller
      */
     public function show($id)
     {
-        //
+        $slider = Slider::findOrFail($id);
+        return View('admin.sliders.translate_slider')->with([
+            'slider' => $slider,
+            'languages' => \App\Language::where([
+                                            'status' => 1,
+                                            'is_default' => false])->get(),
+        ]);
     }
 
     /**
@@ -116,6 +124,7 @@ class SliderController extends Controller
             'title' => 'required',
             'image' => 'required',
             'status' => 'required',
+            'type' => 'required',
             'ordering' => 'required|numeric'
         ]);
         
@@ -145,5 +154,61 @@ class SliderController extends Controller
         return response()->json([
             'STATUS' => true
         ]);
+    }
+    
+    public function translate(Request $request){
+        $validation = $this->validate($request, [
+            'slider_id' => 'required|numeric',
+            'language_id' => 'required|max:2',
+        ]);
+        $sliderTranslation = \App\SliderTranslation::firstOrNew($request->all());
+        if($sliderTranslation->exists){
+            return response()->json([
+               'DATA' => $sliderTranslation
+            ]);
+        }else{
+            return response()->json([
+                'DATA' => null
+            ]);
+        }
+    }
+    
+    public function translation(Request $request){
+        //1. Validation 
+        $this->validate($request, [
+            'title' => 'required',
+            'slider_id' => 'required|numeric',
+            'language_id' => 'required|max:2'
+        ]);
+        //2. Find menu by id
+        $slider = \App\Slider::firstOrNew([
+            'id'=> $request->input('slider_id')
+        ]);
+        
+        try{
+            if($slider->exists){
+                $sliderTranslation = \App\SliderTranslation::firstOrNew($request->only('slider_id','language_id'));
+                if(!$sliderTranslation->exists){
+                    $sliderTranslation = new \App\SliderTranslation($request->all());
+                    $sliderTranslation->save();
+                    //5. FLASH MESSAGE BACK
+                    Session::flash('flash_message', 'Slider successfully translated!');
+                }else{
+                    $sliderTranslation::where('slider_id', $request->input('slider_id'))
+                                        ->where('language_id', $request->input('language_id'))
+                                        ->update($request->only('title'));
+                    //5. FLASH MESSAGE BACK
+                    Session::flash('flash_message', 'Slider successfully translate updated!');
+                }
+            }else{
+                //5. FLASH MESSAGE BACK
+                Session::flash('flash_message', 'Slider not found!!!');
+            }
+        }catch(Exception $e){
+            
+        }
+
+        //6. REDIRECT BACK
+        return redirect()->back();
     }
 }

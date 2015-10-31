@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Mail;
 use URL;
+use Session;
 
 class MailController extends Controller
 {
@@ -45,6 +46,7 @@ class MailController extends Controller
                 'description' => $request->input('description')
             ], function($message) {
             $message->to('darapenhchet@gmail.com', 'DARA PENHCHET')->subject('GREEN ARCHITECURE AND DESIGN.');
+            Session::flash('flash_message', 'Your message has been sent successfully!');
         });
         
         return redirect(url(URL::previous()));

@@ -12,7 +12,7 @@
 			                    <div class="row">
 			                        <div class="col-md-12 text-right">
 			                            <div class="slider-caption">
-			                                <h2>{{ $slider->title}}</h2>
+			                                <h2>{{$slider->translation(Lang::locale())->first() ? $slider->translation(Lang::locale())->first()->title: $slider->title}}</h2>
 			                            </div>
 			                        </div>
 			                    </div>
@@ -103,7 +103,8 @@
             	<div class="intro_content">
             		<!--<p><span>Green Global Architecture Design & Construction Co., Ltd.</span>  is a Cambodia base Company in Phnom  Penh. Green branding have been in Phnom Penh since 2007. </p>
             		<p>We provide Architectural and Interior Design with Consultancy, Construction with Renovation services for turnkey project for villa, condominium, apartment, hotel, lifestyle retail shop, cafe, ...</p>-->
-            		@lang('application.description')
+            		<!--@lang('application.description')-->
+            		{!! $settings->translationCompanyInformation(Lang::locale()) !!}
             	</div>
         	</div>
         </div>
@@ -113,11 +114,13 @@
 <div class="box_intro_services">
 	<div class="container intro_box_color">
     	 <div class="row">
+    	 	@foreach($sliders as $slider)
         	<div class="col-md-2">
-    			<img src="{{ asset('/images/architecture_services_icon.png') }}">
-				<h3>Architural Design</h3>
+    			<img src="{{ $slider->thumb_image }}" style="width:74px; height:82px;">
+				<h3>{{$slider->translation(Lang::locale())->first() ? $slider->translation(Lang::locale())->first()->title: $slider->title}}</h3>
         	</div>
-        	<div class="col-md-2">
+        	@endforeach
+<!--        	<div class="col-md-2">
     			<img src="{{ asset('/images/lanscape_services_icon.png') }}">
 				<h3>Exterior Design</h3>
         	</div>
@@ -136,7 +139,7 @@
         	<div class="col-md-2">
     			<img src="{{ asset('/images/consultant_icon.png') }}">
 				<h3>Consultant & Management </h3>
-        	</div>
+        	</div>-->
         </div><!--row-->	
     </div><!--container-->	
 </div> <!--/ box info services -->
@@ -196,10 +199,12 @@
     <div class="container">
         <div class="row">
             <h3 style="padding:0 0 20px 0; margin:0px; text-align:center;">@lang('application.our_customers')</h3>
+            @foreach($sliders as $client)
             <div class="col-md-2">
-                <div class="img_client_box"><img src="{{ asset('/images/client_logo_1.jpg') }}"></div>
+                <div class="img_client_box"><img src="{{ $client->thumb_image }}"></div>
             </div>
-             <div class="col-md-2">
+        	@endforeach
+             <!--<div class="col-md-2">
                  <div class="img_client_box"><img src="{{ asset('/images/client_logo_2.jpg') }}"></div>
             </div>
              <div class="col-md-2">
@@ -213,7 +218,7 @@
             </div>
              <div class="col-md-2">
                   <div class="img_client_box"><img src="{{ asset('/images/client_logo_6.jpg') }}"></div>
-            </div>
+            </div>-->
 
         </div>
     </div>
