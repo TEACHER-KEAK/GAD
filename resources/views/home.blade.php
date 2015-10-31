@@ -114,10 +114,10 @@
 <div class="box_intro_services">
 	<div class="container intro_box_color">
     	 <div class="row">
-    	 	@foreach($sliders as $slider)
+    	 	@foreach($services as $service)
         	<div class="col-md-2">
     			<img src="{{ $slider->thumb_image }}" style="width:74px; height:82px;">
-				<h3>{{$slider->translation(Lang::locale())->first() ? $slider->translation(Lang::locale())->first()->title: $slider->title}}</h3>
+				<h3>{{$service->translation(Lang::locale())->first() ? $service->translation(Lang::locale())->first()->title: $service->title}}</h3>
         	</div>
         	@endforeach
 <!--        	<div class="col-md-2">
@@ -199,7 +199,7 @@
     <div class="container">
         <div class="row">
             <h3 style="padding:0 0 20px 0; margin:0px; text-align:center;">@lang('application.our_customers')</h3>
-            @foreach($sliders as $client)
+            @foreach($clients as $client)
             <div class="col-md-2">
                 <div class="img_client_box"><img src="{{ $client->thumb_image }}"></div>
             </div>

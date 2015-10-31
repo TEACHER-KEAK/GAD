@@ -37,10 +37,14 @@ Route::group(['middleware' =>'locale'],function(){
     
     
     Route::get('/', function(){
-        $sliders = \App\Slider::all();
+        $sliders = \App\Slider::where('type','SLIDE SHOW')->get();
+        $clients = \App\Slider::where('type','CLIENT SHOW')->get();
+        $services = \App\Slider::where('type','SERVICE SHOW')->get();
         $contents = \App\Content::where('show_home_page',1)->get();
         return view('home')->with([
             'sliders' => $sliders,
+            'clients' => $clients,
+            'services' => $services,
             'projects' => $contents
         ]);
     });
