@@ -111,7 +111,7 @@ type='text/css'>
                         <div class="top_bar  main-menu">
                     		<div class="row">
                                 <div class="col-md-7">
-                                    <h1> Green Global Architecture Design & Construction Co., Ltd.</h1>
+                                    <h1> @lang('application.company_name')</h1>
                                 </div>
                                  <div class="col-md-5" id="LANGUAGES">
                                     <i class="glyphicon glyphicon-earphone"> </i> <b>@lang('application.telephone')</b>

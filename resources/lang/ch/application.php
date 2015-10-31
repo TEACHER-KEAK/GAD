@@ -24,6 +24,6 @@ return [
     'description' => '<p><span>Green Global Architecture Design & Construction Co., Ltd.</span>  is a Cambodia base Company in Phnom  Penh. Green branding have been in Phnom Penh since 2007. </p>
             		<p>We provide Architectural and Interior Design with Consultancy, Construction with Renovation services for turnkey project for villa, condominium, apartment, hotel, lifestyle retail shop, cafe, ...</p>',
     'menu' => 'MENU',
+    'company_name' => 'ក្រុមហ៊ុន ហ្រ្គីន គ្លូប៊ល អាឃីធេកឈ័រ ឌីហ្សាញ & ខនស្រ្តាក់សិន.',
     
-
 ];

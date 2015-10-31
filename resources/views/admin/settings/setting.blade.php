@@ -39,11 +39,23 @@
               {!! method_field('PUT') !!}
               
               <div class="form-group  " >
-                <label for="ipt" class=" control-label col-md-2 text-right">Company Name</label>
+                <label for="ipt" class=" control-label col-md-2 text-right">Company Name(Khmer)</label>
                 <div class="col-md-10">
                   <input type="text" name="company_name" id="company_name" value="{{$setting->company_name}}" class="form-control" value="{{$setting->copyright}}" placeholder="Enter your company name" required/> 
                 </div> 
               </div>   
+              <div class="form-group  " >
+                <label for="ipt" class=" control-label col-md-2 text-right">Company Name(English)</label>
+                <div class="col-md-10">
+                  <input type="text" name="company_name" id="company_name" value="{{$setting->company_name}}" class="form-control" value="{{$setting->copyright}}" placeholder="Enter your company name" required/> 
+                </div> 
+              </div> 
+              <div class="form-group  " >
+                <label for="ipt" class=" control-label col-md-2 text-right">Company Name(Chinese)</label>
+                <div class="col-md-10">
+                  <input type="text" name="company_name" id="company_name" value="{{$setting->company_name}}" class="form-control" value="{{$setting->copyright}}" placeholder="Enter your company name" required/> 
+                </div> 
+              </div> 
               <div class="form-group">
                 <label class="col-sm-2 text-right">Company Logo</label>
                   <div class="col-sm-10">  
@@ -53,7 +65,19 @@
                   </div>    
               </div>
               <div class="form-group   " >
-                <label for="ipt" class=" control-label col-md-2 text-right"> Copyright</label> 
+                <label for="ipt" class=" control-label col-md-2 text-right"> Copyright(Khmer)</label> 
+                <div class="col-md-10">
+                  <input type="text" name="copyright" id="copyright" value="{{$setting->copyright}}" class="form-control" placeholder="Enter your copyright..." required/>    
+                </div> 
+              </div>
+              <div class="form-group   " >
+                <label for="ipt" class=" control-label col-md-2 text-right"> Copyright(English)</label> 
+                <div class="col-md-10">
+                  <input type="text" name="copyright" id="copyright" value="{{$setting->copyright}}" class="form-control" placeholder="Enter your copyright..." required/>    
+                </div> 
+              </div>
+              <div class="form-group   " >
+                <label for="ipt" class=" control-label col-md-2 text-right"> Copyright(Chinese)</label> 
                 <div class="col-md-10">
                   <input type="text" name="copyright" id="copyright" value="{{$setting->copyright}}" class="form-control" placeholder="Enter your copyright..." required/>    
                 </div> 

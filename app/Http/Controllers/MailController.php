@@ -39,7 +39,10 @@ class MailController extends Controller
     public function store(Request $request)
     {
         Mail::send('emails.contact', [
-                'name' => $request->input('name')
+                'name'  => $request->input('name'),
+                'email' => $request->input('email'),
+                'telephone' => $request->input('telephone'),
+                'description' => $request->input('description')
             ], function($message) {
             $message->to('darapenhchet@gmail.com', 'DARA PENHCHET')->subject('GREEN ARCHITECURE AND DESIGN.');
         });
