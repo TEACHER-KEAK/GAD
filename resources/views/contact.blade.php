@@ -28,46 +28,61 @@
 			</div>
 	    </div>
 	    <div class="row">
-	    	<div class="col-md-5 contact_info">
-	    		<h1>Send Massage</h1>
-	    		<!--contact form-->
-					<div class="contact_message">
-						<div class="form-group">
-							<input type="text" class="form-control" id="name" 
-							name="name" placeholder="First & Last Name" value="">
+	    	@if(Session::has('flash_message'))
+		        <div class="alert alert-success">
+		            {{ Session::get('flash_message') }}
+		        </div>
+		    @endif
+		    @if($errors->any())
+		        <div class="alert alert-danger">
+		            @foreach($errors->all() as $error)
+		                <p>{{ $error }}</p>
+		            @endforeach
+		        </div>
+		    @endif
+			<form action="{{URL::to('emails')}}" method="POST">
+				<input type="hidden" name="_token" value="{!! csrf_token() !!}">
+		    	<div class="col-md-5 contact_info">
+		    		<h1>Send Massage</h1>
+		    		<!--contact form-->
+						<div class="contact_message">
+							<div class="form-group">
+								<input type="text" class="form-control" id="name" 
+								name="name" placeholder="First & Last Name" value="">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" id="email" 
+								name="email" placeholder="your e-mail address" value="">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" id="telephone" 
+								name="telephone" placeholder="best telephone number" value="">
+							</div>
+							<div class="form-group">
+						        
+						            <textarea class="form-control" rows="4" name="description"></textarea>
+						        
+						    </div>
+						    <div class="form-group">
+						        <label for="human" class="control-label">2 + 3 = ?</label>
+						     
+						            <input type="text" class="form-control" id="human" name="human" placeholder="Your Answer" required>
+						       
+						    </div>
+						    <div class="form-group">
+						      
+						            <input id="submit" name="submit" type="submit" value="Send" class="btn btn-primary">
+						       
+							 </div>
+							 <div class="form-group">
+						      
+						            Will be used to display an alert to the user
+						      
+						    </div>
 						</div>
-						<div class="form-group">
-							<input type="text" class="form-control" id="name" 
-							name="name" placeholder="your e-mail address" value="">
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control" id="name" 
-							name="name" placeholder="best telephone number" value="">
-						</div>
-						<div class="form-group">
-					        
-					            <textarea class="form-control" rows="4" name="message"></textarea>
-					        
-					    </div>
-					    <div class="form-group">
-					        <label for="human" class="control-label">2 + 3 = ?</label>
-					     
-					            <input type="text" class="form-control" id="human" name="human" placeholder="Your Answer">
-					       
-					    </div>
-					    <div class="form-group">
-					      
-					            <input id="submit" name="submit" type="submit" value="Send" class="btn btn-primary">
-					       
-						 </div>
-						 <div class="form-group">
-					      
-					            Will be used to display an alert to the user
-					      
-					    </div>
-					</div>
-	    		<!--end contact form-->
-	    	</div>
+		    		<!--end contact form-->
+		    	</div>
+		    </form>
 	    	<div class="col-md-7 contact_info">
 	    		<h1>Location: Find me here</h1>
 		    	<div class="office_loaction">
