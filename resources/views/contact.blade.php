@@ -31,6 +31,7 @@
 	    	<div class="col-md-5 contact_info">
 	    		<h1>Send Massage</h1>
 	    		<!--contact form-->
+					<form action="http://localhost:8000/">
 					<div class="contact_message">
 						<div class="form-group">
 							<input type="text" class="form-control" id="name" 
@@ -56,16 +57,13 @@
 					       
 					    </div>
 					    <div class="form-group">
-					      
-					            <input id="submit" name="submit" type="submit" value="Send" class="btn btn-primary">
-					       
+					        <input id="submit" name="submit" type="submit" value="Send" class="btn btn-primary" />
 						 </div>
 						 <div class="form-group">
-					      
-					            Will be used to display an alert to the user
-					      
+					        Will be used to display an alert to the user
 					    </div>
 					</div>
+					</form>
 	    		<!--end contact form-->
 	    	</div>
 	    	<div class="col-md-7 contact_info">
