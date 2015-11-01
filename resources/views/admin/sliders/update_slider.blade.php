@@ -43,20 +43,16 @@
                   <input type="text" name="title" id="title" value="{{$slider->title}}" class="form-control" placeholder="Enter your category title" required/> 
                 </div> 
               </div>   
-              <div class="form-group" style="display:none;">
+              <div class="form-group">
                 <label for="ipt" class=" control-label col-md-2 text-right">Type</label>
                 <div class="col-md-10">
-                  <select name='category_id' rows='5' id='module'  class='form-control ' required>
-                    <option value="">-- Select Type --</option>
-                    <option value="1" selected>SLIDE SHOW AT HOME PAGE</option>
+                  <select name='type' rows='5' id='type'  class='form-control '    >
+                    <option value="SLIDE SHOW" @if($slider->type=='SLIDE SHOW') selected @endif>SLIDE SHOW</option>
+                    <option value="SERVICE SHOW" @if($slider->type=='SERVICE SHOW') selected @endif>SERVICE SHOW</option>
+                    <option value="CLIENT SHOW" @if($slider->type=='CLIENT SHOW') selected @endif>CLIENT SHOW</option>
                   </select>     
                 </div> 
               </div>
-              <select name='type' rows='5' id='type'  class='form-control '    >
-                    <option value="SLIDE SHOW">SLIDE SHOW</option>
-                    <option value="SERVICE SHOW">SERVICE SHOW</option>
-                    <option value="SERVICE SHOW">CLIENT SHOW</option>
-                  </select>
               <div class="form-group">
                 <label class="col-sm-2 text-right">Image</label>
                   <div class="col-sm-10">  

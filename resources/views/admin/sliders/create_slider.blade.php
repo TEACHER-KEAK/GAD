@@ -57,7 +57,7 @@
                   <select name='type' rows='5' id='type'  class='form-control '    >
                     <option value="SLIDE SHOW">SLIDE SHOW</option>
                     <option value="SERVICE SHOW">SERVICE SHOW</option>
-                    <option value="SERVICE SHOW">CLIENT SHOW</option>
+                    <option value="CLIENT SHOW">CLIENT SHOW</option>
                   </select>     
                 </div> 
               </div>

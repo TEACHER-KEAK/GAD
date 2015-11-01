@@ -76,7 +76,7 @@ $config = array(
 	| with final /
 	|
 	*/
-	'current_path' => '../images/uploads/',
+	'current_path' => '../images/source/',
 
 	/*
 	|--------------------------------------------------------------------------
