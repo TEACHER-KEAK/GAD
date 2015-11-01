@@ -55,9 +55,9 @@
                 <label for="ipt" class=" control-label col-md-2 text-right">Type</label>
                 <div class="col-md-10">
                   <select name='type' rows='5' id='type'  class='form-control '    >
-                    <option value="1">SLIDE SHOW</option>
-                    <option value="2">SERVICE SHOW</option>
-                    <option value="3">CLIENT SHOW</option>
+                    <option value="SLIDE SHOW">SLIDE SHOW</option>
+                    <option value="SERVICE SHOW">SERVICE SHOW</option>
+                    <option value="SERVICE SHOW">CLIENT SHOW</option>
                   </select>     
                 </div> 
               </div>

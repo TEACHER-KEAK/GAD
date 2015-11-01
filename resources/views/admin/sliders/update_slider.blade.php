@@ -52,6 +52,11 @@
                   </select>     
                 </div> 
               </div>
+              <select name='type' rows='5' id='type'  class='form-control '    >
+                    <option value="SLIDE SHOW">SLIDE SHOW</option>
+                    <option value="SERVICE SHOW">SERVICE SHOW</option>
+                    <option value="SERVICE SHOW">CLIENT SHOW</option>
+                  </select>
               <div class="form-group">
                 <label class="col-sm-2 text-right">Image</label>
                   <div class="col-sm-10">  
