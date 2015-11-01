@@ -116,7 +116,7 @@
     	 <div class="row">
     	 	@foreach($services as $service)
         	<div class="col-md-2">
-    			<img src="{{ $slider->thumb_image }}" style="width:74px; height:82px;">
+    			<img src="{{ $service->thumb_image }}" style="width:74px; height:82px;">
 				<h3>{{$service->translation(Lang::locale())->first() ? $service->translation(Lang::locale())->first()->title: $service->title}}</h3>
         	</div>
         	@endforeach
