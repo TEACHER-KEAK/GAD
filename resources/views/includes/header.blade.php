@@ -1,4 +1,4 @@
-<div class="main-menu-w">
+<div class="main-menu-w hide-main-m">
     <div class="container">
            <!-- <ul>
                 <li><a href="#front">Home</a></li>

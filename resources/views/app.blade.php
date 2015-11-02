@@ -100,14 +100,14 @@ type='text/css'>
         <div class="site-header">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3 col-sm-6 col-xs-6 bg-adjust">
+                    <div class="col-md-3 col-sm-5 col-xs-7 bg-adjust">
                         <div id="greenad_logo">
                            <a href="{{ url()}}"><img src="{{asset('/images/green-logo.png')}}" alt="logo"></a>
                         </div> <!-- /.logo -->
                     </div> <!-- /.col-md-4 -->
-                    <div class="col-md-9 col-sm-6 col-xs-6 bg-adjust main-menu-bg">
+                    <div class="col-md-9 col-sm-7 col-xs-5 bg-adjust main-menu-bg">
                        
-                        <a href="#" class="toggle-menu"><i class="fa fa-bars"></i></a>     
+                        <a href="#" class="toggle-menu"><span class="responesive-text-menu">MENU</span> <i class="fa fa-bars"></i></a>     
                         <div class="top_bar  main-menu">
                     		<div class="row">
                                 <div class="col-md-7">
@@ -135,11 +135,29 @@ type='text/css'>
                         <div class="responsive">
                             <div class="main-menu">
                                 <ul>
-                                    <li><a href="#front">Home</a></li>
-                                    <li><a href="#services">Services</a></li>
-                                    <li><a href="#products">Proucts</a></li>
-                                    <li><a href="#contact">Contact</a></li>
+                                    @foreach($menus as $key=> $menu)
+                                    <li>
+                                        <a href="{!!$menu->category()->first() ? url('categories/'.$menu->category()->first()->id.'/projects') : $menu->external_url ?:'#'!!}">{!! $menu->translation(Lang::locale())->first() ? $menu->translation(Lang::locale())->first()->title: $menu->title !!}</a> 
+                                    </li>
+                                    @endforeach
+                                    <li>
+                                     <!--search box-->
+                                    <div class="responsive-search_box"> 
+                                        <form action="{{URL::to('categories/projects/search/')}}" id="SEARCH" method="GET">
+                                            <div class="input-group stylish-input-group">
+                                                <input type="text" class="form-control" placeholder="@lang('application.search')" id="txtSearch" name="search">
+                                                <span class="input-group-addon">
+                                                    <button type="submit">
+                                                        <span class="glyphicon glyphicon-search"></span>
+                                                    </button>  
+                                                </span>
+                                            </div>
+                                        </form>
+                                     </div>
+                                     <!--search box-->
+                                    </li>
                                 </ul>
+
                             </div>
                         </div>
                     </div>

@@ -422,9 +422,9 @@ Search
 */
 .toggle-menu {
   display: none;
-  margin: 40px 35px 0 0;
+  margin: 55px 35px 0 0;
   font-size: 24px;
-  color: white;
+  color: #333;
   text-align: right;
 }
 
@@ -433,6 +433,7 @@ Search
 }
 .responsive .main-menu ul li {
   width: 100%;
+  background-color: #333;
 }
 .responsive .main-menu ul li a {
   line-height: 55px;
@@ -442,6 +443,12 @@ Search
   background-image: none;
   color: #85c91c;
   border-bottom: 0;
+}
+
+.responsive-search_box{
+ 
+  width: 100%;
+  padding: 10px;
 }
 
 /* ==========================================================================
@@ -916,7 +923,7 @@ Contact
   RESPONSIVE STYLES 
 --------------------------------------------------------*/
 @media (max-width: 991px) {
-  .main-menu, .bx-thumbnail-wrapper {
+  .main-menu, .hide-main-m, .bx-thumbnail-wrapper {
     display: none;
   }
 
@@ -984,4 +991,12 @@ Contact
   }
 
  
+}
+
+@media (max-width: 320px) {
+
+.responesive-text-menu{
+  display: none;
+}
+
 }
