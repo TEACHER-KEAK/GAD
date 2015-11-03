@@ -91,7 +91,7 @@
   $(document).ajaxStart(function() { Pace.restart(); }); 
   tinymce.init({
     selector: "textarea",theme: "modern", width: "99.5%",height: 300,
-    plugins: [
+    /*plugins: [
          "advlist autolink link image lists charmap print preview hr anchor pagebreak code",
          "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
          "table contextmenu directionality emoticons paste textcolor responsivefilemanager"
@@ -103,7 +103,45 @@
    
    external_filemanager_path:"/filemanager/",
    filemanager_title:"Responsive Filemanager" ,
-   external_plugins: { "filemanager" : "/filemanager/plugin.min.js"}
+   external_plugins: { "filemanager" : "/filemanager/plugin.min.js"}*/
+   plugins: [
+                "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+                "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker jbimages"
+        ],
+
+        toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+        toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
+        toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft jbimages",
+
+        menubar: false,
+        toolbar_items_size: 'small',
+  
+    
+// Image Path Convert URL
+relative_urls: false,
+remove_script_host: false,
+
+//document_base_url: 'http://localhost:83/',
+document_base_url: 'http://green-architecture-design-darapenhchet.c9.io/',
+
+ font_formats: "Hanuman='Hanuman', serif;"+
+        "Arial=arial,helvetica,sans-serif;"+
+        "Arial Black=arial black,avant garde;"+
+        "Book Antiqua=book antiqua,palatino;"+
+        "Comic Sans MS=comic sans ms,sans-serif;"+
+        "Courier New=courier new,courier;"+
+        "Georgia=georgia,palatino;"+
+        "Helvetica=helvetica;"+
+        "Impact=impact,chicago;"+
+        "Symbol=symbol;"+
+        "Tahoma=tahoma,arial,helvetica,sans-serif;"+
+        "Terminal=terminal,monaco;"+
+        "Times New Roman=times new roman,times;"+
+        "Trebuchet MS=trebuchet ms,geneva;"+
+        "Verdana=verdana,geneva;"+
+        "Webdings=webdings;"+
+        "Wingdings=wingdings,zapf dingbats"
  });
 </script>
 <script>

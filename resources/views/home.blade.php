@@ -116,7 +116,7 @@
     	 <div class="row">
     	 	@foreach($services as $service)
         	<div class="col-md-2">
-    			<img src="{{ $service->thumb_image }}" style="width:74px; height:82px;">
+    			<img src="{{ $service->image }}" style="width:74px; height:82px;">
 				<h3>{{$service->translation(Lang::locale())->first() ? $service->translation(Lang::locale())->first()->title: $service->title}}</h3>
         	</div>
         	@endforeach
@@ -201,7 +201,7 @@
             <h3 style="padding:0 0 20px 0; margin:0px; text-align:center;">@lang('application.our_customers')</h3>
             @foreach($clients as $client)
             <div class="col-md-2">
-                <div class="img_client_box"><img src="{{ $client->thumb_image }}"></div>
+                <div class="img_client_box"><img src="{{ $client->image }}" style="width:165px; height:84px;"></div>
             </div>
         	@endforeach
              <!--<div class="col-md-2">
