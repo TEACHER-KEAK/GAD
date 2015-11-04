@@ -422,12 +422,12 @@ Search
 */
 .toggle-menu {
   display: none;
-  margin: 55px 35px 0 0;
+  margin: 15px 40px 0 0;
   font-size: 24px;
   color: #333;
-  text-align: right;
+  float: right;
 }
-
+/*
 .responsive .main-menu {
   display: none;
 }
@@ -445,12 +445,11 @@ Search
   border-bottom: 0;
 }
 
-.responsive-search_box{
- 
+.responsive-search_box{ 
   width: 100%;
   padding: 10px;
 }
-
+*/
 /* ==========================================================================
     Slider Styling
    ========================================================================== */

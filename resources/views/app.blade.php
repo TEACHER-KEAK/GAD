@@ -63,6 +63,7 @@ type='text/css'>
         }
     </style>
 
+    <link rel="stylesheet" href="{{asset ('plugins/mega-dropdown/css/style.css')}}"> <!-- Resource style -->
     
 	
 
@@ -106,8 +107,65 @@ type='text/css'>
                         </div> <!-- /.logo -->
                     </div> <!-- /.col-md-4 -->
                     <div class="col-md-9 col-sm-7 col-xs-5 bg-adjust main-menu-bg">
-                       
-                        <a href="#" class="toggle-menu"><span class="responesive-text-menu">MENU</span> <i class="fa fa-bars"></i></a>     
+                       <!--responsive menu-->
+                        <div class="toggle-menu">
+                             <div class="cd-dropdown-wrapper">
+                                <a class="cd-dropdown-trigger" href="#0">MENU<i class="fa fa-bars"></i></a>
+                                <nav class="cd-dropdown">
+                                    <h2> MENU </h2>
+                                    <a href="#0" class="cd-close">Close</a>
+                                    <ul class="cd-dropdown-content"> 
+                                        <li class="has-children">
+                                            <a href="http://localhost:8000/">MAIN PROJECT</a>
+                                            <ul class="cd-secondary-dropdown is-hidden">
+                                                <li class="go-back"><a href="#0">Menu</a></li>
+                                                <li class="see-all"><a href="http://localhost:8000/">All Clothing</a></li>
+                                                <li class="has-children">
+                                                    <a href="http://localhost:8000/">Bottoms</a>
+                                                    <ul class="is-hidden">
+                                                        <li class="go-back"><a href="#0">Clothing</a></li>
+                                                        <li class="see-all"><a href="http://localhost:8000/">All Bottoms</a></li>
+                                                        <li><a href="http://localhost:8000/">Casual Trousers</a></li>
+                                                        <li>
+                                                            <a href="#0">Jeans</a>
+                                                        </li>
+                                                        <li><a href="#0">Leggings</a></li>
+                                                        <li><a href="#0">Shorts</a></li>
+                                                    </ul>
+                                                </li>  
+                                            </ul> <!-- .cd-secondary-dropdown -->
+                                        </li> <!-- .has-children -->
+                                        <li class="has-children">
+                                            <a href="http://localhost:8000/">FURNITURE</a>
+                                            <ul class="cd-secondary-dropdown is-hidden">
+                                                <li class="go-back"><a href="#0">Menu</a></li>
+                                                <li class="see-all"><a href="http://localhost:8000/">All Clothing</a></li>
+                                                <li class="has-children">
+                                                    <a href="http://localhost:8000/">Bottoms</a>
+                                                    <ul class="is-hidden">
+                                                        <li class="go-back"><a href="#0">Clothing</a></li>
+                                                        <li class="see-all"><a href="http://localhost:8000/">All Bottoms</a></li>
+                                                        <li><a href="http://localhost:8000/">Casual Trousers</a></li>
+                                                        <li>
+                                                            <a href="#0">Jeans</a>
+                                                        </li>
+                                                        <li><a href="#0">Leggings</a></li>
+                                                        <li><a href="#0">Shorts</a></li>
+                                                    </ul>
+                                                </li>  
+                                            </ul> <!-- .cd-secondary-dropdown -->
+                                        </li> <!-- .has-children -->
+                                        <li><a href="http://localhost:8000/">ABOUT US</a></li>
+                                        <li><a href="http://localhost:8000/">CONTACT US</a></li>
+                                        <li><a href="http://localhost:8000/">SEARCH</a></li>
+                                    </ul> <!-- .cd-dropdown-content -->
+                                </nav> <!-- .cd-dropdown -->
+                            </div> <!-- .cd-dropdown-wrapper -->
+                        </div><!-- / Responsive menu-->
+
+                        <!--<a href="#" class="toggle-menu"><span class="responesive-text-menu">MENU</span> <i class="fa fa-bars"></i></a>     -->
+                        
+
                         <div class="top_bar  main-menu">
                     		<div class="row">
                                 <div class="col-md-7">
@@ -129,7 +187,7 @@ type='text/css'>
                 </div> <!-- /.row -->
                  
                 @include('includes.header')
-
+                <!--
                 <div class="row">
                     <div class="col-md-12">
                         <div class="responsive">
@@ -141,7 +199,7 @@ type='text/css'>
                                     </li>
                                     @endforeach
                                     <li>
-                                     <!--search box-->
+                                     <!--search box--><!--
                                     <div class="responsive-search_box"> 
                                         <form action="{{URL::to('categories/projects/search/')}}" id="SEARCH" method="GET">
                                             <div class="input-group stylish-input-group">
@@ -154,14 +212,14 @@ type='text/css'>
                                             </div>
                                         </form>
                                      </div>
-                                     <!--search box-->
+                                     <!--search box--><!--
                                     </li>
                                 </ul>
 
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div> <!-- /.container -->
         </div> <!-- /.site-header -->
     </div> <!-- /#front -->
@@ -171,6 +229,7 @@ type='text/css'>
 	@include('includes.footer')
 
     <!-- script -->
+
     <script>window.jQuery || document.write('<script src="dist/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
     <script src="{{ asset('/dist/js/jquery.easing-1.3.js')}}"></script>
     <script src="{{ asset('/bootstrap/js/bootstrap.js')}}"></script>
@@ -179,12 +238,15 @@ type='text/css'>
     <script src="{{ asset('/dist/js/plugins_carousel.js')}}"></script>
     <script src="{{ asset('/dist/js/main_carousel.js')}}"></script>
     <script type="text/javascript" src="{{ asset('/plugins/bpopup-master/jquery.bpopup.js') }}"></script>
-
+    <!-- drop down -->
     <script src="{{ asset('/plugins/dropdown-menu/js/cbpHorizontalSlideOutMenu.js')}}"></script>
-        <script>
-            var menu = new cbpHorizontalSlideOutMenu( document.getElementById( 'cbp-hsmenu-wrapper' ) );
-        </script>
+    <script>
+        var menu = new cbpHorizontalSlideOutMenu( document.getElementById( 'cbp-hsmenu-wrapper' ) );
+    </script>
 
+   
+    <script src="{{asset('/plugins/mega-dropdown/js/jquery.menu-aim.js')}}"></script> <!-- menu aim -->
+    
     
 
 <script type="text/javascript">
@@ -451,6 +513,8 @@ type='text/css'>
 		   location.href= $(this).attr("action")+"/"+$("#txtSearch").val();
 		});
 	</script>
+    <script src="{{asset('/plugins/mega-dropdown/js/main.js')}}"></script> <!-- Resource jQuery -->
     @yield('script')
+
 </body>
 </html>
