@@ -146,6 +146,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         
         'Pqb\FilemanagerLaravel\FilemanagerLaravelServiceProvider',
+        'Intervention\Image\ImageServiceProvider'
 
     ],
 
@@ -196,6 +197,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'FilemanagerLaravel'=> 'Pqb\FilemanagerLaravel\Facades\FilemanagerLaravel',
+        'Image' => 'Intervention\Image\Facades\Image'
 
     ],
 

@@ -11,6 +11,7 @@ use App\CategoryTranslation;
 use DB;
 use Auth;
 use Session;
+use Image;
 
 class CategoryController extends Controller
 {
@@ -90,8 +91,32 @@ class CategoryController extends Controller
             $category->createdby()->associate(Auth::user());
             $category->updatedBy()->associate(Auth::user());
             
-            $category->thumb_image = $request->input('image');
-            $category->thumb_image = str_replace('source','thumbs',$category->thumb_image);
+            /*$filename ='';
+            if ($request->hasFile('image')) {
+                if(!file_exists('images/uploads')){
+                    mkdir('images/uploads/originals/','777', true);
+                }
+                $image = $request->file('image');
+                $filename = uniqid() . $image->getClientOriginalName();
+
+                $image->move('images/uploads/original/', $filename);
+                
+                $thumb = Image::make('images/uploads/original/'.$filename)
+                              ->resize(240,160)
+                              ->save('images/uploads/thumb/'.$filename,50);
+                //dd($image);
+                
+                $category->image = 'images/uploads/original/'.$filename;
+                $category->thumb_image = 'images/uploads/thumb/'.$filename;
+            }*/
+            
+            $filename = $this->uploadImage($request);
+            $category->image = url().'/images/source/'.$filename;
+            $category->thumb_image = url().'/images/thumbs/'.$filename;
+            
+            //$category->thumb_image = $filename;
+            //$category->thumb_image = $request->input('image');
+            //$category->thumb_image = str_images/source('source','thumbs',$category->thumb_image);
     
             //4. SAVE MENU
             $category->save();
@@ -196,11 +221,16 @@ class CategoryController extends Controller
             $input["level"] = Category::findOrFail($request->input('parent_id'))->level + 1;
             
         }
+        $filename = $this->uploadImage($request);
+        $input['image'] = url().'/images/source/'.$filename;
+        $input['thumb_image'] = url().'/images/thumbs/'.$filename;
         $category->updatedBy()->associate(Auth::user());
         $category->update($input);
         
-        $category->thumb_image = $request->input('image');
-        $category->thumb_image = str_replace('source','thumbs',$category->thumb_image);
+        
+        
+        //$category->thumb_image = $request->input('image');
+        //$category->thumb_image = str_images/source('source','thumbs',$category->thumb_image);
         
         Session::flash('flash_message', 'Category successfully updated!');
         
@@ -263,5 +293,24 @@ class CategoryController extends Controller
 
         //6. REDIRECT BACK
         return redirect()->back();
+    }
+    
+    private function uploadImage($request){
+        $filename ='';
+        if ($request->hasFile('image')) {
+            if(!file_exists('images/uploads')){
+                mkdir('images/source/','777', true);
+            }
+            $image = $request->file('image');
+            $filename = uniqid() . $image->getClientOriginalName();
+
+            $image->move('images/source/', $filename);
+            
+            $thumb = Image::make('images/source/'.$filename)
+                          ->resize(240,160)
+                          ->save('images/thumbs/'.$filename,50);
+            
+        }
+        return $filename;
     }
 }

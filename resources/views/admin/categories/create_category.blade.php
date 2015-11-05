@@ -34,7 +34,7 @@
                     @endforeach
                 </div>
             @endif
-            <form class="form-horizontal" action="{{ route('admin.categories.store') }}" method="post" style="padding:10px;">
+            <form class="form-horizontal" action="{{ route('admin.categories.store') }}" method="post" style="padding:10px;" enctype="multipart/form-data" >
               <input type="hidden" name="_token" value="{!! csrf_token() !!}">
               <div class="form-group  " >
                 <label for="ipt" class=" control-label col-md-2 text-right">Title</label>
@@ -73,9 +73,10 @@
               <div class="form-group">
                 <label class="col-sm-2 text-right">Image</label>
                   <div class="col-sm-10">  
-                    <input type="hidden" readonly="readonly"   class="form-control" id="txtImage" name="image" onchange="changeImage()">
-                    <a type="button" class="btn btn-default btn-file" data-target="#myModal" href="javascript:;" data-toggle="modal">Choose Image </a>
-                    <img src="image.jpg" style="display:none; width:520px; height:240px;" class="thumbnail" id="sample_image"/>
+                    <!--<input type="hidden" readonly="readonly"   class="form-control" id="txtImage" name="image" onchange="changeImage()">-->
+                    <!--<a type="button" class="btn btn-default btn-file" data-target="#myModal" href="javascript:;" data-toggle="modal">Choose Image </a>-->
+                    <input type="file" name="image" id="image" class="btn btn-default btn-file"/>
+                    <!--<img src="image.jpg" style="display:none; width:520px; height:240px;" class="thumbnail" id="sample_image"/>-->
                   </div>    
               </div>
               <div class="form-group   " >
@@ -97,6 +98,7 @@
                   </div>    
               </div>    
             </form>
+   
           </div><!-- /.box-body -->
           <div class="box-footer">
             <!-- The footer of the box -->
@@ -123,7 +125,7 @@
 @endsection
 
 @section('script')
-<script type="text/javascript" src="{{ url('') }}/tinymce/tinymce.min.js"></script>
+<!--<script type="text/javascript" src="{{ url('') }}/tinymce/tinymce.min.js"></script>
 <script type="text/javascript" src="{{ url('') }}/tinymce/tinymce_editor.js"></script>
 <script type="text/javascript">
   $(document).ajaxStart(function() { Pace.restart(); }); 
@@ -143,11 +145,52 @@
    filemanager_title:"Responsive Filemanager" ,
    external_plugins: { "filemanager" : "/filemanager/plugin.min.js"}
  });
-</script>
+</script>-->
 <script>
-  function changeImage(){
+  /*function changeImage(){
+    console.log($("#image").val());
     $("#sample_image").show();
-    $("#sample_image").attr('src',$("#txtImage").val());
-  }
+    $("#sample_image").attr('src',$("#image").val());
+    
+    var options = {
+    	bg: '#e74c3c',
+    
+    	// leave target blank for global nanobar
+    	target: document.getElementById('myDivId'),
+    
+    	// id for new nanobar
+    	id: 'mynano'
+    };
+    
+    var nanobar = new Nanobar( options );
+    $.ajax({
+          url: "{{URL::to('rest/admin/categories/translate')}}",
+          data: {
+            'category_id' : $('#category_id').val(),
+            'language_id' : $(this).val()
+          },
+          dataType: "JSON",
+          type: "POST",
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          beforeSend: function(){
+            // move bar
+            nanobar.go( 30 ); // size bar 30%
+          
+          },
+          success: function(data){
+            console.log(data);
+            if(data.DATA!=null){
+
+            }
+            // Finish progress bar
+            nanobar.go(100);
+          },
+          error: function(data){
+            nanobar.go(90);
+          }
+      });
+  }*/
 </script>
 @endsection

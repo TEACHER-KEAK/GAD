@@ -34,7 +34,7 @@
                     @endforeach
                 </div>
             @endif
-            <form class="form-horizontal" action="{{ url('admin/categories/updatecategory') }}" method="POST" style="padding:10px;">
+            <form class="form-horizontal" action="{{ url('admin/categories/updatecategory') }}" method="POST" style="padding:10px;" enctype="multipart/form-data">
               <input type="hidden" name="_token" value="{!! csrf_token() !!}">
               <div class="form-group  " >
                 <label for="ipt" class=" control-label col-md-2 text-right">Title</label>
@@ -74,8 +74,9 @@
               <div class="form-group">
                 <label class="col-sm-2 text-right">Image</label>
                   <div class="col-sm-10">  
-                    <input type="hidden" readonly="readonly"   class="form-control" id="txtImage" name="image" onchange="changeImage()" value="{{$category->image}}">
-                    <a type="button" class="btn btn-default btn-file" data-target="#myModal" href="javascript:;" data-toggle="modal">Choose Image </a>
+                    <!--<input type="hidden" readonly="readonly"   class="form-control" id="txtImage" name="image" onchange="changeImage()" value="{{$category->image}}">
+                    <a type="button" class="btn btn-default btn-file" data-target="#myModal" href="javascript:;" data-toggle="modal">Choose Image </a>-->
+                    <input type="file" name="image" id="image" class="btn btn-default btn-file"/>
                     <img src="{{$category->image}}" style="width:520px; height:240px;" class="thumbnail" id="sample_image" title=""/>
                   </div>    
               </div>

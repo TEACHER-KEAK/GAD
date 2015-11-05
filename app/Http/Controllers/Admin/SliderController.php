@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Slider;
 use Auth;
 use Session;
+use Image;
 
 class SliderController extends Controller
 {
@@ -65,8 +66,10 @@ class SliderController extends Controller
         
         $slider->createdBy()->associate(Auth::user());
         $slider->updatedBy()->associate(Auth::user());
-        $slider->thumb_image = $request->input('image');
-        $slider->thumb_image = str_replace('source','thumbs',$slider->thumb_image);
+        
+        $filename = $this->uploadImage($request);
+        $slider->image = url().'/images/source/'.$filename;
+        $slider->thumb_image = url().'/images/thumbs/'.$filename;
         
         $slider->save();
         
@@ -122,7 +125,7 @@ class SliderController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'image' => 'required',
+            //'image' => 'required',
             'status' => 'required',
             'type' => 'required',
             'ordering' => 'required|numeric'
@@ -131,10 +134,15 @@ class SliderController extends Controller
         $slider = Slider::findOrFail($request->input('id'));
         
         $slider->updatedBy()->associate(Auth::user());
-        $slider->thumb_image = $request->input('image');
-        $slider->thumb_image = str_replace('source','thumbs',$slider->thumb_image);
+        $input = $request->all();
         
-        $slider->update($request->all());
+        //if($request->has('image')){
+        $filename = $this->uploadImage($request);
+        $input['image'] = url().'/images/source/'.$filename;
+        $input['thumb_image'] = url().'/images/thumbs/'.$filename;
+        //}
+        
+        $slider->update($input);
         
         Session::flash('flash_message', 'Slider successfully updated!');
         
@@ -210,5 +218,24 @@ class SliderController extends Controller
 
         //6. REDIRECT BACK
         return redirect()->back();
+    }
+    
+    private function uploadImage($request){
+        $filename ='';
+        if ($request->hasFile('image')) {
+            if(!file_exists('images/uploads')){
+                mkdir('images/source/','777', true);
+            }
+            $image = $request->file('image');
+            $filename = uniqid() . $image->getClientOriginalName();
+
+            $image->move('images/source/', $filename);
+            
+            $thumb = Image::make('images/source/'.$filename)
+                          ->resize(240,160)
+                          ->save('images/thumbs/'.$filename,50);
+            
+        }
+        return $filename;
     }
 }

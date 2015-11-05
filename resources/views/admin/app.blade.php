@@ -37,6 +37,7 @@
         <link rel="stylesheet" href="{{ asset('/plugins/pace/pace.min.css') }}">
         <link rel="stylesheet" href="{{ asset('/bower_components/alertify/themes/alertify.core.css') }}" />
         <link rel="stylesheet" href="{{ asset('/bower_components/alertify/themes/alertify.bootstrap.css') }}" />
+        <link href="{{ asset('/dist/css/dropzone.min.css') }}" rel="stylesheet">
         <style>
             .fontawesome-select {
                 font-family: 'FontAwesome', 'Helvetica';
@@ -161,7 +162,6 @@
         <script src="{{ asset('/bower_components/alertify/lib/alertify.min.js') }}"></script>
         <script src="{{ asset('/plugins/pace/pace.min.js') }}"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-        
         @yield('script')
     </body>
 </html>

@@ -186,6 +186,8 @@ Route::group(['prefix' => 'admin'
     Route::post('sliders/updateslider/','SliderController@UpdateSlider');
     Route::resource('sliders', 'SliderController');
     
+    Route::resource('images', 'ImageController');
+    
 
 });
 
