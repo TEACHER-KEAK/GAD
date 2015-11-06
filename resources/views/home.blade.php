@@ -200,8 +200,8 @@
         <div class="row">
             <h3 style="padding:0 0 20px 0; margin:0px; text-align:center;">@lang('application.our_customers')</h3>
             @foreach($clients as $client)
-            <div class="col-md-2">
-                <div class="img_client_box"><img src="{{ $client->image }}" style="width:165px; height:84px;"></div>
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="img_client_box"><img src="{{ $client->image }}"></div>
             </div>
         	@endforeach
              <!--<div class="col-md-2">
