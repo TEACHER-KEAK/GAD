@@ -115,6 +115,11 @@ type='text/css'>
                                     <h2> <i class="fa fa-bars"></i> MENU </h2>
                                     <a href="#0" class="cd-close">Close</a>
                                     <ul class="cd-dropdown-content"> 
+                                        <li>
+                                            <form class="cd-search">
+                                                 <input type="search" placeholder="Search...">
+                                            </form>
+                                        </li>
                                         <li class="has-children">
                                             <a href="http://localhost:8000/">MAIN PROJECT</a>
                                             <ul class="cd-secondary-dropdown is-hidden">
@@ -201,7 +206,7 @@ type='text/css'>
                                         </li> <!-- .has-children -->
                                         <li><a href="http://localhost:8000/">ABOUT US</a></li>
                                         <li><a href="http://localhost:8000/">CONTACT US</a></li>
-                                        <li><a href="http://localhost:8000/">SEARCH</a></li>
+                                        <li class="cd-divider">SETTING</li>
                                     </ul> <!-- .cd-dropdown-content -->
                                 </nav> <!-- .cd-dropdown -->
                             </div> <!-- .cd-dropdown-wrapper -->
