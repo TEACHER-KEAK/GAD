@@ -23,6 +23,25 @@
 			  @endif
 			</ol>
 		</div>
+		<div class="row">
+			<div id="resposive-side-cat">
+				<!-- Single button -->
+				<div class="btn-group" style="width:100%;" >
+				  <button style="width:100%;" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    Action <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu scrollable-menu"  style="width:100%;">
+				    <li><a href="#" style="color:green;"><b>Action</b></a></li>
+				    <li><a href="#"><span style="padding-left:20px;">Another action</span></a></li>
+				    <li><a href="#"><span style="padding-left:20px;">Another action</span></a></li>
+				    <li role="separator" class="divider"></li>
+				     <li><a href="#" style="color:green;"><b>Action</b></a></li>
+				    <li><a href="#"><span style="padding-left:20px;">Another action</span></a></li>
+				    <li><a href="#"><span style="padding-left:20px;">Another action</span></a></li>
+				  </ul>
+				</div>
+		  	</div>
+		</div>
 	</div>
 </div>
 <div id="data-projecct">

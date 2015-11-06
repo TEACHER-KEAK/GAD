@@ -15,7 +15,10 @@
 	 <link href="{{ asset('/dist/css/AdminLTE.min.css')}}" rel="stylesheet" type="text/css" />
 	 <link href="{{ asset('/bootstrap/css/bootstrap.css')}}" rel="stylesheet" type="text/css" />
 	 <link href="{{ asset('/dist/css/style.css')}}" rel="stylesheet" type="text/css" />
-	 <!-- slider -->
+	
+     <!-- select -->
+     <link href="{{ asset('/dist/css/bootstrap-select.min.css')}}" rel="stylesheet" type="text/css" />
+     <!-- slider -->
      <link href="{{ asset('/dist/css/owl-carousel.css')}}" rel="stylesheet" type="text/css" />
 
 	 <!-- Google Fonts -->
@@ -303,6 +306,10 @@ type='text/css'>
     <script src="{{ asset('/dist/js/plugins_carousel.js')}}"></script>
     <script src="{{ asset('/dist/js/main_carousel.js')}}"></script>
     <script type="text/javascript" src="{{ asset('/plugins/bpopup-master/jquery.bpopup.js') }}"></script>
+
+    <!--select -->
+    <script src="{{ asset('/dist/js/bootstrap-select.min.js')}}"></script>
+    
     <!-- drop down -->
     <script src="{{ asset('/plugins/dropdown-menu/js/cbpHorizontalSlideOutMenu.js')}}"></script>
     <script>
