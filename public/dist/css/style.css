@@ -1,9 +1,5 @@
 /*
 
-Sprint Template
-
-http://www.templatemo.com/free-website-templates/401-sprint
-
 */
 
 /* ==========================================================================
@@ -113,7 +109,7 @@ form input[type="password"] {
   background: #fff;
   border: 1px solid #fff;
   padding: 7px 10px;
-  width: 60%;
+  width: 80%;
 }
 form input[type="text"]:focus,
 form input[type="email"]:focus,
@@ -324,7 +320,7 @@ h6 {
   background-position: right;
   height: 90px;
   display: block;
-  padding: 5px 0px;
+  padding: 0 20px 0 0;
   text-align: center;
 }
 .bg-adjust{
@@ -359,7 +355,7 @@ h6 {
 }
 .main-menu-w{
   position: absolute;
-  top: 44px;
+  top: 47px;
   left: 0px;
   right: 10px;
   bottom: 0px;
@@ -422,10 +418,15 @@ Search
 */
 .toggle-menu {
   display: none;
-  margin: 15px 40px 0 0;
+  top: 17px;
+  right: 20px;
   font-size: 24px;
   color: #333;
-  float: right;
+  position: absolute;
+}
+
+.top-toggle-bar{
+  display: none;
 }
 /*
 .responsive .main-menu {
@@ -464,8 +465,6 @@ Search
 
 .bx-wrapper img {
   opacity: 0.8;
-  height: 500px;
-  width: 100%;
   filter: alpha(opacity=80);
 }
 
@@ -567,9 +566,9 @@ Search
   padding: 10px 0;
 }
 .box_intro_services h3{
-  font-size: 16px;
+  font-size: 13px;
   color: #424443;
-  padding: 10px 0;
+  padding: 10px 0 20px 0;
   margin: 0px;
 
 }
@@ -929,6 +928,11 @@ Contact
   .toggle-menu {
     display: block;
   }
+  .top-toggle-bar{
+    display: block;
+    text-align: right;
+    padding-right: 20px;
+  }
 
   .site-header .container {
     padding: 0;
@@ -986,6 +990,10 @@ Contact
   }
 
   .slider-caption {
+    display: none;
+  }
+
+  .lan-bar{
     display: none;
   }
 

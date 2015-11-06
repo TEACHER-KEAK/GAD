@@ -115,7 +115,7 @@
 	<div class="container intro_box_color">
     	 <div class="row">
     	 	@foreach($services as $service)
-        	<div class="col-md-2">
+        	<div class="col-md-2 col-sm-4 col-xs-6">
     			<img src="{{ $service->image }}" style="width:74px; height:82px;">
 				<h3>{{$service->translation(Lang::locale())->first() ? $service->translation(Lang::locale())->first()->title: $service->title}}</h3>
         	</div>
