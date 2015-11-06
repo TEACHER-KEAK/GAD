@@ -574,8 +574,7 @@ type='text/css'>
 		   location.href= $(this).attr("action")+"/"+$("#txtSearch").val();
 		});
 	</script>
-    <script src="{{asset('/plugins/mega-dropdown/js/main.js')}}"></script> <!-- Resource jQuery -->
     @yield('script')
-
+    <script src="{{asset('/plugins/mega-dropdown/js/main.js')}}"></script> <!-- Resource jQuery -->
 </body>
 </html>
