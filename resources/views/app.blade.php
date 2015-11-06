@@ -206,7 +206,11 @@ type='text/css'>
                                         </li> <!-- .has-children -->
                                         <li><a href="http://localhost:8000/">ABOUT US</a></li>
                                         <li><a href="http://localhost:8000/">CONTACT US</a></li>
-                                        <li class="cd-divider">SETTING</li>
+                                        <li class="cd-divider">Language SETTING</li>
+                                        <li><a href="http://localhost:8000/">KHMER</a></li>
+                                        <li><a href="http://localhost:8000/">ENGLISH</a></li>
+                                        <li><a href="http://localhost:8000/">CHINESE</a></li>
+                                      
                                     </ul> <!-- .cd-dropdown-content -->
                                 </nav> <!-- .cd-dropdown -->
                             </div> <!-- .cd-dropdown-wrapper -->
