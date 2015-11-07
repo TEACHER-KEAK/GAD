@@ -77,7 +77,9 @@ Route::group(['middleware' =>'locale'],function(){
     });
     Route::get('categories/{categoryId}/projects/{projectId?}',function($categoryId, $projectId=''){
         $category = \App\Category::find($categoryId);
-        $categories = \App\Category::where('level','1')->orderBy('ordering')->get();
+        $categories = \App\Category::where('level','1')
+                                   ->where('parent_id',$categoryId)
+                                   ->orderBy('ordering')->get();
         if($projectId==''){
             $parentCategory = \App\Category::where('parent_id',$categoryId)
                                            ->orWhereIn('parent_id',DB::table('categories')->where('parent_id',$categoryId)->lists('id'))
