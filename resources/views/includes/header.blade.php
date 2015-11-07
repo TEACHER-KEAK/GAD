@@ -29,7 +29,7 @@
                                 <li><a href="{{url('categories/'.$subCategory->id.'/projects')}}"><span>{{$subCategory->translation(Lang::locale())->first() ? $subCategory->translation(Lang::locale())->first()->title: $subCategory->title }}</span></a></li>
                                 @endforeach
                              </ul>
-                             @endif
+                            @endif
                         </li>
                         @endforeach
                     </ul>

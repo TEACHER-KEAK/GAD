@@ -73,10 +73,10 @@
               <div class="form-group">
                 <label class="col-sm-2 text-right">Image</label>
                   <div class="col-sm-10">  
-                    <!--<input type="hidden" readonly="readonly"   class="form-control" id="txtImage" name="image" onchange="changeImage()">-->
-                    <!--<a type="button" class="btn btn-default btn-file" data-target="#myModal" href="javascript:;" data-toggle="modal">Choose Image </a>-->
-                    <input type="file" name="image" id="image" class="btn btn-default btn-file"/>
-                    <!--<img src="image.jpg" style="display:none; width:520px; height:240px;" class="thumbnail" id="sample_image"/>-->
+                    <input type="hidden" readonly="readonly"   class="form-control" id="txtImage" name="image">
+                    <a type="button" class="btn btn-default btn-file" data-target="#myModal" href="#" data-toggle="modal">Choose Image </a>
+                    <!--<input type="file" name="image" id="image" class="btn btn-default btn-file"/>-->
+                    <img style="display:none; width:520px; height:240px;" class="thumbnail" id="sample_image"/>
                   </div>    
               </div>
               <div class="form-group   " >
@@ -107,25 +107,11 @@
     </div>
     <!-- /.row -->
   </section>
-  <!-- /.content -->
-<!-- code for popup file manager -->		
-<div class="modal fade" id="myModal">
-	<div class="modal-dialog modal-lg">
-	  <div class="modal-content">
-	    <div class="modal-header">
-	      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	      <h4 class="modal-title">File Manager</h4>
-	    </div>
-	    <div class="modal-body">
-	      <iframe width="100%" height="500" src="/filemanager/dialog.php?type=2&field_id=txtImage'&fldr=" frameborder="0" style="overflow: scroll; overflow-x: hidden; overflow-y: scroll; "></iframe>
-	    </div>
-	  </div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+@include('admin.includes.upload')
 @endsection
 
 @section('script')
-<!--<script type="text/javascript" src="{{ url('') }}/tinymce/tinymce.min.js"></script>
+<script type="text/javascript" src="{{ url('') }}/tinymce/tinymce.min.js"></script>
 <script type="text/javascript" src="{{ url('') }}/tinymce/tinymce_editor.js"></script>
 <script type="text/javascript">
   $(document).ajaxStart(function() { Pace.restart(); }); 
@@ -145,7 +131,7 @@
    filemanager_title:"Responsive Filemanager" ,
    external_plugins: { "filemanager" : "/filemanager/plugin.min.js"}
  });
-</script>-->
+</script>
 <script>
   /*function changeImage(){
     console.log($("#image").val());
@@ -193,4 +179,29 @@
       });
   }*/
 </script>
+@endsection
+@section('image')
+  <script>
+  	$(function(){
+  		$('#upload').on('submit', function(e) {
+  		    var options = {
+          	bg: '#e74c3c',
+          	target: document.getElementById('myDivId'),
+          	id: 'mynano'
+          };
+          var nanobar = new Nanobar( options );
+          e.preventDefault(); // prevent native submit
+          $(this).ajaxSubmit({
+              success: function(responseText, statusText, xhr) {
+                 nanobar.go(100);
+                 console.log(responseText);
+                 $("#sample_image").attr('src', responseText.IMAGE);
+                 $("#txtImage").val(responseText.IMAGE);
+                 $("#sample_image").show();
+                 $("#myModal").modal('hide');
+              }
+          });
+        });
+  	});
+  </script>
 @endsection

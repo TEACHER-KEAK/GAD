@@ -66,10 +66,11 @@ class SliderController extends Controller
         
         $slider->createdBy()->associate(Auth::user());
         $slider->updatedBy()->associate(Auth::user());
+        $slider->thumb_image = str_replace('source','thumbs',$request->input('image'));
         
-        $filename = $this->uploadImage($request);
+        /*$filename = $this->uploadImage($request);
         $slider->image = url().'/images/source/'.$filename;
-        $slider->thumb_image = url().'/images/thumbs/'.$filename;
+        $slider->thumb_image = url().'/images/thumbs/'.$filename;*/
         
         $slider->save();
         
@@ -131,15 +132,16 @@ class SliderController extends Controller
             'ordering' => 'required|numeric'
         ]);
         
-        $slider = Slider::findOrFail($request->input('id'));
-        
-        $slider->updatedBy()->associate(Auth::user());
         $input = $request->all();
         
+        $slider = Slider::findOrFail($request->input('id'));
+        $slider->updatedBy()->associate(Auth::user());
+        $input['thumb_image'] = str_replace('source','thumbs',$request->input('image'));
+        
         //if($request->has('image')){
-        $filename = $this->uploadImage($request);
+        /*$filename = $this->uploadImage($request);
         $input['image'] = url().'/images/source/'.$filename;
-        $input['thumb_image'] = url().'/images/thumbs/'.$filename;
+        $input['thumb_image'] = url().'/images/thumbs/'.$filename;*/
         //}
         
         $slider->update($input);

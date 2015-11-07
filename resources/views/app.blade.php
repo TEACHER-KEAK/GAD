@@ -110,114 +110,10 @@ type='text/css'>
                         </div> <!-- /.logo -->
                     </div> <!-- /.col-md-4 -->
                     <div class="col-md-10 col-sm-7 col-xs-5 bg-adjust main-menu-bg">
-                       <!--responsive menu-->
-                        <div class="toggle-menu">
-                             <div class="cd-dropdown-wrapper">
-                                <a class="cd-dropdown-trigger" href="#0">MENU<i class="fa fa-bars"></i></a>
-                                <nav class="cd-dropdown">
-                                    <h2> <i class="fa fa-bars"></i> MENU </h2>
-                                    <a href="#0" class="cd-close">Close</a>
-                                    <ul class="cd-dropdown-content"> 
-                                        <li>
-                                            <form class="cd-search">
-                                                 <input type="search" placeholder="Search...">
-                                            </form>
-                                        </li>
-                                        <li class="has-children">
-                                            <a href="http://localhost:8000/">MAIN PROJECT</a>
-                                            <ul class="cd-secondary-dropdown is-hidden">
-                                                <li class="go-back"><a href="#0">Menu</a></li>
-                                                <li class="see-all"><a href="http://localhost:8000/">All PROJECTS</a></li>
-                                                <li class="has-children">
-                                                    <a href="http://localhost:8000/">Landscape</a>
-                                                    <ul class="is-hidden">
-                                                        <li class="go-back"><a href="#0">PROJECT</a></li>
-                                                        <li class="see-all"><a href="http://localhost:8000/">All LANDSCAPE</a></li>
-                                                        <li><a href="http://localhost:8000/">PARK</a></li>
-                                                        <li><a href="http://localhost:8000/">GARDENS</a></li>
-                                            
-                                                    </ul>
-                                                </li>
-                                                 <li class="has-children">
-                                                    <a href="http://localhost:8000/">Exterior Decoration</a>
-                                                    <ul class="is-hidden">
-                                                        <li class="go-back"><a href="#0">PROJECT</a></li>
-                                                        <li class="see-all"><a href="http://localhost:8000/">All Exterior Decoration</a></li>
-                                                        <li><a href="http://localhost:8000/">Villa</a></li>
-                                                        <li><a href="http://localhost:8000/">Apartment</a></li>
-                                                        <li><a href="http://localhost:8000/">Restaurant</a></li>                                            
-                                                    </ul>
-                                                </li>  
-                                                 <li class="has-children">
-                                                    <a href="http://localhost:8000/">Interior Decoration</a>
-                                                    <ul class="is-hidden">
-                                                        <li class="go-back"><a href="#0">PROJECT</a></li>
-                                                        <li class="see-all"><a href="http://localhost:8000/">All LANDSCAPE</a></li>
-                                                        <li><a href="http://localhost:8000/">PARK</a></li>
-                                                        <li><a href="http://localhost:8000/">GARDENS</a></li>
-                                            
-                                                    </ul>
-                                                </li>  
-                                                 <li class="has-children">
-                                                    <a href="http://localhost:8000/">M&E Water Supply</a>
-                                                    <ul class="is-hidden">
-                                                        <li class="go-back"><a href="#0">PROJECT</a></li>
-                                                        <li class="see-all"><a href="http://localhost:8000/">All LANDSCAPE</a></li>
-                                                        <li><a href="http://localhost:8000/">PARK</a></li>
-                                                        <li><a href="http://localhost:8000/">GARDENS</a></li>
-                                            
-                                                    </ul>
-                                                </li>    
-                                            </ul> <!-- .cd-secondary-dropdown -->
-                                        </li> <!-- .has-children -->
-                                        <li class="has-children">
-                                            <a href="http://localhost:8000/">FURNITURE</a>
-                                            <ul class="cd-secondary-dropdown is-hidden">
-                                                <li class="go-back"><a href="#0">Menu</a></li>
-                                                <li class="see-all"><a href="http://localhost:8000/">All Clothing</a></li>
-                                                <li class="has-children">
-                                                    <a href="http://localhost:8000/">Bottoms</a>
-                                                    <ul class="is-hidden">
-                                                        <li class="go-back"><a href="#0">Clothing</a></li>
-                                                        <li class="see-all"><a href="http://localhost:8000/">All Bottoms</a></li>
-                                                        <li><a href="http://localhost:8000/">Casual Trousers</a></li>
-                                                        <li>
-                                                            <a href="#0">Jeans</a>
-                                                        </li>
-                                                        <li><a href="#0">Leggings</a></li>
-                                                        <li><a href="#0">Shorts</a></li>
-                                                    </ul>
-                                                </li>  
-                                            </ul> <!-- .cd-secondary-dropdown -->
-                                        </li> <!-- .has-children -->
-                                        <li class="has-children">
-                                            <a href="http://localhost:8000/">CATALOG</a>
-                                            <ul class="cd-secondary-dropdown is-hidden">
-                                                <li class="go-back"><a href="#0">Menu</a></li>
-                                                <li class="see-all"><a href="http://localhost:8000/">All CATALOG</a></li>
-                                                <li>
-                                                    <a href="http://localhost:8000/">CATALOG 1</a>
-                                                </li>
-                                                 <li>
-                                                    <a href="http://localhost:8000/">CATALOG 2</a>
-                                                </li> 
-                                                 <li>
-                                                    <a href="http://localhost:8000/">CATALOG 3</a>
-                                                </li>   
-
-                                            </ul> <!-- .cd-secondary-dropdown -->
-                                        </li> <!-- .has-children -->
-                                        <li><a href="http://localhost:8000/">ABOUT US</a></li>
-                                        <li><a href="http://localhost:8000/">CONTACT US</a></li>
-                                        <li class="cd-divider">Language SETTING</li>
-                                        <li><a href="http://localhost:8000/">KHMER</a></li>
-                                        <li><a href="http://localhost:8000/">ENGLISH</a></li>
-                                        <li><a href="http://localhost:8000/">CHINESE</a></li>
-                                      
-                                    </ul> <!-- .cd-dropdown-content -->
-                                </nav> <!-- .cd-dropdown -->
-                            </div> <!-- .cd-dropdown-wrapper -->
-                        </div><!-- / Responsive menu-->
+                        <!-- responsive menu-->
+                        @include('includes.responsive')
+                        <!-- responsive menu-->
+                        
 
                         <!--<a href="#" class="toggle-menu"><span class="responesive-text-menu">MENU</span> <i class="fa fa-bars"></i></a>     -->
                         <div class="top_bar top-toggle-bar">
@@ -228,7 +124,6 @@ type='text/css'>
                                  &nbsp&nbsp&nbsp&nbsp @lang('application.language'): 
                                 <a href="{{url('locale/kh')}}" title="KHMER"><img src="{{asset('/images/kh_lan.gif')}}" /></a>
                                 <a href="{{url('locale/en')}}" title="ENGLISH"><img src="{{asset('/images/en_lan.gif')}}" /></a>
-
                                 <a href="{{url('locale/ch')}}" title="CHINESE"><img src="{{asset('/images/ch_lan.gif')}}" /></a>
                                 </span>
                              </div>
@@ -365,7 +260,6 @@ type='text/css'>
  $("#LANGUAGES img").click(function(){
     location.href= $(this).parent('a').attr('href');
  });
-
 </script>
 
 <!--fancybox-->   
@@ -578,11 +472,6 @@ type='text/css'>
 	        var nanobar = new Nanobar( options );
 	        nanobar.go( 30 ); // size bar 30%
 	        nanobar.go(100);
-		});
-		
-		$("#SEARCH").submit(function(e){
-		   e.preventDefault();
-		   location.href= $(this).attr("action")+"/"+$("#txtSearch").val();
 		});
 	</script>
     @yield('script')

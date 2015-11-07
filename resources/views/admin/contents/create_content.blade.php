@@ -67,11 +67,9 @@
               <div class="form-group">
                 <label class="col-sm-2 text-right">Images</label>
                   <div class="col-sm-10">  
-                    <!--<input type='file' id="images" name="images" />-->
                     <input type="hidden" name="images" id="txtImages"/>
-                    <input type="hidden" readonly="readonly"   class="form-control" id="images" name="txtImages" onchange="addMoreImage()">
-                    <a type="button" class="btn btn-default btn-file" data-target="#myModal" href="javascript:;" data-toggle="modal">Add Images </a>
-                    <!--<a href="/filemanager/dialog.php?type=2&field_id=txtfile'&fldr=" class="btn iframe-btn" type="button">Open Filemanager</a>-->
+                    <input type="hidden" name="txtImages" id="images" onchange="addMoreImage()"/>
+                    <a type="button" class="btn btn-default btn-file" data-target="#myModal" href="#" data-toggle="modal">Add Images </a>
                     <table class="table">
 										<tbody>
 										</tbody>
@@ -117,20 +115,7 @@
     <!-- /.row -->
   </section>
   <!-- /.content -->
- <!-- code for popup file manager -->		
-<div class="modal fade" id="myModal">
-	<div class="modal-dialog modal-lg">
-	  <div class="modal-content">
-	    <div class="modal-header">
-	      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	      <h4 class="modal-title">File Manager</h4>
-	    </div>
-	    <div class="modal-body">
-	      <iframe width="100%" height="500" src="/filemanager/dialog.php?type=2&field_id=images'&fldr=" frameborder="0" style="overflow: scroll; overflow-x: hidden; overflow-y: scroll; "></iframe>
-	    </div>
-	  </div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+@include('admin.includes.upload')
 @endsection
 
 @section('script')
@@ -195,7 +180,6 @@ document_base_url: 'http://green-architecture-design-darapenhchet.c9.io/',
 </script>
 <script>
   function addMoreImage(){
-    //images.push($('#images').val());
     $('tbody').append('<tr>'+
 											'<td>'+
 												'<div class="form-group">'+
@@ -223,4 +207,21 @@ document_base_url: 'http://green-architecture-design-darapenhchet.c9.io/',
 		$("#txtImages").val(JSON.stringify(images));
 	});
 </script>
+@endsection
+@section('image')
+  <script>
+  	$(function(){
+  		$('#upload').on('submit', function(e) {
+            e.preventDefault(); // prevent native submit
+            $(this).ajaxSubmit({
+                success: function(responseText, statusText, xhr) {
+                   console.log(responseText);
+                   $("#images").val(responseText.IMAGE);
+                   $("#myModal").modal('hide');
+                   addMoreImage();
+                }
+            });
+          });
+  	});
+  </script>
 @endsection

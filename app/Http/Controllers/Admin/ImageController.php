@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Validator;
+use Image;
 
 class ImageController extends Controller
 {
@@ -40,7 +42,7 @@ class ImageController extends Controller
             'image' => 'image|required',
         );
  
-        $validation = Validator::make($input, $rules);
+        $validation = Validator::make($request->all(), $rules);
  
         if ($validation->fails()) {
             return response()->json($validation->errors->first(), 400);
@@ -48,6 +50,7 @@ class ImageController extends Controller
         $filename = $this->uploadImage($request);
         return response()->json([
             'IMAGE' => url().'/images/source/'.$filename,
+            'IMAGE_THUMB' => url().'/images/thumbs'.$filename,
             'STATUS' => TRUE
         ]);
     }
@@ -101,16 +104,16 @@ class ImageController extends Controller
         $filename ='';
         if ($request->hasFile('image')) {
             if(!file_exists('images/uploads')){
-                mkdir('images/uploads/originals/','777', true);
+                mkdir('images/source/','777', true);
             }
             $image = $request->file('image');
             $filename = uniqid() . $image->getClientOriginalName();
 
-            $image->move('images/uploads/original/', $filename);
+            $image->move('images/source/', $filename);
             
-            $thumb = Image::make('images/uploads/original/'.$filename)
+            $thumb = Image::make('images/source/'.$filename)
                           ->resize(240,160)
-                          ->save('images/uploads/thumb/'.$filename,50);
+                          ->save('images/thumbs/'.$filename,50);
             
         }
         return $filename;

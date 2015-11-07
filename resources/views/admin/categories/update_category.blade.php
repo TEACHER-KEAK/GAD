@@ -76,8 +76,12 @@
                   <div class="col-sm-10">  
                     <!--<input type="hidden" readonly="readonly"   class="form-control" id="txtImage" name="image" onchange="changeImage()" value="{{$category->image}}">
                     <a type="button" class="btn btn-default btn-file" data-target="#myModal" href="javascript:;" data-toggle="modal">Choose Image </a>-->
-                    <input type="file" name="image" id="image" class="btn btn-default btn-file"/>
-                    <img src="{{$category->image}}" style="width:520px; height:240px;" class="thumbnail" id="sample_image" title=""/>
+                    <!--<input type="file" name="image" id="image" class="btn btn-default btn-file"/>
+                    <img src="{{$category->image}}" style="width:520px; height:240px;" class="thumbnail" id="sample_image" title=""/>-->
+                    <input type="hidden" readonly="readonly"   class="form-control" id="txtImage" name="image" value="{{$category->image}}">
+                    <a type="button" class="btn btn-default btn-file" data-target="#myModal" href="#" data-toggle="modal">Choose Image </a>
+                    <!--<input type="file" name="image" id="image" class="btn btn-default btn-file"/>-->
+                    <img src="{{$category->image}}" style="width:520px; height:240px;" class="thumbnail" id="sample_image"/>
                   </div>    
               </div>
               <div class="form-group   " >
@@ -107,21 +111,7 @@
     </div>
     <!-- /.row -->
   </section>
-  <!-- /.content -->
-  <!-- code for popup file manager -->		
-<div class="modal fade" id="myModal">
-	<div class="modal-dialog modal-lg">
-	  <div class="modal-content">
-	    <div class="modal-header">
-	      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	      <h4 class="modal-title">File Manager</h4>
-	    </div>
-	    <div class="modal-body">
-	      <iframe width="100%" height="500" src="/filemanager/dialog.php?type=2&field_id=txtImage'&fldr=" frameborder="0" style="overflow: scroll; overflow-x: hidden; overflow-y: scroll; "></iframe>
-	    </div>
-	  </div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+@include('admin.includes.upload')
 @endsection
 
 @section('script')
@@ -152,4 +142,22 @@
     $("#sample_image").attr('src',$("#txtImage").val());
   }
 </script>
+@endsection
+@section('image')
+  <script>
+  	$(function(){
+  		$('#upload').on('submit', function(e) {
+            e.preventDefault(); // prevent native submit
+            $(this).ajaxSubmit({
+                success: function(responseText, statusText, xhr) {
+                   console.log(responseText);
+                   $("#sample_image").attr('src', responseText.IMAGE);
+                   $("#txtImage").val(responseText.IMAGE);
+                   $("#sample_image").show();
+                   $("#myModal").modal('hide');
+                }
+            });
+          });
+  	});
+  </script>
 @endsection

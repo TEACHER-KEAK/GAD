@@ -101,23 +101,7 @@ Route::group(['middleware' =>'locale'],function(){
             ]);
         }
     });
-    
-    Route::get('categories/projects/search/{search?}',function($search){
-        $categories = \App\Category::where('level','1')->orderBy('ordering')->get();
-        $parentCategory = \App\Category::where('title','like','%'.$search.'%')
-                                       ->orWhereIn('parent_id',DB::table('categories')->where('title',$search)->lists('id'))
-                                       ->lists('id');
-        $contents = \App\Content::where('title','like','%'.$search.'%')
-                                ->orWhereIn('category_id', $parentCategory->toArray())
-                                ->orderBy('created_at')
-                                ->paginate(21);
-        return view('project_list')->with([
-            'category' => '',
-            'categories' => $categories,
-            'contents' => $contents
-        ]);
-    });
-    
+    Route::get('categories/projects/search', 'CategoryController@search');
     Route::post('categories/{categoryId}/projects',function($categoryId){
         $parentCategory = \App\Category::where('parent_id',$categoryId)
                                            ->orWhereIn('parent_id',DB::table('categories')->where('parent_id',$categoryId)->lists('id'))
@@ -221,11 +205,10 @@ Route::group(['prefix' => 'rest/admin'
     
 });
 
-View::composer(['includes.header','includes.footer','app','home'], function($view){
+View::composer(['includes.header','includes.footer','app','home','includes.responsive'], function($view){
    $menus = \App\Menu::where('status',1)
                      ->whereNull('deleted_at')
                      ->get();
-   //dd(\App\Setting::first());
    $view->with([
        'menus'=> $menus,
        'settings' => \App\Setting::first()

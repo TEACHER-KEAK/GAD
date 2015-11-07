@@ -26,11 +26,21 @@
 		<div class="row">
 			<div id="resposive-side-cat">
 				<!-- Single button -->
+				@if($categories->count()>0)
 				<div class="btn-group" style="width:100%;" >
 				  <button style="width:100%;" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				    Action <span class="caret"></span>
+				    Categoreis <span class="caret"></span>
 				  </button>
 				  <ul class="dropdown-menu scrollable-menu"  style="width:100%;">
+				  @foreach($categories as $category)
+				    <li><a href="{{url('categories/'.$category->id.'/projects')}}" style="color:green;"><b>{{$category->translation(Lang::locale())->first() ? $category->translation(Lang::locale())->first()->title: $category->title}}</b></a></li>
+				    @foreach($category->categories()->orderBy('ordering')->get() as $subCategory)
+							<li> <a class="m_link" href="{{url('categories/'.$subCategory->id.'/projects')}}"><span style="padding-left:20px;">{{$subCategory->translation(Lang::locale())->first() ? $subCategory->translation(Lang::locale())->first()->title: $subCategory->title}} <strong>({{$subCategory->contents->count()}})</strong><span></span></a></li>
+						@endforeach
+				 	@endforeach
+				  </ul>
+				 @endif
+				  <!--<ul class="dropdown-menu scrollable-menu"  style="width:100%;">
 				    <li><a href="#" style="color:green;"><b>Action</b></a></li>
 				    <li><a href="#"><span style="padding-left:20px;">Another action</span></a></li>
 				    <li><a href="#"><span style="padding-left:20px;">Another action</span></a></li>
@@ -38,7 +48,7 @@
 				     <li><a href="#" style="color:green;"><b>Action</b></a></li>
 				    <li><a href="#"><span style="padding-left:20px;">Another action</span></a></li>
 				    <li><a href="#"><span style="padding-left:20px;">Another action</span></a></li>
-				  </ul>
+				  </ul>-->
 				</div>
 		  	</div>
 		</div>

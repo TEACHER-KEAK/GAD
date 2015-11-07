@@ -90,7 +90,7 @@ class CategoryController extends Controller
             //3. SET CREATED USER TO THE MENU
             $category->createdby()->associate(Auth::user());
             $category->updatedBy()->associate(Auth::user());
-            
+            $category->thumb_image = str_replace('source','thumbs',$request->input('image'));
             /*$filename ='';
             if ($request->hasFile('image')) {
                 if(!file_exists('images/uploads')){
@@ -110,9 +110,9 @@ class CategoryController extends Controller
                 $category->thumb_image = 'images/uploads/thumb/'.$filename;
             }*/
             
-            $filename = $this->uploadImage($request);
-            $category->image = url().'/images/source/'.$filename;
-            $category->thumb_image = url().'/images/thumbs/'.$filename;
+            //$filename = $this->uploadImage($request);
+            //$category->image = url().'/images/source/'.$filename;
+            //$category->thumb_image = url().'/images/thumbs/'.$filename;
             
             //$category->thumb_image = $filename;
             //$category->thumb_image = $request->input('image');
@@ -221,9 +221,10 @@ class CategoryController extends Controller
             $input["level"] = Category::findOrFail($request->input('parent_id'))->level + 1;
             
         }
-        $filename = $this->uploadImage($request);
-        $input['image'] = url().'/images/source/'.$filename;
-        $input['thumb_image'] = url().'/images/thumbs/'.$filename;
+        //$filename = $this->uploadImage($request);
+        //$input['image'] = url().'/images/source/'.$filename;
+        //$input['thumb_image'] = url().'/images/thumbs/'.$filename;
+        $input['thumb_image'] = str_replace('source','thumbs',$request->input('image'));
         $category->updatedBy()->associate(Auth::user());
         $category->update($input);
         

@@ -134,20 +134,7 @@
     <!-- /.row -->
   </section>
   <!-- /.content -->
- <!-- code for popup file manager -->		
-<div class="modal fade" id="myModal">
-	<div class="modal-dialog modal-lg">
-	  <div class="modal-content">
-	    <div class="modal-header">
-	      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	      <h4 class="modal-title">File Manager</h4>
-	    </div>
-	    <div class="modal-body">
-	      <iframe width="100%" height="500" src="/filemanager/dialog.php?type=2&field_id=images'&fldr=" frameborder="0" style="overflow: scroll; overflow-x: hidden; overflow-y: scroll; "></iframe>
-	    </div>
-	  </div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+@include('admin.includes.upload')
 @endsection
 
 @section('script')
@@ -240,4 +227,21 @@ document_base_url: 'http://green-architecture-design-darapenhchet.c9.io/',
 		$("#txtImages").val(JSON.stringify(images));
 	});
 </script>
+@endsection
+@section('image')
+  <script>
+  	$(function(){
+  		$('#upload').on('submit', function(e) {
+            e.preventDefault(); // prevent native submit
+            $(this).ajaxSubmit({
+                success: function(responseText, statusText, xhr) {
+                   console.log(responseText);
+                   $("#images").val(responseText.IMAGE);
+                   $("#myModal").modal('hide');
+                   addMoreImage();
+                }
+            });
+          });
+  	});
+  </script>
 @endsection
