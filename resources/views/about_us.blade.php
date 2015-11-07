@@ -14,19 +14,25 @@
 	<div class="container">
 		<div class="row">
 	      	<div class="col-md-3">
-	      		<div style="text-align:center;">
-
-				<a class="fancybox" href="{{ asset('/images/about-company-logo.png')}}" data-fancybox-group="gallery" >
-	      				<img src="{{ asset('/images/about-company-logo-thumbnail.png')}}">
-	      		</a>
-	      		<h3 style="color:#666; font-size:16px;"> Company Logo</h3>
-	      		</div>
-
+	      		<ul style="font-size:16px; line-height:24px;">
+					<li><a href="#">Message from Director</a></li>
+					<li><a href="#">Ourt Partner</a></li> 
+					<li><a href="#">Mission Statement</a></li>
+					
+				</ul>
 
 	      	</div>
 	      	<div class="col-md-9">
 	        		{!!$menu->content!!}
-	        		<p style="font-size:16px; line-height:24px; text-align:justify;">Green Global Architecture Design & Construction Co.,Ltd Company repaired by Mr Ry Thyra. Mr Ry Thyra worked at BOREY LAYKONG in two years go with working and studying in one university in Cambodia. Than Mr Ry Thyra has studied more on object at Vietnam country wile 7 months of finishing on this object he came back to Cambodia. Mr Ry Thyra has worked in company part of Architecture & Design in these he got experience like Exterior Design, Interior Design, Furniture Design, Design electric system and Design water system. Mr Ry Thyra has good experience and focus on work and on time on work. Mr Ry Thyra has experience for meeting customer and partner very good also. Than Mr Ry Thyra has cooperation with partner 4 people. The time in cooperation with Mr Ry Thyra and members partners make this company name GAC-4 on there time Mr Ry Thyra has cooperation 3 months. Mr Ry Thyra make one company like title on up line in 3 months already. All of these like: </p>
+	        		
+
+				<a class="fancybox" href="{{ asset('/images/about-company-logo.png')}}" data-fancybox-group="gallery" >
+	      				<img src="{{ asset('/images/about-company-logo-thumbnail.png')}}">
+	      		</a>
+	      		
+	      
+
+	        		<p style="font-size:16px; line-height:24px; text-align:justify;"><br/>Green Global Architecture Design & Construction Co.,Ltd Company repaired by Mr Ry Thyra. Mr Ry Thyra worked at BOREY LAYKONG in two years go with working and studying in one university in Cambodia. Than Mr Ry Thyra has studied more on object at Vietnam country wile 7 months of finishing on this object he came back to Cambodia. Mr Ry Thyra has worked in company part of Architecture & Design in these he got experience like Exterior Design, Interior Design, Furniture Design, Design electric system and Design water system. Mr Ry Thyra has good experience and focus on work and on time on work. Mr Ry Thyra has experience for meeting customer and partner very good also. Than Mr Ry Thyra has cooperation with partner 4 people. The time in cooperation with Mr Ry Thyra and members partners make this company name GAC-4 on there time Mr Ry Thyra has cooperation 3 months. Mr Ry Thyra make one company like title on up line in 3 months already. All of these like: </p>
 						<ul style="list-style: disc; font-size:16px; line-height:24px;">
 							<li>Architecture Design</li>
 							<li>Exterior Decoration</li> 
