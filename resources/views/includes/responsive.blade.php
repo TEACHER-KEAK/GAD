@@ -7,7 +7,7 @@
             <a href="#0" class="cd-close">Close</a>
             <ul class="cd-dropdown-content"> 
                 <li>
-                    <form action="{{URL::to('categories/projects/search/')}}" id="SEARCH" method="GET">
+                    <form action="{{URL::to('categories/projects/search/')}}" id="SEARCH" class="cd-search" method="GET">
                         <div class="input-group stylish-input-group">
                             <input type="text" class="form-control" placeholder="@lang('application.search')" id="txtSearch" name="search">
                             <span class="input-group-addon">
