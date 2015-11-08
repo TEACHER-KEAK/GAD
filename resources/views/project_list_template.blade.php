@@ -12,7 +12,7 @@
 	       <img src="{{ asset('/images/sample_img.jpg')}}" />
 		@endif
 	      <div class="caption">
-	        <h3><a href="{{url('categories/'.$content->category_id.'/projects/'.$content->id)}}">{{str_limit($content->translation(Lang::locale())->first() ? $content->translation(Lang::locale())->first()->title: $content->title, $limit = 27, $end = '...')}}</a></h3> 
+	        <h3><a href="{{url('menu/'.$menu->id.'/categories/'.$content->category_id.'/projects/'.$content->id)}}">{{str_limit($content->translation(Lang::locale())->first() ? $content->translation(Lang::locale())->first()->title: $content->title, $limit = 27, $end = '...')}}</a></h3> 
 	      </div>
 	    </div><!--/ thumbnail-->
 	  </div><!--/ col -->
@@ -22,15 +22,6 @@
 	<div class="col-md-12">
 		<div id="main_pagging"> 
 			{!! $contents->render() !!}
-			<!--<ul class = "pagination">
-			   <li><a href = "#">&laquo;</a></li>
-			   <li class = "active"><a href = "#">1</a></li>
-			   <li class = "disabled"><a href = "#">2</a></li>
-			   <li><a href = "#">3</a></li>
-			   <li><a href = "#">4</a></li>
-			   <li><a href = "#">5</a></li>
-			   <li><a href = "#">&raquo;</a></li>
-			</ul>-->
 		</div>	
 	</div>
 </div>
