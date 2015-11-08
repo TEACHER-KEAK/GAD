@@ -22,22 +22,22 @@
                 <li class="@if($menu->category()->first())
                             has-children
                            @endif">
-                    <a href="{!!$menu->category()->first() ? url('categories/'.$menu->category()->first()->id.'/projects') : $menu->external_url ?:'#'!!}">{!! $menu->translation(Lang::locale())->first() ? $menu->translation(Lang::locale())->first()->title: $menu->title !!}</a>
+                    <a href="{!!$menu->category()->first() ? url('menu/'.$menu->id.'/categories/'.$menu->category()->first()->id.'/projects') : $menu->external_url ?:'#'!!}">{!! $menu->translation(Lang::locale())->first() ? $menu->translation(Lang::locale())->first()->title: $menu->title !!}</a>
                     <ul class="cd-secondary-dropdown is-hidden">
                     @if($menu->category()->first())
                         <li class="go-back"><a href="#0">{{$menu->title}}</a></li>
-                        <li class="see-all"><a href="{!!$menu->category()->first() ? url('categories/'.$menu->category()->first()->id.'/projects') : $menu->external_url ?:'#'!!}">All {{$menu->title}}</a></li>
+                        <li class="see-all"><a href="{!!$menu->category()->first() ? url('menu/'.$menu->id.'/categories/'.$menu->category()->first()->id.'/projects') : $menu->external_url ?:'#'!!}">All {{$menu->title}}</a></li>
                         @foreach($menu->category()->first()->categories()->orderBy('ordering')->get()  as $category)
                         <li class="@if($category->categories()->count()>0) has-children @endif">
-                            <a href="{{url('categories/'.$category->id.'/projects')}}">
+                            <a href="{{url('menu/'.$menu->id.'/categories/'.$category->id.'/projects')}}">
                                 <span>{!! $category->translation(Lang::locale())->first() ? $category->translation(Lang::locale())->first()->title: $category->title !!}</span>
                             </a>
                             @if($category->categories()->count()>0)
                             <ul class="is-hidden">
                                 <li class="go-back"><a href="#0">{{$category->title}}</a></li>
-                                <li class="see-all"><a href="{{url('categories/'.$category->id.'/projects')}}">All {{$category->title}}</a></li>
+                                <li class="see-all"><a href="{{url('menu/'.$menu->id.'/categories/'.$category->id.'/projects')}}">All {{$category->title}}</a></li>
                                 @foreach($category->categories()->orderBy('ordering')->get() as $subCategory)
-                                <li><a href="{{url('categories/'.$subCategory->id.'/projects')}}"><span>{{$subCategory->translation(Lang::locale())->first() ? $subCategory->translation(Lang::locale())->first()->title: $subCategory->title }}</span></a></li>
+                                <li><a href="{{url('menu/'.$menu->id.'/categories/'.$subCategory->id.'/projects')}}"><span>{{$subCategory->translation(Lang::locale())->first() ? $subCategory->translation(Lang::locale())->first()->title: $subCategory->title }}</span></a></li>
                                 @endforeach
                             </ul>
                             @endif
