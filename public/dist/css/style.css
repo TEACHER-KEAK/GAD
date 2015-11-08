@@ -857,7 +857,7 @@ Project
 }
 
 #resposive-side-cat {
-  background: red;
+  display: none;
 }
 #resposive-side-cat a{
   color: #333;
@@ -950,6 +950,10 @@ Contact
   }
 
   .toggle-menu {
+    display: block;
+  }
+
+  #resposive-side-cat{
     display: block;
   }
   .top-toggle-bar{

@@ -2,10 +2,11 @@
 @section('content')
 <div id="navigation">
 	<div class="container">
+		<div class="row">
 		@if($category)
 		<input type="hidden" value="{{URL::to('categories/'.$category->id.'/projects')}}" id="URL"/>
 		@endif
-		<div class="row">	
+			
 			<ol class="breadcrumb" style="text-transform: uppercase;">
 			  <li><a href="{{url()}}">@lang('application.home')</a></li>
 			  @if($category)
