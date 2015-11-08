@@ -1,5 +1,3 @@
-
-
 <div class="hide-main-m">
 	<h1 class="title_cat">Categories</h1>
 	@foreach($categories as $category)
