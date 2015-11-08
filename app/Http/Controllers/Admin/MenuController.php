@@ -87,11 +87,13 @@ class MenuController extends Controller
                                       WHEN 2 THEN (SELECT CONCAT((SELECT LPAD(super.ordering,5,0) FROM categories AS super WHERE super.id = m.parent_id), '.' , LPAD(m.ordering,5,0), '.' ,LPAD(categories.ordering,5,0)) FROM categories as m WHERE m.id=categories.parent_id)
                                       END) AS Pos"))
                       ->where('status',1)
+                      ->whereNull('deleted_at')
                       ->orderBy('Pos')
                       ->get();
         return View('admin.menus.create_menu')->with([
             'menus' => Menu::where('level','<','2')
                                     ->where('status', 1)
+                                    ->whereNull('deleted_at')
                                     ->get(),
             'categories' => $categories//Category::where('status',1)->get()
         ]);
@@ -183,6 +185,7 @@ class MenuController extends Controller
                                       WHEN 2 THEN (SELECT CONCAT((SELECT LPAD(super.ordering,5,0) FROM categories AS super WHERE super.id = m.parent_id), '.' , LPAD(m.ordering,5,0), '.' ,LPAD(categories.ordering,5,0)) FROM categories as m WHERE m.id=categories.parent_id)
                                       END) AS Pos"))
                       ->where('status',1)
+                      ->whereNull('deleted_at')
                       ->orderBy('Pos')
                       ->get();
         return View('admin.menus.update_menu')->with([

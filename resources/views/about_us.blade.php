@@ -16,7 +16,7 @@
 	      	<div class="col-md-3">
 	      		<ul style="font-size:16px; line-height:24px;">
 					<li><a href="#">Message from Director</a></li>
-					<li><a href="#">Ourt Partner</a></li> 
+					<li><a href="#">Our Partner</a></li> 
 					<li><a href="#">Mission Statement</a></li>
 				</ul>
 
