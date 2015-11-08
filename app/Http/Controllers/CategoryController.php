@@ -16,19 +16,22 @@ use Image;
 class CategoryController extends Controller
 {
     public function search(Request $request){
+        $menu = \App\Menu::find(1);
         $search = $request->input('search') ?: '';
-        $categories = \App\Category::where('level','1')->orderBy('ordering')->get();
+        /*$categories = \App\Category::where('level','1')->orderBy('ordering')->get();
         $parentCategory = \App\Category::where('title','like','%'.$search.'%')
                                        ->orWhereIn('parent_id',DB::table('categories')->where('title',$search)->lists('id'))
-                                       ->lists('id');
+                                       ->lists('id');*/
+        $categories = \App\Category::get();
         $contents = \App\Content::where('title','like','%'.$search.'%')
-                                ->orWhereIn('category_id', $parentCategory->toArray())
+                                /*->orWhereIn('category_id', $parentCategory->toArray())*/
                                 ->orderBy('created_at')
                                 ->paginate(21);
         return view('project_list')->with([
             'category' => '',
             'categories' => $categories,
-            'contents' => $contents
+            'contents' => $contents,
+            'menu' => $menu
         ]);
     }
 }

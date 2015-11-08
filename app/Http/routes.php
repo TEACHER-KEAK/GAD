@@ -33,9 +33,7 @@ Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 Route::group(['middleware' =>'locale'],function(){
-    
-    
-    
+
     Route::get('/', function(){
         $sliders = \App\Slider::where('type','SLIDE SHOW')->get();
         $clients = \App\Slider::where('type','CLIENT SHOW')->get();
@@ -75,11 +73,14 @@ Route::group(['middleware' =>'locale'],function(){
     Route::get('/home', function(){
         return view('welcome');
     });
-    Route::get('categories/{categoryId}/projects/{projectId?}',function($categoryId, $projectId=''){
+    Route::get('menu/{menuId}/categories/{categoryId}/projects/{projectId?}',function($menuId, $categoryId, $projectId=''){
+        $menu = \App\Menu::find($menuId);
         $category = \App\Category::find($categoryId);
+
         $categories = \App\Category::where('level','1')
-                                   ->where('parent_id',$categoryId)
-                                   ->orderBy('ordering')->get();
+                               ->where('parent_id',$menu->internal_url)
+                               ->orderBy('ordering')->get();
+ 
         if($projectId==''){
             $parentCategory = \App\Category::where('parent_id',$categoryId)
                                            ->orWhereIn('parent_id',DB::table('categories')->where('parent_id',$categoryId)->lists('id'))
@@ -92,19 +93,23 @@ Route::group(['middleware' =>'locale'],function(){
             return view('project_list')->with([
                 'category' => $category,
                 'categories' => $categories,
-                'contents' => $contents
+                'contents' => $contents,
+                'menu' => $menu
             ]);
         }else{
             $content = \App\Content::find($projectId);
             return view('project_info')->with([
                 'category' => $category,
                 'categories' => $categories,
-                'content' => $content
+                'content' => $content,
+                'menu' => $menu
             ]);
         }
-    });
+    })->where(['menuId' => '[0-9]+', 
+               'categoryId' => '[0-9]+',
+               'projectId' => '[0-9]+']);
     Route::get('categories/projects/search', 'CategoryController@search');
-    Route::post('categories/{categoryId}/projects',function($categoryId){
+    Route::post('menu/{menuId}/categories/{categoryId}/projects',function($menuId,$categoryId){
         $parentCategory = \App\Category::where('parent_id',$categoryId)
                                            ->orWhereIn('parent_id',DB::table('categories')->where('parent_id',$categoryId)->lists('id'))
                                            ->lists('id');

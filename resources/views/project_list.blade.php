@@ -3,7 +3,7 @@
 <div id="navigation">
 	<div class="container">
 		@if($category)
-		<input type="hidden" value="{{URL::to('categories/'.$category->id.'/projects')}}" id="URL"/>
+		<input type="hidden" value="{{URL::to('menu/'.$menu->id.'/categories/'.$category->id.'/projects')}}" id="URL"/>
 		@endif
 		<div class="row">	
 			<ol class="breadcrumb" style="text-transform: uppercase;">
@@ -11,10 +11,10 @@
 			  @if($category)
 				  @if($category->parent_id)
 				  	@if($category->parentCategory->parent_id)
-				  	<li><a href="{{ url('categories/'.$category->parentCategory->parentCategory->id.'/projects') }}">{{ $category->parentCategory->parentCategory->title }}</a></li>
-				  	<li><a href="{{ url('categories/'.$category->parentCategory->id.'/projects')}}">{{ $category->parentCategory->title }}</a></li>
+				  	<li><a href="{{ url('menu/'.$menu->id.'/categories/'.$category->parentCategory->parentCategory->id.'/projects') }}">{{ $category->parentCategory->parentCategory->title }}</a></li>
+				  	<li><a href="{{ url('menu/'.$menu->id.'/categories/'.$category->parentCategory->id.'/projects')}}">{{ $category->parentCategory->title }}</a></li>
 				  	@else
-				  		<li><a href="{{ url('categories/'.$category->parentCategory->id.'/projects')}}">{{ $category->parentCategory->title }}</a></li>
+				  		<li><a href="{{ url('menu/'.$menu->id.'/categories/'.$category->parentCategory->id.'/projects')}}">{{ $category->parentCategory->title }}</a></li>
 				  	@endif
 				  @endif
 				  <li class="active"><strong>{{$category->title}}</strong></li>
@@ -33,9 +33,9 @@
 				  </button>
 				  <ul class="dropdown-menu scrollable-menu"  style="width:100%;">
 				  @foreach($categories as $category)
-				    <li><a href="{{url('categories/'.$category->id.'/projects')}}" style="color:green;"><b>{{$category->translation(Lang::locale())->first() ? $category->translation(Lang::locale())->first()->title: $category->title}}</b></a></li>
+				    <li><a href="{{url('menu/'.$menu->id.'/categories/'.$category->id.'/projects')}}" style="color:green;"><b>{{$category->translation(Lang::locale())->first() ? $category->translation(Lang::locale())->first()->title: $category->title}}</b></a></li>
 				    @foreach($category->categories()->orderBy('ordering')->get() as $subCategory)
-							<li> <a class="m_link" href="{{url('categories/'.$subCategory->id.'/projects')}}"><span style="padding-left:20px;">{{$subCategory->translation(Lang::locale())->first() ? $subCategory->translation(Lang::locale())->first()->title: $subCategory->title}} <strong>({{$subCategory->contents->count()}})</strong><span></span></a></li>
+							<li> <a class="m_link" href="{{url('menu/'.$menu->id.'/categories/'.$subCategory->id.'/projects')}}"><span style="padding-left:20px;">{{$subCategory->translation(Lang::locale())->first() ? $subCategory->translation(Lang::locale())->first()->title: $subCategory->title}} <strong>({{$subCategory->contents->count()}})</strong><span></span></a></li>
 						@endforeach
 				 	@endforeach
 				  </ul>
@@ -80,7 +80,7 @@
 						       <img src="{{ asset('/images/sample_img.jpg')}}" />
 							@endif
 						      <div class="caption">
-						        <h3><a href="{{url('categories/'.$content->category_id.'/projects/'.$content->id)}}">{{str_limit($content->translation(Lang::locale())->first() ? $content->translation(Lang::locale())->first()->title: $content->title, $limit = 27, $end = '...')}}</a></h3> 
+						        <h3><a href="{{url('menu/'.$menu->id.'/categories/'.$content->category_id.'/projects/'.$content->id)}}">{{str_limit($content->translation(Lang::locale())->first() ? $content->translation(Lang::locale())->first()->title: $content->title, $limit = 27, $end = '...')}}</a></h3> 
 						      </div>
 						    </div><!--/ thumbnail-->
 						  </div><!--/ col -->
