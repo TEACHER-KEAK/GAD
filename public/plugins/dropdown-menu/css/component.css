@@ -113,6 +113,8 @@
 	z-index: 0;
 	text-align: center; /* for aligning the sub items */
 	visibility: hidden;
+	border-bottom: 5px solid #76b810;
+
 }
 
 .cbp-hssubmenu:before, 
@@ -122,6 +124,7 @@
 }
 .cbp-hssubmenu:after { 
 	clear: both; 
+
 }
 
 /* Let's allow 6 item in a row */
@@ -129,7 +132,7 @@
 	width: 16.2%;
 	display: inline-block;
 	vertical-align: top;
-	box-shadow: -28px 0 0 -27px #44965a, 0 -28px 0 -27px #44965a;
+	box-shadow: -28px 0 0 -27px #e6e6e6, 0 -28px 0 -27px #e6e6e6;
 	opacity: 0;
 	-webkit-transition: opacity 0.1s 0s;
 	-moz-transition: opacity 0.1s 0s;
@@ -140,12 +143,12 @@
 
 /* First 6 items don't have upper box shadow */
 .cbp-hssubmenu > li:nth-child(-n+6) {
-	box-shadow: -28px 0 0 -27px #44965a;
+	box-shadow: -28px 0 0 -27px #e6e6e6;
 } 
 
 /* Every 7th item does not have a left box shadow */
 .cbp-hssubmenu > li:nth-child(6n+1) {
-	box-shadow:  0 -28px 0 -27px #44965a;
+	box-shadow:  0 -28px 0 -27px #e6e6e6;
 }
 
 /* The first one does not have any box shadow */
@@ -157,13 +160,13 @@
 	display: block;
 	text-align:left;
 	padding: 0px 20px;
-	color: #FFF;
+	color: #4a9d00;
 	outline: none;
 	font-weight: bold;
 }
 
 .chil-sub-cat > li a{
-	color: #FFF;
+	color: #4a9d00;
 	padding: 0px 30px;
 	margin: 0px;
 	text-align: left;
@@ -172,7 +175,7 @@
 
 .no-touch .cbp-hssubmenu > li a:hover,
 .no-touch .cbp-hssubmenu > li a:focus {
-	color: #d7eddc;
+	color: #76b810;
 }
 
 .cbp-hssubmenu > li a img {
@@ -206,23 +209,26 @@
 	-webkit-transition: opacity 0.5s 0.1s;
 	-moz-transition: opacity 0.5s 0.1s;
 	transition: opacity 0.5s 0.1s;
+
 }
 
 /* Helper div for animating the background */
 .cbp-hsmenubg {
-	background: #76b810;
+	background: #f3f3f3;
 	position: absolute;
 	width: 100%;
 	top: 100%;
 	left: 0;
 	z-index: 0;
 	height: 0px;
+
 }
 
 .no-touch .cbp-hsmenubg {
 	-webkit-transition: height 0.3s;
 	-moz-transition: height 0.3s;
 	transition: height 0.3s;
+
 }
 
 @media screen and (max-width: 65em){
