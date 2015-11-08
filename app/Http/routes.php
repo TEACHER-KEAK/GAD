@@ -43,7 +43,8 @@ Route::group(['middleware' =>'locale'],function(){
             'sliders' => $sliders,
             'clients' => $clients,
             'services' => $services,
-            'projects' => $contents
+            'projects' => $contents,
+            'menu' => \App\Menu::first()
         ]);
     });
     

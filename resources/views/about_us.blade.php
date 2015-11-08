@@ -18,7 +18,6 @@
 					<li><a href="#">Message from Director</a></li>
 					<li><a href="#">Ourt Partner</a></li> 
 					<li><a href="#">Mission Statement</a></li>
-					
 				</ul>
 
 	      	</div>

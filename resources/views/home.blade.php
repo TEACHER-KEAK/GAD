@@ -155,17 +155,17 @@
 							@if(count(json_decode($project->thumb_images,true))>0)
                 			<div class="service-item">
 		                        <div class="img-project">
-		                             <a href="{{url('categories/'.$project->category_id.'/projects/'.$project->id)}}"> <img src="{{json_decode($project->thumb_images,true)[0]}}" /></a>
+		                             <a href="{{url('menu/'.$menu->id.'/categories/'.$project->category_id.'/projects/'.$project->id)}}"> <img src="{{json_decode($project->thumb_images,true)[0]}}" /></a>
 		                         </div>
-		                         <div class="project-title"><a href="{{url('categories/'.$project->category_id.'/projects/'.$project->id)}}"> {{str_limit($project->translation(Lang::locale())->first() ? $project->translation(Lang::locale())->first()->title: $project->title, $limit = 32, $end = '...')}}</a></div>
+		                         <div class="project-title"><a href="{{url('menu/'.$menu->id.'/categories/'.$project->category_id.'/projects/'.$project->id)}}"> {{str_limit($project->translation(Lang::locale())->first() ? $project->translation(Lang::locale())->first()->title: $project->title, $limit = 32, $end = '...')}}</a></div>
 		                    </div>
 		                    @endif
 		                @else
 		                	<div class="service-item">
 		                        <div class="img-project">
-		                             <a href="{{url('categories/'.$project->category_id.'/projects/'.$project->id)}}"> <img src="{{ asset('/images/sample_img.jpg') }}" /></a>
+		                             <a href="{{url('menu/'.$menu->id.'/categories/'.$project->category_id.'/projects/'.$project->id)}}"> <img src="{{ asset('/images/sample_img.jpg') }}" /></a>
 		                         </div>
-		                         <div class="project-title"><a href="{{url('categories/'.$project->category_id.'/projects/'.$project->id)}}"> str_limit($project->translation(Lang::locale())->first() ? $project->translation(Lang::locale())->first()->title: $project->title, $limit = 27, $end = '...')}}</a></div>
+		                         <div class="project-title"><a href="{{url('menu/'.$menu->id.'/categories/'.$project->category_id.'/projects/'.$project->id)}}"> str_limit($project->translation(Lang::locale())->first() ? $project->translation(Lang::locale())->first()->title: $project->title, $limit = 27, $end = '...')}}</a></div>
 		                    </div>
                 		@endif
                 	@endforeach
