@@ -118,7 +118,8 @@ Route::group(['middleware' =>'locale'],function(){
                                 ->orderBy('created_at')
                                 ->paginate(21);
         $data = View('project_list_template')->with([
-                    'contents' => $contents
+                    'contents' => $contents,
+                    'menu' => \App\Menu::find($menuId)
                 ])->render();
         return response()->json($data);
     });

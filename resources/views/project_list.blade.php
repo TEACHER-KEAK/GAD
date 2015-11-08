@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="row">
 		@if($category)
-		<input type="hidden" value="{{URL::to('categories/'.$category->id.'/projects')}}" id="URL"/>
+		<input type="hidden" value="{{URL::to('menu/'.$menu->id.'/categories/'.$category->id.'/projects')}}" id="URL"/>
 		@endif
 			
 			<ol class="breadcrumb" style="text-transform: uppercase;">
