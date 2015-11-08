@@ -24,13 +24,19 @@
 			  @endif
 			</ol>
 		</div>
+		
+	</div>
+</div>
+<div id="data-projecct">
+	<div class="container">
 		<div class="row">
-			<div id="resposive-side-cat">
+			<div class="col-md-2">
+				<div id="resposive-side-cat">
 				<!-- Single button -->
 				@if($categories->count()>0)
 				<div class="btn-group" style="width:100%;" >
 				  <button style="width:100%;" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				    Categoreis <span class="caret"></span>
+				    Categories <span class="caret"></span>
 				  </button>
 				  <ul class="dropdown-menu scrollable-menu"  style="width:100%;">
 				  @foreach($categories as $category)
@@ -52,14 +58,7 @@
 				  </ul>-->
 				</div>
 		  	</div>
-		</div>
-	</div>
-</div>
-<div id="data-projecct">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-2">
-				@include('includes.categories')
+			@include('includes.categories')
 			</div>
 			<div class="col-md-10">
 				<div class="project-item">
