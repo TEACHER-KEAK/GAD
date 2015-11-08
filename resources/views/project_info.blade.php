@@ -38,7 +38,7 @@
 							<div class="image_view">
 								@if(is_array(json_decode($content->images,true)))
 							    	@if(count(json_decode($content->images,true))>0)
-										<img src="{{json_decode($content->images,true)[0]}}" width="930px" height="522px"></a>
+										<img src="{{json_decode($content->images,true)[0]}}" style="min-size:930px;"></a>
 									@else
 										<img src="{{ asset('/images/uploads/sample_img.jpg') }}" />
 									@endif
@@ -50,7 +50,7 @@
 							@if(is_array(json_decode($content->thumb_images,true)))
 								@foreach(json_decode($content->thumb_images,true) as $image)
 									<a class="fancybox" href="{{-- */ $data = str_replace('thumbs', 'source', $image); /* --}} {{$data}}" data-fancybox-group="gallery">
-										<img src="{{$image}}" width="170px" height="80px" alt="" />
+										<img src="{{$image}}" alt="" />
 									</a>
 								@endforeach
 							@endif

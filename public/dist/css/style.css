@@ -787,6 +787,10 @@ Project
   border-radius: 0px;
 }
 
+#data-projecct .thumbnail img{
+  width: 100%;
+}
+
 #data-projecct .caption{
   background-color: #eeeeee;
 }
@@ -900,11 +904,16 @@ Project Info
   border-top: 5px solid #85c91c;
 }
 
+.image_view img{
+  width: 100%;
+}
+
 .d_img_thumbnail{
   margin-top: 10px;
 }
 .d_img_thumbnail img{
   margin-right: 15px;
+  width:170px;
 
 }
 
