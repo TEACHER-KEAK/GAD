@@ -339,11 +339,18 @@ h6 {
 }
 .top_bar h1{
     font-family: 'Riesling';
-    font-size: 26px;
+    font-size: 24px;
     padding: 0px;
     margin: 0px;
-    font-weight: 900px;
+     letter-spacing: 1px;
+    font-weight: bold;
 }
+
+.top_bar h1:lang(kh){
+
+
+}
+
 .top_contact{
   font: 13px/21px "Open Sans", Arial, sans-serif;
   margin-left: 70px;
