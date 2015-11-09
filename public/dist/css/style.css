@@ -13,6 +13,11 @@ textarea {
   color: #222;
 }
 
+@font-face {
+  font-family: 'Riesling';
+  src: url('../../fonts/riesling.ttf'); 
+}
+
 ::-moz-selection {
   background: #b3d4fc;
   text-shadow: none;
@@ -333,11 +338,11 @@ h6 {
 
 }
 .top_bar h1{
-    font-family: "Raleway", sans-serif;
-    font-size: 16px;
+    font-family: 'Riesling';
+    font-size: 26px;
     padding: 0px;
     margin: 0px;
-    font-weight: bold;
+    font-weight: 900px;
 }
 .top_contact{
   font: 13px/21px "Open Sans", Arial, sans-serif;

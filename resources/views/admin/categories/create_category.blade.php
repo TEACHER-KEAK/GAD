@@ -72,6 +72,7 @@
               </div> 
               <div class="form-group">
                 <label class="col-sm-2 text-right">Image</label>
+                <input type="fileupload">
                   <div class="col-sm-10">  
                     <input type="hidden" readonly="readonly"   class="form-control" id="txtImage" name="image">
                     <a type="button" class="btn btn-default btn-file" data-target="#myModal" href="#" data-toggle="modal">Choose Image </a>
