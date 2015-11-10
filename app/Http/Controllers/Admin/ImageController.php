@@ -112,7 +112,7 @@ class ImageController extends Controller
             $image->move('images/source/', $filename);
             
             $thumb = Image::make('images/source/'.$filename)
-                          ->resize(240,160)
+                          ->resize(320,213)
                           ->save('images/thumbs/'.$filename,50);
             
         }
