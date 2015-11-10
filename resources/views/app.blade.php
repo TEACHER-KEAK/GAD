@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="{{Lang::locale()}}">
 <head>
 	<meta charset="UTF-8">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
@@ -83,8 +83,7 @@ type='text/css'>
     <!--[if lt IE 7]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
-    <!--ads popup-->   
-         
+    <!--ads popup-->        
     <div id="popup">
         <span class="button b-close"><span>X</span></span>
             <a href="#"><img src="{{ asset('/images/pop_ads.jpg')}}" /></a>
@@ -133,7 +132,7 @@ type='text/css'>
                         <div class="top_bar  main-menu">
                     		<div class="row">
                                 <div class="col-md-7">
-                                    <h1> <!--@lang('application.company_name')-->
+                                    <h1 lang="{{Lang::locale()}}"> <!--@lang('application.company_name')-->
                                         {!! $settings->translationCompanyName(Lang::locale()) !!}
                                     </h1>
                                 </div>
