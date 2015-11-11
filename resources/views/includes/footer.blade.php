@@ -17,7 +17,7 @@
                     <ul>
                         <li><a href="{{url()}}">HOME</a></li>
                     @foreach($menus as $key=> $menu)
-                        <li><a href="{!!$menu->category()->first() ? url('categories/'.$menu->category()->first()->id.'/projects') : $menu->external_url ?:'#'!!}">{!! $menu->translation(Lang::locale())->first() ? $menu->translation(Lang::locale())->first()->title: $menu->title !!}</a></li>
+                        <li><a href="{!!$menu->category()->first() ? url('menu/'. $menu->id .'/categories/'.$menu->category()->first()->id.'/projects') : $menu->external_url ?:'#'!!}">{!! $menu->translation(Lang::locale())->first() ? $menu->translation(Lang::locale())->first()->title: $menu->title !!}</a></li>
                     @endforeach
                     </ul>
                  </div>
