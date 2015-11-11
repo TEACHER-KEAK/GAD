@@ -49,7 +49,7 @@
                   <td id="CONTENT_ID">{{ $content->id }}</td>
                   <td>{{ str_limit($content->title, $limit = 50, $end = '...') }}</td>
                   <td>{{ str_limit($content->content, $limit = 70, $end = '...') }}</td>
-                  <td>{{ $content->category->title }}</td>
+                  <td>{{ $content->category ? $content->category->title : '' }}</td>
                   <td style="text-align:center;">
                     @if ($content->show_home_page=='1') 
                       <span class="label label-success">YES</span>
