@@ -354,9 +354,18 @@ h6 {
 
 .top_bar h1:lang(kh){
   font-family: 'Bokor', cursive;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: normal;
    letter-spacing:normal;
+
+}
+.top_bar h1:lang(ch){
+  font-family: 'Riesling';
+    font-size: 24px;
+    padding: 0px;
+    margin: 0px;
+     letter-spacing: 1px;
+    font-weight: bold;
 
 }
 

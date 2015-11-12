@@ -18,7 +18,7 @@ return [
     'contactus'=> 'CONTACT US',
     'contactaddress' =>'#70, First Floor, Preah Shihanuk Blv,<br />Sangkat Tunle Basak Khan Chhomkamon, Phnom Penh.',
     'copyright' => 'Copyright © 2015 GREEN ARCHITECTURE & DESIGN. All rights reserved.',
-    'telephone' => '(+855)81 799 961',
+    'telephone' => '(+855) 93 411 676',
     'recently_project' => 'Recently Project',
     'our_customers' => 'Our Clients',
     'description' => '<p><span>Green Global Architecture Design & Construction Co., Ltd.</span>  is a Cambodia base Company in Phnom  Penh. Green branding have been in Phnom Penh since 2007. </p>
