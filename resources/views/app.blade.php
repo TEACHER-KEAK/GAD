@@ -106,7 +106,7 @@ type='text/css'>
                 <div class="row">
                     <div class="col-md-2 col-sm-5 col-xs-7 bg-adjust">
                         <div id="greenad_logo">
-                           <a href="{{ url()}}"><img src="{{asset('/images/green-logo.png')}}" alt="logo"></a>
+                           <a href="{{ url()}}"><img src="{{ $settings->company_logo}}" alt="logo"></a>
                         </div> <!-- /.logo -->
                     </div> <!-- /.col-md-4 -->
                     <div class="col-md-10 col-sm-7 col-xs-5 bg-adjust main-menu-bg">

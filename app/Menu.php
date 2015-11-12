@@ -60,6 +60,21 @@ class Menu extends Model
         return $this->belongsTo('App\Menu', 'parent_id');
     }
     
+    public function sidebar_menus(){
+        return $this->hasMany('App\Menu','parent_id')
+                    ->where('status',1)
+                    ->where('position',0)
+                    ->whereNull('deleted_at')
+                    ->orderBy('ordering');
+    }
+    
+    public function menus(){
+        return $this->hasMany('App\Menu','parent_id')
+                    ->where('status',1)
+                    ->whereNull('deleted_at')
+                    ->orderBy('ordering');
+    }
+    
     public function category(){
         return $this->belongsTo('App\Category','internal_url');
     }

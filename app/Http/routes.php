@@ -48,9 +48,20 @@ Route::group(['middleware' =>'locale'],function(){
         ]);
     });
     
+    Route::get('/menu/{menuId}', function($menuId){
+        $data["sidebar_menu"] = \App\Menu::find($menuId);
+        return response()->json($data);
+    });
+    
     Route::get('/about_us', function(){
        return view('about_us')->with([
-            'menu' => \App\Menu::whereRaw("UPPER(title)='ABOUT US'")->first()     
+            'menu' => \App\Menu::whereRaw("UPPER(title)='ABOUT US'")->first(),
+/*            'sidebar_menus' => \App\Menu::where('status',1)
+                                         //->whereRaw("UPPER(title)='ABOUT US'")
+                                         //->whereNull('deleted_at')
+                                         ->where('position',0)
+                                         ->orderBy('ordering')
+                                         ->get()*/
        ]); 
     });
     
