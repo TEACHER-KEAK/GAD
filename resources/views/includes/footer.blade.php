@@ -6,7 +6,7 @@
                     <h1 class="footer_headline">@lang('application.contactus')</h1>
                     <p>
                         <i class="glyphicon glyphicon-earphone"></i>  @lang('application.telephone')<br />
-                        <i class="glyphicon glyphicon-envelope"></i>  info@greenglobale.com
+                        <i class="glyphicon glyphicon-envelope"></i>  info@green-globale.com
                     </p>
                     <p>
                         @lang('application.contactaddress')

@@ -16,7 +16,7 @@ return [
     'language' => 'Language',
     'search' => 'Search',
     'contactus'=> 'CONTACT US',
-    'contactaddress' =>'#70, First Floor, Preah Shihanuk Blv,<br />Sangkat Tunle Basak Khan Chhomkamon, Phnom Penh.',
+    'contactaddress' =>'#70, First Floor, Preah Shihanuk Blv,<br />Sangkat Tunle Basak, Khan Chhomkamon, Phnom Penh.',
     'copyright' => 'Copyright © 2015 GREEN ARCHITECTURE & DESIGN. All rights reserved.',
     'telephone' => '(+855) 93 411 676',
     'recently_project' => 'Recently Project',

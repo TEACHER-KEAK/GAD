@@ -951,7 +951,24 @@ Project Info
   border: 1px solid #CCC;
 
 }
-
+/*-----------------------------------------
+ABOUT
+-------------------------------------------*/
+.about_menu{
+  margin: 0px;
+  padding: 0px;
+}
+.about_menu > li{
+  padding: 7px 0;
+  border-bottom: 1px solid #CCC;
+}
+.about_menu a{
+ color: #444444;
+ text-align: left;
+}
+.about_menu a:hover{
+ color: #85c91c;
+}
 /*----------------------------------------------
 Contact
 -----------------------------------------------*/
