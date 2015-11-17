@@ -43,7 +43,7 @@
 							<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-50bee8c15741ef8d" async="async"></script>
 							<!-- Go to www.addthis.com/dashboard to customize your tools -->
 							<div class="addthis_sharing_toolbox" style="float:left; margin-right:100px"></div>
-							<div class="fb-like" style="float:left; padding-top:5px;" data-href="" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+							<div class="fb-like" style="float:left; padding-top:5px;" data-href="{{URL::current()}}" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
 						</div>
 					</div>
 					<div class="row">
