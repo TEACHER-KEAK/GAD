@@ -956,7 +956,7 @@ ABOUT
 -------------------------------------------*/
 .about_menu{
   margin: 0px;
-  padding: 0px;
+  padding: 0 0 40px 0;
 }
 .about_menu > li{
   padding: 7px 0;

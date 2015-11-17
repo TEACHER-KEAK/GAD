@@ -12,6 +12,7 @@
     <nav class="cbp-hsmenu-wrapper" id="cbp-hsmenu-wrapper">
         <div class="cbp-hsinner">
             <ul class="cbp-hsmenu">
+                <li>  <a href="{{ url()}}"><i class="glyphicon glyphicon-home"></i></a></li>
                 @foreach($menus as $key=> $menu)
                 <li data-open="" class="">
                     <a href="{!!$menu->category()->first() ? url('menu/'.$menu->id.'/categories/'.$menu->category()->first()->id.'/projects') : $menu->external_url ?:'#'!!}">{!! $menu->translation(Lang::locale())->first() ? $menu->translation(Lang::locale())->first()->title: $menu->title !!}</a>

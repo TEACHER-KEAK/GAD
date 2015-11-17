@@ -30,7 +30,20 @@
 					<div class="row">
 						<div class="col-md-12">
 							<h1> {!! $content->translation(Lang::locale())->first() ? $content->translation(Lang::locale())->first()->title: $content->title !!}</h1>
+							
+						</div>
+					</div>
+					<div class="row">
+						
+						<div class="col-md-6">
 							<p> Posted: {{$content->createdBy ? $content->createdBy->lastname : ''}} {{ $content->createdBy ? $content->createdBy->firstname : ''}} | Date: {{$content->created_at->format('d-F-Y')}} </p>
+						</div>
+						<div class="col-md-6">
+				
+							<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-50bee8c15741ef8d" async="async"></script>
+							<!-- Go to www.addthis.com/dashboard to customize your tools -->
+							<div class="addthis_sharing_toolbox" style="float:left; margin-right:100px"></div>
+							<div class="fb-like" style="float:left; padding-top:5px;" data-href="" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
 						</div>
 					</div>
 					<div class="row">
@@ -83,8 +96,8 @@
 									<h4>Contact us</h4>
 									<p>For more details contact:</p>
 									<p>
-										<i class="glyphicon glyphicon-earphone"></i><b>  (+855) 81 799 961</b><br/>
-										<i class="glyphicon glyphicon-envelope"></i><b>  info@greenglobale.com</b>
+										<i class="glyphicon glyphicon-earphone"></i><b>  (+855) 93 411 676</b><br/>
+										<i class="glyphicon glyphicon-envelope"></i><b>   info@green-globale.com</b>
 									</p>
 									<p>
 									Or give us your best contact 

@@ -63,7 +63,7 @@
 						    <div class="thumbnail">
 						  @if(is_array(json_decode($content->thumb_images,true)))
 						    @if(count(json_decode($content->thumb_images,true))>0)
-									<img src="{{json_decode($content->thumb_images,true)[0]}}"></a>
+									<a href="{{url('menu/'.$menu->id.'/categories/'.$content->category_id.'/projects/'.$content->id)}}"><img src="{{json_decode($content->thumb_images,true)[0]}}"></a>
 								@else
 									<img src="{{ asset('/images/sample_img.jpg')}}" />	
 								@endif

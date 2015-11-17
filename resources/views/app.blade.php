@@ -83,22 +83,7 @@ type='text/css'>
     <!--[if lt IE 7]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
-    <!--ads popup-->        
-    <div id="popup">
-        <span class="button b-close"><span>X</span></span>
-            <a href="#"><img src="{{ asset('/images/pop_ads.jpg')}}" /></a>
-        
-         <div class="counter">
-            <div class="counter-align" style="width:330px">
-                <span>This popup display in</span>
-                <span class="timer"></span>
-                <span>second,If</span>
-                <span class="button small" data-click="0" id="pause">Pause</span>
-                <span class="button small" id="skip">Skip</span>
-            </div>
-            
-        </div>
-    </div>
+   
 
     <div id="front">
         <div class="site-header">

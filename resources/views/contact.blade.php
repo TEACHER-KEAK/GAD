@@ -13,19 +13,8 @@
 <div id="data-projecct">
 	<div class="container">
 		<div class="row">
-	       <!-- {{$menu->content}}-->
-	      	<div class="col-md-12 contact_info">
-		       
-		       <h2> HEAD OFFICE:</h2>
-		       <h1>
-		       		Green Global Architecture Design & Construction Co., Ltd.
-		       </h1>
-		    	<p>Tel: (+855) 81 799 961<br />
-	 			E-mail: info@greenglobale.com <br />
-
-				Address: #70, First Floor, Preah Shihanuk Blv,
-				Sangkat Tunle Basak Khan Chhomkamon, Phnom Penh.</p>
-			</div>
+	       {!!$menu->content!!}
+	      	
 	    </div>
 	    <div class="row">
 	    	@if(Session::has('flash_message'))

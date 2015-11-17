@@ -99,14 +99,14 @@
             </div>
         </div>
         <div class="row">
-        	<div class="col-md-12">
+       
             	<div class="intro_content">
             		<!--<p><span>Green Global Architecture Design & Construction Co., Ltd.</span>  is a Cambodia base Company in Phnom  Penh. Green branding have been in Phnom Penh since 2007. </p>
             		<p>We provide Architectural and Interior Design with Consultancy, Construction with Renovation services for turnkey project for villa, condominium, apartment, hotel, lifestyle retail shop, cafe, ...</p>-->
             		<!--@lang('application.description')-->
             		{!! $settings->translationCompanyInformation(Lang::locale()) !!}
             	</div>
-        	</div>
+        	
         </div>
     </div>
 </div><!-- / thumbnail-wrapper -->
