@@ -12,20 +12,18 @@
 /* Main menu wrapper */
 
 .cbp-hsmenu-wrapper {
-	position: relative;
+    position: relative;
+    margin-left: -15px;
 }
-
 /* Common style for all lists */
 .cbp-hsmenu-wrapper ul {
 	list-style: none;
-	padding: 0;
 	margin: 0 auto;
 }
 
 /* 100% width bar for menu */
 .cbp-hsinner {
 	background:none;
-	position: relative;
 	z-index: 100;
 }
 
@@ -34,7 +32,6 @@
 	width: 100%;
 	max-width: 69em;
 	margin: 0 auto;
-	padding-left: 50px;
 }
 
 
@@ -167,7 +164,7 @@
 
 .chil-sub-cat > li a{
 	color: #4a9d00;
-	padding: 0px 30px;
+	padding: 0px;
 	margin: 0px;
 	text-align: left;
 	font-weight: normal;
@@ -243,7 +240,7 @@
 	}
 
 	.cbp-hsmenu-wrapper .cbp-hsmenu {
-		padding: 0;
+	
 		max-width: none;
 		width: 100%;
 	}
