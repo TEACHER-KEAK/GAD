@@ -1,3 +1,8 @@
 WELCOME TO GREEN ARCHITECTURE DESIGN 
 
-CONTACT: {{$name}}
+INFORMATION :
+
+NAME : {{$name}}
+EMAIL : {{$email}}
+TELEPHONE : {{$telephone}}
+DESCRIPTION : {{$description}}
