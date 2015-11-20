@@ -25,6 +25,7 @@ class CategoryController extends Controller
         $categories = \App\Category::get();
         $contents = \App\Content::where('title','like','%'.$search.'%')
                                 /*->orWhereIn('category_id', $parentCategory->toArray())*/
+                                ->whereNull('deleted_at')
                                 ->orderBy('created_at')
                                 ->paginate(21);
         return view('project_list')->with([

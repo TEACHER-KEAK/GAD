@@ -45,7 +45,7 @@ class MailController extends Controller
                 'telephone' => $request->input('telephone'),
                 'description' => $request->input('description')
             ], function($message) {
-            $message->to('darapenhchet@gmail.com', 'DARA PENHCHET')->subject('GREEN ARCHITECURE AND DESIGN.');
+            $message->to('info@greenglobale.com', 'Green Global Architecture Design & Construction Co., Ltd.')->subject('Green Global Architecture Design & Construction Co., Ltd.');
             Session::flash('flash_message', 'Your message has been sent successfully!');
         });
         

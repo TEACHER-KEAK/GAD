@@ -17,7 +17,7 @@
 	      	
 	    </div>
 	    <div class="row">
-	    	@if(Session::has('flash_message'))
+	    	<!--@if(Session::has('flash_message'))
 		        <div class="alert alert-success">
 		            {{ Session::get('flash_message') }}
 		        </div>
@@ -28,7 +28,7 @@
 		                <p>{{ $error }}</p>
 		            @endforeach
 		        </div>
-		    @endif
+		    @endif-->
 			<form action="{{URL::to('emails')}}" method="POST">
 				<input type="hidden" name="_token" value="{!! csrf_token() !!}">
 		    	<div class="col-md-5 contact_info">
@@ -65,7 +65,18 @@
 							 </div>
 							 <div class="form-group">
 						      
-						            Will be used to display an alert to the user
+					             @if(Session::has('flash_message'))
+					                <div class="alert alert-success">
+					                    {{ Session::get('flash_message') }}
+					                </div>
+					            @endif
+					            @if($errors->any())
+					                <div class="alert alert-danger">
+					                    @foreach($errors->all() as $error)
+					                        <p>{{ $error }}</p>
+					                    @endforeach
+					                </div>
+					            @endif
 						      
 						    </div>
 						</div>

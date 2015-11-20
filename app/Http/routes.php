@@ -100,6 +100,7 @@ Route::group(['middleware' =>'locale'],function(){
             $parentCategorySup = \App\Category::where('parent_id','in',(implode(' ,',$parentCategory->toArray())))->lists('id');
             $contents = \App\Content::where('category_id',$categoryId)
                                     ->orWhereIn('category_id', $parentCategory->toArray())
+                                    ->whereNull('deleted_at')
                                     ->orderBy('created_at')
                                     ->paginate(21);
             return view('project_list')->with([
@@ -127,6 +128,7 @@ Route::group(['middleware' =>'locale'],function(){
                                            ->lists('id');
         $contents = \App\Content::where('category_id',$categoryId)
                                 ->orWhereIn('category_id', $parentCategory->toArray())
+                                ->whereNull('deleted_at')
                                 ->orderBy('created_at')
                                 ->paginate(21);
         $data = View('project_list_template')->with([
