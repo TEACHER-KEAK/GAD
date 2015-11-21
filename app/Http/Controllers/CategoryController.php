@@ -22,7 +22,7 @@ class CategoryController extends Controller
         $parentCategory = \App\Category::where('title','like','%'.$search.'%')
                                        ->orWhereIn('parent_id',DB::table('categories')->where('title',$search)->lists('id'))
                                        ->lists('id');*/
-        $categories = \App\Category::get();
+        $categories = \App\Category::->whereNull('deleted_at')->get();
         $contents = \App\Content::where('title','like','%'.$search.'%')
                                 /*->orWhereIn('category_id', $parentCategory->toArray())*/
                                 ->whereNull('deleted_at')

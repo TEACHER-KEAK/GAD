@@ -55,7 +55,7 @@ Route::group(['middleware' =>'locale'],function(){
     
     Route::get('/about_us', function(){
        return view('about_us')->with([
-            'menu' => \App\Menu::whereRaw("UPPER(title)='ABOUT US'")->first(),
+            'menu' => \App\Menu::whereRaw("UPPER(title)='ABOUT US'")->whereNull('deleted_at')->first(),
 /*            'sidebar_menus' => \App\Menu::where('status',1)
                                          //->whereRaw("UPPER(title)='ABOUT US'")
                                          //->whereNull('deleted_at')
@@ -87,17 +87,19 @@ Route::group(['middleware' =>'locale'],function(){
     });
     Route::get('menu/{menuId}/categories/{categoryId}/projects/{projectId?}',function($menuId, $categoryId, $projectId=''){
         $menu = \App\Menu::find($menuId);
-        $category = \App\Category::find($categoryId);
+        $category = \App\Category::find($categoryId)->whereNull('deleted_at');
 
         $categories = \App\Category::where('level','1')
                                ->where('parent_id',$menu->internal_url)
+                               ->whereNull('deleted_at')
                                ->orderBy('ordering')->get();
  
         if($projectId==''){
             $parentCategory = \App\Category::where('parent_id',$categoryId)
-                                           ->orWhereIn('parent_id',DB::table('categories')->where('parent_id',$categoryId)->lists('id'))
+                                           ->orWhereIn('parent_id',DB::table('categories')->where('parent_id',$categoryId)->whereNull('deleted_at')->lists('id'))
+                                           ->whereNull('deleted_at')
                                            ->lists('id');
-            $parentCategorySup = \App\Category::where('parent_id','in',(implode(' ,',$parentCategory->toArray())))->lists('id');
+            $parentCategorySup = \App\Category::whereNull('deleted_at')->where('parent_id','in',(implode(' ,',$parentCategory->toArray())))->lists('id');
             $contents = \App\Content::where('category_id',$categoryId)
                                     ->orWhereIn('category_id', $parentCategory->toArray())
                                     ->whereNull('deleted_at')
@@ -125,6 +127,7 @@ Route::group(['middleware' =>'locale'],function(){
     Route::post('menu/{menuId}/categories/{categoryId}/projects',function($menuId,$categoryId){
         $parentCategory = \App\Category::where('parent_id',$categoryId)
                                            ->orWhereIn('parent_id',DB::table('categories')->where('parent_id',$categoryId)->lists('id'))
+                                           ->whereNull('deleted_at')
                                            ->lists('id');
         $contents = \App\Content::where('category_id',$categoryId)
                                 ->orWhereIn('category_id', $parentCategory->toArray())
