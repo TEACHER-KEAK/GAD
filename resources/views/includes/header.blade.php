@@ -1,6 +1,15 @@
 <div class="main-menu-w hide-main-m">
-    <div class="">
-    <nav class="container cbp-hsmenu-wrapper" id="cbp-hsmenu-wrapper">
+    <div class="container">
+           <!-- <ul>
+                <li><a href="#front">Home</a></li>
+                <li><a href="#services">MAIN PROJECT</a></li>
+                <li><a href="#products">FURNITURE</a></li>
+                <li><a href="#products">CATALOG</a></li>
+                <li><a href="#products">ABOUT US</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </div> <!-- /.main-menu -->
+    <nav class="cbp-hsmenu-wrapper" id="cbp-hsmenu-wrapper">
         <div class="cbp-hsinner">
             <ul class="cbp-hsmenu">
                 <li>  <a href="{{ url()}}"><i class="glyphicon glyphicon-home"></i></a></li>

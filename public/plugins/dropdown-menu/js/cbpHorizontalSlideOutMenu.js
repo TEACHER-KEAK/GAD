@@ -135,13 +135,11 @@
 					trigger.addEventListener( 'touchstart', function( ev ) { self._openMenu( this, ev ); } );
 				}
 				else {
-					 trigger.addEventListener( 'click', function( ev ) { self._openMenu( this, ev ); } );
+					//trigger.addEventListener( 'click', function( ev ) { self._openMenu( this, ev ); } );
 					trigger.addEventListener( 'mouseover', function( ev ) { self._openMenu( this, ev ); } );
 					
-					$('.cbp-hsmenu-wrapper').on('mouseleave',function(e){
-
-						  self._openMenu(this,e );
-						 // self.hide();
+					$('#cbp-container').on('mouseleave',function(e){
+						  self._openMenu( this, e );
 					})
 				}
 			} );
