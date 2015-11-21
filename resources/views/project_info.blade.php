@@ -51,7 +51,7 @@
 							<div class="image_view">
 								@if(is_array(json_decode($content->images,true)))
 							    	@if(count(json_decode($content->images,true))>0)
-										<img src="{{json_decode($content->images,true)[0]}}" style="min-size:930px;"></a>
+										<img src="{{json_decode($content->images,true)[0]}}"></a>
 									@else
 										<img src="{{ asset('/images/uploads/sample_img.jpg') }}" />
 									@endif
