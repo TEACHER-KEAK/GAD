@@ -87,7 +87,7 @@ Route::group(['middleware' =>'locale'],function(){
     });
     Route::get('menu/{menuId}/categories/{categoryId}/projects/{projectId?}',function($menuId, $categoryId, $projectId=''){
         $menu = \App\Menu::find($menuId);
-        $category = \App\Category::find($categoryId)->whereNull('deleted_at');
+        $category = \App\Category::find($categoryId);
 
         $categories = \App\Category::where('level','1')
                                ->where('parent_id',$menu->internal_url)
