@@ -4,17 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<title>GREEN GLOBAL DESIGN AND ARCHITECTURE</title>
-    <meta name="keywords" content="Green GLOBAL Dedign and Architecture">
-	<meta name="description" content="Green GLOBAL Dedign and Architecture">
-    <meta name="author" content="Green GLOBAL Dedign and Architecture">
-
-    <!--facebook meta tag--> 
-    <meta property="og:image" content="??????????????????????">
-    <meta property="og:url" content="????????????????????????">
-    <meta property="og:title" content="?????????????????????">
-    <meta property="og:description" content="???????????????">
-
+	<title>{{{$settings->meta_title}}}</title>
+    <meta name="keywords" content="{{{ $settings->meta_keyword}}}">
+	<meta name="description" content="{{{ $settings->meta_description}}}">
+    <meta name="author" content="{{{ $settings->translationCompanyName(Lang::locale()) }}}">
+    @yield('facebook')
 
     <!-- JQuery -->
     <script type="text/javascript" src="{{asset('/plugins/fancybox/lib/jquery-1.10.1.min.js')}}"></script>

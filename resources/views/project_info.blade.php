@@ -1,4 +1,19 @@
 @extends('app')
+@section('facebook')
+	<!--facebook meta tag--> 
+    <meta property="og:image" content="@if(is_array(json_decode($content->images,true)))
+							    	@if(count(json_decode($content->images,true))>0)
+										{{{json_decode($content->images,true)[0]}}}
+									@else
+										{{{ asset('/images/uploads/sample_img.jpg') }}}
+									@endif
+								@else
+								   {{{ asset('/images/uploads/sample_img.jpg') }}}
+								@endif">
+    <meta property="og:url" content="{{{ URL::current()}}}">
+    <meta property="og:title" content="{{{ $content->translation(Lang::locale())->first() ? $content->translation(Lang::locale())->first()->title: $content->title }}}">
+    <meta property="og:description" content="{{{ $content->content }}}">
+@endsection
 @section('content')
 <div id="navigation">
 	<div class="container">
