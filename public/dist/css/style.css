@@ -114,7 +114,6 @@ form input[type="email"],
 form input[type="number"],
 form input[type="password"] {
   background: #fff;
-  border: 1px solid #fff;
   padding: 7px 10px;
   width: 80%;
 }
@@ -228,7 +227,7 @@ body {
   color: #838383;
   background-color: white;
 }
-:lang(kh){font-family: 'Hanuman', serif;}
+:lang(kh){font-family: 'Hanuman', serif, 'Open Sans', Arial, sans-serif, 'Glyphicons Halflings';}
 
 a {
   color: #85c91c;
@@ -384,22 +383,20 @@ h6 {
 
 }
 .main-menu-w{
-  position: absolute;
-  top: 47px;
-  left: 0px;
-  right: 10px;
-  bottom: 0px;
-  width: 100%;
+  position: relative;
+  top: -44px;
 }
 
 /*-----------------
 Search
 -----------------*/
 .search_box{
-  position: absolute;
-  top: 5px;
-  right: 0px;
-  width: 200px;
+    position: relative;
+    top: 5px;
+    right: -128px;
+    width: 200px;
+    float: right;
+    clear: right;
 }
 .stylish-input-group .input-group-addon{
     background: white !important; 
