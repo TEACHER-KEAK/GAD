@@ -342,6 +342,10 @@ h6 {
   margin: 13px 0 10px 0;
 
 }
+.top_bar img{
+  width: 25px;
+}
+
 .top_bar h1{
     font-family: 'Riesling';
     font-size: 24px;
