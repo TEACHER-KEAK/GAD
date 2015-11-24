@@ -8,6 +8,7 @@
     <meta name="keywords" content="{{{ $settings->meta_keyword}}}">
 	<meta name="description" content="{{{ $settings->meta_description}}}">
     <meta name="author" content="{{{ $settings->translationCompanyName(Lang::locale()) }}}">
+    @yield('facebook')
 
     <!-- JQuery -->
     <script type="text/javascript" src="{{asset('/plugins/fancybox/lib/jquery-1.10.1.min.js')}}"></script>
