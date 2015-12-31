@@ -11,8 +11,8 @@
 								   {{{ asset('/images/uploads/sample_img.jpg') }}}
 								@endif">
     <meta property="og:url" content="{{{ URL::current()}}}">
-    <meta property="og:title" content="{{{ $content->translation(Lang::locale())->first() ? $content->translation(Lang::locale())->first()->title: $content->title }}}">
-    <meta property="og:description" content="{{{ $content->content }}}">
+    <meta property="og:title" content="{{{ $content->translation(Lang::locale())->first() ? strip_tags ($content->translation(Lang::locale())->first()->title): strip_tags ($content->title) }}}">
+    <meta property="og:description" content="{{{ strip_tags ($content->content) }}}">
 @endsection
 @section('content')
 <div id="navigation">
@@ -61,6 +61,7 @@
 							<div class="fb-like" style="float:left; padding-top:5px;" data-href="{{URL::current()}}" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
 						</div>
 					</div>
+					@if(strtolower($category->title)!="furniture")
 					<div class="row">
 						<div class="col-md-12">
 							<div class="image_view">
@@ -85,6 +86,32 @@
 							</div>
 						</div>
 					</div><!--/row-->
+					@else
+					<div class="row">
+						<div class="col-md-12">
+							@if(is_array(json_decode($content->images,true)))
+						    	@if(count(json_decode($content->images,true))>0)
+						    		@foreach(json_decode($content->images,true) as $image)
+										<div class="image_view">
+											<img src="{{$image}}">
+										</div>
+									@endforeach
+								@else
+									<div class="image_view">
+										<img src="{{ asset('/images/uploads/sample_img.jpg') }}" />
+									</div>
+								@endif
+							@else
+							<div class="image_view">
+							   <img src="{{ asset('/images/uploads/sample_img.jpg') }}" />
+							</div>
+							@endif
+							
+						</div>
+					</div><!--/row-->
+					@endif
+					
+					
 					<div class="row">
 							<div class="col-md-8">
 								<div class="project_description">
