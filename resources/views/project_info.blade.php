@@ -61,7 +61,7 @@
 							<div class="fb-like" style="float:left; padding-top:5px;" data-href="{{URL::current()}}" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
 						</div>
 					</div>
-					@if(strtolower($category->title)!="furniture")
+					@if(strtolower($category->title)!="furniture" || strlower($category->parentCategory->title)!="furniture")
 					<div class="row">
 						<div class="col-md-12">
 							<div class="image_view">
